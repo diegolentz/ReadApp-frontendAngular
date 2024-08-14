@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --color-primario: 
+  --color-secundario:
+  --fuente-default: 
+  --ancho-default: 
+  --border-default:
+  --filtro-color-primario:
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, rgb(249, 219, 186), rgb(247, 245, 245));
+}
