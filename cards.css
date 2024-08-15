@@ -1,0 +1,84 @@
+p{
+    font-family: var(--fuente-default);
+    font-size: 1.5rem;
+}
+.cards{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 100rem;
+    gap: 4rem;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+}
+
+article{
+    width: 35rem;
+    height: 35rem;
+    background-color:#ffffff;
+    border-radius: 1rem;
+    border: 1px solid grey;
+}
+
+.flex__card{
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    margin: 1.8rem;
+}
+
+.flex__card-encabezado h2{
+    font-family: var(--fuente-default);
+    font-size: 1.8rem;
+}
+
+.flex__card-encabezado{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+
+.flex__card-contenido {
+    padding: 0 0 1.5rem 0;
+}
+
+.flex__card-contenido p{
+    font-family: var(--fuente-default);
+    font-size: 1.2rem;
+    line-height:1.5 ;
+}
+
+.border{
+    border-bottom: 2px solid grey;
+    margin: 1rem 0 0 0 ;
+}
+
+.grid__hijo{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 0.5rem;
+    margin: 1rem 0 0 0;
+}
+
+.grid__hijo p{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 1;
+    width: 10rem;
+}
+
+.flex__card-footer{
+    padding: 1rem 0 0 0;
+    display: flex;
+    justify-content: space-between;
+}
+.flex__card-footer p{
+    display: flex;
+    justify-content: center;
+    font-family: var(--fuente-default);
+    font-size: 1.5rem;
+    margin: 0 0 0.5rem 0;
+}

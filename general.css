@@ -4,10 +4,15 @@
     box-sizing: border-box;
 }
 
+html{
+  font-size: 62.5%;
+}
+
 :root {
+  
+  --fuente-default:"Oswald", sans-serif;
   --color-primario: 
   --color-secundario:
-  --fuente-default: 
   --ancho-default: 
   --border-default:
   --filtro-color-primario:
