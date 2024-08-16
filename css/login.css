@@ -9,7 +9,7 @@ body{
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    position: relative;/*  */
+   
 }
 
 .encabezado {
@@ -25,6 +25,7 @@ body{
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
+    position: relative;/*  */
 }
 
 label {
@@ -43,7 +44,7 @@ input[type="password"] {
     border: 1px solid grey;
     border-radius: 0.5rem;
     box-sizing: border-box;
-    /* position: relative; uso relative para posicionar el ojo en el input password */
+  
 }
 
 .advertencia {
@@ -67,9 +68,8 @@ input[type="password"] {
 
 .password-icon {
     position: absolute;
-    /* right: 3rem; */
-    left: 34rem;
-    margin-top: 2.5rem;
+    right: 1rem;
+    top: 2.5rem;
     display: flex;
 }
 
