@@ -1,5 +1,6 @@
 body{
     display: flex;
+    font-family: var(--fuente-default);
 }
 .formulario-login {
     width: 40rem;
@@ -19,9 +20,9 @@ body{
     gap: 1rem;
 }
 
-/* .nombre-app {
-    font-size: 3.5rem;
-} */
+.nombre-app {
+    font-size: 3rem;
+}
 
 .formulario {
     margin-bottom: 1.5rem;

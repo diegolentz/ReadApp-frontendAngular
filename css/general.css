@@ -29,3 +29,9 @@ body {
 .nombre-app {
   font-size: 3rem;
 }
+
+
+
+p{
+  font-family: var(--fuente-default);
+}
