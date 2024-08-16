@@ -1,0 +1,45 @@
+nav {
+    background: rgb(175, 143, 111);
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+nav :first-child{
+    display: flex;
+    margin-right: auto;
+    gap: 0.5rem;
+}
+
+nav :last-child{
+    display: flex;
+    margin-left: auto;
+    gap: 0.5rem;
+}
+
+/* el titulo, esta en general.css */
+.foto-perfil {
+    width: 5rem;
+    height: 5rem;
+}
+
+.foto-perfil img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid brown;
+}
+
+
+
+.nombre-perfil {
+    font-size: 1.5rem;
+    align-items: center;
+    color: antiquewhite;
+  }
+  
