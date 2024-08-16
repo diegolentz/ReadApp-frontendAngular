@@ -1,4 +1,6 @@
-
+body{
+    display: flex;
+}
 .formulario-login {
     width: 40rem;
     padding: 2rem;
@@ -17,9 +19,9 @@
     gap: 1rem;
 }
 
-.nombre-app {
+/* .nombre-app {
     font-size: 3.5rem;
-}
+} */
 
 .formulario {
     margin-bottom: 1.5rem;

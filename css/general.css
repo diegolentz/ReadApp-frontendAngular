@@ -21,8 +21,11 @@ html{
 
 body {
     height: 100vh;
-    display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(to bottom, rgb(249, 219, 186), rgb(247, 245, 245));
+}
+
+.nombre-app {
+  font-size: 3rem;
 }
