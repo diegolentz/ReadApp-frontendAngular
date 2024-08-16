@@ -5,7 +5,19 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    padding: 0 2rem;
+}
+
+nav :first-child{
+    display: flex;
+    margin-right: auto;
+    gap: 0.5rem;
+}
+
+nav :last-child{
+    display: flex;
+    margin-left: auto;
+    gap: 0.5rem;
 }
 
 /* el titulo, esta en general.css */
@@ -18,19 +30,10 @@ nav {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    object-fit: fill;
+    object-fit: cover;
     border: 1px solid brown;
 }
 
-nav :first-child{
-    display: flex;
-    margin-right: auto;
-}
-
-nav :last-child{
-    display: flex;
-    margin-left: auto;
-}
 
 
 .nombre-perfil {
