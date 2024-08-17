@@ -18,7 +18,7 @@ article{
     border: 1px solid grey;
 }
 article p{
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 
 .flex__card{
@@ -29,7 +29,6 @@ article p{
 }
 
 .flex__card-encabezado h2{
-    font-family: var(--fuente-default);
     font-size: 1.9rem;
 }
 .flex__card-encabezado svg{
@@ -45,12 +44,16 @@ article p{
     padding: 0.1rem;
 }
 
+.flex__card-encabezado div svg{
+    margin: 0.1rem 0 0 0.4rem;
+}
+
 .flex__card-contenido {
     padding: 0 0 1.5rem 0;
 }
 
 .flex__card-contenido p{
-    font-family: var(--fuente-default);
+    font-weight: 300;
     font-size: 1.4rem;
     line-height:1.5;
 }
@@ -64,7 +67,7 @@ article p{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     gap: 0.5rem;
-    margin: 1.5rem 0 1.4rem 0;
+    margin: 1.5rem 0 1rem 0;
 }
 
 .grid__hijo p{
@@ -83,7 +86,7 @@ article p{
 }
 
 .flex__card-footer{
-    padding: 1rem 0 1rem 0;
+    padding: 1rem 0 0.5rem 0;
     display: flex;
     justify-content:space-between ;
     align-items: center;
@@ -94,8 +97,8 @@ article p{
     justify-content: center;
     align-items: center;
     font-family: var(--fuente-default);
-    font-size: 1rem;
-    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
 .flex__card-footer div svg{
@@ -103,4 +106,14 @@ article p{
     margin: auto;
     width: 3rem;
     height: auto;
+}
+
+.check{
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 2rem;
+}
+
+.check p{
+    font-size: 1.5rem;
 }
