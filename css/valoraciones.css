@@ -1,0 +1,17 @@
+.valoraciones {
+  background-color: aliceblue;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 2.5fr 1fr;
+  grid-template-rows: 12rem 12rem;
+}
+
+.valoraciones-titulo {
+  grid-column: 1/-1;
+  background-color: blueviolet;
+  height: fit-content;
+  font-size: 4.5rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: baseline;
+}
