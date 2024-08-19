@@ -1,7 +1,7 @@
 .valoraciones {
   display: grid;
   height: 100%;
-  grid-template-columns: 2.5fr 1fr;
+  grid-template-columns: 2.5fr 2.5fr;
   grid-template-rows: 12rem 12rem;
 }
 
@@ -10,7 +10,7 @@
   height: fit-content;
   font-size: 4.5rem;
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   align-items: baseline;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .foto-perfil-reseña{
-  height: 10rem;
+  height: 8rem;
   border-radius: 50%;
   display: block;
   margin-left: auto;
@@ -58,9 +58,4 @@
   align-items: end;
 }
 
-.agregar-reseña{
-  border-radius: 50%;
-  width: 4rem;
-  height: 4rem;
-}
 
