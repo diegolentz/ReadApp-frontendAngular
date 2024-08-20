@@ -1,0 +1,68 @@
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+    font-family:"Oswald", sans-serif;
+}
+
+* {
+    margin: 0px
+}
+
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 3fr
+}
+
+.nav-perfil-container {
+    grid-column: 1;
+}
+
+.nav-nombre-foto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.foto-perfil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 10px
+}
+
+.nombre{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+hr {
+    background-color: black;
+    color:black;
+}
+
+.panelDeOpciones {
+    margin-left: 15px;
+}
+
+.opciones{
+    margin-top: 4px;
+    font-size: small;
+    margin-bottom: 4px;
+    display: flex;
+}
+
+.opciones-margen {
+    margin-left: 5px;
+}
+
+.container-derecho {
+    grid-column: 2;
+}
+
+
+
+
+
