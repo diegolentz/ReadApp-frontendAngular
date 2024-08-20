@@ -1,0 +1,65 @@
+.valoraciones {
+  grid-column: 1/-1;
+  display: grid;
+  height: 100%;
+  grid-template-columns: 2.5fr 2.5fr;
+  grid-template-rows: 12rem 12rem;
+}
+
+.valoraciones-titulo {
+  grid-column: 1/-1;
+  height: fit-content;
+  font-size: 4.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.valoracion{
+  grid-column: 1/-2;
+  display: grid;
+  grid-template-columns: 0.20fr 0.5fr 0.25fr;
+  grid-row: 2rem 6rem;
+}
+
+.foto-perfil-reseña{
+  height: 5.35rem;
+  border-radius: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.datos-reseña{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.valoracion-reseña{
+  text-align: center;
+  font-size: 2rem;
+}
+
+.valoracion-usuario{
+  font-size: 2rem;
+}
+
+.valoracion-fecha{
+  font-size: 1.5rem;
+}
+
+.contenido-valoracion{
+  grid-column: 1/-1;
+  font-size: 1.5rem;
+}
+
+.contenedor-agregar-reseña{
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+
