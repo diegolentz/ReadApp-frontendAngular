@@ -1,0 +1,64 @@
+html {
+    font-family: "Oswald", sans-serif;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+main {
+    font-size:12px;
+}
+
+h3 {
+    margin: 0px;
+    font-weight: normal;
+}
+
+.formulario-general {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+}
+
+hr {
+    color: black;
+    height: 1px;
+}
+
+.seleccion-container {
+    display: flex;
+}
+
+.formulario-criterio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 50px 50px 50px;
+}
+
+.formulario-lectura {
+    display: flex;
+    justify-content: space-between;
+}
+.inline {
+    align-items: self-start;
+    display: inline-flex;
+}
+
+input[type="checkbox" i]{
+    margin: 0px;
+    margin-right: 5px;
+}
+input[type="radio" i]{
+    margin: 0px;
+    margin-right: 5px;
+}
+
+div:nth-child(8) {
+    grid-column: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+  }
+
+  .margin-left{
+    margin-left: 18px;
+  }
