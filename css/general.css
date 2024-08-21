@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap'); /* Consultar si importarla o linkearla*/
+
 * {
     margin: 0;
     padding: 0;
@@ -6,34 +8,29 @@
 }
 
 html{
-  font-size: 62.5%;
+  font-size: 62.5%; /* equivale a 10px */
 }
 
 :root {
   
-  --fuente-default:"Oswald", sans-serif;
-  --color-primario: 
-  --color-secundario:
-  --ancho-default: 
-  --border-default:
-  --filtro-color-primario:
+  --fuente-default:"Source Sans 3", sans-serif;
+  --color-header: #C39898;
+  --color-searchbar: #DBB5B5;
+  --color-fondo: #F1E5D1;
+  --border-default: solid;
+  --border-width: 1px;
+  --color-link:
 }
 
 body {
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, rgb(249, 219, 186), rgb(247, 245, 245));
+    background: var(--color-fondo);
     font-family: var(--fuente-default);
     height: auto;
     min-height: 100vh;
 }
 
-/* body {
-  height: 100%;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to bottom, rgb(249, 219, 186), rgb(247, 245, 245));
-} */
 
 .nombre-app {
   font-size: 1.8rem;
