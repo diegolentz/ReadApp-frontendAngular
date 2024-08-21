@@ -27,8 +27,8 @@ body {
     align-items: center;
     background: var(--color-fondo);
     font-family: var(--fuente-default);
-    height: auto;
-    min-height: 100vh;
+    /* height: auto;
+    min-height: 100vh; */
 }
 
 
