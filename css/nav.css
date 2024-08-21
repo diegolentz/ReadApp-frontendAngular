@@ -1,5 +1,5 @@
 nav {
-    background-color: rgb(223, 211, 195);
+    background: var(--color-searchbar);
     height: 6rem;
     width: 100%;
     display: flex;

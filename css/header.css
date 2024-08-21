@@ -1,5 +1,5 @@
 header {
-    background: rgb(175, 143, 111);
+    background: var(--color-header);
     width: 100%;
     height: 6rem;
     display: flex;
@@ -37,4 +37,5 @@ header :last-child {
 .nombre-perfil {
     font-size: 1.5rem;
     color: antiquewhite;
+
 }
