@@ -1,7 +1,7 @@
 nav {
     background: var(--color-searchbar);
     height: 6rem;
-    width: 100%;
+    width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -10,7 +10,7 @@ nav {
 
 .search {
     /* position: relative; */
-    width: 70%;
+    width: 50%;
     justify-content: center;
     align-items: center;
 }
@@ -34,16 +34,29 @@ nav {
     border: 1px solid rgb(175, 143, 111);
     
 }
-.contenedorLupa, path {
+.contenedorLupa {
     width: 2rem; /* Ajusta el tamaño del SVG */
     height: 2rem;
 }
 
 
+/* medias querys tablet*/
+@media screen and (min-width: 401px) and (max-width: 768px) {
+   .search{
+    width: 80%;
+   }
+        
+        
+}
+    
 /* medias querys celular*/
 @media screen and (max-width: 400px) {
-    nav{
-
+    .search{
+        width: 80%;
+       }
+    .searchBar, .lupa, .contenedorLupa{
+        height: 4rem;
     }
+
 
 }
