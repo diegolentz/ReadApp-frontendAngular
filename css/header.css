@@ -8,17 +8,34 @@ header {
     justify-content: space-between;
     padding: 0 2rem;
     margin-bottom: 0.1rem;
+    order: 1;
 }
 
-header :first-child {
+.encabezado {
     display: flex;
     align-items: center;
 }
 
-header :last-child {
+.derecha {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    z-index: 1;
+}
+
+.derecha-mq{
+    position: absolute;
+    width: 3.9rem;
+    height: 3.9rem;
+    object-fit: cover;
+    right: 1.5rem;
+    z-index: 0;
+    display: none;
+}
+svg{
+    width: 100%;
+    height: 100%;
 }
 
 .foto-perfil {
@@ -35,7 +52,41 @@ header :last-child {
 }
 
 .nombre-perfil {
-    font-size: 1.5rem;
-    color: antiquewhite;
+    font-size: 1.6rem;
+    color: white;
+
+}
+
+/* medias querys tablet*/
+@media screen and (min-width: 401px) and (max-width: 768px) {
+    .derecha {
+        z-index: 0;
+        display: none;  
+    }
+    .derecha-mq{
+        z-index: 1;
+        display: block;
+    }
+        
+}
+    
+/* medias querys celular*/
+@media screen and (max-width: 400px) {
+    header{
+        order: 10;
+        width: 100vw;
+        
+        /* position: fixed; */
+        /* bottom: 0; */
+    }
+    .derecha-mq{
+        z-index: 1;
+        display: block;
+        /* width: 100vw; */
+    }
+    .derecha {
+        z-index: 0;
+        display: none;  
+    }
 
 }

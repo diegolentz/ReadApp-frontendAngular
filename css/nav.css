@@ -5,6 +5,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    order: 2;
 }
 
 .search {
@@ -38,4 +39,14 @@ nav {
 .lupa svg {
     width: 2rem; /* Ajusta el tamaño del SVG */
     height: 2rem;
+}
+
+
+/* medias querys celular*/
+@media screen and (max-width: 400px) {
+    nav{
+        order: 1;
+
+    }
+
 }
