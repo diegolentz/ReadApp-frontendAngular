@@ -45,7 +45,6 @@ nav {
 /* medias querys celular*/
 @media screen and (max-width: 400px) {
     nav{
-        order: 1;
 
     }
 

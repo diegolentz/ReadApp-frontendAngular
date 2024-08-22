@@ -1,6 +1,6 @@
 header {
     background: var(--color-header);
-    width: 100%;
+    width: 100vw;
     height: 6rem;
     display: flex;
     flex-direction: row;
@@ -8,7 +8,6 @@ header {
     justify-content: space-between;
     padding: 0 2rem;
     margin-bottom: 0.1rem;
-    order: 1;
 }
 
 .encabezado {
@@ -73,16 +72,12 @@ svg{
 /* medias querys celular*/
 @media screen and (max-width: 400px) {
     header{
-        order: 10;
-        width: 100vw;
-        
-        /* position: fixed; */
-        /* bottom: 0; */
+        position: fixed;
+        bottom: 0vh;   
     }
     .derecha-mq{
         z-index: 1;
         display: block;
-        /* width: 100vw; */
     }
     .derecha {
         z-index: 0;
