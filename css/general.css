@@ -23,12 +23,14 @@ html{
 }
 
 body {
-    justify-content: center;
-    align-items: center;
-    background: var(--color-fondo);
-    font-family: var(--fuente-default);
-    /* height: auto;
-    min-height: 100vh; */
+  justify-content: center;
+  align-items: center;
+  background: var(--color-fondo);
+  font-family: var(--fuente-default);
+  display: flex;
+  flex-direction: column;
+  /* height: auto; */
+  /* min-height: 100vh; */
 }
 
 

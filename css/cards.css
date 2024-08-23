@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     place-items: center;
+    order: 3;
 }
 
 article{
@@ -116,4 +117,12 @@ article p{
 
 .check p{
     font-size: 1.5rem;
+}
+
+
+/* medias querys celular*/
+@media screen and (max-width: 400px) {
+    main{
+    }
+
 }
