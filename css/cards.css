@@ -8,6 +8,7 @@
     align-items: center;
     justify-content: center;
     place-items: center;
+    order: 3;
 }
 
 article{
@@ -174,6 +175,11 @@ article p{
 
     .grid__hijo p{
         font-size: 1rem;
+
+/* medias querys celular*/
+@media screen and (max-width: 400px) {
+    main{
+
     }
 
 }
