@@ -139,7 +139,7 @@ article p{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        margin: 5rem auto;
+        margin: 5rem auto 8rem;
         gap: 2rem;
     }
 
