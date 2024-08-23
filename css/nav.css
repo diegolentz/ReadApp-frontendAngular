@@ -24,7 +24,7 @@ nav {
 }
 
 .lupa {
-    background-color:rgb(175, 143, 111) ;
+    background-color:var(--color-header) ;
     width: 3rem; 
     height : 3rem;
     display: flex;
