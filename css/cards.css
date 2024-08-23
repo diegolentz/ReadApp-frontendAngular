@@ -111,16 +111,6 @@ article p{
     height: auto;
 }
 
-.check{
-    display: flex;
-    gap: 0.5rem;
-    margin-left: 2rem;
-}
-
-.check p{
-    font-size: 1.5rem;
-}
-
 
 /* medias querys tablet*/
 @media screen and (min-width: 401px) and (max-width: 768px) {
