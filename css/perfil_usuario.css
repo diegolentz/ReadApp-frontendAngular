@@ -1,0 +1,67 @@
+/* Este archivo se lee en orden de la siguiente manera: */
+    /* 1 - DIMENSIONES      */
+    /* 2 - DISTRIBUCION     */
+    /* 2 - POSICIONAMIENTO  */
+    /* 3 - ESTILOS          */
+
+.perfil-usuario{
+    /* 6rem del header, 4rem de los botones y 0.1rem del header margin-bottom. 
+    PD: Hasta no acordar con el team no los margins del header. Se puede simplificar esta property*/
+    height: calc(100vh - 6rem - 0.1rem);
+    
+    display: grid;
+    grid-template-columns: 1.2fr 3fr;
+    grid-template-rows: 1fr 0.1fr;
+
+    padding-top: 3rem;
+}
+
+.panelOpciones{
+    grid-column: 1;
+}
+.panelOpciones__identificacion{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & .foto{
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+    }
+
+    & .nombre{
+        font-size: 3rem;
+        font-weight: bold;
+        border-bottom: 1px solid black;
+    }
+}
+.panelOpciones__seleccionables{
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-left: 2.5rem;
+
+    & .seleccionable{
+
+        display: flex;
+        gap: 1rem;
+
+        cursor: pointer;
+        & i{
+            align-items: center;
+        }
+
+        & span, i {
+            font-size: 1.7rem;
+        }
+    }
+}
+
+.seleccionable--seleccionado{
+    font-weight: bold;
+    /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
+    E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
+}

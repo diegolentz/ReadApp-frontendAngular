@@ -1,0 +1,61 @@
+.amigo{
+    display: grid;
+    grid-template-columns: 0.25fr 1fr 0.25fr;
+    grid-template-rows: 2.5rem 2.5rem;
+
+    margin-left: 1rem;
+
+    border-radius: 0.5rem;
+
+    &:hover{
+        /* CAMBIAR A VAR */
+        background-color: rgb(201, 191, 191)
+    }
+
+    & span{
+        width: fit-content;
+        margin-left: 1rem;
+
+        font-size: 1.5rem;
+    }
+}
+.amigo__foto{
+    grid-row: 1/3;
+    grid-column: 1/2;
+    & img{
+        height: auto;
+        max-width: 90%;
+        /* object-fit: cover; */
+        border-radius: 50%;
+        border: 1px solid red;
+    }
+}
+.amigo__nombre{
+    align-content: end;
+}
+.amigo__identificador{
+    cursor: pointer;
+}
+.amigo__eliminar{
+    grid-row: 1/3;
+    grid-column: 3/4;
+
+    cursor: pointer;
+}
+
+.agregar-amigo{
+    border: 1px solid black;
+    & i{
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+
+        color: wheat;
+        cursor: pointer;
+    }
+}
+
+.centered-inlineGrid{
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+}
