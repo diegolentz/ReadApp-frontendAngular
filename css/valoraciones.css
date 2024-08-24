@@ -3,7 +3,8 @@
   display: grid;
   height: 100%;
   grid-template-columns: 2.5fr 2.5fr;
-  grid-template-rows: 12rem 12rem;
+  grid-template-rows: 8rem 12rem;
+  padding: 2rem;
 }
 
 .valoraciones-titulo {
@@ -62,4 +63,24 @@
   align-items: end;
 }
 
+@media (max-width: 768px) and (min-width: 401px){
+  .valoraciones{
+    grid-template-columns: 1.5fr 1.5fr;
+  }
 
+  .valoracion-usuario{
+    font-size: 3rem;
+  }
+  
+  .valoracion-fecha{
+    font-size: 1.5rem;
+  }
+  
+  .contenido-valoracion{
+    font-size: 2.5rem;
+  }
+
+  .valoracion-reseña{
+    font-size: 3rem;
+  }
+}
