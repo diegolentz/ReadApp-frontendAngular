@@ -74,62 +74,80 @@
             </div>
         </div>
     
-        <section>
-                <h1>Informacion</h1>
-                <h2>General</h2>
-                <form class = "formulario-general">
-                        <div>
-                            <h3>Nombre</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                        <div>
-                            <h3>Apellido</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                        <div>
-                            <h3>Username</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                        <div>
-                            <h3>Fecha de nacimiento</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                        <div>
-                            <h3>Mail</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                        <div>
-                            <h3>Tiempo de lectura promedio</h3>
-                            <input class="custom-textbox" type="text">
-                        </div>
-                </form>
-                <hr>
-                <h2>Forma de lectura</h2>
-                <form class="formulario-lectura">
-                    <label class = "inline"><input type="radio" name="selection"/> Lector Promedio</label>
-                    <label class = "inline"><input type="radio" name="selection"/> Ansioso</label>
-                    <label class = "inline"><input type="radio" name="selection"/> Fanatico</label>
-                    <label class = "inline"><input type="radio" name="selection"/> Recurrente</label>
+        <section class="opcionSeleccionada">
+                <h1 class="opcionSeleccionada__titulo">Informacion</h1>
+                <div class="opcionSeleccionada__info">
                     
-                </form>
-                <hr>
-                <h2>Criterio de busqueda</h2>
-                <form class = "formulario-criterio">
-                    <label class = "inline"><input type="checkbox"/> Precavido</label>
-                    <label class = "inline"><input type="checkbox"/> Demandante</label>
-                    <label class = "inline"><input type="checkbox"/> Cambiante</label>
-                    <label class = "inline"><input type="checkbox"/> Leedor</label>    
-                    <label class = "inline"><input type="checkbox"/> Nativista</label>
-                    <label class = "inline"><input type="checkbox"/> Poliglota</label>
-                    <label class = "inline"><input type="checkbox"/> Experimentado</label>
-                    <div>
-                        <label class = "inline"><input type="checkbox"/> Calculador</label>
-                        <div class = "margin-left">
-                        <br> Limite minimo<br><input type="text">
-                        <br> Limite maximo<br><input type="text">
-                        </div>
+                    <div class="info info__general">
+                        <h2>General</h2>
+                        <form class = "formulario-general">
+                            <div>
+                                <h3>Nombre</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                            <div>
+                                <h3>Apellido</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                            <div>
+                                <h3>Username</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                            <div>
+                                <h3>Fecha de nacimiento</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                            <div>
+                                <h3>Mail</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                            <div>
+                                <h3>Tiempo de lectura promedio</h3>
+                                <input class="custom-textbox" type="text">
+                            </div>
+                        </form>
                     </div>
-                </form>
+                    <hr>
+                    <div class="info info__perfilUsuario">
+                        <h2>Forma de lectura</h2>
+                        <form class="formulario-lectura">
+                            <label class = "info__opcion"><input type="radio" name="selection"/>Promedio</label>
+                            <label class = "info__opcion"><input type="radio" name="selection"/>Ansioso</label>
+                            <label class = "info__opcion"><input type="radio" name="selection"/>Fanatico</label>
+                            <label class = "info__opcion"><input type="radio" name="selection"/>Recurrente</label>
+                        </form>
+
+                        
+                    </div>
+                    <hr>
+                    <div class="info info__criterioBusqueda">
+                        <h2>Criterio de busqueda</h2>
+                    <form class = "formulario-criterio">
+                        <label class = "info__opcion"><input type="checkbox"/> Precavido</label>
+                        <label class = "info__opcion"><input type="checkbox"/> Demandante</label>
+                        <label class = "info__opcion"><input type="checkbox"/> Cambiante</label>
+                        <label class = "info__opcion"><input type="checkbox"/> Leedor</label>    
+                        <label class = "info__opcion"><input type="checkbox"/> Nativista</label>
+                        <label class = "info__opcion"><input type="checkbox"/> Poliglota</label>
+                        <label class = "info__opcion"><input type="checkbox"/> Experimentado</label>
+                        <div class="info__opcion--input">
+                            <label class = "info__opcion"><input type="checkbox"/> Calculador</label>
+                            <div class = "margin-left">
+                                <span>Limite minimo</span>
+                                <input type="text">
+                                <span>Limite maximo</span>
+                                <input type="text">
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    
+
+                    
+
+                    
+
+                </div>
         </section>
 
         <div class="botones-container">

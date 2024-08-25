@@ -4,7 +4,7 @@
     /* 3 - DISTRIBUCION ELEMENTOS   */
     /* 4 - ESTILOS                  */
 .opcionSeleccionada{
-    width: 100%;
+    width: 95%;
 
     display: flex;
     flex-direction: column;
@@ -17,10 +17,14 @@
     font-size: 3rem;
 }
 
-.opcionSeleccionada__contenido{
-    margin-left: 2rem;
+.opcionSeleccionada__info{
+    display: flex;
+    flex-direction: column;
+
+    gap: 1rem;
+
+    overflow-y: scroll;
 }
-/* .opcionSeleccionada__info{} */
 
 .opcionSeleccionada__amigos{
     display: grid;
@@ -38,6 +42,7 @@
     grid-auto-flow: row;
     grid-auto-rows: 20rem;
 
+    justify-content: space-around;
     row-gap: 2.5rem;
     column-gap: 8rem;
 
