@@ -3,7 +3,8 @@
   display: grid;
   height: 100%;
   grid-template-columns: 2.5fr 2.5fr;
-  grid-template-rows: 12rem 12rem;
+  grid-template-rows: 8rem 12rem;
+  padding: 2rem;
 }
 
 .valoraciones-titulo {
@@ -13,6 +14,11 @@
   display: flex;
   gap: 1rem;
   align-items: baseline;
+}
+
+.estrella-valoraciones{
+  width: 3rem;
+  height: 3rem;
 }
 
 .valoracion{
@@ -45,10 +51,14 @@
 
 .valoracion-usuario{
   font-size: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
 }
 
 .valoracion-fecha{
   font-size: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
 }
 
 .contenido-valoracion{
@@ -62,4 +72,24 @@
   align-items: end;
 }
 
+@media (max-width: 768px) and (min-width: 401px){
+  .valoraciones{
+    grid-template-columns: 1.5fr 1.5fr;
+    padding: 1rem;
+  }
 
+
+  .valoracion-reseña{
+    text-align: end;
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 400px){
+  .valoraciones{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+  }
+}
