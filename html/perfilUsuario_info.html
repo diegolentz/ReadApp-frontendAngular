@@ -11,14 +11,11 @@
     <link rel="stylesheet" href="../css/opcionSeleccionada.css">
     <link rel="stylesheet" href="../css/botones.css">
     <!-- CSS ESPECIFICO SEGUN OPCION SELECCIONADA -->
-    <link rel="stylesheet" href="../css/panelAmigos.css">
-
-   
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/formulario.css">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
+
 </head>
 <body>
     
@@ -77,30 +74,62 @@
             </div>
         </div>
     
-        <section class="opcionSeleccionada">
-            
-            <!-- Esto deberia aceptar la class sin el espacio segun los apuntes sobre BEM -->
-            <h1 class="opcionSeleccionada__titulo">Amigos</h1>
-    
-            <div class="opcionSeleccionada__amigos">
-                <div class="amigo">
-                    <div class="amigo__foto"><img src="../images/../images/icono.jpg" alt=""></div>
-                    <span class="amigo__nombre">AAA</span>
-                    <span class="amigo__identificador">@aaa</span>
-                    <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+        <section>
+                <h1>Informacion</h1>
+                <h2>General</h2>
+                <form class = "formulario-general">
+                        <div>
+                            <h3>Nombre</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                        <div>
+                            <h3>Apellido</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                        <div>
+                            <h3>Username</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                        <div>
+                            <h3>Fecha de nacimiento</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                        <div>
+                            <h3>Mail</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                        <div>
+                            <h3>Tiempo de lectura promedio</h3>
+                            <input class="custom-textbox" type="text">
+                        </div>
+                </form>
+                <hr>
+                <h2>Forma de lectura</h2>
+                <form class="formulario-lectura">
+                    <label class = "inline"><input type="radio" name="selection"/> Lector Promedio</label>
+                    <label class = "inline"><input type="radio" name="selection"/> Ansioso</label>
+                    <label class = "inline"><input type="radio" name="selection"/> Fanatico</label>
+                    <label class = "inline"><input type="radio" name="selection"/> Recurrente</label>
+                    
+                </form>
+                <hr>
+                <h2>Criterio de busqueda</h2>
+                <form class = "formulario-criterio">
+                    <label class = "inline"><input type="checkbox"/> Precavido</label>
+                    <label class = "inline"><input type="checkbox"/> Demandante</label>
+                    <label class = "inline"><input type="checkbox"/> Cambiante</label>
+                    <label class = "inline"><input type="checkbox"/> Leedor</label>    
+                    <label class = "inline"><input type="checkbox"/> Nativista</label>
+                    <label class = "inline"><input type="checkbox"/> Poliglota</label>
+                    <label class = "inline"><input type="checkbox"/> Experimentado</label>
+                    <div>
+                        <label class = "inline"><input type="checkbox"/> Calculador</label>
+                        <div class = "margin-left">
+                        <br> Limite minimo<br><input type="text">
+                        <br> Limite maximo<br><input type="text">
+                        </div>
                     </div>
-                </div>
-                
-                <div class="agregar-amigo amigo">
-                    <i class="centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="#000000" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.13,104.13,0,0,0,128,24Zm40,112H136v32a8,8,0,0,1-16,0V136H88a8,8,0,0,1,0-16h32V88a8,8,0,0,1,16,0v32h32a8,8,0,0,1,0,16Z"></path></svg>
-                    </i>
-                </div>
-    
-            </div>
-    
-    
+                </form>
         </section>
 
         <div class="botones-container">
