@@ -133,6 +133,7 @@ article p{
     font-size: 1.5rem;
 }
 
+
 @media (max-width: 768px) and (min-width: 401px){
     .container{
         display: flex;
@@ -140,4 +141,19 @@ article p{
         align-items: center;
         width: 100%;
     }
+}
+
+
+@media (max-width: 400px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    article{
+        width: 100vw;
+    }
+
 }

@@ -90,3 +90,20 @@
     font-size: 2.5rem;
   }
 }
+
+@media (max-width: 400px){
+  .valoraciones{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1.5rem;
+  }
+
+  .valoraciones-titulo{
+    font-size: 2rem;
+  }
+
+  .estrella-valoraciones{
+    width: 10px;
+  }
+}
