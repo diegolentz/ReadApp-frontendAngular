@@ -48,4 +48,10 @@
 
     overflow-y: scroll;
 }
-/* .opcionSeleccionada__recomendaciones{} */
+
+.opcionSeleccionada__recomendaciones{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 4rem;
+    overflow-y: scroll;
+}
