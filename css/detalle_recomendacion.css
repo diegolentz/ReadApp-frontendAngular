@@ -36,6 +36,7 @@ article p{
     font-size: 1.5rem;
 }
 
+
 .flex__card{
     display: flex;
     flex-direction: column;
@@ -141,6 +142,9 @@ article p{
         align-items: center;
         width: 100%;
     }
+    article{
+        width: 100%;
+    }
 }
 
 
@@ -153,7 +157,7 @@ article p{
     }
 
     article{
-        width: 100vw;
+        width: 100%;
     }
 
 }

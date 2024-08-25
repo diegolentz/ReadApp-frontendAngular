@@ -16,6 +16,11 @@
   align-items: baseline;
 }
 
+.estrella-valoraciones{
+  width: 3rem;
+  height: 3rem;
+}
+
 .valoracion{
   grid-column: 1/-2;
   display: grid;
@@ -46,10 +51,14 @@
 
 .valoracion-usuario{
   font-size: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
 }
 
 .valoracion-fecha{
   font-size: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 1rem;
 }
 
 .contenido-valoracion{
@@ -69,21 +78,6 @@
     padding: 1rem;
   }
 
-  .valoracion-usuario{
-    font-size: 3rem;
-    padding-left: 0.5rem;
-    padding-right: 1rem;
-  }
-  
-  .valoracion-fecha{
-    font-size: 1.5rem;
-    padding-left: 0.5rem;
-    padding-right: 1rem;
-  }
-  
-  .contenido-valoracion{
-    font-size: 2rem;
-  }
 
   .valoracion-reseña{
     text-align: end;
@@ -97,13 +91,5 @@
     flex-direction: column;
     width: 100%;
     gap: 1.5rem;
-  }
-
-  .valoraciones-titulo{
-    font-size: 2rem;
-  }
-
-  .estrella-valoraciones{
-    width: 10px;
   }
 }
