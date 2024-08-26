@@ -59,6 +59,7 @@
     .opcionSeleccionada__amigos{
         display: flex;
         flex-direction: column;
+        overflow-y: hidden;
     }
 
     .opcionSeleccionada__titulo{
