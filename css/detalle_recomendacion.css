@@ -1,10 +1,9 @@
 
 .container{
     display: grid;
-    grid-template-columns: 3fr 3fr;
-    width: 100rem;
-    gap: 2.5rem;
-    margin: 5rem auto;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1.5vw;
     align-items: center;
     justify-content: center;
     place-items: center;
@@ -26,7 +25,7 @@
 }
 
 article{
-    width: 50rem;
+    width: 30vw;
     height: 30rem;
     background-color:#ffffff;
     border-radius: 1rem;
@@ -159,5 +158,14 @@ article p{
     article{
         width: 100%;
     }
+
+    .titulo-libros-recomendados{
+        font-size: 10vw;
+    }
+    
+    .subtitulo-libros-recomendados{
+        font-size: 8vw;
+    }
+
 
 }
