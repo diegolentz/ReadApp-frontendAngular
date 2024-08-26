@@ -5,7 +5,8 @@
     display: flex;
     gap: 2rem;
 
-    place-content: end;
+    align-items: center;
+    justify-content: end;
 
     padding-right: 10rem;
 }
@@ -38,4 +39,38 @@
     &:hover{
         filter: brightness(70%);
     }
+}
+
+
+.centered-inlineGrid{
+    display: inline-grid;
+    justify-content: center;
+    align-content: center;
+}
+
+.agregar{
+    border: 1px solid black;
+}
+
+.agregar__amigo{
+    & i{
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+
+        color: wheat;
+        cursor: pointer;
+    }
+}
+
+.agregar__libro{
+    width: 5rem;
+    height: 5rem;
+
+    align-self: center;
+
+    cursor: pointer;
+}
+
+.justified__content{
+    justify-content: center;
 }

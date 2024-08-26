@@ -1,0 +1,68 @@
+article.libro{
+    width: 100%;
+    height: 100%;
+}
+
+.libro{
+    display: flex;
+
+    gap: 2.5rem;
+    padding: 2rem;
+
+    background-color: rgb(33, 67, 132);
+}
+.libro__portada{
+    width: 10rem;
+    height: 100%;
+    & img{
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.libro__contenido{
+    width: 55%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: auto;
+
+    color: aliceblue;
+
+    & .libro__titulo{
+        font-weight: bold;
+        font-size: 2rem;
+    }
+    & .libro__autor{
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    & .libro__info{
+        height: 9.36rem;
+        
+        & .dato{
+            font-size: 1.4rem;
+        }
+    }
+}
+
+
+
+.libro__acciones{
+    width: 3rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    & .accion{
+        width: 100%;
+        filter: brightness(50%);
+        &:hover{
+            filter: brightness(100%);
+        }
+        cursor: pointer;
+    }
+}
+
+

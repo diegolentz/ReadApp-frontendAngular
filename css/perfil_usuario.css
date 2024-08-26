@@ -1,19 +1,21 @@
 /* Este archivo se lee en orden de la siguiente manera: */
-    /* 1 - DIMENSIONES      */
-    /* 2 - DISTRIBUCION     */
-    /* 2 - POSICIONAMIENTO  */
-    /* 3 - ESTILOS          */
+    /* 1 - DIMENSIONES CONTENEDOR   */
+    /* 2 - POSICIONAMIENTO          */
+    /* 3 - DISTRIBUCION ELEMENTOS   */
+    /* 4 - ESTILOS                  */
 
 .perfil-usuario{
     /* 6rem del header, 4rem de los botones y 0.1rem del header margin-bottom. 
     PD: Hasta no acordar con el team no los margins del header. Se puede simplificar esta property*/
-    height: calc(100vh - 6rem - 0.1rem);
+    height: calc(100vh - 6rem);
+    width: 100%;
+    
+    padding-top: 3rem;
     
     display: grid;
     grid-template-columns: 1.2fr 3fr;
-    grid-template-rows: 1fr 0.1fr;
+    grid-template-rows: 85% 15%;
 
-    padding-top: 3rem;
 }
 
 .panelOpciones{
@@ -45,7 +47,8 @@
     margin-left: 2.5rem;
 
     & .seleccionable{
-
+        width: fit-content;
+        
         display: flex;
         gap: 1rem;
 
