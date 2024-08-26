@@ -66,3 +66,77 @@ article.libro{
 }
 
 
+@media screen and (min-width: 401px) and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 400px) {
+    article.libro{
+        width: 100%;
+        height: 100%;
+        /* Este min height es solo para pisar el min-heigt definido en cards para los article */
+        min-height: 20rem;
+    }
+    
+    .libro{
+        display: flex;
+    
+        gap: 2.5rem;
+        padding: 2rem;
+    
+        background-color: rgb(33, 67, 132);
+    }
+    .libro__portada{
+        width: 10rem;
+        height: 100%;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    .libro__contenido{
+        width: 55%;
+    
+        display: flex;
+        flex-direction: column;
+    
+        overflow: auto;
+    
+        color: aliceblue;
+    
+        & .libro__titulo{
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        & .libro__autor{
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+        & .libro__info{
+            
+            & .dato{
+                font-size: 1.2rem;
+            }
+        }
+    }
+    
+    
+    
+    .libro__acciones{
+        width: 3rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        & .accion{
+            width: 100%;
+            filter: brightness(50%);
+            &:hover{
+                filter: brightness(100%);
+            }
+            cursor: pointer;
+        }
+    }
+
+}

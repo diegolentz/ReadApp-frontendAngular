@@ -69,7 +69,40 @@
 /* @media screen and (min-width: 401px) and (max-width: 768px) {
         
 } */
+
+@media screen and (min-width: 401px) and (max-width: 768px) {
+    .perfil-usuario{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        padding: 3rem 3rem 0 3rem;
+        gap: 3rem;
+    }
     
+    .panelOpciones__identificacion{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        align-items: center;
+        
+        border-bottom: 1px solid black;
+        & .foto{
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+        }
+    
+        & .nombre{
+            font-size: 3rem;
+            font-weight: bold;
+            border-bottom: none;
+        }
+    }
+}
+
 /* medias querys celular*/
 @media screen and (max-width: 400px) {
     

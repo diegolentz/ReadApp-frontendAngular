@@ -27,26 +27,22 @@
 
 .opcionSeleccionada__amigos{
     display: grid;
-    /* object-fit: fill; */
     grid-template-columns: repeat(3, minmax(16rem, 0.325fr));
-    /* grid-auto-flow: row ;
-    grid-auto-rows: 5rem; */
+
     gap: 1rem;
     justify-content: space-evenly;
-    /* align-items: center; */
+    
     overflow-y: scroll;
     
 }
 .opcionSeleccionada__libros{
     display: grid;
-    grid-template-columns: repeat(2, 45rem);
-    grid-template-rows: 20rem;
-    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fill, minmax(45rem, 0.325fr));
     grid-auto-rows: 20rem;
     
     justify-content: space-around;
     row-gap: 2.5rem;
-    column-gap: 8rem;
+    column-gap: 5rem;
     
     overflow-y: scroll;
 }
@@ -59,15 +55,17 @@
 }
 
 @media screen and (min-width: 401px) and (max-width: 768px) {
+    .opcionSeleccionada__titulo{
+        font-size: 3rem;
+    }
+
     .opcionSeleccionada__amigos{
-        /* grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr)); */
         grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr));
         overflow-y: scroll;
     }
     
-    .opcionSeleccionada__titulo{
-        margin: auto;
-        font-size: 3rem;
+    .opcionSeleccionada__libros{
+        grid-template-columns: repeat(auto-fill, minmax(40rem, 0.625fr));
     }
 }
 
@@ -77,6 +75,16 @@
         min-width: 18rem;
 
         overflow-y: hidden;
+    }
+
+    .opcionSeleccionada__libros{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 0.325fr));
+        grid-auto-rows: 20rem;
+        
+        justify-content: space-around;
+        row-gap: 2.5rem;
+        column-gap: 3rem;
     }
 
 }
