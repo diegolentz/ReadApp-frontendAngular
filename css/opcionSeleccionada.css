@@ -75,6 +75,8 @@
     .opcionSeleccionada__amigos{
         display: block;
         min-width: 18rem;
+
+        overflow-y: hidden;
     }
 
 }
