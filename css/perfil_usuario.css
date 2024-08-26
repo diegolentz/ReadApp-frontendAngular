@@ -81,6 +81,7 @@
 
         /* EL 6rem bottom es por el header. Para que el contenido este visible*/
         padding: 3rem 3rem 6rem 3rem;
+        gap: 3rem;
     }
 
     .panelOpciones__seleccionables{
