@@ -40,3 +40,25 @@
 
     cursor: pointer;
 }
+
+@media screen and (max-width: 400px){
+    .amigo{
+        /* width: 100%; */
+        /* display: flex; */
+        /* flex-direction: column; */
+    
+        border-radius: 0.5rem;
+        
+        &:hover{
+            /* CAMBIAR A VAR */
+            background-color: rgb(201, 191, 191)
+        }
+    
+        & span{
+            width: fit-content;
+            margin-left: 1rem;
+    
+            font-size: 1.5rem;
+        }
+    }
+}
