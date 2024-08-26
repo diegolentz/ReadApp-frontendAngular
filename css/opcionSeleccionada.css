@@ -28,14 +28,14 @@
 .opcionSeleccionada__amigos{
     display: grid;
     /* object-fit: fill; */
-    grid-template-columns: repeat(auto-fill,minmax(20rem, 0.325fr));
+    grid-template-columns: repeat(3, minmax(16rem, 0.325fr));
     /* grid-auto-flow: row ;
     grid-auto-rows: 5rem; */
     gap: 1rem;
     justify-content: space-evenly;
     /* align-items: center; */
-    
     overflow-y: scroll;
+    
 }
 .opcionSeleccionada__libros{
     display: grid;
@@ -43,11 +43,11 @@
     grid-template-rows: 20rem;
     grid-auto-flow: row;
     grid-auto-rows: 20rem;
-
+    
     justify-content: space-around;
     row-gap: 2.5rem;
     column-gap: 8rem;
-
+    
     overflow-y: scroll;
 }
 
@@ -58,15 +58,23 @@
     overflow-y: scroll;
 }
 
-@media screen and (max-width: 400px){
+@media screen and (min-width: 401px) and (max-width: 768px) {
     .opcionSeleccionada__amigos{
-        display: flex;
-        flex-direction: column;
-        overflow-y: hidden;
+        /* grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr)); */
+        grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr));
+        overflow-y: scroll;
+    }
+    
+    .opcionSeleccionada__titulo{
+        margin: auto;
+        font-size: 3rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .opcionSeleccionada__amigos{
+        display: block;
+        min-width: 18rem;
     }
 
-    .opcionSeleccionada__titulo{
-        font-size: 3rem;
-        flex-direction: column;
-    }
 }
