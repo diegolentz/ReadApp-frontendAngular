@@ -111,17 +111,11 @@ article.libro{
     
         & .libro__titulo{
             font-weight: bold;
-            font-size: 1rem;
         }
         & .libro__autor{
             margin-bottom: 0rem;
         }
-        & .libro__info{
-            
-            & .dato{
-                font-size: 1rem;
-            }
-        }
+        
     }
 
     .libro__acciones{

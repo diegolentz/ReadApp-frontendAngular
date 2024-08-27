@@ -55,10 +55,7 @@
 }
 
 @media screen and (min-width: 401px) and (max-width: 768px) {
-    .opcionSeleccionada__titulo{
-        font-size: 3rem;
-    }
-
+  
     .opcionSeleccionada__amigos{
         grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr));
         overflow-y: hidden;
