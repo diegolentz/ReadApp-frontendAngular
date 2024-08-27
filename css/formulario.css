@@ -1,12 +1,16 @@
 .formulario-general {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 50px 50px 50px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 5rem);
+}
+
+.textbox-container{
+    margin-right: 2rem;
 }
 
 .custom-textbox{
-    width: 95%;
-    padding: 4px;
+    width: 100%;
+    padding: 0.5rem;
 }
 
 .seleccion-container {
@@ -65,3 +69,26 @@ div:nth-child(8) {
     grid-template-columns: 10rem;
     grid-template-rows: 1fr 1fr;
 }
+
+@media screen and (max-width: 400px){
+
+        .formulario-general{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .textbox-container {
+            margin-bottom: 1rem;
+        }
+
+        .formulario-lectura{
+            flex-direction: column;
+            gap: 1rem
+        }
+
+        .formulario-criterio {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+    }
