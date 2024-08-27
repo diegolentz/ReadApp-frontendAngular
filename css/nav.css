@@ -1,11 +1,12 @@
 nav {
     background: var(--color-searchbar);
-    height: 6rem;
+    height: 4.5rem;
     width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    min-width: 30rem;
 }
 
 .search {
@@ -21,7 +22,11 @@ nav {
     border-radius: 0.5rem 0 0 0.5rem;
     border: 1px solid rgb(175, 143, 111);
     padding-left: 1rem;
+
+    outline: none; /* quita el borde cuando el search esta activo */
+  
 }
+
 
 .lupa {
     background-color:var(--color-header) ;
@@ -32,6 +37,10 @@ nav {
     align-items: center;
     border-radius: 0 0.5rem 0.5rem 0;
     border: 1px solid rgb(175, 143, 111);
+
+    &:hover{
+        cursor: pointer;
+    }
     
 }
 .contenedorLupa {
@@ -55,7 +64,7 @@ nav {
 /* medias querys tablet*/
 @media screen and (min-width: 401px) and (max-width: 768px) {
     nav{
-        height: 7rem;
+        height: 4.5rem;
     }
     .search{
         min-width: 30vw;
@@ -65,7 +74,7 @@ nav {
         margin-right: 2rem;
     }
     .searchBar, .lupa, .contenedorLupa{
-        height: 4rem;
+        height: 3rem;
     }
 }
     
