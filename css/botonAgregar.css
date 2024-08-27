@@ -5,6 +5,6 @@
     background-color: white;
     color: black;
     border: 2px solid black;
-    font-size: 3rem;
+    font-size: var(--text-xl);
     cursor: pointer;
   }

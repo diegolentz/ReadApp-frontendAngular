@@ -10,15 +10,15 @@
 .valoraciones-titulo {
   grid-column: 1/-1;
   height: fit-content;
-  font-size: 4.5rem;
+  font-size: var(--text-xl);
   display: flex;
   gap: 1rem;
   align-items: baseline;
 }
 
 .estrella-valoraciones{
-  width: 3rem;
-  height: 3rem;
+  width: var(--text-xl);
+  height: var(--text-xl);
 }
 
 .valoracion{
@@ -29,7 +29,8 @@
 }
 
 .foto-perfil-reseña{
-  height: 5.35rem;
+  height: 6rem;
+  width:  6rem;
   border-radius: 50%;
   display: block;
   margin-left: auto;
@@ -46,24 +47,24 @@
 
 .valoracion-reseña{
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--text-xl);
 }
 
 .valoracion-usuario{
-  font-size: 2rem;
+  font-size: var(--text-lg);
   padding-left: 0.5rem;
   padding-right: 1rem;
 }
 
 .valoracion-fecha{
-  font-size: 1.5rem;
+  font-size: var(--text-lg);
   padding-left: 0.5rem;
   padding-right: 1rem;
 }
 
 .contenido-valoracion{
   grid-column: 1/-1;
-  font-size: 1.5rem;
+  font-size: var(--text-lg);
 }
 
 .contenedor-agregar-reseña{
@@ -81,7 +82,6 @@
 
   .valoracion-reseña{
     text-align: end;
-    font-size: 2.5rem;
   }
 }
 
@@ -96,6 +96,5 @@
 
   .valoraciones-titulo{
     align-content: space-around;
-    font-size: 4rem;
   }
 }
