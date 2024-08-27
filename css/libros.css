@@ -1,6 +1,8 @@
 article.libro{
     width: 100%;
     height: 100%;
+
+    border-radius: 1rem;
 }
 
 .libro{
@@ -26,7 +28,7 @@ article.libro{
     display: flex;
     flex-direction: column;
 
-    overflow: auto;
+    overflow: scroll;
 
     color: aliceblue;
 
@@ -71,19 +73,21 @@ article.libro{
 }
 
 @media screen and (max-width: 400px) {
+    
     article.libro{
         width: 100%;
-        height: 100%;
-        /* Este min height es solo para pisar el min-heigt definido en cards para los article */
-        min-height: 20rem;
+        height: 20rem;
     }
-    
     .libro{
-        display: flex;
-    
-        gap: 2.5rem;
-        padding: 2rem;
-    
+        display: grid;
+        gap: 0;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: 80% 20%;
+        grid-template-areas: 
+        "portada    contenido"
+        "opciones   contenido";
+        column-gap: 2rem;
+        row-gap: 0.5rem;
         background-color: rgb(33, 67, 132);
     }
     .libro__portada{
@@ -96,47 +100,35 @@ article.libro{
     }
     
     .libro__contenido{
-        width: 55%;
+        width: 100%;
     
         display: flex;
         flex-direction: column;
-    
-        overflow: auto;
+        grid-area: contenido;
+        overflow: hidden;
     
         color: aliceblue;
     
         & .libro__titulo{
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
         & .libro__autor{
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+            margin-bottom: 0rem;
         }
         & .libro__info{
             
             & .dato{
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
         }
     }
-    
-    
-    
+
     .libro__acciones{
-        width: 3rem;
-        position: relative;
+        width: 100%;
+        position: inherit;
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        & .accion{
-            width: 100%;
-            filter: brightness(50%);
-            &:hover{
-                filter: brightness(100%);
-            }
-            cursor: pointer;
-        }
+        flex-direction: row;
     }
 
 }
