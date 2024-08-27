@@ -49,9 +49,11 @@
 
 .opcionSeleccionada__recomendaciones{
     display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 4rem;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    gap: 2rem;
     overflow-y: scroll;
+
+    justify-content: center;
 }
 
 @media screen and (min-width: 401px) and (max-width: 768px) {
@@ -74,6 +76,13 @@
     
         overflow-y: hidden;
     }
+
+    .opcionSeleccionada__recomendaciones{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(25rem, 0.7fr));
+        gap: 2rem;
+        overflow-y: scroll;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -91,4 +100,8 @@
         height: auto;
     }
 
+    .opcionSeleccionada__recomendaciones{
+        display: flex;
+        flex-direction: column;
+    }
 }
