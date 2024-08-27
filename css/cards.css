@@ -1,7 +1,7 @@
 
 .cards{ 
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));    
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));    
     width: 80%;
     max-width: 100rem;
     gap: 4rem;
@@ -121,12 +121,14 @@ article p{
         gap: 2rem;
     }
 
+
     .grid__hijo{
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); 
     }
 
     .article{
         width: 100%;
+        max-width: 50rem;
         height: auto;
     }
         
