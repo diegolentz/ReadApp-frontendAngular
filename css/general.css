@@ -14,13 +14,25 @@ html{
 :root {
   
   --fuente-default:"Source Sans 3", sans-serif;
-  --color-header: #C39898;
-  --color-searchbar: #DBB5B5;
-  --color-fondo: #F1E5D1;
+  --color-header: #ff8a65;
+  --color-searchbar: #ffab91;
+  --color-fondo: #fff3e0;
+  --color-cards: #e7e5e2da;
   --border-default: solid;
   --border-width: 1px;
   --color-link:
-}
+/* 
+  --text-base-size: 1em;
+
+  --text-scale-ratio: 1.2;
+  --text-xs: calc((--text-base-size / var(--text-scale-ratio)) / var(--text-scale-ratio));
+  --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+  --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+  --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+  --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+  --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+
+ */}
 
 body {
   justify-content: center;
