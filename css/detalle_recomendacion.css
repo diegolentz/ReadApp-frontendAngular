@@ -1,10 +1,9 @@
 
 .container{
     display: grid;
-    grid-template-columns: 3fr 3fr;
-    width: 100rem;
-    gap: 2.5rem;
-    margin: 5rem auto;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1.5vw;
     align-items: center;
     justify-content: center;
     place-items: center;
@@ -26,8 +25,8 @@
 }
 
 article{
-    width: 50rem;
-    height: 30rem;
+    width: 40vw;
+    height: auto;
     background-color:#ffffff;
     border-radius: 1rem;
     border: 1px solid grey;
@@ -88,9 +87,7 @@ article p{
 
 .grid__hijo p{
     display: flex;
-    align-items: center;
     font-size: 1rem;
-    width: 10rem;
 }
 
 .grid__hijo svg{
@@ -159,5 +156,14 @@ article p{
     article{
         width: 100%;
     }
+
+    .titulo-libros-recomendados{
+        font-size: 8vw;
+    }
+    
+    .subtitulo-libros-recomendados{
+        font-size: 6vw;
+    }
+
 
 }
