@@ -37,14 +37,14 @@ article.libro{
         font-size: 2rem;
     }
     & .libro__autor{
-        font-size: 1.5rem;
+        font-size: var(--text-md);
         margin-bottom: 2rem;
     }
     & .libro__info{
         height: 9.36rem;
         
         & .dato{
-            font-size: 1.4rem;
+            font-size: var(--text-md);
         }
     }
 }

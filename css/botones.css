@@ -22,7 +22,7 @@
 }
 
 .btn__text{
-    font-size: 1.5rem;
+    font-size: var(--text-md);
 }
 
 .btn__background--cancel{
