@@ -87,9 +87,7 @@ article p{
 
 .grid__hijo p{
     display: flex;
-    align-items: center;
     font-size: 1rem;
-    width: 10rem;
 }
 
 .grid__hijo svg{
@@ -160,11 +158,11 @@ article p{
     }
 
     .titulo-libros-recomendados{
-        font-size: 10vw;
+        font-size: 8vw;
     }
     
     .subtitulo-libros-recomendados{
-        font-size: 8vw;
+        font-size: 6vw;
     }
 
 
