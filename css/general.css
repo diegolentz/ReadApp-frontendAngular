@@ -22,8 +22,9 @@ html{
   --border-width: 1px;
 
 
-  --text-lg: 1.8rem;
   --text-xl: 3rem;
+  
+  --text-lg: 1.8rem;
   --text-md: 1.5rem;
   --text-sm: 1rem;
 
