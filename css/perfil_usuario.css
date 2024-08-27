@@ -64,7 +64,9 @@
     /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
 }
-
+a{
+    text-decoration: none;
+}
 /* medias querys tablet*/
 /* @media screen and (min-width: 401px) and (max-width: 768px) {
         
