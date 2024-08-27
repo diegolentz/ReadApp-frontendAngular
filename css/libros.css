@@ -1,6 +1,8 @@
 article.libro{
     width: 100%;
     height: 100%;
+
+    border-radius: 1rem;
 }
 
 .libro{
@@ -26,7 +28,7 @@ article.libro{
     display: flex;
     flex-direction: column;
 
-    overflow: auto;
+    overflow: scroll;
 
     color: aliceblue;
 
@@ -66,3 +68,67 @@ article.libro{
 }
 
 
+@media screen and (min-width: 401px) and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 400px) {
+    
+    article.libro{
+        width: 100%;
+        height: 20rem;
+    }
+    .libro{
+        display: grid;
+        gap: 0;
+        grid-template-columns: 0.5fr 1fr;
+        grid-template-rows: 80% 20%;
+        grid-template-areas: 
+        "portada    contenido"
+        "opciones   contenido";
+        column-gap: 2rem;
+        row-gap: 0.5rem;
+        background-color: rgb(33, 67, 132);
+    }
+    .libro__portada{
+        width: 10rem;
+        height: 100%;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    
+    .libro__contenido{
+        width: 100%;
+    
+        display: flex;
+        flex-direction: column;
+        grid-area: contenido;
+        overflow: hidden;
+    
+        color: aliceblue;
+    
+        & .libro__titulo{
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        & .libro__autor{
+            margin-bottom: 0rem;
+        }
+        & .libro__info{
+            
+            & .dato{
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .libro__acciones{
+        width: 100%;
+        position: inherit;
+        display: flex;
+        flex-direction: row;
+    }
+
+}

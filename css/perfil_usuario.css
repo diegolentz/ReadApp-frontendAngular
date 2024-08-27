@@ -5,22 +5,18 @@
     /* 4 - ESTILOS                  */
 
 .perfil-usuario{
-    /* 6rem del header, 4rem de los botones y 0.1rem del header margin-bottom. 
-    PD: Hasta no acordar con el team no los margins del header. Se puede simplificar esta property*/
+    /* 6rem del header*/
     height: calc(100vh - 6rem);
     width: 100%;
     
-    padding-top: 3rem;
+    padding: 3rem 3rem 0 3rem;
     
     display: grid;
     grid-template-columns: 1.2fr 3fr;
     grid-template-rows: 85% 15%;
-
+    gap: 2rem;
 }
 
-.panelOpciones{
-    grid-column: 1;
-}
 .panelOpciones__identificacion{
     display: flex;
     flex-direction: column;
@@ -44,7 +40,7 @@
     flex-direction: column;
     gap: 1rem;
 
-    margin-left: 2.5rem;
+    margin-top: 2rem;
 
     & .seleccionable{
         width: fit-content;
@@ -67,4 +63,71 @@
     font-weight: bold;
     /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
+}
+a{
+    text-decoration: none;
+}
+/* medias querys tablet*/
+/* @media screen and (min-width: 401px) and (max-width: 768px) {
+        
+} */
+
+@media screen and (min-width: 401px) and (max-width: 768px) {
+    .perfil-usuario{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        padding: 3rem 3rem 0 3rem;
+        gap: 3rem;
+    }
+    
+    .panelOpciones__identificacion{
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        align-items: center;
+        
+        border-bottom: 1px solid black;
+        & .foto{
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+        }
+    
+        & .nombre{
+            font-size: 3rem;
+            font-weight: bold;
+            border-bottom: none;
+        }
+    }
+}
+
+/* medias querys celular*/
+@media screen and (max-width: 400px) {
+    
+    .perfil-usuario{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+
+        /* EL 6rem bottom es por el header. Para que el contenido este visible*/
+        padding: 3rem 3rem 6rem 3rem;
+        gap: 3rem;
+    }
+
+    .panelOpciones__seleccionables{
+
+        display: flex;
+        flex-direction: column;
+    
+        & .seleccionable{
+            & span, i {
+                font-size: 2.7rem;
+            }
+        }
+    }
 }

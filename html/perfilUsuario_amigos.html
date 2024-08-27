@@ -13,11 +13,6 @@
     <!-- CSS ESPECIFICO SEGUN OPCION SELECCIONADA -->
     <link rel="stylesheet" href="../css/amigos.css">
 
-   
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Hand:wght@400..700&family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-
     <script src="https://unpkg.com/phosphor-icons"></script>
 </head>
 <body>
@@ -60,37 +55,44 @@
         <div class="panelOpciones">
             <div class="panelOpciones__identificacion">
                 <img class="foto" src="../images/icono.jpg" />
-                <div>
                 <div class="nombre">Carlos Salvador Bilardo</div>
-                </div>
             </div>
             <div class="panelOpciones__seleccionables">
-                <div class="seleccionable">
-                    <i class="ph ph-info"></i>
-                    <span>Informacion</span>
-                </div>
-                <div class="seleccionable seleccionable--seleccionado">
-                    <i class="ph ph-users-three-bold"></i>
-                    <span>Amigos</span>
-                </div>
-                <div class="seleccionable">
-                    <i class="ph ph-book-open"></i>
-                    <span>Libros leidos</span>
-                </div>
-                <div class="seleccionable">
-                    <i class="ph ph-book-bookmark"></i>
-                    <span>Libros a leer</span>
-                </div>
-                <div class="seleccionable">
-                    <i class="ph ph-heart-straight"></i>
-                    <span>Recomendaciones a valorar</span>
-                </div>
+                <a href="/html/perfilUsuario_info.html">
+                    <div class="seleccionable">
+                        <i class="ph ph-info"></i>
+                        <span>Informacion</span>
+                    </div>
+                </a>
+                <a href="/html/perfilUsuario_amigos.html">
+                    <div class="seleccionable seleccionable--seleccionado">
+                        <i class="ph ph-users-three-bold"></i>
+                        <span>Amigos</span>
+                    </div>
+                </a>
+                <a href="/html/perfilUsuario_librosALeer.html">
+                    <div class="seleccionable">
+                        <i class="ph ph-book-open"></i>
+                        <span>Libros leidos</span>
+                    </div>
+                </a>
+                <a href="/html/perfilUsuario_librosLeidos.html">
+                    <div class="seleccionable">
+                        <i class="ph ph-book-bookmark"></i>
+                        <span>Libros a leer</span>
+                    </div>
+                </a>
+                <a href="/html/perfilUsuario_recomendaciones.html">
+                    <div class="seleccionable">
+                        <i class="ph ph-heart-straight"></i>
+                        <span>Recomendaciones a valorar</span>
+                    </div>
+                </a>
             </div>
         </div>
     
         <section class="opcionSeleccionada">
             
-            <!-- Esto deberia aceptar la class sin el espacio segun los apuntes sobre BEM -->
             <h1 class="opcionSeleccionada__titulo">Amigos</h1>
     
             <div class="opcionSeleccionada__amigos">
