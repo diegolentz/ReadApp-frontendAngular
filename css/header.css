@@ -21,6 +21,10 @@ header {
     gap: 0.5rem;
     position: relative;
     z-index: 1;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 
 .derecha-mq{
@@ -31,6 +35,10 @@ header {
     right: 1.5rem;
     z-index: 0;
     display: none;
+
+    &:hover{
+        cursor: pointer;
+    }
 }
 svg{
     width: 100%;
