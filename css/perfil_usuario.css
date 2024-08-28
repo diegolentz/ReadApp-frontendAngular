@@ -6,15 +6,12 @@
 
 .perfil-usuario{
     /* 6rem del header*/
-    height: calc(100vh - 6rem);
+    height: calc(100vh - 12rem);
     width: 100%;
     
     padding: 3rem 3rem 0 3rem;
     
-    display: grid;
-    grid-template-columns: 1.2fr 3fr;
-    grid-template-rows: 85% 15%;
-    gap: 2rem;
+    display: flex;
 }
 
 .panelOpciones__identificacion{
@@ -124,4 +121,18 @@ a{
         flex-direction: column;
 
     }
+}
+
+.botones-container{
+    height: 6rem;
+    width: 100%;
+
+    padding-right: 10rem;
+
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: end;
+
+    background-color: var(--color-fondo);
 }
