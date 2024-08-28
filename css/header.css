@@ -60,6 +60,7 @@ svg{
 
 .nombre-perfil {
     font-size: var(--text-md);
+    font-weight: bold;
 
 }
 
