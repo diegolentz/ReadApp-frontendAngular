@@ -50,14 +50,15 @@ div:nth-child(8) {
     flex-direction: column;
     gap: 1rem;
     font-size: var(--text-md);
+    font-weight: bold;
 }
 
 .info__opcion{
     display: flex;
     align-items: center;
 
-    font-size: var(--text-md);
-
+    font-size: var(--text-xs);
+    
     cursor: pointer;
 }
 
@@ -65,6 +66,7 @@ div:nth-child(8) {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    font-size: var(--text-xs);
 }
 
 .margin-left{

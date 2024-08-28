@@ -29,9 +29,10 @@
     }
 
     & .nombre{
-        font-size: 3rem;
+        font-size: var(--text-xl);
         font-weight: bold;
         border-bottom: 1px solid black;
+        margin: 0;
     }
 }
 .panelOpciones__seleccionables{
@@ -44,7 +45,7 @@
 
     & .seleccionable{
         width: fit-content;
-        font-size: var(--text-lg);
+        font-size: var(--text-md);
         display: flex;
         gap: 1rem;
 
