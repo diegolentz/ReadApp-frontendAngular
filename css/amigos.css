@@ -2,6 +2,7 @@
     display: grid;
     grid-template-columns: 0.25fr 1fr 0.25fr;
     grid-template-rows: 2.5rem 2.5rem;
+    margin-top: 1rem;
 
     border-radius: 0.5rem;
 
@@ -10,7 +11,7 @@
         background-color: rgb(201, 191, 191)
     }
 
-    & span{
+    & p{
         width: fit-content;
         margin-left: 1rem;
 
@@ -25,6 +26,7 @@
         border-radius: 50%;
         border: 1px solid red;
     }
+ 
 }
 .amigo__nombre{
     align-content: end;

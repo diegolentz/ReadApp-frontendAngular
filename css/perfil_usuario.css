@@ -44,7 +44,7 @@
 
     & .seleccionable{
         width: fit-content;
-        
+        font-size: var(--text-lg);
         display: flex;
         gap: 1rem;
 

@@ -21,19 +21,13 @@ html{
   --border-default: solid;
   --border-width: 1px;
 
-
   --text-xl: 3rem;
-  
+  --text-xlg: 2.1rem;
   --text-lg: 1.8rem;
   --text-md: 1.5rem;
+  --text-med: 1.3rem;
+
   --text-sm: 1rem;
-
-  /* h1 -> nombre de app /  */
-  
-  /* --text-xxl: 4.5rem; */
-  /* --text-xs: ; */
-
-
 }
 
 body {
@@ -43,9 +37,7 @@ body {
   font-family: var(--fuente-default);
   display: flex;
   flex-direction: column;
-
 }
-
 
 .nombre-app {
   font-size: var(--text-lg);

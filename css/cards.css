@@ -31,7 +31,7 @@ article p{
 }
 
 .flex__card-encabezado h2{
-    font-size: var(--text-lg);
+    font-size: var(--text-xlg);
 }
 .flex__card-encabezado svg{
     width: 2.4rem;
@@ -55,9 +55,10 @@ article p{
 }
 
 .flex__card-contenido p{
-    font-weight: 300;
-    font-size: var(--text-md);
-    line-height:1.5;
+    /* font-weight: 300; */
+    font-size: var(--text-lg);
+    /* line-height:1.5; */
+    font-weight: normal;
 }
 
 .border{
@@ -71,13 +72,14 @@ article p{
     gap: 0.5rem;
     margin: 1.5rem 0 1rem 0;
     
-    font-size: var(--text-xs);
+    font-size: var(--text-med);
 }
 
 .grid__hijo div{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
 }
 
 .grid__hijo p{

@@ -36,7 +36,7 @@
 
 label {
     margin-bottom: 0.5rem;
-    font-size: var(--text-md);
+    font-size: var(--text-lg);
 }
 
 label span {
@@ -70,14 +70,14 @@ input[type="password"] {
 }
 
 .advertencia svg {
-    width: var(--text-sm);
-    height: var(--text-sm);
+    width: var(--text-md);
+    height: var(--text-md);
     fill: red;
 }
 
 .advertencia span {
     color: red;
-    font-size: var(--text-sm);
+    font-size: var(--text-md);
 }
 
 .password-icon {
