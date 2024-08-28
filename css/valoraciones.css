@@ -10,7 +10,7 @@
 .valoraciones-titulo {
   grid-column: 1/-1;
   height: fit-content;
-  font-size: var(--text-xl);
+  font-size: var(--text-xxl);
   display: flex;
   gap: 1rem;
   align-items: baseline;
@@ -48,10 +48,12 @@
 .valoracion-reseña{
   text-align: center;
   font-size: var(--text-xl);
+  font-weight: bold;
 }
 
 .valoracion-usuario{
-  font-size: var(--text-lg);
+  font-size: var(--text-xl);
+  font-weight: bold;
   padding-left: 0.5rem;
   padding-right: 1rem;
 }
@@ -64,7 +66,7 @@
 
 .contenido-valoracion{
   grid-column: 1/-1;
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
 }
 
 .contenedor-agregar-reseña{
