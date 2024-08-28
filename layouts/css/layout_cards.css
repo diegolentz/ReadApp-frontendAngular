@@ -1,6 +1,18 @@
 .layout-cards{
-    background-color: aqua;
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fill, minmax(36rem, 1fr));
+    width: 100%;
+    grid-auto-rows: max-content;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1.5fr));
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 8rem;
+    margin-top: 4rem;
+}
+
+
+@media (min-width: 1260px){
+    .layout-cards{
+        grid-template-columns: repeat(auto-fill, minmax(60rem, 1.5fr));
+    }
 }
