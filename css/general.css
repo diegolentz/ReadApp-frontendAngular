@@ -21,13 +21,14 @@ html{
   --border-default: solid;
   --border-width: 1px;
 
-  --text-xl: 3rem;
-  --text-xlg: 2.1rem;
-  --text-lg: 1.8rem;
-  --text-md: 1.5rem;
-  --text-med: 1.3rem;
+  --text-xxl: 3.5rem;
+  --text-xl: 2.5rem;
+  --text-lg: 2.1rem;
+  --text-md: 1.8rem;
+  --text-sm: 1.5rem;
+  --text-xs: 1.3rem;
+  --text-xxs: 1rem;
 
-  --text-sm: 1rem;
 }
 
 body {
