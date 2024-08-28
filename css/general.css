@@ -52,7 +52,7 @@ body {
 }
 
 .logo {
-  height: var(--text-xl);
+  height: var(--text-xxl);
 
   &:hover{
     cursor: pointer;
