@@ -18,10 +18,10 @@ article{
     border-radius: 1rem;
     border: 1px solid grey;
 }   
-article p{
+/* article p{
     font-size: var(--text-md);
     padding: 0 0 0.7rem;
-}
+} */
 
 .flex__card{
     display: flex;
@@ -30,9 +30,7 @@ article p{
     margin: 0 2rem;
 }
 
-.flex__card-encabezado h2{
-    font-size: var(--text-xlg);
-}
+
 .flex__card-encabezado svg{
     width: 2.4rem;
     height: autos;
@@ -44,6 +42,8 @@ article p{
     justify-content: space-between;
     align-items: center;
     padding: 0.1rem;
+    font-size: var(--text-xl);
+    font-weight: bold;
 }
 
 .flex__card-encabezado div svg{
@@ -56,9 +56,8 @@ article p{
 
 .flex__card-contenido p{
     /* font-weight: 300; */
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
     /* line-height:1.5; */
-    font-weight: normal;
 }
 
 .border{
@@ -72,7 +71,7 @@ article p{
     gap: 0.5rem;
     margin: 1.5rem 0 1rem 0;
     
-    font-size: var(--text-med);
+    /* font-size: var(--text-sm); */
 }
 
 .grid__hijo div{
@@ -83,7 +82,7 @@ article p{
 }
 
 .grid__hijo p{
-    font-size: var(--text-xs);
+    font-size: var(--text-sm);
     width: 10rem;
     flex: 1;
 }
@@ -105,7 +104,7 @@ article p{
     justify-content: center;
     align-items: center;
     font-family: var(--fuente-default);
-    font-size: var(--text-md);
+    font-size: var(--text-sm);
     font-weight: 300;
 }
 
@@ -115,7 +114,12 @@ article p{
     width: 3rem;
     height: auto;
 }
-
+.verMas{
+    font-size: var(--text-md);
+    font-weight: bold;
+    margin: auto;
+    padding: 1rem;
+}
 
 /* medias querys tablet*/
 @media screen and (min-width: 401px) and (max-width: 768px) {
