@@ -36,7 +36,7 @@
 
 label {
     margin-bottom: 0.5rem;
-    font-size: var(--text-lg);
+    font-size: var(--text-md);
 }
 
 label span {
@@ -46,7 +46,7 @@ label span {
 input[type="text"],
 input[type="password"] {
     width: 100%;
-    height: 3.5rem;
+    height: 3.8rem;
     padding: 1rem;
     border: 1px solid grey;
     border-radius: 0.5rem;
@@ -70,20 +70,20 @@ input[type="password"] {
 }
 
 .advertencia svg {
-    width: var(--text-md);
-    height: var(--text-md);
+    width: var(--text-sm);
+    height: var(--text-sm);
     fill: red;
 }
 
 .advertencia span {
     color: red;
-    font-size: var(--text-md);
+    font-size: var(--text-sm);
 }
 
 .password-icon {
     position: absolute;
     right: 1rem;
-    top: 3rem;
+    top: 3.3rem;
     display: flex;
 }
 

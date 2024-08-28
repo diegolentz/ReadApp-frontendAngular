@@ -41,7 +41,7 @@ body {
 }
 
 .nombre-app {
-  font-size: var(--text-lg);
+  font-size: var(--text-md);
   font-family: var(--fuente-default);
   display: flex;
   justify-content: center;
