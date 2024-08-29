@@ -6,6 +6,7 @@
     border-radius: 0.5rem;
 
     cursor: pointer;
+    border: none;
 }
 
 .btn__text{
@@ -13,18 +14,15 @@
 }
 
 .btn__background--cancel{
-    border: 1px solid rgb(175, 143, 111);
-
     &:hover{
-        background-color: rgb(221, 147, 147);
+        color: aliceblue;
+        background-color: var(--color-cancel);
     }
 }
 
 .btn__background--save{
-    background-color: rgb(175, 143, 111);
-
     &:hover{
-        filter: brightness(70%);
+        background-color: var(--color-save);
     }
 }
 
@@ -63,19 +61,9 @@
 }
 
 @media screen and (max-width: 400px) {
-    
-    .botones-container{
-        padding: 0;
-        margin-bottom: 3rem;
-
-        justify-content: center;
-    }
-}
-
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    
+    /* Este es por el header position:fixed;
+    Si se cambia eso, se puede ahorrar es MQ */
     .botones-container {
-        padding: 0;
-        margin-bottom: 3rem;
+        margin-bottom: var(--height-header);
     }
 }

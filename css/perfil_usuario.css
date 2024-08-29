@@ -4,16 +4,26 @@
     /* 3 - DISTRIBUCION ELEMENTOS   */
     /* 4 - ESTILOS                  */
 
+    /* NECESITO
+    - Pasar todo lo relacionado a imagenes a un archivo aparte
+    -Hacer clase general para display flex ,direction column-row
+        luego de ahi especifico el
+     */
 .perfil-usuario{
-    /* 6rem del header*/
-    height: calc(100vh - 12rem);
+    /* header y botones-container mismo height, por eso el *2*/
+    height: calc(100vh - var(--height-header)*2);
     width: 100%;
     
-    padding: 3rem 3rem 0 3rem;
-    
     display: flex;
+    gap: var(--gap-perfilUsuario);
+    padding: var(--padding-perfilUsuario) var(--padding-perfilUsuario) 0rem;
 }
 
+.panelOpciones{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--gap-perfilUsuario)/2);
+}
 .panelOpciones__identificacion{
     display: flex;
     flex-direction: column;
@@ -28,111 +38,60 @@
     & .nombre{
         font-size: var(--text-xl);
         font-weight: bold;
-        border-bottom: 1px solid black;
+        text-decoration: underline;
     }
 }
 .panelOpciones__seleccionables{
-
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
-    margin-top: 2rem;
+    gap: calc(var(--gap-perfilUsuario)/4);
 
     & .seleccionable{
         width: fit-content;
-        font-size: var(--text-md);
+
         display: flex;
-        gap: 1rem;
-
+        gap: calc(var(--gap-perfilUsuario)/4);
+        
+        font-size: var(--text-md);
         cursor: pointer;
-        & i{
-            align-items: center;
-        }
 
-        & span, i {
-            font-size: 1.7rem;
-        }
+        & i{    align-items: center;    }
     }
 }
 
 .seleccionable--seleccionado{
     font-weight: bold;
+    /* filter: drop-shadow(1px 2px 4px rgb(133, 125, 125)); */
+    /* filter: drop-shadow(1px 2px 4px var(--shadow-color)); */
     /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
 }
 a{
     text-decoration: none;
+    color: black;
 }
-/* medias querys tablet*/
-/* @media screen and (min-width: 401px) and (max-width: 768px) {
-        
-} */
-
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    .perfil-usuario{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-
-        padding: 3rem 3rem 0 3rem;
-        gap: 3rem;
-    }
-    
-    .panelOpciones__identificacion{
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        padding-bottom: 1rem;
-        align-items: center;
-        
-        border-bottom: 1px solid black;
-        & .foto{
-            width: 12rem;
-            height: 12rem;
-            border-radius: 50%;
-        }
-    
-        & .nombre{
-            font-weight: bold;
-            border-bottom: none;
-        }
-    }
-}
-
-/* medias querys celular*/
-@media screen and (max-width: 400px) {
-    
-    .perfil-usuario{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-
-        /* EL 6rem bottom es por el header. Para que el contenido este visible*/
-        padding: 3rem 3rem 6rem 3rem;
-        gap: 3rem;
-    }
-
-    .panelOpciones__seleccionables{
-
-        display: flex;
-        flex-direction: column;
-
-    }
-}
-
 .botones-container{
-    height: 6rem;
+    height: var(--height-header);
     width: 100%;
-
-    padding-right: 10rem;
 
     display: flex;
     gap: 2rem;
     align-items: center;
-    justify-content: end;
+    justify-content: center;
 
-    background-color: var(--color-fondo);
+    background-color: var(--color-searchbar);
 }
+
+@media screen and (max-width: 768px) {
+    .perfil-usuario{
+        height: auto;
+        
+        padding:    calc(var(--padding-perfilUsuario)/2)
+                    calc(var(--padding-perfilUsuario)/2)
+                    0rem;
+        gap: calc(var(--gap-perfilUsuario)/2) ;
+        flex-direction: column;
+    }
+}
+
+
