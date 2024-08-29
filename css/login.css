@@ -109,6 +109,7 @@ input[type="password"] {
     font-size: var(--text-xs);
     margin-top: 1rem;
     font-weight: bold;
+    justify-content: center;
     & span{
         cursor: pointer;
     }
