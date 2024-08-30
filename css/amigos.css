@@ -1,7 +1,7 @@
 .amigo{
     display: grid;
     grid-template-columns: 0.25fr 1fr 0.25fr;
-    border-radius: 0.5rem;
+    border-radius: calc(var(--borde-default)/2);
     padding: 0.5rem;
     
     background-color: var(--color-hover-amigos);
@@ -43,7 +43,8 @@
     grid-column: 3/4;
     cursor: pointer;
     & svg:hover{
-        border-radius: 0.5rem;
+        border-radius: calc(var(--borde-default)/2);
         background-color: var(--color-cancel);
     }
 }
+

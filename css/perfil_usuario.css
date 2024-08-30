@@ -15,8 +15,8 @@
     width: 100%;
     
     display: flex;
-    gap: var(--gap-perfilUsuario);
-    padding: var(--padding-perfilUsuario) var(--padding-perfilUsuario) 0rem;
+    gap: var(--perfilUsuario-default);
+    padding: var(--perfilUsuario-default) var(--perfilUsuario-default) 0rem;
 
     /* Sin esto no puedo scrollear y alguna opciones del panel  */
     overflow-y: auto;
@@ -25,7 +25,7 @@
 .panelOpciones{
     display: flex;
     flex-direction: column;
-    gap: calc(var(--gap-perfilUsuario)/2);
+    gap: calc(var(--perfilUsuario-default)/2);
 }
 .panelOpciones__identificacion{
     display: flex;
@@ -47,14 +47,14 @@
 .panelOpciones__seleccionables{
     display: flex;
     flex-direction: column;
-    gap: calc(var(--gap-perfilUsuario)/4);
+    gap: calc(var(--perfilUsuario-default)/4);
 
     & .seleccionable{
         width: fit-content;
 
         padding: 0 1rem 0;
         display: flex;
-        gap: calc(var(--gap-perfilUsuario)/4);
+        gap: calc(var(--perfilUsuario-default)/4);
         
         font-size: var(--text-md);
         cursor: pointer;
@@ -72,8 +72,7 @@
 
 .seleccionable--seleccionado{
     font-weight: bold;
-    /* filter: drop-shadow(1px 2px 4px rgb(133, 125, 125)); */
-    /* filter: drop-shadow(1px 2px 4px var(--shadow-color)); */
+    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
     /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
 }
@@ -98,10 +97,10 @@ a{
     .perfil-usuario{
         height: auto;
         
-        padding:    calc(var(--padding-perfilUsuario)/2)
-                    calc(var(--padding-perfilUsuario)/2)
+        padding:    calc(var(--perfilUsuario-default)/2)
+                    calc(var(--perfilUsuario-default)/2)
                     0rem;
-        gap: calc(var(--gap-perfilUsuario)/2) ;
+        gap: calc(var(--perfilUsuario-default)/2) ;
         flex-direction: column;
     }
 }

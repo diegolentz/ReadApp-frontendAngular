@@ -46,12 +46,14 @@ html{
 
   --height-header: 6rem;
   /* CAPAZ un padding gral para el contenido fuera del header/footer */
-  --padding-perfilUsuario: 4rem;
 
-  --gap-perfilUsuario: 4rem;
+  --perfilUsuario-default: 4rem ;
+  --books-default: 2rem;
 
   --color-save: rgb(102, 194, 77);
   --color-cancel: rgb(190, 70, 70);
+
+  --borde-default: 1rem;
 }
 
 body {
