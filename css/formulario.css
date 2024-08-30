@@ -23,7 +23,7 @@
         text-transform: uppercase;
         pointer-events: none;
         transition: 0.25s;
-
+        padding: 0.15rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -31,8 +31,10 @@
 
     &   input:focus ~ label,
         input:valid ~ label{
-            transform: translateY(-1.5rem);
+            transform: translateY(-2rem);
             font-size: 0.65em;
+            background-color: var(--color-searchbar);
+            border-radius: 0.2rem;
         }
 }
 
@@ -44,14 +46,16 @@
 
 .formulario-criterio {
     display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr)); */
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 5rem);
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 2rem;
 }
 
 .formulario-lectura {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 2rem;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 input[type="checkbox" i]{
