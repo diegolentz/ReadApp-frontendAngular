@@ -11,7 +11,15 @@ article.libro{
     gap: 2.5rem;
     padding: 2rem;
 
-    background-color: rgb(33, 67, 132);
+    background-color: var(--color-hover-amigos);
+    /* filter: brightness(70%); */
+    transition: 0.25s;
+    &:hover{
+        /* filter: brightness(100%); */
+        background-color: var(--color-hover-amigos);
+        /* box-shadow: 0px 5px 15px var(--color-hover-amigos); */
+        box-shadow: var(--shadow-elevation-high);
+    }
 }
 .libro__portada{
     width: 10rem;
@@ -30,7 +38,7 @@ article.libro{
     
     /* overflow: scroll; */
 
-    color: aliceblue;
+    /* color: aliceblue; */
 
     & .libro__titulo{
         font-weight: bold;

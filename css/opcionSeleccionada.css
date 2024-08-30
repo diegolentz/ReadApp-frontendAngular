@@ -35,7 +35,7 @@
 
 .opcionSeleccionada__amigos{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(16rem,16rem), 0.325fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 0.325fr));
     grid-auto-rows: 6rem;
 
     gap: 2rem;
@@ -64,37 +64,8 @@
     justify-content: center;
 }
 
-/* @media screen and (min-width: 401px) and (max-width: 768px) {
-  
-    .opcionSeleccionada__amigos{
-        grid-template-columns: repeat(auto-fill, minmax(16rem, 0.325fr));
-        overflow-y: hidden;
-    }
-    
-    .opcionSeleccionada__libros{
-        grid-template-columns: repeat(auto-fill, minmax(40rem, 0.625fr));
-        grid-auto-rows: 20rem;
-        
-        justify-content: space-around;
-        row-gap: 2.5rem;
-        column-gap: 5rem;
-    
-        overflow-y: hidden;
-    }
-
-    .opcionSeleccionada__recomendaciones{
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(25rem, 0.7fr));
-        gap: 2rem;
-        overflow-y: scroll;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .opcionSeleccionada__amigos{
-        display: block;
-        min-width: 18rem;
-
+@media screen and (max-width: 768px) {
+    .opcionSeleccionada__contenido{
         overflow-y: hidden;
     }
 
@@ -109,4 +80,4 @@
         display: flex;
         flex-direction: column;
     }
-} */
+}

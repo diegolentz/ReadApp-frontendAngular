@@ -17,6 +17,9 @@
     display: flex;
     gap: var(--gap-perfilUsuario);
     padding: var(--padding-perfilUsuario) var(--padding-perfilUsuario) 0rem;
+
+    /* Sin esto no puedo scrollear y alguna opciones del panel  */
+    overflow-y: auto;
 }
 
 .panelOpciones{
@@ -49,13 +52,21 @@
     & .seleccionable{
         width: fit-content;
 
+        padding: 0 1rem 0;
         display: flex;
         gap: calc(var(--gap-perfilUsuario)/4);
         
         font-size: var(--text-md);
         cursor: pointer;
-
+        transition: 0.25s;
+        border-radius: 0.5rem;
         & i{    align-items: center;    }
+        background-color: var(--color-header);
+        
+
+        &:hover{
+            box-shadow: var(--shadow-elevation-high);
+        }
     }
 }
 
@@ -67,6 +78,7 @@
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
 }
 a{
+    width: fit-content;
     text-decoration: none;
     color: black;
 }
