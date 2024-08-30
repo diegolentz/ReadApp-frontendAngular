@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="contenedorFormulario">
-        <form class="formulario-login" action="/submit-login" method="post">
+        <form id="loginForm" class="formulario-login" action="/submit-login" method="post">
             <div class="encabezado">
                 <div class="logo">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="#000000" viewBox="0 0 256 256">
@@ -46,6 +46,28 @@
         <div class="formulario">
             <button type="submit" class="submit-btn">Ingresar</button>
         </div>
+        <div class="registrarse">
+            <p>Si no tienes una cuenta registrada, puedes hacerlo <span>aqui!</span></p>
+        </div>
     </form>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('loginForm');
+        
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const username = form.querySelector('#username').value;
+            const password = form.querySelector('#password').value;
+            
+            if (username == 'admin' && password == '1234') {
+                window.location.href = 'perfilUsuario_amigos.html';
+            } else {
+                alert('Nombre de usuario o contraseña incorrectos');
+            }
+        });
+    });
+    </script>
 </html>
