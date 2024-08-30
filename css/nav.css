@@ -3,18 +3,32 @@ nav {
     height: auto;
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    /* min-width: 30rem; */
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .search {
     display: flex;
-    width: 60%;
+    width: 60vw;
     justify-content: center;
-    align-items: center;
-    margin: 0.8rem;
+    align-items: center; 
+    margin-left: 1rem;
 }
+
+.check{
+    display: flex;
+    gap: 0.5rem;
+    /* margin-left: 1rem; */
+    font-size: var(--text-xs);
+    width: 25rem;
+    justify-content: center;
+}
+
 
 .searchBar {
     width: 100%;
@@ -47,23 +61,4 @@ nav {
 .contenedorLupa {
     width: 2rem; /* Ajusta el tamaño del SVG */
     height: 2rem;
-}
-
-.check{
-    display: flex;
-    gap: 0.5rem;
-    margin-left: 1rem;
-    font-size: var(--text-xs);
-}
-
-/* medias querys celular*/
-@media screen and (max-width: 400px) {
-    nav{
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 10rem;
-        
-    }
-
 }
