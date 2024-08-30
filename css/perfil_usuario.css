@@ -4,19 +4,29 @@
     /* 3 - DISTRIBUCION ELEMENTOS   */
     /* 4 - ESTILOS                  */
 
+    /* NECESITO
+    - Pasar todo lo relacionado a imagenes a un archivo aparte
+    -Hacer clase general para display flex ,direction column-row
+        luego de ahi especifico el
+     */
 .perfil-usuario{
-    /* 6rem del header*/
-    height: calc(100vh - 6rem);
+    /* header y botones-container mismo height, por eso el *2*/
+    height: calc(100vh - var(--height-header)*2);
     width: 100%;
     
-    padding: 3rem 3rem 0 3rem;
-    
-    display: grid;
-    grid-template-columns: 1.2fr 3fr;
-    grid-template-rows: 85% 15%;
-    gap: 2rem;
+    display: flex;
+    gap: var(--perfilUsuario-default);
+    padding: var(--perfilUsuario-default) var(--perfilUsuario-default) 0rem;
+
+    /* Sin esto no puedo scrollear y alguna opciones del panel  */
+    overflow-y: auto;
 }
 
+.panelOpciones{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--perfilUsuario-default)/2);
+}
 .panelOpciones__identificacion{
     display: flex;
     flex-direction: column;
@@ -31,98 +41,68 @@
     & .nombre{
         font-size: var(--text-xl);
         font-weight: bold;
-        border-bottom: 1px solid black;
-        margin: 0;
+        text-decoration: underline;
     }
 }
 .panelOpciones__seleccionables{
-
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-
-    margin-top: 2rem;
+    gap: calc(var(--perfilUsuario-default)/4);
 
     & .seleccionable{
         width: fit-content;
-        font-size: var(--text-md);
+
+        padding: 0 1rem 0;
         display: flex;
-        gap: 1rem;
-
+        gap: calc(var(--perfilUsuario-default)/4);
+        
+        font-size: var(--text-md);
         cursor: pointer;
-        & i{
-            align-items: center;
-        }
+        transition: 0.25s;
+        border-radius: 0.5rem;
+        & i{    align-items: center;    }
+        background-color: var(--color-header);
+        
 
-        & span, i {
-            font-size: 1.7rem;
+        &:hover{
+            box-shadow: var(--shadow-elevation-high);
         }
     }
 }
 
 .seleccionable--seleccionado{
     font-weight: bold;
+    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
     /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
     E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
 }
 a{
+    width: fit-content;
     text-decoration: none;
+    color: black;
 }
-/* medias querys tablet*/
-/* @media screen and (min-width: 401px) and (max-width: 768px) {
-        
-} */
+.botones-container{
+    height: var(--height-header);
+    width: 100%;
 
-@media screen and (min-width: 401px) and (max-width: 768px) {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-searchbar);
+}
+
+@media screen and (max-width: 768px) {
     .perfil-usuario{
-        width: 100%;
         height: auto;
-        display: flex;
-        flex-direction: column;
-
-        padding: 3rem 3rem 0 3rem;
-        gap: 3rem;
-    }
-    
-    .panelOpciones__identificacion{
-        display: flex;
-        flex-direction: row;
-        gap: 1rem;
-        padding-bottom: 1rem;
-        align-items: center;
         
-        border-bottom: 1px solid black;
-        & .foto{
-            width: 12rem;
-            height: 12rem;
-            border-radius: 50%;
-        }
-    
-        & .nombre{
-            font-weight: bold;
-            border-bottom: none;
-        }
+        padding:    calc(var(--perfilUsuario-default)/2)
+                    calc(var(--perfilUsuario-default)/2)
+                    0rem;
+        gap: calc(var(--perfilUsuario-default)/2) ;
+        flex-direction: column;
     }
 }
 
-/* medias querys celular*/
-@media screen and (max-width: 400px) {
-    
-    .perfil-usuario{
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
 
-        /* EL 6rem bottom es por el header. Para que el contenido este visible*/
-        padding: 3rem 3rem 6rem 3rem;
-        gap: 3rem;
-    }
-
-    .panelOpciones__seleccionables{
-
-        display: flex;
-        flex-direction: column;
-
-    }
-}

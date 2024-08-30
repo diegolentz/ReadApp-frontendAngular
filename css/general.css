@@ -29,14 +29,39 @@ html{
   --text-xs: 1.3rem;
   --text-xxs: 1rem;
 
+  --color-hover-amigos: hsl(16, 85%, 80%);
+
+  --shadow-color: 14deg 42% 48%;
+  --shadow-elevation-high:
+    0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.45),
+    0.6px 0.6px 0.8px -0.4px hsl(var(--shadow-color) / 0.43),
+    1.2px 1.2px 1.7px -0.8px hsl(var(--shadow-color) / 0.41),
+    1.9px 1.9px 2.7px -1.1px hsl(var(--shadow-color) / 0.38),
+    3px 3px 4.2px -1.5px hsl(var(--shadow-color) / 0.36),
+    4.6px 4.6px 6.4px -1.9px hsl(var(--shadow-color) / 0.33),
+    6.9px 6.8px 9.6px -2.3px hsl(var(--shadow-color) / 0.31),
+    10px 9.9px 13.9px -2.6px hsl(var(--shadow-color) / 0.29),
+    14.1px 14px 19.7px -3px hsl(var(--shadow-color) / 0.26),
+    19.4px 19.2px 27px -3.4px hsl(var(--shadow-color) / 0.24);
+
+  --height-header: 6rem;
+  /* CAPAZ un padding gral para el contenido fuera del header/footer */
+
+  --perfilUsuario-default: 4rem ;
+  --books-default: 2rem;
+
+  --color-save: rgb(102, 194, 77);
+  --color-cancel: rgb(190, 70, 70);
+
+  --borde-default: 1rem;
 }
 
 body {
-  justify-content: center;
-  align-items: center;
   background: var(--color-fondo);
   font-family: var(--fuente-default);
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 

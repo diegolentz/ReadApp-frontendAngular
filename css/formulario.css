@@ -1,18 +1,44 @@
+/* AGREGAR Z INDEX AL HEADER PARA EVITAR CONFLICTOR DE VISTA CON POSITIONS */
 .formulario-general {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 5rem);
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     gap: 1rem;
 }
 
 .textbox-container{
-    margin-right: 2rem;
+    position: relative;
+
+    & input {
+        width: 100%;
+        padding: 1rem;
+        border: none;
+        outline: none;
+    }
+
+    & label {
+        position: absolute;
+        left: 1rem;
+        top: 20%;
+        font-size: 1em;
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: 0.25s;
+        padding: 0.15rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &   input:focus ~ label,
+        input:valid ~ label{
+            transform: translateY(-2rem);
+            font-size: 0.65em;
+            background-color: var(--color-searchbar);
+            border-radius: 0.2rem;
+        }
 }
 
-.custom-textbox{
-    width: 100%;
-    padding: 0.5rem;
-}
+
 
 .seleccion-container {
     display: flex;
@@ -20,13 +46,16 @@
 
 .formulario-criterio {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 5rem);
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 2rem;
 }
 
 .formulario-lectura {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 2rem;
+    /* display: flex;
+    justify-content: space-between; */
 }
 
 input[type="checkbox" i]{

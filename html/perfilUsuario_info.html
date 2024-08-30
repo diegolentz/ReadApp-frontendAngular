@@ -96,34 +96,34 @@
     
         <section class="opcionSeleccionada">
                 <p class="opcionSeleccionada__titulo ">Informacion</p>
-                <div class="opcionSeleccionada__info">
+                <div class="opcionSeleccionada__contenido opcionSeleccionada__info">
                     
                     <div class="info info__general">
                         <p>General</p>
                         <form class = "formulario-general">
                             <div class= "textbox-container">
-                                <p>Nombre</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>nombre</label>
                             </div>
                             <div class= "textbox-container">
-                                <p>Apellido</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>apellido</label>
                             </div>
                             <div class= "textbox-container">
-                                <p>Username</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>username</label>
                             </div>
                             <div class= "textbox-container">
-                                <p>Fecha de nacimiento</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>fecha de nacimiento</label>
                             </div>
                             <div class= "textbox-container">
-                                <p>Mail</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>email</label>
                             </div>
                             <div class= "textbox-container">
-                                <p>Tiempo de lectura promedio</p>
-                                <input class="custom-textbox" type="text">
+                                <input type="text" required>
+                                <label>tiempo de lectura promedio</label>
                             </div>
                         </form>
                     </div>
@@ -145,17 +145,7 @@
                     <form class = "formulario-criterio">
                         <label class = "info__opcion"><input type="checkbox"/> Precavido</label>
                         <label class = "info__opcion"><input type="checkbox"/> Demandante</label>
-
-                        <div class="info__opcion--input">
-                            <label class = "info__opcion"><input type="checkbox"/> Cambiante</label>
-                            <div class = "margin-left">
-                                <!-- <span>Limite minimo</span>
-                                <input type="text"> -->
-                                <span>Limite maximo</span>
-                                <input type="text">
-                            </div>
-                        </div>
-
+                        <label class = "info__opcion"><input type="checkbox"/> Cambiante</label>
                         <label class = "info__opcion"><input type="checkbox"/> Leedor</label>    
                         <label class = "info__opcion"><input type="checkbox"/> Nativista</label>
                         <label class = "info__opcion"><input type="checkbox"/> Poliglota</label>
@@ -163,8 +153,8 @@
                         <div class="info__opcion--input">
                             <label class = "info__opcion"><input type="checkbox"/> Calculador</label>
                             <div class = "margin-left">
-                                <!-- <span>Limite minimo</span>
-                                <input type="text"> -->
+                                <span>Limite minimo</span>
+                                <input type="text">
                                 <span>Limite maximo</span>
                                 <input type="text">
                             </div>
@@ -179,13 +169,12 @@
 
                 </div>
         </section>
-
-        <div class="botones-container">
-            <button class="btn btn__text btn__background--cancel">Cancelar</button>
-            <button class="btn btn__text btn__background--save">Guardar cambios</button>
-        </div>
         
     </div>
- 
+    
+    <div class="botones-container">
+        <button class="btn btn__text btn__background--cancel">Cancelar</button>
+        <button class="btn btn__text btn__background--save">Guardar cambios</button>
+    </div>
 </body>
 </html>
