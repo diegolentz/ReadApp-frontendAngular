@@ -56,7 +56,7 @@
 
     justify-content: center;
 }
-
+/* 
 @media screen and (min-width: 401px) and (max-width: 768px) {
   
     .opcionSeleccionada__amigos{
@@ -102,4 +102,4 @@
         display: flex;
         flex-direction: column;
     }
-}
+} */
