@@ -79,11 +79,12 @@ span {
 
 input[type="text"],
 input[type="password"] {
-    height: 3.8rem;
+    height: 4rem;
     padding: 1rem;
     border: 1px solid grey;
     border-radius: 0.5rem;
     box-sizing: border-box;
+    font-size: var(--text-md);
     
     outline: none;
     
