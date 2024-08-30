@@ -1,20 +1,34 @@
 nav {
     background: var(--color-searchbar);
-    height: 5rem;
+    height: auto;
     width: 100vw;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    min-width: 30rem;
+    /* min-width: 30rem; */
+    gap: 1rem;
+    padding: 1rem;
 }
 
 .search {
     display: flex;
-    width: 60%;
+    width: 60vw;
     justify-content: center;
-    align-items: center;
+    align-items: center; 
+    margin-left: 1rem;
 }
+
+.check{
+    display: flex;
+    gap: 0.5rem;
+    /* margin-left: 1rem; */
+    font-size: var(--text-xs);
+    width: 25rem;
+    justify-content: center;
+}
+
 
 .searchBar {
     width: 100%;
@@ -41,54 +55,12 @@ nav {
 
     &:hover{
         cursor: pointer;
+        width: 5rem;
+        transition: 0.4s;
     }
+   
     
 }
 .contenedorLupa {
-    width: 2rem; /* Ajusta el tamaño del SVG */
-    height: 2rem;
-}
-
-.check{
-    display: flex;
-    gap: 0.5rem;
-    margin-left: 1rem;
-    font-size: var(--text-xs);
-}
-
-
-/* medias querys tablet*/
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    nav{
-        height: 4.5rem;
-    }
-    .search{
-        min-width: 30vw;
-        margin-left: 2rem;
-    }
-    .check{
-        margin-right: 2rem;
-    }
-    .searchBar, .lupa, .contenedorLupa{
-        height: 3rem;
-    }
-}
-    
-/* medias querys celular*/
-@media screen and (max-width: 400px) {
-    nav{
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        height: 10rem;
-        
-    }
-    .search{
-        width: 80%;
-       }
-    .searchBar, .lupa, .contenedorLupa{
-        height: 4rem;
-    }
-
-
+    object-fit: cover;
 }
