@@ -1,12 +1,11 @@
 nav {
     background: var(--color-searchbar);
-    height: 5rem;
+    height: auto;
     width: 100vw;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    min-width: 30rem;
 }
 
 .search {
@@ -14,6 +13,7 @@ nav {
     width: 60%;
     justify-content: center;
     align-items: center;
+    margin: 0.8rem;
 }
 
 .searchBar {
@@ -56,24 +56,6 @@ nav {
     font-size: var(--text-xs);
 }
 
-
-/* medias querys tablet*/
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    nav{
-        height: 4.5rem;
-    }
-    .search{
-        min-width: 30vw;
-        margin-left: 2rem;
-    }
-    .check{
-        margin-right: 2rem;
-    }
-    .searchBar, .lupa, .contenedorLupa{
-        height: 3rem;
-    }
-}
-    
 /* medias querys celular*/
 @media screen and (max-width: 400px) {
     nav{
@@ -83,12 +65,5 @@ nav {
         height: 10rem;
         
     }
-    .search{
-        width: 80%;
-       }
-    .searchBar, .lupa, .contenedorLupa{
-        height: 4rem;
-    }
-
 
 }
