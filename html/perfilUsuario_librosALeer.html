@@ -103,7 +103,7 @@
             <!-- Esto deberia aceptar la class sin el espacio segun los apuntes sobre BEM -->
             <p class="opcionSeleccionada__titulo">Libros a leer</p>
     
-            <div class="opcionSeleccionada__libros">
+            <div class="opcionSeleccionada__contenido opcionSeleccionada__libros">
                 <article class="libro">
                     <div class="libro__portada">
                         <img src="../images/portada.jpg" alt="FOTO">
@@ -114,19 +114,19 @@
                         <div class="libro__info">
                             <div class="dato">
                                 <i>$</i>
-                                <i>Paginas</i>
+                                <p>Paginas</p>
                             </div>
                             <div class="dato">
                                 <i>$</i>
-                                <i>Palabras</i>
+                                <p>Palabras</p>
                             </div>
                             <div class="dato">
                                 <i>$</i>
-                                <i>Traducciones</i>
+                                <p>Traducciones</p>
                             </div>
                             <div class="dato">
                                 <i>$</i>
-                                <i>Ventas semanales</i>
+                                <p>Ventas semanales</p>
                             </div>
                         </div>
                     </div>
@@ -153,13 +153,11 @@
             </div>
     
         </section>
-
-        <div class="botones-container">
-            <button class="btn btn__text btn__background--cancel">Cancelar</button>
-            <button class="btn btn__text btn__background--save">Guardar cambios</button>
-        </div>
         
     </div>
- 
+    <div class="botones-container">
+        <button class="btn btn__text btn__background--cancel">Cancelar</button>
+        <button class="btn btn__text btn__background--save">Guardar cambios</button>
+    </div>
 </body>
 </html>
