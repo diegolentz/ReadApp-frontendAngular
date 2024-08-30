@@ -55,10 +55,12 @@ nav {
 
     &:hover{
         cursor: pointer;
+        width: 5rem;
+        transition: 0.4s;
     }
+   
     
 }
 .contenedorLupa {
-    width: 2rem; /* Ajusta el tamaño del SVG */
-    height: 2rem;
+    object-fit: cover;
 }
