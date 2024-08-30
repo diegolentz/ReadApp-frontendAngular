@@ -47,33 +47,3 @@
         background-color: var(--color-cancel);
     }
 }
-
-
-@media screen and (max-width: 400px){
-    .amigo{
-        height: 7rem;
-        grid-template-columns: 0.35fr 1fr 0.25fr;
-        grid-template-rows: 3.5rem 3.5rem;
-    
-        border-radius: 0.5rem;
-    
-    
-        & span{
-            width: fit-content;
-            margin-left: 1rem;
-    
-        }
-    }
-    .amigo__foto{
-        grid-row: 1/3;
-        grid-column: 1/2;
-        align-content: center;
-        justify-self: center;
-        & img{
-            height: 5rem;
-            width: 5rem;
-            border-radius: 50%;
-            border: 1px solid red;
-        }
-    }
-}

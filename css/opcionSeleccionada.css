@@ -35,7 +35,7 @@
 
 .opcionSeleccionada__amigos{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 0.325fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 0.8fr));
     grid-auto-rows: 6rem;
 
     gap: 2rem;
@@ -69,6 +69,9 @@
         overflow-y: hidden;
     }
 
+    .opcionSeleccionada__amigos{
+        justify-content: center;
+    }
     .opcionSeleccionada__libros{
         display: flex;
         width: 100%;
