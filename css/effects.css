@@ -37,33 +37,50 @@ div.textbox-container{
 }
 /* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/
 label.radiobox-input{
-    color: whitesmoke;
-    background-color: var(--color-searchbar);
-    filter: brightness(70%);
+    font-size: var(--text-sm);
+    justify-content: center;
+    color: black;
+    background-color: var(--color-fondo);
+    filter: brightness(95%);
     cursor: pointer;
     border-radius: 0.5rem;
     transition: background 0.1s;
+
     & input{
         visibility: hidden;
+        width: 0%;
     }
+
     /* Si tiene de hijo a input:checked, afecta el estilo */
     &:has(> input:checked){
+        text-transform: uppercase;
+        color: whitesmoke;
+        background-color: var(--color-searchbar);
         filter: brightness(100%);
         box-shadow: var(--shadow-elevation-high);
+
     }
 }
 label.checkbox-input{
-    color: whitesmoke;
-    background-color: var(--color-searchbar);
-    filter: brightness(70%);
+    font-size: var(--text-sm);
+    justify-content: center;
+    color: black;
+    background-color: var(--color-fondo);
+    filter: brightness(95%);
     cursor: pointer;
     border-radius: 0.5rem;
     transition: background 0.1s;
+
     & input{
         visibility: hidden;
+        width: 0%;
     }
+    
     /* Si tiene de hijo a input:checked, afecta el estilo */
     &:has(> input:checked){
+        text-transform: uppercase;
+        color: whitesmoke;
+        background-color: var(--color-searchbar);
         filter: brightness(100%);
         box-shadow: var(--shadow-elevation-high);
     }

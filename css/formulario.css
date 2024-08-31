@@ -26,7 +26,6 @@
     & label{
         display: flex;
         padding: 1rem;
-        gap: 2rem;
     }
 }
 
@@ -37,7 +36,6 @@
     & label{
         display: flex;
         padding: 1rem;
-        gap: 2rem;
     }
 } 
 
@@ -60,7 +58,9 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    
+    & p {
     font-size: var(--text-md);
-    font-weight: bold;
+    font-weight: bold;}
 
 }
