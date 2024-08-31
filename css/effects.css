@@ -74,3 +74,8 @@ input:invalid {
         background-color: var(--color-cancel);
     }
 }
+
+.hover-click:active{
+ box-shadow: 0 0 2px darkslategray;
+ transform: translateY(2px);
+}
