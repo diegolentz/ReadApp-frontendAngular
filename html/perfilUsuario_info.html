@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="../css/opcionSeleccionada.css">
     <link rel="stylesheet" href="../css/botones.css">
+    <link rel="stylesheet" href="../css/effects.css">
     <!-- CSS ESPECIFICO SEGUN OPCION SELECCIONADA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="../css/formulario.css">
@@ -98,7 +99,7 @@
                 <p class="opcionSeleccionada__titulo ">Informacion</p>
                 <div class="opcionSeleccionada__contenido opcionSeleccionada__info">
                     
-                    <div class="info info__general">
+                    <div class="info">
                         <p>General</p>
                         <form class = "formulario-general">
                             <div class= "textbox-container">
@@ -127,46 +128,81 @@
                             </div>
                         </form>
                     </div>
+
                     <hr>
-                    <div class="info info__perfilUsuario">
+
+                    <div class="info">
                         <p>Forma de lectura</p>
                         <form class="formulario-lectura">
-                            <label class = "info__opcion"><input type="radio" name="selection"/>Promedio</label>
-                            <label class = "info__opcion"><input type="radio" name="selection"/>Ansioso</label>
-                            <label class = "info__opcion"><input type="radio" name="selection"/>Fanatico</label>
-                            <label class = "info__opcion"><input type="radio" name="selection"/>Recurrente</label>
+                            <label class="radiobox-input">
+                                <input type="radio" name="radio__input"/>
+                                Promedio
+                            </label>
+                            <label class="radiobox-input">
+                                <input type="radio" name="radio__input"/>
+                                Ansioso
+                            </label>
+                            <label class="radiobox-input">
+                                <input type="radio" name="radio__input"/>
+                                Fanatico
+                            </label>
+                            <label class="radiobox-input">
+                                <input type="radio" name="radio__input"/>
+                                Recurrente
+                            </label>
                         </form>
 
-                        
                     </div>
+
                     <hr>
-                    <div class="info info__criterioBusqueda">
+
+                    <div class="info">
                         <p>Criterio de busqueda</p>
-                    <form class = "formulario-criterio">
-                        <label class = "info__opcion"><input type="checkbox"/> Precavido</label>
-                        <label class = "info__opcion"><input type="checkbox"/> Demandante</label>
-                        <label class = "info__opcion"><input type="checkbox"/> Cambiante</label>
-                        <label class = "info__opcion"><input type="checkbox"/> Leedor</label>    
-                        <label class = "info__opcion"><input type="checkbox"/> Nativista</label>
-                        <label class = "info__opcion"><input type="checkbox"/> Poliglota</label>
-                        <label class = "info__opcion"><input type="checkbox"/> Experimentado</label>
-                        <div class="info__opcion--input">
-                            <label class = "info__opcion"><input type="checkbox"/> Calculador</label>
-                            <div class = "margin-left">
-                                <span>Limite minimo</span>
-                                <input type="text">
-                                <span>Limite maximo</span>
-                                <input type="text">
-                            </div>
-                        </div>
-                    </form>
+                        <form class = "formulario-criterio">
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Precavido
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Demandante
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Cambiante
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Leedor
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Nativista
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Poliglota
+                            </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox"/>
+                                Experimentado
+                            </label>
+
+                            <!-- <div class="info__opcion--input">
+                                <label><input type="checkbox"/> Calculador</label>
+                                <div class= "textbox-container">
+                                    <input type="text" inputmode="numeric"required>
+                                    <label for="min">limite min.</label>
+                                </div>
+                                <div class= "textbox-container">
+                                    <input type="text" inputmode="numeric" required>
+                                    <label>limite max.</label>
+                                </div>
+                            </div> -->
+
+                        </form>
                     </div>
                     
-
-                    
-
-                    
-
                 </div>
         </section>
         
