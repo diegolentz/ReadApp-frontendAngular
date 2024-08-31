@@ -46,5 +46,6 @@
 }
 
 .contenido-valoracion{
+  padding-left: 1rem;
   font-size: var(--text-sm);
 }
