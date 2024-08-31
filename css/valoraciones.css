@@ -1,24 +1,52 @@
+.reseña{
+  font-size: var(--text-md);
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 1px;
+  border-style: solid;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
 .valoraciones {
-  grid-column: 1/-1;
-  display: grid;
-  height: 100%;
-  grid-template-columns: 2.5fr 2.5fr;
-  grid-template-rows: 8rem 12rem;
-  padding: 2rem;
-}
-
-.valoraciones-titulo {
-  grid-column: 1/-1;
-  height: fit-content;
-  font-size: var(--text-xxl);
   display: flex;
-  gap: 1rem;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
-.estrella-valoraciones{
+.estrella-blanca{
   width: var(--text-xl);
   height: var(--text-xl);
+}
+
+.layout-valoraciones{
+  grid-template-columns: repeat(auto-fit, minmax(1.5fr, 2fr));
+  gap: 0px;
+}
+
+.valoracion-card{
+  height: max-content;
+  width: minmax(30rem, 60rem);
+  border-radius: 0.5rem;
+  border-style: solid;
+}
+
+.perfil-valoracion{
+  display: grid;
+  grid-template-columns: 8rem 10rem;
+  grid-template-rows: 2rem 2rem 2rem;
+  justify-content: center;
+  background-color: (--color-fondo);
+}
+
+.foto-perfil-valoracion{
+  height: 6rem;
+  width:  6rem;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
 }
 
 .valoracion{
@@ -28,75 +56,6 @@
   grid-row: 2rem 6rem;
 }
 
-.foto-perfil-reseña{
-  height: 6rem;
-  width:  6rem;
-  border-radius: 50%;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
-.datos-reseña{
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.valoracion-reseña{
-  text-align: center;
-  font-size: var(--text-xl);
-  font-weight: bold;
-}
-
-.valoracion-usuario{
-  font-size: var(--text-xl);
-  font-weight: bold;
-  padding-left: 0.5rem;
-  padding-right: 1rem;
-}
-
-.valoracion-fecha{
-  font-size: var(--text-lg);
-  padding-left: 0.5rem;
-  padding-right: 1rem;
-}
-
 .contenido-valoracion{
-  grid-column: 1/-1;
-  font-size: var(--text-md);
-}
-
-.contenedor-agregar-reseña{
-  display: flex;
-  justify-content: center;
-  align-items: end;
-}
-
-@media (max-width: 768px) and (min-width: 401px){
-  .valoraciones{
-    grid-template-columns: 1.5fr 1.5fr;
-    padding: 1rem;
-  }
-
-
-  .valoracion-reseña{
-    text-align: end;
-  }
-}
-
-@media (max-width: 400px){
-  .valoraciones{
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    width: 100%;
-    gap: 1.5rem;
-  }
-
-  .valoraciones-titulo{
-    align-content: space-around;
-  }
+  font-size: var(--text-sm);
 }
