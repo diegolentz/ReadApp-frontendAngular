@@ -2,131 +2,76 @@ article.libro{
     width: 100%;
     height: 100%;
 
-    border-radius: 1rem;
+    border-radius: var(--borde-default);
 }
 
 .libro{
-    display: flex;
+    height: 100%;
 
-    gap: 2.5rem;
-    padding: 2rem;
+    display: grid;
+    grid-template-areas:
+    "portada descripcion acciones";
+    grid-template-columns: 0.1fr 1fr 0.1fr;
+    gap: var(--books-default);
+    padding: var(--books-default);
 
-    background-color: rgb(33, 67, 132);
+    background-color: var(--color-hover-amigos);
+    transition: 0.25s;
 }
 .libro__portada{
     width: 10rem;
-    height: 100%;
+    grid-area: portada;
     & img{
         width: 100%;
-        height: 100%;
     }
 }
 
 .libro__contenido{
-    width: 55%;
-
+    grid-area: descripcion;
     display: flex;
     flex-direction: column;
+    gap: calc(var(--books-default)/2);
     
-    /* overflow: scroll; */
-
-    color: aliceblue;
-
+    overflow-y: hidden;
     & .libro__titulo{
         font-weight: bold;
         font-size: var(--text-md);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     & .libro__autor{
-        font-size: var(--text-sm);
         margin-bottom: 0.2rem;
+
+        font-size: var(--text-sm);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
     & .libro__info{
-        /* height: 6rem; */
-        
         & .dato{
+            display: flex;
+            gap: calc(var(--books-default)/4);
+
             font-size: var(--text-xs);
-            gap: 1rem;
-            i {
-                margin-right: 1rem;
-            }
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
 
-
-
 .libro__acciones{
     width: 3rem;
-    position: relative;
+    
+    grid-area: acciones;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     & .accion{
-        width: 100%;
-        filter: brightness(50%);
-        &:hover{
-            filter: brightness(100%);
-        }
         cursor: pointer;
-    }
-}
-
-
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    
-}
-
-@media screen and (max-width: 400px) {
-    
-    article.libro{
-        width: 100%;
-        height: 20rem;
-    }
-    .libro{
-        display: grid;
-        gap: 0;
-        grid-template-columns: 0.5fr 1fr;
-        grid-template-rows: 80% 20%;
-        grid-template-areas: 
-        "portada    contenido"
-        "opciones   contenido";
-        column-gap: 2rem;
-        row-gap: 0.5rem;
-        background-color: rgb(33, 67, 132);
-    }
-    .libro__portada{
-        width: 10rem;
-        height: 100%;
-        & img{
-            width: 100%;
-            height: 100%;
+        &:hover{
+            filter: drop-shadow(0 0 0.75rem rgb(36, 16, 21));
         }
     }
-    
-    .libro__contenido{
-        width: 100%;
-    
-        display: flex;
-        flex-direction: column;
-        grid-area: contenido;
-        overflow: hidden;
-    
-        color: aliceblue;
-    
-        & .libro__titulo{
-            font-weight: bold;
-        }
-        & .libro__autor{
-            margin-bottom: 0rem;
-        }
-        
-    }
-
-    .libro__acciones{
-        width: 100%;
-        position: inherit;
-        display: flex;
-        flex-direction: row;
-    }
-
 }
