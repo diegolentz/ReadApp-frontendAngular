@@ -1,153 +1,16 @@
-
-.container{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 100%;
-    gap: 1.5vw;
-    align-items: center;
-    justify-content: center;
-    place-items: center;
-}
-
-.titulos-libros-recomendados{
-    grid-column: 1/-1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: var(--text-xxl);
-    font-weight: bold;
-}
-
-article{
-    width: 40vw;
-    height: auto;
-    background-color:#ffffff;
-    border-radius: 1rem;
-    border: 1px solid grey;
-}
-article p {
-    /* font-size: var(--text-xlg); */
-}
-
-.flex__card{
-    display: flex;
-    flex-direction: column;
-    padding: 0rem;
-    margin: 0 2rem;
-}
-
-.flex__card-encabezado svg{
-    width: 2.4rem;
-    height: auto;
-}
-
-.flex__card-encabezado{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.1rem;
+h1{
     font-size: var(--text-xl);
-    font-weight: bold;
 }
 
-.flex__card-encabezado div svg{
-    margin: 0.1rem 0 0 0.4rem;
-}
 
-.flex__card-contenido {
-    padding: 0 0 1.5rem 0;
+.reseña{
+    width: 70%;
     font-size: var(--text-md);
-}
-/* 
-.flex__card-contenido p{
-    font-weight: 300;
-    line-height:1.5;
-} */
-
-.border{
-    border-bottom: 2px solid grey;
-    margin: 1rem 0 0 0 ;
-}
-
-.grid__hijo{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 0.5rem;
-    margin: 1.5rem 0 1rem 0;
-}
-
-.grid__hijo p{
-    font-size: var(--text-sm);
-    display: flex;
-}
-
-.grid__hijo svg{
-    display: flex;
-    align-items: center;
-    width: 2.1rem;
-    height: auto;
-    align-items: center;
-}
-
-.flex__card-footer{
-    padding: 1rem 0 0.5rem 0;
-    display: flex;
-    justify-content:space-between ;
-    align-items: center;
-}
-
-.flex__card-footer p{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--fuente-default);
-    font-size: var(--text-sm);
-    /* font-weight: 300; */
-}
-
-.flex__card-footer div svg{
-    display: flex;
-    margin: auto;
-    width: 3rem;
-    height: auto;
-}
-
-.verMas{
-    font-size: var(--text-md);
-    font-weight: bold;
-    margin: auto;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px;
+    border-style: solid;
+    margin-bottom: 2rem;
     padding: 1rem;
-}
-.check{
-    display: flex;
-    gap: 0.5rem;
-    margin-left: 2rem;
-}
-
-
-@media (max-width: 768px) and (min-width: 401px){
-    .container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-    article{
-        width: 100%;
-    }
-}
-
-
-@media (max-width: 400px){
-    .container{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-    }
-
-    article{
-        width: 100%;
-    }
-
-}
+  }

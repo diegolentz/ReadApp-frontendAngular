@@ -1,13 +1,4 @@
-.reseña{
-  font-size: var(--text-md);
-  border-top: 0;
-  border-left: 0;
-  border-right: 0;
-  border-bottom: 1px;
-  border-style: solid;
-  margin-bottom: 2rem;
-  padding: 1rem;
-}
+
 
 .valoraciones {
   display: flex;
@@ -16,21 +7,19 @@
   width: 100%;
 }
 
-.estrella-blanca{
+.estrella-dorada{
   width: var(--text-xl);
   height: var(--text-xl);
 }
 
 .layout-valoraciones{
-  grid-template-columns: repeat(auto-fit, minmax(1.5fr, 2fr));
-  gap: 0px;
+  width: 70%;
+  gap: 5rem;
 }
 
 .valoracion-card{
   height: max-content;
   width: minmax(30rem, 60rem);
-  border-radius: 0.5rem;
-  border-style: solid;
 }
 
 .perfil-valoracion{
@@ -57,5 +46,6 @@
 }
 
 .contenido-valoracion{
+  padding-left: 1rem;
   font-size: var(--text-sm);
 }

@@ -1,93 +1,103 @@
-.btn{
-    height: 5rem;
+.btn {
+  height: 5rem;
 
-    padding: 0 1.5rem;
+  padding: 0 1.5rem;
 
-    border-radius: 0.5rem;
+  border-radius: 0.5rem;
 
+  cursor: pointer;
+  border: none;
+}
+
+.btn__text {
+  font-size: var(--text-md);
+}
+
+.btn__background--cancel {
+  &:hover {
+    color: aliceblue;
+    background-color: var(--color-cancel);
+  }
+}
+
+.btn__background--save {
+  &:hover {
+    background-color: var(--color-save);
+  }
+}
+
+.centered-inlineGrid {
+  display: inline-grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.agregar {
+  border: 1px solid black;
+}
+
+.agregar__amigo {
+  & i {
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+
+    color: wheat;
     cursor: pointer;
-    border: none;
+  }
 }
 
-.btn__text{
-    font-size: var(--text-md);
+.agregar__libro {
+  width: 5rem;
+  height: 5rem;
+
+  align-self: center;
+
+  cursor: pointer;
 }
 
-.btn__background--cancel{
-    &:hover{
-        color: aliceblue;
-        background-color: var(--color-cancel);
-    }
-}
-
-.btn__background--save{
-    &:hover{
-        background-color: var(--color-save);
-    }
-}
-
-
-.centered-inlineGrid{
-    display: inline-grid;
-    justify-content: center;
-    align-content: center;
-}
-
-.agregar{
-    border: 1px solid black;
-}
-
-.agregar__amigo{
-    & i{
-        grid-column: 1/-1;
-        grid-row: 1/-1;
-
-        color: wheat;
-        cursor: pointer;
-    }
-}
-
-.agregar__libro{
-    width: 5rem;
-    height: 5rem;
-
-    align-self: center;
-
-    cursor: pointer;
-}
-
-.justified__content{
-    justify-content: center;
+.justified__content {
+  justify-content: center;
 }
 
 @media screen and (max-width: 400px) {
-    /* Este es por el header position:fixed;
+  /* Este es por el header position:fixed;
     Si se cambia eso, se puede ahorrar es MQ */
-    .botones-container {
-        margin-bottom: var(--height-header);
-    }
-
+  .botones-container {
+    margin-bottom: var(--height-header);
+  }
 }
 
 .css-button-3d--green {
-    color: #fff;
-    padding: 0.5rem var(--text-xxs);
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    border: none;
-    background: #80ed99;
-    box-shadow: 0 5px #57cc99;
-  }
-  .css-button-3d--green:hover {
-    box-shadow: 0 3px #57cc99;
-    top: 1px;
-  }
-  .css-button-3d--green:active {
-    box-shadow: 0 0 #57cc99;
-    top: 5px;
-  }
+  color: #fff;
+  padding: 0.5rem var(--text-xxs);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #80ed99;
+  box-shadow: 0 5px #57cc99;
+}
+.css-button-3d--green:hover {
+  box-shadow: 0 3px #57cc99;
+  top: 1px;
+}
+.css-button-3d--green:active {
+  box-shadow: 0 0 #57cc99;
+  top: 5px;
+}
+
+.agregar-valoracion {
+  background-color: var(--color-header);
+  color: white;
+  border: none;
+  padding: 5px;
+  font-size: 4rem;
+  height: 10rem;
+  width: 10rem;
+  box-shadow: 0 2px 4px darkslategray;
+  border-radius: 50%;
+}
