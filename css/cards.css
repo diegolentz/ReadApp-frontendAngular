@@ -44,6 +44,6 @@ p{
     text-align: center;
 }
 
-a{
+article a{
     grid-column: 1/-1;
 }
