@@ -4,6 +4,7 @@ h1{
 
 
 .reseña{
+    width: 70%;
     font-size: var(--text-md);
     border-top: 0;
     border-left: 0;
