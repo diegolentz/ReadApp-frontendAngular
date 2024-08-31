@@ -1,0 +1,76 @@
+/* EFFECTOS DE SOMBREADOS, ANIMACIONES ,ETC */
+
+/* INPUT text. Trabaja con .textbox-container(padre) > (input, label)(hijos)*/
+div.textbox-container{
+    & input {
+        border: none;
+        outline: none;
+    }
+
+    & label {
+        text-transform: uppercase;
+        pointer-events: none;
+        transition: 0.25s;
+        padding: 0.15rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &   input:focus ~ label,
+        input:valid ~ label{
+            transform: translateY(-2rem);
+            font-size: 0.65em;
+            background-color: var(--color-searchbar);
+            border-radius: 0.2rem;
+        }
+}
+/* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/
+label.radiobox-input{
+    color: whitesmoke;
+    background-color: var(--color-searchbar);
+    filter: brightness(70%);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background 0.1s;
+    & input{
+        visibility: hidden;
+    }
+    /* Si tiene de hijo a input:checked, afecta el estilo */
+    &:has(> input:checked){
+        filter: brightness(100%);
+        box-shadow: var(--shadow-elevation-high);
+    }
+}
+label.checkbox-input{
+    color: whitesmoke;
+    background-color: var(--color-searchbar);
+    filter: brightness(70%);
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: background 0.1s;
+    & input{
+        visibility: hidden;
+    }
+    /* Si tiene de hijo a input:checked, afecta el estilo */
+    &:has(> input:checked){
+        filter: brightness(100%);
+        box-shadow: var(--shadow-elevation-high);
+    }
+}
+input:invalid {
+    border:1px solid red;
+}
+
+.hover-boxshadow{
+    &:hover{
+        box-shadow: var(--shadow-elevation-high);
+    }
+}
+
+.hover-delete{
+    &:hover{
+        border-radius: calc(var(--borde-default)/2);
+        background-color: var(--color-cancel);
+    }
+}

@@ -16,14 +16,7 @@ article.libro{
     padding: var(--books-default);
 
     background-color: var(--color-hover-amigos);
-    /* filter: brightness(70%); */
     transition: 0.25s;
-    &:hover{
-        /* filter: brightness(100%); */
-        background-color: var(--color-hover-amigos);
-        /* box-shadow: 0px 5px 15px var(--color-hover-amigos); */
-        box-shadow: var(--shadow-elevation-high);
-    }
 }
 .libro__portada{
     width: 10rem;
