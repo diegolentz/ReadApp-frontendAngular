@@ -1,18 +1,10 @@
 .layout-cards{
     display: grid;
     gap: 2rem;
-    width: 100%;
+    width: 70%;
     grid-auto-rows: max-content;
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1.5fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(22rem,30rem), 1.5fr));
     justify-items: center;
     align-items: center;
-    margin-bottom: 8rem;
-    margin-top: 4rem;
-}
-
-
-@media (min-width: 1260px){
-    .layout-cards{
-        grid-template-columns: repeat(auto-fill, minmax(60rem, 1.5fr));
-    }
+    margin:3rem 0 8rem;
 }
