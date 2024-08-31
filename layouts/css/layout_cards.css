@@ -3,7 +3,7 @@
     gap: 2rem;
     width: 70%;
     grid-auto-rows: max-content;
-    grid-template-columns: repeat(auto-fit, minmax(min(22rem,30rem), 1.5fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(25rem,30rem), 1fr));
     justify-items: center;
     align-items: center;
     margin:3rem 0 8rem;
