@@ -22,15 +22,12 @@
 }
 
 .layout-valoraciones{
-  grid-template-columns: repeat(auto-fit, minmax(1.5fr, 2fr));
-  gap: 0px;
+  width: 100%;
 }
 
 .valoracion-card{
   height: max-content;
   width: minmax(30rem, 60rem);
-  border-radius: 0.5rem;
-  border-style: solid;
 }
 
 .perfil-valoracion{
