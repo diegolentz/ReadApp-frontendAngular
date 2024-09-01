@@ -18,6 +18,7 @@ html{
   --color-searchbar: #ffab91;
   --color-fondo: #fff3e0;
   --color-cards: #e7e5e2da;
+  --color-blanco:#ffffff;
   --border-default: solid;
   --border-width: 1px;
 
@@ -65,25 +66,8 @@ body {
   flex-direction: column;
 }
 
-.nombre-app {
-  font-size: var(--text-md);
-  font-family: var(--fuente-default);
-  display: flex;
-  justify-content: center;
-  
-  &:hover{
-    cursor: pointer;
-    
-}
-}
 
-.logo {
-  height: var(--text-xxl);
 
-  &:hover{
-    cursor: pointer;
-  }
-}
 
 .logo svg {
   width: 100%;
