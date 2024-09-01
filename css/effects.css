@@ -36,10 +36,9 @@ div.textbox-container{
         }
 }
 /* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/
-label.radiobox-input{
+label.radiobox-input, label.checkbox-input{
     font-size: var(--text-sm);
     justify-content: center;
-    color: black;
     background-color: var(--color-fondo);
     filter: brightness(95%);
     cursor: pointer;
@@ -54,37 +53,13 @@ label.radiobox-input{
     /* Si tiene de hijo a input:checked, afecta el estilo */
     &:has(> input:checked){
         text-transform: uppercase;
-        color: whitesmoke;
         background-color: var(--color-searchbar);
         filter: brightness(100%);
         box-shadow: var(--shadow-elevation-high);
 
     }
 }
-label.checkbox-input{
-    font-size: var(--text-sm);
-    justify-content: center;
-    color: black;
-    background-color: var(--color-fondo);
-    filter: brightness(95%);
-    cursor: pointer;
-    border-radius: 0.5rem;
-    transition: background 0.1s;
 
-    & input{
-        visibility: hidden;
-        width: 0%;
-    }
-    
-    /* Si tiene de hijo a input:checked, afecta el estilo */
-    &:has(> input:checked){
-        text-transform: uppercase;
-        color: whitesmoke;
-        background-color: var(--color-searchbar);
-        filter: brightness(100%);
-        box-shadow: var(--shadow-elevation-high);
-    }
-}
 input:invalid {
     border:1px solid red;
 }
@@ -105,4 +80,17 @@ input:invalid {
 .hover-click:active{
  box-shadow: 0 0 2px darkslategray;
  transform: translateY(2px);
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 0.8rem; 
+}
+  
+.scrollbar::-webkit-scrollbar-track {
+    background-color: var(--color-fondo);
+}
+  
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-header);   
+    border-radius: 2rem;  
 }
