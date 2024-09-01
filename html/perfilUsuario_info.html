@@ -17,6 +17,19 @@
     <link rel="stylesheet" href="../css/formulario.css">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
+    <script> function myFunction() {
+        // Get the checkbox
+        var checkBox = document.getElementById("myCheck");
+        // Get the output text
+        var text = document.getElementById("nuevosInputs");
+      
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            text.className = "nuevosInputs-container"
+        } else {
+          text.className = "noDisplay";
+        }
+      } </script>
 
 </head>
 <body>
@@ -180,19 +193,25 @@
                                 <input type="checkbox"/>
                                 Experimentado
                             </label>
+                            <label class="checkbox-input">
+                                <input type="checkbox" id="myCheck" onclick="myFunction()"> 
+                                Calculador
+                            </label>                                
+                        </form>
 
-                            <!-- <div class="info__opcion--input">
-                                <label><input type="checkbox"/> Calculador</label>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric"required>
-                                    <label for="min">limite min.</label>
-                                </div>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric" required>
-                                    <label>limite max.</label>
-                                </div>
-                            </div> -->
-
+                        <!-- DICE LA CLASE NO DISPLAY PARA QUE NO APAREZCA. CUANDO
+                         SE DA CLICK LA CLASE CAMBIA A nuevosInputs-container (CODEADO EN EL JS)
+                         TODOS LO QUE TENGA QUE APARECER CUANDO SE CLICKEA CALCULADOR HAY QUE
+                         CODEARLO EN EL CSS de nuevosInputs-container -->
+                        <form id="nuevosInputs" class="noDisplay">
+                            <div class= "textbox-container">
+                                <input type="text" inputmode="numeric" required>
+                                <label>limite minimo</label>
+                            </div>
+                            <div class= "textbox-container">
+                                <input type="text" inputmode="numeric" required>
+                                <label>limite maximo</label>
+                            </div>
                         </form>
                     </div>
                     
