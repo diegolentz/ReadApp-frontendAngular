@@ -7,14 +7,13 @@ article.libro{
 
 .libro{
     height: 100%;
-
+    width: max-content;
     display: grid;
     grid-template-areas:
     "portada descripcion acciones";
-    grid-template-columns: 0.1fr 1fr 0.1fr;
+    grid-template-columns: 0.1fr 1.5fr 0.1fr;
     gap: var(--books-default);
     padding: var(--books-default);
-
     background-color: var(--color-hover-amigos);
     transition: 0.25s;
 }
@@ -31,22 +30,20 @@ article.libro{
     display: flex;
     flex-direction: column;
     gap: calc(var(--books-default)/2);
-    
     overflow-y: hidden;
     & .libro__titulo{
         font-weight: bold;
         font-size: var(--text-md);
-        overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
     & .libro__autor{
         margin-bottom: 0.2rem;
-
         font-size: var(--text-sm);
-        overflow: hidden;
+        /* overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        */
+        white-space: nowrap; 
     }
     & .libro__info{
         & .dato{
