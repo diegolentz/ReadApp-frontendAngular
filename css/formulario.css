@@ -40,12 +40,10 @@
     }
 } 
 
-/* EN ESTA CLASE CODEAR TODO LO QUE QUEREMOS QUE PASE SI CHECKEAMOS CALCULADOR */
 .nuevosInputs-container {
-    justify-items: center;
+    margin: auto;
     display: flex;
     flex-direction: column;
-
 }
 
 .noDisplay {
