@@ -6,7 +6,7 @@ article.libro{
 }
 
 .libro{
-    height: 100%;
+    /* height: auto; */
     width: max-content;
     display: grid;
     grid-template-areas:
@@ -30,12 +30,11 @@ article.libro{
     display: flex;
     flex-direction: column;
     gap: calc(var(--books-default)/2);
-    overflow-y: hidden;
     & .libro__titulo{
         font-weight: bold;
         font-size: var(--text-md);
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        /* text-overflow:ellipsis; */
+        white-space: wrap;
     }
     & .libro__autor{
         margin-bottom: 0.2rem;
@@ -43,7 +42,7 @@ article.libro{
         /* overflow: hidden;
         text-overflow: ellipsis;
         */
-        white-space: nowrap; 
+        white-space: wrap; 
     }
     & .libro__info{
         & .dato{
