@@ -1,92 +1,101 @@
+/* LAYOUT HEADER CON SUS ESTILOS, SEPARAR DIMENSIONES, DE ESTILOS */
 header {
+
     background: var(--color-header);
-    width: 100%;
-    height: 7rem;
+    width: 100vw;
+    height: var(--height-header);
+
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
-    /* margin-bottom: 0.1rem; */
+
+    background: var(--color-header);
     z-index: 1;
 }
-
-.derecha {
+/* UNICO EN HEADER */
+.miPerfil {
+    /* UNICAMENTE PARA COMODIDAD DEL DROPDOWN */
+    height: 100%;
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
     position: relative;
-    z-index: 1;
 
+    & a.miPerfil--ir{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-right: 2rem;
+
+        & img.fotoPerfil{
+            width: 5.5rem;
+            height: 5.5rem;
+            border: 1px solid orangered;
+            border-radius: 50%;
+        }
+
+        & p{
+            font-size: var(--text-md);
+            font-weight: bold;
+        }
+
+        & .hamburguesita--tabletMobile{
+            display: none;
+        }
+    } 
     &:hover{
         cursor: pointer;
     }
 }
+/* PANEL QUE APARECE CUANDO SE HOVEREA */
+.dropdown:hover .dropdown-content{
+    visibility: initial;
+}
+/* STYLES DE PANEL */
+.dropdown-content{
+    width: 100%;
+    display: flex;
+    visibility: hidden;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1rem;
 
-.derecha-mq{
     position: absolute;
-    width: 3.9rem;
-    height: 3.9rem;
-    object-fit: cover;
-    right: 1.5rem;
-    z-index: 0;
-    display: none;
-
-    &:hover{
-        cursor: pointer;
-    }
-}
-svg{
-    width: 100%;
-    height: 100%;
+    top: 100%;
+    transition: 0.25s;
+    background-color: var(--color-searchbar);
+    border-radius: 1rem;
 }
 
-.foto-perfil {
-    width: 5.5rem;
-    height: 5.5rem;
-}
 
-.fotoPerfil {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid orangered;
+/* TABLE*/
+@media screen and (max-width: 768px) {
+    .miPerfil {
+        & a.miPerfil--ir{
+            width: 7rem;
+
+            & img.fotoPerfil{
+                display: none;
+            }
     
-}
-
-.nombre-perfil {
-    font-size: var(--text-md);
-    font-weight: bold;
-
-}
-
-/* medias querys tablet*/
-@media screen and (min-width: 401px) and (max-width: 768px) {
-    .derecha {
-        z-index: 0;
-        display: none;  
-    }
-    .derecha-mq{
-        z-index: 1;
-        display: block;
+            & p{
+                display: none;
+            }
+    
+            & .hamburguesita--tabletMobile{
+                display: flex;
+            }
+        } 
     }
         
 }
-    
-/* medias querys celular*/
+
+/* MOBILE*/
 @media screen and (max-width: 400px) {
     header{
         position: fixed;
         bottom: 0vh;   
     }
-    .derecha-mq{
-        z-index: 1;
-        display: block;
+    .dropdown-content{
+        transform: translateY(-100%);
     }
-    .derecha {
-        z-index: 0;
-        display: none;  
-    }
-
 }

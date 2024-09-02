@@ -27,6 +27,7 @@
     flex-direction: column;
     gap: calc(var(--perfilUsuario-default)/2);
 }
+
 .panelOpciones__identificacion{
     display: flex;
     flex-direction: column;
@@ -50,26 +51,6 @@
     flex-direction: column;
     gap: calc(var(--perfilUsuario-default)/4);
 
-    & .seleccionable{
-        width: fit-content;
-        padding: 0 1rem 0;
-        display: flex;
-        gap: calc(var(--perfilUsuario-default)/4);
-        font-size: var(--text-md);
-        cursor: pointer;
-        transition: 0.25s;
-        border-radius: 0.5rem;
-        & i{    align-items: center;    }        
-    }
-}
-
-.seleccionable--seleccionado{
-    font-weight: bold;
-    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
-    background-color: var(--color-searchbar);
-    /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
-    E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
-    
 }
 
 .no--seleccionado {

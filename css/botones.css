@@ -34,6 +34,13 @@
   }
 }
 
+.btn__background--login {
+  background-color: var(--color-searchbar);
+  &:hover {
+    filter: brightness(130%);
+  }
+}
+
 .centered-inlineGrid {
   display: inline-grid;
   justify-content: center;
