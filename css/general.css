@@ -32,6 +32,8 @@ html{
 
   --color-hover-amigos: hsl(16, 85%, 80%);
 
+  --color-hover-acciones: 0 0 0.75rem rgb(0, 0, 0);
+
   --shadow-color: 14deg 42% 48%;
   --shadow-elevation-high:
     0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.45),
