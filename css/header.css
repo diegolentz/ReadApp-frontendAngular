@@ -1,7 +1,7 @@
 /* LAYOUT HEADER CON SUS ESTILOS, SEPARAR DIMENSIONES, DE ESTILOS */
 header {
 
-    background: var(--color-header);
+    background: linear-gradient(to bottom, var(--color-searchbar),var(--color-header));
     width: 100vw;
     height: var(--height-header);
 
@@ -10,7 +10,6 @@ header {
     align-items: center;
     justify-content: space-between;
 
-    background: var(--color-header);
     z-index: 1;
 }
 /* UNICO EN HEADER */
