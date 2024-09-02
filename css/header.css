@@ -19,25 +19,26 @@ header {
     height: 100%;
     display: flex;
     position: relative;
-
+    
     & a.miPerfil--ir{
         display: flex;
         align-items: center;
         gap: 0.5rem;
         margin-right: 2rem;
-
+        
+        
         & img.fotoPerfil{
             width: 5.5rem;
             height: 5.5rem;
             border: 1px solid orangered;
             border-radius: 50%;
         }
-
+        
         & p{
             font-size: var(--text-md);
             font-weight: bold;
         }
-
+        
         & .hamburguesita--tabletMobile{
             display: none;
         }
@@ -47,31 +48,34 @@ header {
     }
 }
 /* PANEL QUE APARECE CUANDO SE HOVEREA */
-.dropdown:hover .dropdown-content{
-    visibility: initial;
+.dropdown:hover .dropdown-content {
+    visibility: visible;
+    opacity: 1;
+    /* transición comienza lentamente, acelera en el medio y desacelera de nuevo al final*/
+    transition: opacity 0.5s ease-in-out, visibility 1s ease-in-out;
 }
-/* STYLES DE PANEL */
-.dropdown-content{
+
+.dropdown-content {
     width: 100%;
     display: flex;
     visibility: hidden;
+    opacity: 0;
     flex-direction: column;
     gap: 2rem;
     padding: 2rem 1rem;
-
+    
     position: absolute;
     top: 100%;
-    transition: 0.25s;
+    transition: opacity 1s ease-in-out , visibility 1s ease-in-out; /* para ocultarse de nuevo */
     background-color: var(--color-searchbar);
-    border-radius: 1rem;
+    border-radius: 0 0 1rem 1rem;
 }
-
-
 /* TABLE*/
 @media screen and (max-width: 768px) {
     .miPerfil {
         & a.miPerfil--ir{
-            width: 7rem;
+            width: 10rem;
+            justify-content: center;
 
             & img.fotoPerfil{
                 display: none;
@@ -80,9 +84,13 @@ header {
             & p{
                 display: none;
             }
-    
+            & b {
+                font-size: 0.5rem;
+            }
             & .hamburguesita--tabletMobile{
                 display: flex;
+                /* justify-content: center; */
+                /* align-items: center; */
             }
         } 
     }
