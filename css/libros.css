@@ -18,12 +18,17 @@ article.libro{
     background-color: var(--color-hover-amigos);
     transition: 0.25s;
 }
+
 .libro__portada{
     width: 10rem;
     grid-area: portada;
     & img{
         width: 100%;
     }
+}
+
+.botonalineado {
+    display: flex;
 }
 
 .libro__contenido{
