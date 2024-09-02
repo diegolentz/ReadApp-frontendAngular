@@ -18,6 +18,19 @@
     <link rel="stylesheet" href="../css/formulario.css">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
+    <script> function myFunction() {
+        // Get the checkbox
+        var checkBox = document.getElementById("myCheck");
+        // Get the output text
+        var text = document.getElementById("nuevosInputs");
+      
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            text.className = "nuevosInputs-container"
+        } else {
+          text.className = "noDisplay";
+        }
+      } </script>
 
 </head>
 <body>
@@ -54,13 +67,15 @@
     
     <main class="perfil-usuario">
 
-        <div class="panelOpciones">
+        <aside class="panelOpciones">
             <div class="panelOpciones__identificacion">
                 <img class="foto" src="../images/icono.jpg" />
                 <div class="nombre">
                     <p>Carlos Salvador Bilardo</p>
+                    <hr>
                 </div>            
             </div>
+
             <div class="panelOpciones__seleccionables">
                 <a href="/html/perfilUsuario_info.html" class="opcion opcion--perfilUsuario opcion__effect--hover opcion--seleccionada">
                     <i class="ph ph-info-bold"></i>
@@ -83,7 +98,7 @@
                     <p>Recomendaciones a valorar</p>
                 </a>
             </div>
-        </div>
+        </aside>
     
         <section class="opcionSeleccionada">
                 <p class="opcionSeleccionada__titulo ">Informacion</p>
@@ -177,21 +192,23 @@
                                 <input type="checkbox"/>
                                 Experimentado
                             </label>
-
-                            <!-- <div class="info__opcion--input">
-                                <label><input type="checkbox"/> Calculador</label>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric"required>
-                                    <label for="min">limite min.</label>
-                                </div>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric" required>
-                                    <label>limite max.</label>
-                                </div>
-                            </div> -->
-
+                            <label class="checkbox-input">
+                                <input type="checkbox" id="myCheck" onclick="myFunction()"> 
+                                Calculador
+                            </label>                                
                         </form>
                     </div>
+
+                         <form id="nuevosInputs" class="noDisplay">
+                            <div class= "textbox-container">
+                                <label>limite minimo</label><br>
+                                <input type="text" inputmode="numeric" required>
+                            </div>
+                            <div class= "textbox-container">
+                                <label>limite maximo</label><br>
+                                <input type="text" inputmode="numeric" required>
+                            </div>
+                        </form>
                     
                 </div>
         </section>
@@ -199,8 +216,8 @@
     </main>
     
     <div class="botones-container">
-        <button class="btn btn__text btn__background--cancel">Cancelar</button>
-        <button class="btn btn__text btn__background--save">Guardar cambios</button>
+        <button class="btn btn-secundario btn__background--cancel">Cancelar</button>
+        <button class="btn btn-principal btn__background--save">Guardar cambios</button>
     </div>
 </body>
 </html>

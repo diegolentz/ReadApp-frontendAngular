@@ -40,17 +40,26 @@
     }
 
     & .nombre{
-        font-size: var(--text-xl);
+        font-size: var(--text-lg);
         font-weight: bold;
-        text-decoration: underline;
+        text-align: center;
     }
 }
+
 .panelOpciones__seleccionables{
     display: flex;
     flex-direction: column;
     gap: calc(var(--perfilUsuario-default)/4);
+
 }
 
+.no--seleccionado {
+
+    &:hover{
+        text-shadow: 0.1rem 0.2rem 0.4rem var(--color-searchbar);
+    }
+
+}
 
 a{
     width: fit-content;

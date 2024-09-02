@@ -1,19 +1,24 @@
 .btn {
-  height: 5rem;
-
   padding: 0 1.5rem;
-
   border-radius: 0.5rem;
-
   cursor: pointer;
   border: none;
 }
 
-.btn__text {
-  font-size: var(--text-md);
+.btn-principal {
+  height: 4.5rem;
+  font-size: var(--text-sm);
+}
+
+.btn-secundario {
+  height: 4rem;
+  font-size: var(--text-xs);
 }
 
 .btn__background--cancel {
+
+  background-color: var(--color-searchbar);
+  
   &:hover {
     color: aliceblue;
     background-color: var(--color-cancel);
@@ -21,9 +26,11 @@
 }
 
 .btn__background--save {
-
+  
+  background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
+  
   &:hover {
-    background-color: var(--color-save);
+    filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
   }
 }
 
