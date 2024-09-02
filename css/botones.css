@@ -80,13 +80,6 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 400px) {
-  /* Este es por el header position:fixed;
-    Si se cambia eso, se puede ahorrar es MQ */
-  .botones-container {
-    margin-bottom: var(--height-header);
-  }
-}
 
 .css-button-3d--green {
   color: #fff;

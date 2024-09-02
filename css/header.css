@@ -95,6 +95,9 @@ header {
         position: fixed;
         bottom: 0vh;   
     }
+    .botones-container {
+        margin-bottom: var(--height-header);
+    }
     .dropdown-content{
         transform: translateY(-100%);
     }
