@@ -2,7 +2,7 @@
 .encabezado {
     display: flex;
     align-items: center;
-    
+    margin-left: 2rem ;
     & h1{      
         color: var(--color-blanco);
         font-size: var(--text-xxl);

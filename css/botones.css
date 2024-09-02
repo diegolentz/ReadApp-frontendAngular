@@ -21,8 +21,16 @@
 }
 
 .btn__background--save {
+
   &:hover {
     background-color: var(--color-save);
+  }
+}
+
+.btn__background--login {
+  background-color: var(--color-searchbar);
+  &:hover {
+    filter: brightness(130%);
   }
 }
 
