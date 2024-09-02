@@ -69,6 +69,11 @@
   align-self: center;
 
   cursor: pointer;
+  margin: auto;
+}
+
+.botonalineado {
+  display: flex;
 }
 
 .justified__content {
