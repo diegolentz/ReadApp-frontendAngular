@@ -40,7 +40,7 @@ div.textbox-container{
 label.radiobox-input, label.checkbox-input{
     font-size: var(--text-sm);
     justify-content: center;
-    background-color: var(--color-fondo);
+    background-color: var(--color-celeste-claro);
     filter: brightness(95%);
     cursor: pointer;
     border-radius: 0.5rem;
@@ -54,10 +54,10 @@ label.radiobox-input, label.checkbox-input{
     /* Si tiene de hijo a input:checked, afecta el estilo */
     &:has(> input:checked){
         text-transform: uppercase;
-        background-color: var(--color-searchbar);
+        background-color: var(--color-celeste-oscuro);
+        color: whitesmoke;
         filter: brightness(100%);
         box-shadow: var(--shadow-elevation-high);
-
     }
 }
 
