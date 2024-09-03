@@ -10,7 +10,7 @@ article{
         grid-template-columns: 0.1fr 1.5fr 0.1fr;
         gap: var(--books-default);
         padding: var(--books-default);
-        background-color: var(--color-hover-amigos);
+        background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
         transition: 0.25s;
     }
 }

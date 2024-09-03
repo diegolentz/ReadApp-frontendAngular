@@ -25,6 +25,9 @@ html{
   --color-celeste-claro:#b1e7e1;
   --color-celeste-oscuro:#50a8b8;
 
+  --color-card-libro: #78a4b3;
+  --color-card-libro-gradiente: #5d8999;
+
   --text-xxl: 3.5rem;
   --text-xl: 2.5rem;
   --text-lg: 2.1rem;
