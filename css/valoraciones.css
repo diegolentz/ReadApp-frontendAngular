@@ -7,6 +7,14 @@
   width: 100%;
 }
 
+.valoraciones__header{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: var(--text-xl);
+}
+
 .estrella-dorada{
   width: var(--text-xl);
   height: var(--text-xl);

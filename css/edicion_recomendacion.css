@@ -1,4 +1,16 @@
-h1{
+
+.container-titulo{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: var(--text-xl);
+}
+
+.el__titulo{
+    width: 70%;
     font-size: var(--text-xl);
 }
 
