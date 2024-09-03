@@ -1,30 +1,28 @@
 /* LAYOUR LIBROS */
-.busquedaLibross{
+.busquedaLibros{
+
     /* UNICO */
-    display: grid;
-    width: 70%;
-    justify-content: center;
-    align-items: center;
-    
-    grid-template-columns: repeat(auto-fit,minmax(min(32rem, 60rem),0.6fr));
-    grid-auto-rows: 20rem;
+    grid-template-columns: repeat(auto-fill,minmax(min(100%, 30rem),0.6fr));
+    grid-auto-rows: minmax(auto, 20rem);
     
     /* COMPARTIDO CON LAYOUT CARDS */
+    justify-content: center;
+    align-items: center;
     display: grid;
-    width: 70%;
+    width: 75%;
     gap: 2rem;
     margin: 3rem auto 8rem;
 }
 
-.busquedaLibros{
+.busquedaLibross{
     display: grid;
     gap: 2rem;
     width: 70%;
     margin: 3rem auto 8rem;
+    justify-items: center;
+    align-items: center;
 
     /* UNICO DE LAYOUT CARDS */
     grid-template-columns: repeat(auto-fit,minmax(min(32rem, 60rem),0.6fr));
-    justify-items: center;
-    align-items: center;
 
 }
