@@ -18,25 +18,26 @@ header {
     height: 100%;
     display: flex;
     position: relative;
-
+    
     & a.miPerfil--ir{
         display: flex;
         align-items: center;
         gap: 0.5rem;
         margin-right: 2rem;
-
+        
+        
         & img.fotoPerfil{
             width: 5.5rem;
             height: 5.5rem;
             border: 1px solid orangered;
             border-radius: 50%;
         }
-
+        
         & p{
             font-size: var(--text-md);
             font-weight: bold;
         }
-
+        
         & .hamburguesita--tabletMobile{
             display: none;
         }
@@ -67,10 +68,12 @@ header {
 
     transition: opacity 1s ease-in-out, visibility 0s linear 1s;
 }
+
 @media screen and (max-width: 768px) {
     .miPerfil {
         & a.miPerfil--ir{
-            width: 7rem;
+            width: 15rem;
+            justify-content: center;
 
             & img.fotoPerfil{
                 display: none;
@@ -79,9 +82,13 @@ header {
             & p{
                 display: none;
             }
-    
+            & b {
+                font-size: 0.5rem;
+            }
             & .hamburguesita--tabletMobile{
                 display: flex;
+                /* justify-content: center; */
+                /* align-items: center; */
             }
         } 
     }
