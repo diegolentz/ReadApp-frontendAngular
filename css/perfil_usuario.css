@@ -61,11 +61,6 @@
 
 }
 
-a{
-    width: fit-content;
-    text-decoration: none;
-    color: black;
-}
 .botones-container{
     height: var(--height-header);
     width: 100%;
