@@ -48,10 +48,6 @@
   align-content: center;
 }
 
-.agregar {
-  border: 1px solid black;
-}
-
 .agregar__amigo {
   & i {
     grid-column: 1/-1;
