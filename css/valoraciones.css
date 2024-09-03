@@ -1,10 +1,17 @@
-
-
 .valoraciones {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  margin-bottom: 4.5rem;
+}
+
+.valoraciones__header{
+  width: 70%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  font-size: var(--text-xl);
 }
 
 .estrella-dorada{
@@ -22,7 +29,6 @@
   grid-template-columns: 8rem 10rem;
   grid-template-rows: 2rem 2rem 2rem;
   justify-content: center;
-  background-color: (--color-fondo);
 }
 
 .foto-perfil-valoracion{
@@ -31,13 +37,6 @@
   border-radius: 50%;
   display: block;
   margin: auto;
-}
-
-.valoracion{
-  grid-column: 1/-2;
-  display: grid;
-  grid-template-columns: 0.20fr 0.5fr 0.25fr;
-  grid-row: 2rem 6rem;
 }
 
 .contenido-valoracion{

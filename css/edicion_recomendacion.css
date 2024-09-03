@@ -1,4 +1,16 @@
-h1{
+
+.container-titulo{
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    font-size: var(--text-xl);
+}
+
+.el__titulo{
+    width: 70%;
     font-size: var(--text-xl);
 }
 
@@ -13,6 +25,5 @@ h1{
     border-bottom: 1px;
     border-style: solid;
     margin-bottom: 2rem;
-    padding: 1rem;
-    text-align: justify;
+    padding-bottom: 1rem;
   }
