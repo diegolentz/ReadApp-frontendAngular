@@ -7,7 +7,6 @@ article.libro{
 
 .libro{
     /* height: auto; */
-    width: max-content;
     display: grid;
     grid-template-areas:
     "portada descripcion acciones";
@@ -34,30 +33,22 @@ article.libro{
     grid-area: descripcion;
     display: flex;
     flex-direction: column;
-    gap: calc(var(--books-default)/2);
+    gap: calc(var(--books-default)/4);
+
+    overflow: hidden;
     & .libro__titulo{
         font-weight: bold;
         font-size: var(--text-md);
-        /* text-overflow:ellipsis; */
-        white-space: wrap;
     }
     & .libro__autor{
         margin-bottom: 0.2rem;
         font-size: var(--text-sm);
-        /* overflow: hidden;
-        text-overflow: ellipsis;
-        */
-        white-space: wrap; 
     }
     & .libro__info{
         & .dato{
             display: flex;
             gap: calc(var(--books-default)/4);
-
             font-size: var(--text-xs);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
     }
 }
@@ -68,7 +59,7 @@ article.libro{
     grid-area: acciones;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     & .accion{
         cursor: pointer;
         &:hover{

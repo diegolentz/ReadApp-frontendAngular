@@ -44,8 +44,9 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-    /* OCULTA TEXTO, Y DEJA EL ICONO */
+/* OCULTA TEXTO, Y DEJA EL ICONO */
+/* COMENTADO PORQUE HAY QUE JUGAR CON LA BURGUER PARA ACOMODAR TODO, POR AHORA SOLO TEXTO */
+/* @media screen and (max-width: 768px) {
     .opcion--dropdown{
         & p{ display: none;}
     }
@@ -53,7 +54,7 @@
         & svg{
             display: flex;
         }
-    }
-        
-}
+    }   
+}  */
+
 

@@ -51,7 +51,7 @@ html{
   /* CAPAZ un padding gral para el contenido fuera del header/footer */
 
   --perfilUsuario-default: 4rem ;
-  --books-default: 2rem;
+  --books-default: 1.5rem;
 
   --color-save: rgb(120, 178, 104);
   --color-save-gradient: rgb(97, 134, 87);
