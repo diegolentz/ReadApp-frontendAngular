@@ -61,6 +61,10 @@ html{
   --borde-default: 1rem;
 }
 
+svg{
+  margin: auto;
+}
+
 body {
   background: var(--color-fondo);
   font-family: var(--fuente-default);
