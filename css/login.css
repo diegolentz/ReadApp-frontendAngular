@@ -78,7 +78,8 @@ body{
         display: flex;
         position: absolute;
         bottom: -2rem;
-        left: -1rem;
+        left: -0.5rem;
+        align-items: center;
     }
     & .aclaracion--importante{
         color: red;
