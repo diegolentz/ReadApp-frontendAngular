@@ -29,3 +29,18 @@ b{
     margin-bottom: 2rem;
     padding-bottom: 1rem;
   }
+
+  .contenedorTitulo{
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    position: relative;
+    margin-top: 3rem;
+    
+    & svg{
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+        fill: blue;
+    }
+  }

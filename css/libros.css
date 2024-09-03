@@ -50,6 +50,13 @@ article.libro{
             display: flex;
             gap: calc(var(--books-default)/4);
             font-size: var(--text-xs);
+            align-items: center;
+
+            & svg{
+                width: var(--text-xs);
+                height: var(--text-xs);
+
+            }
         }
     }
 }
