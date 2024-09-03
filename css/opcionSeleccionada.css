@@ -37,7 +37,7 @@
 .opcionSeleccionada__amigos{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 0.8fr));
-    grid-auto-rows: 6rem;
+    grid-auto-rows: minmax(auto, 6rem);
 
     gap: 2rem;
     
@@ -49,7 +49,7 @@
 .opcionSeleccionada__libros{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 0.8fr));
-    grid-auto-rows: 21rem;
+    grid-auto-rows: minmax(auto, 20rem);
     
     gap: 2rem;
     
