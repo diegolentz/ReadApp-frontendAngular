@@ -22,6 +22,9 @@ html{
   --border-default: solid;
   --border-width: 1px;
 
+  --color-celeste-claro:#b1e7e1;
+  --color-celeste-oscuro:#50a8b8;
+
   --text-xxl: 3.5rem;
   --text-xl: 2.5rem;
   --text-lg: 2.1rem;
