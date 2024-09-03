@@ -60,7 +60,11 @@ nav {
         transition: 0.4s;
     }
    
-    
+    & svg{
+        height : var(--text-lg);
+        width:  var(--text-lg);
+      
+    }
 }
 /* .contenedorLupa {
     object-fit: cover;

@@ -24,7 +24,7 @@ h2{
 
 svg{
     width: var(--text-lg);
-    margin: auto;
+    /* margin: auto; */
 }
 
 .descripcion{
