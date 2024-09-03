@@ -46,30 +46,29 @@ header {
         cursor: pointer;
     }
 }
-/* PANEL QUE APARECE CUANDO SE HOVEREA */
 .dropdown:hover .dropdown-content {
     visibility: visible;
     opacity: 1;
-    /* transición comienza lentamente, acelera en el medio y desacelera de nuevo al final*/
-    transition: opacity 0.5s ease-in-out, visibility 1s ease-in-out;
+    transition: opacity 1s ease-in-out, visibility 0s linear 0s;
 }
 
 .dropdown-content {
     width: 100%;
     display: flex;
-    visibility: hidden;
-    opacity: 0;
+    visibility: hidden;  
     flex-direction: column;
     gap: 2rem;
     padding: 2rem 1rem;
-    
+    opacity: 0;  
+
     position: absolute;
     top: 100%;
-    transition: opacity 1s ease-in-out , visibility 1s ease-in-out; /* para ocultarse de nuevo */
     background-color: var(--color-searchbar);
-    border-radius: 0 0 1rem 1rem;
+    border-radius: 1rem;
+
+    transition: opacity 1s ease-in-out, visibility 0s linear 1s;
 }
-/* TABLE*/
+
 @media screen and (max-width: 768px) {
     .miPerfil {
         & a.miPerfil--ir{
