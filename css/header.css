@@ -19,6 +19,7 @@ header {
     display: flex;
     position: relative;
     
+    
     & a.miPerfil--ir{
         display: flex;
         align-items: center;
@@ -36,6 +37,7 @@ header {
         & p{
             font-size: var(--text-md);
             font-weight: bold;
+            color: white;
         }
         
         & .hamburguesita--tabletMobile{
