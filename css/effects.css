@@ -51,13 +51,11 @@ label.radiobox-input, label.checkbox-input{
         width: 0%;
     }
 
-    /* Si tiene de hijo a input:checked, afecta el estilo */
     &:has(> input:checked){
         text-transform: uppercase;
         background-color: var(--color-celeste-oscuro);
         color: whitesmoke;
         filter: brightness(100%);
-        /* box-shadow: var(--shadow-elevation-high); */
         filter: drop-shadow(1px 2px 4px rgb(24, 23, 23));
     }
 }

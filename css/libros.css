@@ -1,21 +1,18 @@
-article.libro{
+article{
     width: 100%;
     height: 100%;
-
     border-radius: var(--borde-default);
-}
 
-.libro{
-    /* height: auto; */
-    display: grid;
-    grid-template-areas:
-    "portada descripcion acciones";
-    grid-template-columns: 0.1fr 1.5fr 0.1fr;
-    gap: var(--books-default);
-    padding: var(--books-default);
-    /* background-color: var(--color-hover-amigos); */
-    background: linear-gradient(to bottom, #78a4b3 ,#5d8999);
-    transition: 0.25s;
+    &.libro {
+        display: grid;
+        grid-template-areas:
+        "portada descripcion acciones";
+        grid-template-columns: 0.1fr 1.5fr 0.1fr;
+        gap: var(--books-default);
+        padding: var(--books-default);
+        background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
+        transition: 0.25s;
+    }
 }
 
 .libro__portada{
@@ -24,10 +21,6 @@ article.libro{
     & img{
         width: 100%;
     }
-}
-
-.botonalineado {
-    display: flex;
 }
 
 .libro__contenido{
