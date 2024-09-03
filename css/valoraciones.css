@@ -12,11 +12,6 @@
   height: var(--text-xl);
 }
 
-.layout-valoraciones{
-  width: 70%;
-  gap: 7rem;
-}
-
 .valoracion-card{
   height: max-content;
   width: minmax(30rem, 60rem);

@@ -95,21 +95,4 @@ input:invalid {
     border-radius: 2rem;  
 }
 
-@keyframes desplazamiento_vertical {
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(-80%);
-    }
-}
-
-.libro__autor:hover{
-    animation: desplazamiento_vertical 10s linear infinite;
-}
-
-.libro__titulo:hover{
-    animation: desplazamiento_vertical 10s linear infinite;
-}
-
 
