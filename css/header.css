@@ -20,12 +20,11 @@ header {
     position: relative;
     
     
-    & a.miPerfil--ir{
+    & .miPerfil--ir{
         display: flex;
         align-items: center;
         gap: 0.5rem;
         margin-right: 2rem;
-        
         
         & img.fotoPerfil{
             width: 5.5rem;
@@ -107,6 +106,6 @@ header {
         margin-bottom: var(--height-header);
     }
     .dropdown-content{
-        transform: translateY(-100%);
+        transform: translateY(-140%);
     }
 }

@@ -15,12 +15,14 @@
 }
 
 .opcionSeleccionada__titulo{
-    /* height: 10%; */
     font-size: var(--text-xxl);
     font-weight: bold;
+
+    /* SOLO PARA EVITAR SOLAPADO CON LAS CARDS */
+    text-align: inherit;
 }
 .opcionSeleccionada__contenido{
-    /* height: 90%; */
+    height: 100%;
     padding: 1rem;
 }
 .opcionSeleccionada__info{
@@ -40,23 +42,28 @@
     gap: 2rem;
     
     overflow-y: scroll;
+
+    justify-content: center;
 }
 
 .opcionSeleccionada__libros{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 35rem), 0.8fr));
-    /* grid-auto-rows: 20rem; */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 0.8fr));
+    grid-auto-rows: 21rem;
     
     gap: 2rem;
     
     overflow-y: scroll;
+
+    justify-content: center;
 }
 
 .opcionSeleccionada__recomendaciones{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
     gap: 2rem;
     overflow-y: scroll;
 
-    justify-content: center;
+    
+    justify-items: center;
 }
