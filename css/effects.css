@@ -25,10 +25,11 @@ div.textbox-container{
         border-radius: 1rem;
     }
 
+    /* SI el input es focuseado, o tambien si es valido. SE aplican los estilos al proximo label dentro del mismo container */
     &   input:focus ~ label,
         input:valid ~ label{
             transform: translateY(-1.5rem);
-            font-size: 0.5em;
+            font-size: 0.8em;
             background-color: var(--color-searchbar);
             border: solid;
             border-radius: 1rem;
@@ -96,3 +97,52 @@ input:invalid {
 }
 
 
+/* EFFECTO EN EL BORDE */
+
+.borde--iluminado{
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+/* Borde animado */
+.borde--iluminado::before {
+    content: "";
+    position: absolute;
+    inset: -10rem;
+    background-image: conic-gradient(var(--color-header) 20deg, transparent 60deg);
+    animation: rotate 8s linear infinite;
+    z-index: -1;
+}
+
+/* Fondo del formulario */
+.borde--iluminado::after {
+    content: "";
+    position: absolute;
+    inset: 1.5rem;
+    background: inherit; /* usa el fondo del formulario */
+    z-index: -1; 
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* HOVER PARA OPCIONES */
+.opcion__effect--hover{
+    transition: 0.25s;
+    &:hover{
+        box-shadow: var(--shadow-elevation-high);
+    }
+}
+
+/* LETRA NEGRITA SI ESTA SELECCIONADA */
+.opcion--seleccionada{
+    font-weight: bold;
+    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
+    /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
+    E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
+}

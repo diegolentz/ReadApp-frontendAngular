@@ -17,12 +17,17 @@ article.libro{
     background-color: var(--color-hover-amigos);
     transition: 0.25s;
 }
+
 .libro__portada{
     width: 10rem;
     grid-area: portada;
     & img{
         width: 100%;
     }
+}
+
+.botonalineado {
+    display: flex;
 }
 
 .libro__contenido{
@@ -67,7 +72,7 @@ article.libro{
     & .accion{
         cursor: pointer;
         &:hover{
-            filter: drop-shadow(0 0 0.75rem rgb(36, 16, 21));
+            filter: drop-shadow(var(--color-hover-acciones));
         }
     }
 }

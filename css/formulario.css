@@ -31,6 +31,7 @@
 
 .formulario-criterio {
     display: grid;
+    grid-auto-rows: auto;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     gap: 2rem;
     & label{
@@ -38,6 +39,16 @@
         padding: 1rem;
     }
 } 
+
+.nuevosInputs-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.noDisplay {
+    display: none;
+}
 
 /* UNICAMENTE PARA EVITAR EL INCREMENTADOR LATERAL DE LOS NUMEROS */
 /* Firefox */

@@ -3,7 +3,6 @@ article{
     padding: 1rem;
     max-width: 25rem;
     display: grid;
-    grid-template-rows:  15% 30% 20% 20% 15%;
     grid-template-columns: repeat(3,1fr);
     gap: 0.7rem 0 ;
     height: auto;

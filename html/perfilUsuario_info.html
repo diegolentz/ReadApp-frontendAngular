@@ -11,12 +11,26 @@
     <link rel="stylesheet" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="../css/opcionSeleccionada.css">
     <link rel="stylesheet" href="../css/botones.css">
+    <link rel="stylesheet" href="../css/opcion.css">
     <link rel="stylesheet" href="../css/effects.css">
     <!-- CSS ESPECIFICO SEGUN OPCION SELECCIONADA -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="../css/formulario.css">
 
     <script src="https://unpkg.com/phosphor-icons"></script>
+    <script> function myFunction() {
+        // Get the checkbox
+        var checkBox = document.getElementById("myCheck");
+        // Get the output text
+        var text = document.getElementById("nuevosInputs");
+      
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            text.className = "nuevosInputs-container"
+        } else {
+          text.className = "noDisplay";
+        }
+      } </script>
 
 </head>
 <body>
@@ -28,65 +42,60 @@
           <h1 >ReadApp</h1>
           
         </div>
-        
-        <div class="derecha">
-          <div class="foto-perfil">
-            <img class="fotoPerfil"
-              src="https://img.lagaceta.com.ar/fotos/notas/2024/07/09/por-dibu-martinez-baila-penales-padre-lo-revelo-1042436-161519.jpg"
-              alt="Dibu"
-            />
-          </div>
-          <div class="nombre-perfil">
+        <div class="miPerfil dropdown">
+          <a href="/html/perfilUsuario_info.html" class ="miPerfil--ir">
+            <img class="fotoPerfil" src="https://img.lagaceta.com.ar/fotos/notas/2024/07/09/por-dibu-martinez-baila-penales-padre-lo-revelo-1042436-161519.jpg" alt="Dibu" />
             <p>Dibu Martinez</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256" class="hamburguesita--tabletMobile"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
+          </a>
+          <div class="dropdown-content">
+            <a href="../html/perfilUsuario_info.html" class="opcion opcion--dropdown opcion__effect--hover">
+              <b>Mi perfil</b>
+            </a>
+            <a href="../html/mis_recomendaciones.html" class="opcion opcion--dropdown opcion__effect--hover">
+              <b>Buscar recomendaciones</b>
+            </a>
+            <a href="../html/busqueda_libros.html" class="opcion opcion--dropdown opcion__effect--hover">
+              <b>Buscar libros</b>
+            </a>
           </div>
-        </div>
-        
-        <div class="derecha-mq">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
         </div>
       </header>
     
     <main class="perfil-usuario">
 
-        <div class="panelOpciones">
+        <aside class="panelOpciones">
             <div class="panelOpciones__identificacion">
                 <img class="foto" src="../images/icono.jpg" />
                 <div class="nombre">
                     <p>Carlos Salvador Bilardo</p>
-                </div>            </div>
+                    <hr>
+                </div>            
+            </div>
+
             <div class="panelOpciones__seleccionables">
-                <a href="/html/perfilUsuario_info.html">
-                    <div class="seleccionable seleccionable--seleccionado">
-                        <i class="ph ph-info-bold"></i>
-                        <p>Informacion</p>
-                    </div>
+                <a href="/html/perfilUsuario_info.html" class="opcion opcion--perfilUsuario opcion__effect--hover opcion--seleccionada">
+                    <i class="ph ph-info-bold"></i>
+                    <p>Informacion</p>
                 </a>
-                <a href="/html/perfilUsuario_amigos.html">
-                    <div class="seleccionable ">
-                        <i class="ph ph-users-three"></i>
-                        <p>Amigos</p>
-                    </div>
+                <a href="/html/perfilUsuario_amigos.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                    <i class="ph ph-users-three"></i>
+                    <p>Amigos</p>
                 </a>
-                <a href="/html/perfilUsuario_librosLeidos.html">
-                    <div class="seleccionable">
-                        <i class="ph ph-book-open"></i>
-                        <p>Libros leidos</p>
-                    </div>
+                <a href="/html/perfilUsuario_librosLeidos.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                    <i class="ph ph-book-open"></i>
+                    <p>Libros leidos</p>
                 </a>
-                <a href="/html/perfilUsuario_librosALeer.html">
-                    <div class="seleccionable">
-                        <i class="ph ph-book-bookmark"></i>
-                        <p>Libros a leer</p>
-                    </div>
+                <a href="/html/perfilUsuario_librosALeer.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                    <i class="ph ph-book-bookmark"></i>
+                    <p>Libros a leer</p>
                 </a>
-                <a href="/html/perfilUsuario_recomendaciones.html">
-                    <div class="seleccionable">
-                        <i class="ph ph-heart-straight"></i>
-                        <p>Recomendaciones a valorar</p>
-                    </div>
+                <a href="/html/perfilUsuario_recomendaciones.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                    <i class="ph ph-heart-straight"></i>
+                    <p>Recomendaciones a valorar</p>
                 </a>
             </div>
-        </div>
+        </aside>
     
         <section class="opcionSeleccionada">
                 <p class="opcionSeleccionada__titulo ">Informacion</p>
@@ -180,21 +189,23 @@
                                 <input type="checkbox"/>
                                 Experimentado
                             </label>
-
-                            <!-- <div class="info__opcion--input">
-                                <label><input type="checkbox"/> Calculador</label>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric"required>
-                                    <label for="min">limite min.</label>
-                                </div>
-                                <div class= "textbox-container">
-                                    <input type="text" inputmode="numeric" required>
-                                    <label>limite max.</label>
-                                </div>
-                            </div> -->
-
+                            <label class="checkbox-input">
+                                <input type="checkbox" id="myCheck" onclick="myFunction()"> 
+                                Calculador
+                            </label>                                
                         </form>
                     </div>
+
+                         <form id="nuevosInputs" class="noDisplay">
+                            <div class= "textbox-container">
+                                <label>limite minimo</label><br>
+                                <input type="text" inputmode="numeric" required>
+                            </div>
+                            <div class= "textbox-container">
+                                <label>limite maximo</label><br>
+                                <input type="text" inputmode="numeric" required>
+                            </div>
+                        </form>
                     
                 </div>
         </section>
@@ -202,8 +213,8 @@
     </main>
     
     <div class="botones-container">
-        <button class="btn btn__text btn__background--cancel">Cancelar</button>
-        <button class="btn btn__text btn__background--save">Guardar cambios</button>
+        <button class="btn btn-secundario btn__background--cancel">Cancelar</button>
+        <button class="btn btn-principal btn__background--save">Guardar cambios</button>
     </div>
 </body>
 </html>

@@ -61,12 +61,3 @@
     justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
-    .opcionSeleccionada__contenido{
-        justify-content: center;
-    }
-    .opcionSeleccionada__recomendaciones{
-        display: flex;
-        flex-direction: column;
-    }
-} 

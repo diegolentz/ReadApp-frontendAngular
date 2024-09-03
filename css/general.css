@@ -32,6 +32,8 @@ html{
 
   --color-hover-amigos: hsl(16, 85%, 80%);
 
+  --color-hover-acciones: 0 0 0.75rem rgb(0, 0, 0);
+
   --shadow-color: 14deg 42% 48%;
   --shadow-elevation-high:
     0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.45),
@@ -51,7 +53,9 @@ html{
   --perfilUsuario-default: 4rem ;
   --books-default: 2rem;
 
-  --color-save: rgb(102, 194, 77);
+  --color-save: rgb(120, 178, 104);
+  --color-save-gradient: rgb(97, 134, 87);
+  
   --color-cancel: rgb(190, 70, 70);
 
   --borde-default: 1rem;
@@ -78,6 +82,7 @@ body {
 a {
   text-decoration: none;
   text-align: center;
+  color: black;
 }
 
 .border{
