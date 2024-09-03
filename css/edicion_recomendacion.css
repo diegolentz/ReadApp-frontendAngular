@@ -14,7 +14,9 @@
     font-size: var(--text-xl);
 }
 
-
+b{
+    font-size: var(--text-md);
+}
 
 .reseña{
     width: 70%;
