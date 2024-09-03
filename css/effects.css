@@ -57,7 +57,8 @@ label.radiobox-input, label.checkbox-input{
         background-color: var(--color-celeste-oscuro);
         color: whitesmoke;
         filter: brightness(100%);
-        box-shadow: var(--shadow-elevation-high);
+        /* box-shadow: var(--shadow-elevation-high); */
+        filter: drop-shadow(1px 2px 4px rgb(24, 23, 23));
     }
 }
 
@@ -136,6 +137,7 @@ input:invalid {
     transition: 0.25s;
     &:hover{
         box-shadow: var(--shadow-elevation-high);
+
     }
 }
 

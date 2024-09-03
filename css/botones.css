@@ -18,20 +18,24 @@
 
 .btn__background--cancel {
 
-  background-color: var(--color-searchbar);
+  background-color: var(--color-cancel);
+  filter: brightness(90%);
+  color: aliceblue;
   
   &:hover {
     color: aliceblue;
     background-color: var(--color-cancel);
+    filter: brightness(100%);
   }
 }
 
 .btn__background--save {
   
   background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
+  filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
   
   &:hover {
-    filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
+    filter: brightness(140%);
   }
 }
 
