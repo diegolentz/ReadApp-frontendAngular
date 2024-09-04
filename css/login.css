@@ -21,32 +21,17 @@
     padding: 4rem;
     background: linear-gradient(to bottom, var(--color-searchbar),var(--color-header));
     border-radius: 2rem;
-    gap: 2.5rem;
+    gap: 1.5rem;
 }
 
 .encabezado {
     height: 4rem;
     
-    display: flex;
-    align-items: center;
+    /* display: flex; */
+    /* align-items: center; */
     justify-content: center;
 }
 
-/* ////////////////////////////////// */
-/* USO DE campo  */
-/* 
-<div class="campo campo__aclaracion campo--obligatorio">
-            SE NECESITA SI O SI
-            <input>
-            <label></label> 
-
-            OPCIONAL segun selector de bloque o de estado
-            Selector de bloque <campo__bloque>
-            Selector de estado <campo--obligatorio>
-            <div class="aclaracion"></div>
-            <div class="ocultar revelar" onclick="myFunction()"></div>
-        </div>
-*/
 .campo {
     display: flex;
     flex-direction: column;
@@ -55,6 +40,7 @@
 
     & label{
         font-size: var(--text-md);
+        font-weight: bold;
     }
 
     & input {
@@ -67,43 +53,44 @@
         
         outline: none;
         
-        &:focus{
+        /* &:focus{
             border: 1px solid red;
-        }
+        } */
     }
 }
 
 .campo__aclaracion{
     & .aclaracion{
+        color: var(--color-cancel);
         display: flex;
-        position: absolute;
-        bottom: -2rem;
-        left: -0.5rem;
         align-items: center;
+        font-size: var(--text-xs);
+        font-weight: bold;
     }
-    & .aclaracion--importante{
-        color: red;
+    & .aclaracion svg{
+        fill: var(--color-cancel);
     }
 }
 .campo--obligatorio{
-    & label:after { content:" *"; color: red;}
+    & label:after { content:" *"; color:var(--color-cancel);}
 }
 
 .campo--privado{
-    & .ocultar, .revelar{
+    & .ocultar, .revelar svg{
         position: absolute;
         right: 1rem;
-        bottom: 0;
+        bottom: 0.2rem;
         cursor: pointer;
+        fill:var(--color-cancel);
     }
 }
 
 .registrarse{
-    font-size: var(--text-xs);
+    font-size: var(--text-md);
     font-weight: bold;
     justify-content: center;
     & span{
         cursor: pointer;
-        color: red;
+        color: var(--color-cancel);
     }
 }
