@@ -41,7 +41,6 @@
 
 .btn__background--login {
   background-color: var(--color-save);
-  /* padding: 1rem; */
   color: white;
   font-size: var(--text-md);
 
