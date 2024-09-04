@@ -1,14 +1,10 @@
-/* LAYOUT HEADER CON SUS ESTILOS, SEPARAR DIMENSIONES, DE ESTILOS */
 header {
 
     background: linear-gradient(to bottom, var(--color-searchbar),var(--color-header));
     width: 100vw;
     min-width: 80vw;
     height: var(--height-header);
-
     display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
@@ -18,20 +14,15 @@ header {
 .miPerfil {
     /* UNICAMENTE PARA COMODIDAD DEL DROPDOWN */
     height: 100%;
-    display: flex;
     position: relative;
-    
-    
+        
     & .miPerfil--ir{
-        display: flex;
-        align-items: center;
         gap: 0.5rem;
         margin-right: 2rem;
-        /* min-width: 5rem; */
+        height: 100%;
         
         & img.fotoPerfil{
-            width: 5.5rem;
-            height: 5.5rem;
+            height: 75%;
             border: 1px solid orangered;
             border-radius: 50%;
         }
@@ -45,7 +36,7 @@ header {
         & .hamburguesita--tabletMobile{
             display: none;
             width: var(--text-xxl);
-
+            fill: white;
         }
         
     } 
@@ -61,14 +52,12 @@ header {
 
 .dropdown-content {
     width: auto;
-    display: flex;
-    visibility: hidden;  
     flex-direction: column;
     flex-wrap: nowrap;
-    gap: 2rem;
+    gap: 1rem;
     padding: 2rem 1rem;
+    visibility: hidden;  
     opacity: 0;  
-    
     position: absolute;
     top: 100%;
     background-color: var(--color-searchbar);
@@ -79,10 +68,7 @@ header {
 
 @media screen and (max-width: 768px) {
     .miPerfil {
-        justify-content: center;
-        width: 10rem;
-        & a.miPerfil--ir{
-            justify-content: center;
+        & .miPerfil--ir{
             & img.fotoPerfil{
                 display: none;
             }
@@ -93,9 +79,6 @@ header {
             
             & .hamburguesita--tabletMobile{
                 display: flex;
-                justify-content: center;
-                align-items: center;
-                width: var();
             }
         } 
     }
@@ -117,9 +100,6 @@ header {
     }
     .miPerfil {
         & .miPerfil--ir{
-            width: 15rem;
-            justify-content: center;
-            
             & img.fotoPerfil{
                 display: none;
             }
@@ -132,12 +112,11 @@ header {
             }
             & .hamburguesita--tabletMobile{
                 display: flex;
-                justify-content: center;
-                align-items: center;
             }
         } 
     }
     .dropdown-content{
+        width: 100vw;
         right: 0;
         top: 0rem;
         transform: translateY(-100%);

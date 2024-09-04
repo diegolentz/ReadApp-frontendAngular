@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,39 +19,51 @@
 
     <script src="https://unpkg.com/phosphor-icons"></script>
 </head>
+
 <body>
-    
+
     <header>
         <div class="encabezado">
-    
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path></svg>
-          <h1 >ReadApp</h1>
-          
+
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256">
+                <path
+                    d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z">
+                </path>
+            </svg>
+            <h1>ReadApp</h1>
+
         </div>
-        <div class="miPerfil dropdown">
-          <a href="/html/perfilUsuario_info.html" class ="miPerfil--ir">
-            <img class="fotoPerfil" src="https://img.lagaceta.com.ar/fotos/notas/2024/07/09/por-dibu-martinez-baila-penales-padre-lo-revelo-1042436-161519.jpg" alt="Dibu" />
-            <p>Dibu Martinez</p>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256" class="hamburguesita--tabletMobile"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path></svg>
-          </a>
-          <div class="dropdown-content">
-            <a href="../html/perfilUsuario_info.html" class="opcion opcion--dropdown opcion__effect--hover">
-              <b>Mi perfil</b>
+        <div class="miPerfil flex-center-center dropdown">
+            <a href="/html/perfilUsuario_info.html" class="miPerfil--ir flex-center-center">
+                <img class="fotoPerfil"
+                    src="https://img.lagaceta.com.ar/fotos/notas/2024/07/09/por-dibu-martinez-baila-penales-padre-lo-revelo-1042436-161519.jpg"
+                    alt="Dibu" />
+                <p>Dibu Martinez</p>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256"
+                    class="hamburguesita--tabletMobile">
+                    <path
+                        d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z">
+                    </path>
+                </svg>
             </a>
-            <a href="../html/mis_recomendaciones.html" class="opcion opcion--dropdown opcion__effect--hover">
-              <b>Buscar recomendaciones</b>
-            </a>
-            <a href="../html/busqueda_libros.html" class="opcion opcion--dropdown opcion__effect--hover">
-              <b>Buscar libros</b>
-            </a>
-            <a href="../html/login.html" class="opcion opcion--dropdown opcion__effect--hover">
-                <b>Cerrar sesion</b>
-              </a>
-          </div>
+            <div class="dropdown-content flex-center-center">
+                <a href="../html/perfilUsuario_info.html" class="opcion opcion--dropdown opcion__effect--hover">
+                    <b>Mi perfil</b>
+                </a>
+                <a href="../html/mis_recomendaciones.html" class="opcion opcion--dropdown opcion__effect--hover">
+                    <b>Buscar recomendaciones</b>
+                </a>
+                <a href="../html/busqueda_libros.html" class="opcion opcion--dropdown opcion__effect--hover">
+                    <b>Buscar libros</b>
+                </a>
+                <a href="../html/login.html" class="opcion opcion--dropdown opcion__effect--hover">
+                    <b>Cerrar sesion</b>
+                </a>
+            </div>
         </div>
     </header>
 
-    
+
     <main class="perfil-usuario">
 
         <aside class="panelOpciones">
@@ -59,7 +72,7 @@
                 <div class="nombre">
                     <p>Carlos Salvador Bilardo</p>
                     <hr>
-                </div>            
+                </div>
             </div>
 
             <div class="panelOpciones__seleccionables">
@@ -67,36 +80,45 @@
                     <i class="ph ph-info-bold"></i>
                     <p>Informacion</p>
                 </a>
-                <a href="/html/perfilUsuario_amigos.html" class="opcion opcion--perfilUsuario opcion__effect--hover opcion--seleccionada">
+                <a href="/html/perfilUsuario_amigos.html"
+                    class="opcion opcion--perfilUsuario opcion__effect--hover opcion--seleccionada">
                     <i class="ph ph-users-three"></i>
                     <p>Amigos</p>
                 </a>
-                <a href="/html/perfilUsuario_librosLeidos.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                <a href="/html/perfilUsuario_librosLeidos.html"
+                    class="opcion opcion--perfilUsuario opcion__effect--hover">
                     <i class="ph ph-book-open"></i>
                     <p>Libros leidos</p>
                 </a>
-                <a href="/html/perfilUsuario_librosALeer.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                <a href="/html/perfilUsuario_librosALeer.html"
+                    class="opcion opcion--perfilUsuario opcion__effect--hover">
                     <i class="ph ph-book-bookmark"></i>
                     <p>Libros a leer</p>
                 </a>
-                <a href="/html/perfilUsuario_recomendaciones.html" class="opcion opcion--perfilUsuario opcion__effect--hover">
+                <a href="/html/perfilUsuario_recomendaciones.html"
+                    class="opcion opcion--perfilUsuario opcion__effect--hover">
                     <i class="ph ph-heart-straight"></i>
                     <p>Recomendaciones a valorar</p>
                 </a>
             </div>
         </aside>
-    
+
         <section class="opcionSeleccionada">
-            
+
             <p class="opcionSeleccionada__titulo">Amigos</p>
-    
+
             <div class="opcionSeleccionada__contenido opcionSeleccionada__amigos scrollbar">
                 <div class="amigo hover-boxshadow">
                     <div class="amigo__foto"><img src="../images/../images/icono.jpg" alt=""></div>
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -104,7 +126,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -112,7 +139,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -120,7 +152,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -128,7 +165,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -136,7 +178,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -144,7 +191,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -152,7 +204,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -160,7 +217,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -168,7 +230,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -176,7 +243,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -184,7 +256,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -192,16 +269,26 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
                     <div class="amigo__foto"><img src="../images/../images/icono.jpg" alt=""></div>
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
-                    
+
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <div class="amigo hover-boxshadow">
@@ -209,7 +296,12 @@
                     <p class="amigo__nombre">AAA</p>
                     <p class="amigo__identificador">@aaa</p>
                     <div class="amigo__eliminar centered-inlineGrid">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000" viewBox="0 0 256 256" class="hover-delete"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="#000000"
+                            viewBox="0 0 256 256" class="hover-delete">
+                            <path
+                                d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z">
+                            </path>
+                        </svg>
                     </div>
                 </div>
                 <article class="botonalineado">
@@ -217,17 +309,18 @@
                         <p><strong>+</strong></p>
                     </button>
                 </article>
-    
+
             </div>
-    
-    
+
+
         </section>
-        
+
     </main>
-    
+
     <div class="botones-container">
         <button class="btn btn-secundario btn__background--cancel">Cancelar</button>
         <button class="btn btn-principal btn__background--save">Guardar cambios</button>
     </div>
 </body>
+
 </html>
