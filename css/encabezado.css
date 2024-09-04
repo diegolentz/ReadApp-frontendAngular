@@ -5,8 +5,8 @@
     margin-left: 2rem ;
     height: 100%;
     & h1{      
+      font-size: var(--text-xxl);
         color: var(--color-blanco);
-        font-size: var(--text-xxl);
         font-family: var(--fuente-default);
         display: flex;
         justify-content: center;

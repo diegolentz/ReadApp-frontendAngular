@@ -40,9 +40,15 @@
 }
 
 .btn__background--login {
-  background-color: var(--color-searchbar);
+  background-color: var(--color-save);
+  color: white;
+  font-size: var(--text-md);
+
   &:hover {
-    filter: brightness(130%);
+    filter: brightness(140%);
+    opacity: 0.8;
+    color: black;
+    font-weight: bold;
   }
 }
 
