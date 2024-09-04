@@ -39,17 +39,17 @@ div.textbox-container{
 /* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/
 label.radiobox-input, label.checkbox-input{
     font-size: var(--text-sm);
-    justify-content: center;
+    gap: 2rem;
     background-color: var(--color-celeste-claro);
     filter: brightness(95%);
     cursor: pointer;
     border-radius: 0.5rem;
     transition: background 0.1s;
 
-    & input{
+    /* & input{
         visibility: hidden;
         width: 0%;
-    }
+    } */
 
     &:has(> input:checked){
         text-transform: uppercase;
@@ -84,14 +84,17 @@ input:invalid {
 
 .scrollbar::-webkit-scrollbar {
     width: 0.8rem; 
+    margin-left: 1rem;
 }
   
 .scrollbar::-webkit-scrollbar-track {
     background-color: var(--color-fondo);
+    /* margin-left: 1rem; */
 }
   
 .scrollbar::-webkit-scrollbar-thumb {
-    background-color: var(--color-header);   
+    background-color: var(--color-header);
+    /* margin-left: 1rem;    */
     border-radius: 2rem;  
 }
 

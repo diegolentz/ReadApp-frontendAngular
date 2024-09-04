@@ -61,15 +61,15 @@
 }
 
 .botones-container{
+    
     height: var(--height-header);
     width: 100%;
-
     display: flex;
     gap: 2rem;
     align-items: center;
     justify-content: center;
 
-    background-color: var(--color-searchbar);
+    background-color: var(--color-fondo);
 }
 
 @media screen and (max-width: 768px) {
