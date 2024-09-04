@@ -45,6 +45,7 @@
         border-radius: 0.5rem;
         font-size: var(--text-md);
         outline: none;
+        padding: 1rem;
     }
 }
 
