@@ -36,6 +36,32 @@ html{
   --text-xs: 1.3rem;
   --text-xxs: 1rem;
 
+  /* TITULOS */
+  h1 {
+    font-size: var(--text-xxl);
+  }
+  /* SUBTITULOS */
+  h2 {
+    font-size: var(--text-xl);
+  }
+  h3 {
+    font-size: var(--text-lg);
+  }
+  /* TEXTO GRANDE, OPCIONES */
+  h4{
+    font-size: var(--text-md);
+  }
+  /* TEXTO */
+  h5{
+    font-size: var(--text-sm);
+  }
+  h6 {
+    font-size: var(--text-xs);
+  }
+  h7{
+    font-size: var(--text-xxs);
+  }
+
   --color-hover-amigos: hsl(16, 85%, 80%);
 
   --color-hover-acciones: 0 0 0.75rem rgb(0, 0, 0);
@@ -93,7 +119,7 @@ body {
 
 a {
   text-decoration: none;
-  text-align: center;
+  /* text-align: center; */
   color: black;
 }
 

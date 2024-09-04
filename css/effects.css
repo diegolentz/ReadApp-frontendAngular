@@ -139,10 +139,16 @@ input:invalid {
     }
 }
 
+.effect-shadow-hover {
+    &:hover {
+        text-shadow: 2px 2px 7px black;
+    }
+}
+
 /* LETRA NEGRITA SI ESTA SELECCIONADA */
 .opcion--seleccionada{
-    font-weight: bold;
-    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
-    /* Para modificar el font-weight del icono de phosporicons le agrego '-bold' al dfinal de la classe del icono. 
-    E.g: 'ph ph-users-three' es NO BOLD => 'ph ph-users-three-bold' es BOLD */
+    
+    & h4 {font-weight: bold;
+    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));}
+
 }

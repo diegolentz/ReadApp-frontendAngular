@@ -1,6 +1,13 @@
 .svg-clasic {
     margin: auto;
     align-items: center;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.svg-clasic-heart {
+    margin: auto;
+    align-items: center;
+    width: 3.4rem;
+    height: 3rem;
 }

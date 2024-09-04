@@ -14,13 +14,6 @@
     gap: 2rem;
 }
 
-.opcionSeleccionada__titulo{
-    font-size: var(--text-xxl);
-    font-weight: bold;
-
-    /* SOLO PARA EVITAR SOLAPADO CON LAS CARDS */
-    text-align: inherit;
-}
 .opcionSeleccionada__contenido{
     height: 100%;
     padding: 1rem;

@@ -1,7 +1,6 @@
 .opcion{
     display: flex;
     padding: 0 1rem 0;
-
     font-size: var(--text-md);
     border-radius: 0.5rem;
     background-color: var(--color-header);
@@ -19,9 +18,15 @@
                 </a>
 */
 .opcion--perfilUsuario{
-    width: fit-content;
-    gap: calc(var(--perfilUsuario-default)/4);
-    & i{    align-items: center;    }
+
+    display: flex;
+    align-items: center;
+    width: fit-content; 
+    gap: 1rem;
+
+    & h4 {
+        font-weight: normal;
+    }
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
