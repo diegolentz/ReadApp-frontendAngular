@@ -4,69 +4,27 @@
     /* 3 - DISTRIBUCION ELEMENTOS   */
     /* 4 - ESTILOS                  */
 
-    /* NECESITO
-    - Pasar todo lo relacionado a imagenes a un archivo aparte
-    -Hacer clase general para display flex ,direction column-row
-        luego de ahi especifico el
-     */
 .perfil-usuario{
     /* header y botones-container mismo height, por eso el *2*/
     height: calc(100vh - var(--height-header)*2);
     width: 100%;
     
-    display: flex;
-    gap: var(--perfilUsuario-default);
-    padding: var(--perfilUsuario-default) var(--perfilUsuario-default) 0rem;
+    padding-bottom: 0;
 
-    /* Sin esto no puedo scrollear y alguna opciones del panel  */
     overflow-y: auto;
 }
-
-.panelOpciones{
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--perfilUsuario-default)/2);
+.foto{
+    width: 12rem;
+    height: 12rem;
 }
-
-.panelOpciones__identificacion{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    & .foto{
-        width: 12rem;
-        height: 12rem;
-        border-radius: 50%;
-    }
-
-    & .nombre{
-        text-align: center;
-    }
-}
-
-.panelOpciones__seleccionables{
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--perfilUsuario-default)/4);
-
-
-}
-
-.no--seleccionado {
-
-    &:hover{
-        text-shadow: 0.1rem 0.2rem 0.4rem var(--color-searchbar);
-    }
-
+.nombre{
+    text-align: center;
 }
 
 .botones-container{
-    
     height: var(--height-header);
     width: 100%;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
+
     justify-content: center;
 
     background-color: var(--color-fondo);

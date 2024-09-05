@@ -1,5 +1,4 @@
 .svg-clasic {
-    margin: auto;
     align-items: center;
     width: 2.5rem;
     height: 2.5rem;
@@ -11,3 +10,8 @@
     width: 3.4rem;
     height: 3rem;
 }
+
+.estrella-dorada{
+    width: var(--text-xl);
+    height: var(--text-xl);
+  }

@@ -46,11 +46,6 @@ label.radiobox-input, label.checkbox-input{
     border-radius: 0.5rem;
     transition: background 0.1s;
 
-    /* & input{
-        visibility: hidden;
-        width: 0%;
-    } */
-
     &:has(> input:checked){
         text-transform: uppercase;
         background-color: var(--color-celeste-oscuro);
@@ -89,12 +84,10 @@ input:invalid {
   
 .scrollbar::-webkit-scrollbar-track {
     background-color: var(--color-fondo);
-    /* margin-left: 1rem; */
 }
   
 .scrollbar::-webkit-scrollbar-thumb {
     background-color: var(--color-header);
-    /* margin-left: 1rem;    */
     border-radius: 2rem;  
 }
 
@@ -151,7 +144,15 @@ input:invalid {
 /* LETRA NEGRITA SI ESTA SELECCIONADA */
 .opcion--seleccionada{
     
-    & h4 {font-weight: bold;
-    filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));}
+    & h4 {
+        filter: drop-shadow(1px 2px 4px rgb(133, 125, 125));
+    }
+
+}
+
+.no--seleccionado {
+    &:hover{
+        text-shadow: 0.1rem 0.2rem 0.4rem var(--color-searchbar);
+    }
 
 }

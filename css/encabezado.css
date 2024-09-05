@@ -1,29 +1,15 @@
-
 .encabezado {
-    display: flex;
-    align-items: center;
     margin-left: 2rem ;
     height: 100%;
+
     & h1{      
         color: var(--color-blanco);
-        font-size: var(--text-xxl);
         font-family: var(--fuente-default);
-        display: flex;
-        justify-content: center;
-        
-        &:hover{
-          cursor: pointer;
-          
-      }
     }
+}
 
-    & svg{
-        width:var(--text-xxl);
-        
-        &:hover{
-          cursor: pointer;
-        }
 
-    }
 
+.pointerable{
+    cursor: pointer;
 }

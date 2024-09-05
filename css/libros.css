@@ -2,65 +2,45 @@ article{
     width: 100%;
     height: 100%;
     border-radius: var(--borde-default);
-
-    &.libro {
-        display: grid;
-        grid-template-areas:
-        "portada descripcion acciones";
-        grid-template-columns: 0.1fr 1.5fr 0.1fr;
-        gap: var(--books-default);
-        padding: var(--books-default);
-        background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
-        transition: 0.25s;
-    }
 }
+.libro {
+    grid-template-areas:
+    "portada descripcion acciones";
+    grid-template-columns: 0.1fr 1.5fr 0.1fr;
 
-.libro__portada{
+    background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
+    transition: 0.25s;
+}
+img.libro__portada{
     width: 10rem;
+    height: 100%;
     grid-area: portada;
-    & img{
-        width: 100%;
-    }
+    border-radius: 0;
 }
 
 .libro__contenido{
     grid-area: descripcion;
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--books-default)/4);
 
     overflow: hidden;
-    & .libro__titulo{
-        font-weight: bold;
-        font-size: var(--text-md);
-    }
+    
     & .libro__autor{
         margin-bottom: 0.2rem;
         font-size: var(--text-sm);
     }
     & .libro__info{
         & .dato{
-            display: flex;
-            gap: calc(var(--books-default)/4);
-            font-size: var(--text-xs);
-            align-items: center;
-
             & svg{
                 width: var(--text-xs);
                 height: var(--text-xs);
-
             }
         }
     }
 }
 
 .libro__acciones{
-    width: 3rem;
-    
     grid-area: acciones;
-    display: flex;
-    flex-direction: column;
     justify-content: space-around;
+
     & .accion{
         cursor: pointer;
         &:hover{

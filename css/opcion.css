@@ -1,29 +1,10 @@
 .opcion{
-    display: flex;
-    padding: 0 1rem 0;
-    font-size: var(--text-md);
     border-radius: 0.5rem;
     background-color: var(--color-header);
     cursor: pointer;
-}
-
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* ////////////////////////////////////////////////////////////////////// */
-/* .opcion--perfilUsuario TRABAJA ASI */
-/*  
-                <a href="/html/perfilUsuario_info.html" class="opcion opcion--perfilUsuario">
-                    <i class="ph ph-info-bold"></i>
-                    <p>Informacion</p>
-                </a>
-*/
-.opcion--perfilUsuario{
-
-    display: flex;
-    align-items: center;
-    width: fit-content; 
-    gap: 1rem;
-
+    & h4{
+        text-align: center;
+    }
 }
 
 /* ////////////////////////////////////////////////////////////////////// */
@@ -45,18 +26,3 @@
         display: none;
     }
 }
-
-/* OCULTA TEXTO, Y DEJA EL ICONO */
-/* COMENTADO PORQUE HAY QUE JUGAR CON LA BURGUER PARA ACOMODAR TODO, POR AHORA SOLO TEXTO */
-/* @media screen and (max-width: 768px) {
-    .opcion--dropdown{
-        & p{ display: none;}
-    }
-    .opcion--dropdown{
-        & svg{
-            display: flex;
-        }
-    }   
-}  */
-
-
