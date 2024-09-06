@@ -7,10 +7,13 @@
     <!-- CSS COMPARTIDOS ENTRE CADA OPCION DE PERFIL DE USUARIO -->
     <link rel="stylesheet" href="../css/general2.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/mi-perfil.css">
+    <link rel="stylesheet" href="../css/desplegable.css">
     <link rel="stylesheet" href="../css/encabezado.css">
     <link rel="stylesheet" href="../css/perfil_usuario.css">
     <link rel="stylesheet" href="../css/opcionSeleccionada.css">
     <link rel="stylesheet" href="../css/botones.css">
+    <link rel="stylesheet" href="../css/campo.css">
     <link rel="stylesheet" href="../css/opcion.css">
     <link rel="stylesheet" href="../css/effects.css">
     <link rel="stylesheet" href="../css/svg.css">
@@ -33,7 +36,7 @@
 <body>
     
     <header class="flex-row">
-        <div class="flex-row encabezado centered-items pointerable">
+        <div class="flex-row encabezado centered-child pointerable">
     
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#ffffff" viewBox="0 0 256 256"><path d="M208,24H72A32,32,0,0,0,40,56V224a8,8,0,0,0,8,8H192a8,8,0,0,0,0-16H56a16,16,0,0,1,16-16H208a8,8,0,0,0,8-8V32A8,8,0,0,0,208,24Zm-8,160H72a31.82,31.82,0,0,0-16,4.29V56A16,16,0,0,1,72,40H200Z"></path></svg>
           <h1 >ReadApp</h1>
@@ -115,27 +118,27 @@
                     <div class="info">
                         <h3>General</h3>
                         <form class = "formulario-general">
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>nombre</label>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>apellido</label>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>username</label>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>fecha de nacimiento</label>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>email</label>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <input type="text" required>
                                 <label>tiempo de lectura promedio</label>
                             </div>
@@ -208,11 +211,11 @@
                     </div>
 
                     <form id="nuevosInputs" class="noDisplay">
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <label>limite minimo</label><br>
                                 <input type="text" inputmode="numeric" required>
                             </div>
-                            <div class= "textbox-container">
+                            <div class= "campo input__label--effect">
                                 <label>limite maximo</label><br>
                                 <input type="text" inputmode="numeric" required>
                             </div>

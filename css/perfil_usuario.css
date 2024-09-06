@@ -42,4 +42,10 @@
     }
 }
 
+@media screen and (max-width: 400px) {
+    .botones-container {
+        margin-bottom: var(--height-header);
+    }
+}
+
 

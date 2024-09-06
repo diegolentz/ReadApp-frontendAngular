@@ -1,7 +1,7 @@
 .valoraciones {
   align-items: center;
-  width: 100%;
-  margin-bottom: 4.5rem;
+  width: 70%;
+  margin-bottom: var(--height-header);
 }
 
 
@@ -9,4 +9,8 @@
   grid-template-columns: 5.5rem 10rem;
   grid-template-rows: auto;
   justify-content: center;
+}
+
+.valoraciones__individuales{
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 }

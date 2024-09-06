@@ -35,6 +35,6 @@
 
 .opcionSeleccionada__recomendaciones{
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
-
+    grid-auto-rows: min-content;
     justify-items: center;
 }

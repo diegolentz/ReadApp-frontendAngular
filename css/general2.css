@@ -116,6 +116,10 @@ img{
     flex-direction: row; /* VALOR DEFAULT */
 }
 .grid{ display: grid; }
+
+.grid-fullColumn{
+    grid-column: 1/-1;
+}
 /* //////////////////////////////////////////////////// */
 /* MARGINS */
 /* //////////////////////////////////////////////////// */
@@ -223,4 +227,13 @@ hr{
 .centered-items{
     justify-items: center;
     align-items: center;
+}
+
+.centered-child{
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-self{
+    place-self: center;
 }

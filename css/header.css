@@ -10,110 +10,18 @@ header {
     z-index: 1;
 }
 
-.miPerfil {
-    /* UNICAMENTE PARA DROPDOWN */
-    height: 100%;
-    position: relative;
-    
-    & .miPerfil--ir{
-        margin-right: 2rem;
-        color: var(--color-blanco);
-
-        & .hamburguesita--tabletMobile{
-            display: none;
-            width: var(--text-xxl);
-        }
-    } 
-    &:hover{
-        cursor: pointer;
-    }
-}
-.dropdown:hover .dropdown-content {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s linear 0s;
-}
-
-.dropdown-content {
-    width: auto;
-
-    position: absolute;
-    top: 100%;
-    visibility: hidden;  
-    opacity: 0;  
-    background-color: var(--color-searchbar);
-    border-radius: 0 0 1rem 1rem;
-    
-    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
-    & a{
-        & h4{
-            color: var(--color-blanco);
-        }
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .miPerfil {
-        justify-content: center;
-        width: 10rem;
-        & .miPerfil--ir{
-            justify-content: center;
-            & img{
-                display: none;
-            }
-            
-            & h4{
-                display: none;
-            }
-            
-            & .hamburguesita--tabletMobile{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: var();
-            }
-        } 
-    }
-    .dropdown-content{
-        right: 0;
-        justify-items:  center;
-    }
-    
-}
-
-/* MOBILE*/
 @media screen and (max-width: 400px) {
     header{
         position: fixed;
         bottom: 0vh;   
     }
-    .botones-container {
-        margin-bottom: var(--height-header);
-    }
-    .miPerfil {
-        & .miPerfil--ir{
-            width: 15rem;
-            justify-content: center;
-            
-            & img{
-                display: none;
-            }
-            
-            & h4{
-                display: none;
-            }
 
-            & .hamburguesita--tabletMobile{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        } 
-    }
     .dropdown-content{
+        width: 100vw;
         right: 0;
         top: 0rem;
         transform: translateY(-100%);
         border-radius: 1rem 1rem 0 0;
     }
 }
+

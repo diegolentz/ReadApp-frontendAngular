@@ -11,7 +11,13 @@
     height: 3rem;
 }
 
-.estrella-dorada{
+.estrella-dorada {
     width: var(--text-xl);
     height: var(--text-xl);
-  }
+}
+
+.svg-chico {
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
+}

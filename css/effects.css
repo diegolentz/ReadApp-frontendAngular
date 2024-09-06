@@ -1,7 +1,7 @@
 /* EFFECTOS DE SOMBREADOS, ANIMACIONES ,ETC */
 
-/* INPUT text. Trabaja con .textbox-container(padre) > (input, label)(hijos)*/
-div.textbox-container{
+/* INPUT. Trabaja con .input_label--effect(padre) > (input, label)(hijos)*/
+div.input__label--effect{
     & input {
         border-radius: 1rem;
         border-color: var(--color-fondo);
@@ -12,12 +12,14 @@ div.textbox-container{
         text-transform: uppercase;
         pointer-events: none;
         transition: 0.25s;
-        padding: 0.15rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         font-size: var(--text-xs);
         font-weight: normal;
+        position: absolute;
+        left: 1rem;
+        top: 20%;
     }
 
     &   input:focus {
@@ -28,12 +30,13 @@ div.textbox-container{
     /* SI el input es focuseado, o tambien si es valido. SE aplican los estilos al proximo label dentro del mismo container */
     &   input:focus ~ label,
         input:valid ~ label{
-            transform: translateY(-1.5rem);
-            font-size: 0.8em;
-            background-color: var(--color-searchbar);
-            border: solid;
+            transform: translateY(-2rem);
+            font-size: 1em;
+            background-color: var(--color-celeste-oscuro);
+            border: 1px solid;
             border-radius: 1rem;
             border-color: var(--color-searchbar);
+            filter: brightness(110%);
         }
 }
 /* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/

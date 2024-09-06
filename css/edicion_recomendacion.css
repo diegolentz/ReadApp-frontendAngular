@@ -9,16 +9,8 @@
     font-size: var(--text-xl);
 }
 
-.el__titulo{
-    width: 70%;
-    font-size: var(--text-xl);
-}
 
-b{
-    font-size: var(--text-md);
-}
-
-.reseña{
+.resenia{
     width: 70%;
     font-size: var(--text-md);
     border-top: 0;
