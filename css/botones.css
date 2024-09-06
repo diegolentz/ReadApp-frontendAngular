@@ -17,11 +17,10 @@
 }
 
 .btn__background--cancel {
-
   background-color: var(--color-cancel);
   filter: brightness(90%);
   color: aliceblue;
-  
+
   &:hover {
     color: aliceblue;
     background-color: var(--color-cancel);
@@ -30,10 +29,13 @@
 }
 
 .btn__background--save {
-  
-  background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
+  background: linear-gradient(
+    to bottom,
+    var(--color-save),
+    var(--color-save-gradient)
+  );
   filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
-  
+
   &:hover {
     filter: brightness(140%);
   }
@@ -70,13 +72,11 @@
   align-content: center;
 }
 
-
-
 .justified__content {
   justify-content: center;
 }
 
-.btn__verMas{
+.btn__verMas {
   /* padding: 0.5rem var(--text-xxs); */
   width: 100%;
   text-align: center;
@@ -124,8 +124,7 @@
   border-radius: 50%;
 }
 
-
-.agregarOLD{
+.agregarOLD {
   border-radius: 50%;
   width: 7rem;
   height: 7rem;
@@ -134,4 +133,17 @@
   border: 2px solid black;
   font-size: var(--text-xl);
   cursor: pointer;
+}
+
+.botones-container {
+  height: var(--height-header);
+  width: 100%;
+  background-color: var(--color-fondo);
+}
+
+@media screen and (max-width: 400px) {
+  .botones-container {
+    margin-bottom: var(--height-header);
+    justify-content: center;
+  }
 }
