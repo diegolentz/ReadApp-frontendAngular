@@ -21,14 +21,7 @@
     text-align: center;
 }
 
-.botones-container{
-    height: var(--height-header);
-    width: 100%;
 
-    justify-content: center;
-
-    background-color: var(--color-fondo);
-}
 
 @media screen and (max-width: 768px) {
     .perfil-usuario{
@@ -42,10 +35,6 @@
     }
 }
 
-@media screen and (max-width: 400px) {
-    .botones-container {
-        margin-bottom: var(--height-header);
-    }
-}
+
 
 
