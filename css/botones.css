@@ -7,12 +7,12 @@
 }
 
 .btn-secundario {
-
   font-size: var(--text-md);
   border: 1px solid var(--color-cancel);
   background-color: var(--color-fondo);
   filter: brightness(90%);
   
+
   &:hover {
     color: aliceblue;
     background-color: var(--color-cancel);
@@ -20,12 +20,12 @@
   }
 }
 
+
 .btn-principal {
-  
   font-size: var(--text-md);
   background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
   filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
-  
+
   &:hover {
     filter: brightness(140%);
   }
@@ -62,13 +62,11 @@
   align-content: center;
 }
 
-
-
 .justified__content {
   justify-content: center;
 }
 
-.btn__verMas{
+.btn__verMas {
   /* padding: 0.5rem var(--text-xxs); */
   width: 100%;
   text-align: center;
@@ -114,3 +112,17 @@
   box-shadow: 1px 2px 4px rgb(24, 23, 23);
   border-radius: 50%;
 }
+
+.botones-container {
+  height: var(--height-header);
+  width: 100%;
+  background-color: var(--color-fondo);
+}
+
+@media screen and (max-width: 400px) {
+  .botones-container {
+    margin-bottom: var(--height-header);
+    justify-content: center;
+  }
+}
+
