@@ -6,21 +6,12 @@
   border: none;
 }
 
-.btn-principal {
-  height: 4.5rem;
-  font-size: var(--text-sm);
-}
-
 .btn-secundario {
-  height: 4rem;
-  font-size: var(--text-xs);
-}
 
-.btn__background--cancel {
-
-  background-color: var(--color-cancel);
+  font-size: var(--text-md);
+  border: 1px solid var(--color-cancel);
+  background-color: var(--color-fondo);
   filter: brightness(90%);
-  color: aliceblue;
   
   &:hover {
     color: aliceblue;
@@ -29,8 +20,9 @@
   }
 }
 
-.btn__background--save {
+.btn-principal {
   
+  font-size: var(--text-md);
   background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
   filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
   
@@ -117,21 +109,8 @@
   color: white;
   border: none;
   padding: 5px;
-  font-size: 4rem;
-  height: 6rem;
-  width: 6rem;
+  height: 5rem;
+  width: 5rem;
   box-shadow: 1px 2px 4px rgb(24, 23, 23);
   border-radius: 50%;
-}
-
-
-.agregarOLD{
-  border-radius: 50%;
-  width: 7rem;
-  height: 7rem;
-  background-color: white;
-  color: black;
-  border: 2px solid black;
-  font-size: var(--text-xl);
-  cursor: pointer;
 }

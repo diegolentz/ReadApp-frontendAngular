@@ -4,12 +4,6 @@
     height: 2.5rem;
 }
 
-.svg-clasic-heart {
-    align-items: center;
-    width: 3.4rem;
-    height: 3rem;
-}
-
 .estrella-dorada {
     width: var(--text-xl);
     height: var(--text-xl);
