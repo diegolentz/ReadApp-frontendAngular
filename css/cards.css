@@ -1,7 +1,7 @@
 .layout-cards {
-    width: 100%;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
-    grid-auto-rows: min-content;
+    width: 70%;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 0.7fr));
+    grid-auto-rows: 30rem;
     justify-content: center;
 }
 .recomendacion{
@@ -23,8 +23,12 @@
 }
 
 .recomendacion__libros{ 
+    grid-template-columns: repeat(2, 1fr);
     & .libro-recomendado{
-        padding-left: 1rem;
         align-items: center;
     }
+}
+
+.recomendacion__datos{
+    justify-content: space-around;
 }

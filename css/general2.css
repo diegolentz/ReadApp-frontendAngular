@@ -237,3 +237,7 @@ hr{
 .centered-self{
     place-self: center;
 }
+
+.border{
+    border-bottom: 2px solid grey;
+}
