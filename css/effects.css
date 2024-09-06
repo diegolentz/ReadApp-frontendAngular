@@ -19,7 +19,7 @@ div.input__label--effect{
         font-weight: normal;
         position: absolute;
         left: 1rem;
-        top: 20%;
+        top: 28%;
     }
 
     &   input:focus {
@@ -32,7 +32,7 @@ div.input__label--effect{
         input:valid ~ label{
             transform: translateY(-2rem);
             font-size: 1em;
-            background-color: var(--color-celeste-oscuro);
+            background-color: var(--color-searchbar);
             border: 1px solid;
             border-radius: 1rem;
             border-color: var(--color-searchbar);
@@ -41,7 +41,6 @@ div.input__label--effect{
 }
 /* INPUT radio . Trabaja con label.radiobox-input(padre) > input(hijo)*/
 label.radiobox-input, label.checkbox-input{
-    font-size: var(--text-sm);
     gap: 2rem;
     background-color: var(--color-celeste-claro);
     filter: brightness(95%);
@@ -50,7 +49,6 @@ label.radiobox-input, label.checkbox-input{
     transition: background 0.1s;
 
     &:has(> input:checked){
-        text-transform: uppercase;
         background-color: var(--color-celeste-oscuro);
         color: whitesmoke;
         filter: brightness(100%);

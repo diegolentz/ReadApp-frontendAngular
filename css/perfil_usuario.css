@@ -13,10 +13,12 @@
 
     overflow-y: auto;
 }
+
 .foto{
     width: 12rem;
     height: 12rem;
 }
+
 .nombre{
     text-align: center;
 }
