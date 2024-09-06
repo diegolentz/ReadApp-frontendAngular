@@ -4,11 +4,6 @@
 
 .resenia{
     font-size: var(--text-md);
-    border-top: 0;
-    border-left: 0;
-    border-right: 0;
-    border-bottom: 1px;
-    border-style: solid;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
 
@@ -19,12 +14,13 @@
   }
 
 
-  
   .contenedorTitulo{
     display: flex;
     flex-direction: row;
     position: relative;
     margin-top: 3rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
     
     & svg{
         position: absolute;
@@ -32,13 +28,12 @@
         cursor: pointer;
         fill: blue;
     }
-
-    & input{
-      width: 70vw;
-      height: 3rem;
-      margin-bottom: 1rem;
-    }
-
   }
 
+.input-titulo {
+  width: 55vw;
+  height: 3rem;
+  outline: none;
+  border-radius: 1rem;
+}
   

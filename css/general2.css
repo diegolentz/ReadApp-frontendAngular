@@ -242,6 +242,10 @@ hr{
     place-self: center;
 }
 
+.justificado-cuadrado{
+    text-align: justify;
+}
+
 .border{
     border-bottom: 2px solid grey;
 }
