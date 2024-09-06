@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../css/botones.css" />
     <link rel="stylesheet" href="../css/effects.css" />
     <link rel="stylesheet" href="../css/opcion.css" />
+  
   </head>
 
   <body>
@@ -85,9 +86,15 @@
       </div>
     </header>
     <main class="contenedor_edicion_recomendacion">
-      <div class="contenedorTitulo gap-xs">
-        <input type="text" placeholder="Titulo recomendacion" />
+
+      <div class="contenedorTitulo gap-md">
+        <input class="input-titulo" type="text" placeholder="  Titulo de la recomendacion"/>
+        <label class ="flex-row centered-items gap-xs">
+          <input type="checkbox">
+          <h5>Visibilidad privada</h5>
+        </label>
       </div>
+      
       <h2>Libros a leer</h2>
       <section class="busquedaLibros">
         <article class="grid libro gap-md padding-md hover-boxshadow">
@@ -510,16 +517,13 @@
         </article>
       </section>
 
-      <div class="resenia">
+      <div class="resenia flex-column gap-md">
         <h2>Reseña</h2>
         <input
           type="text"
-          class="campo"
-          placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-        sapiente vitae omnis blanditiis cum similique illo veniam vel
-        inventore quas aspernatur eius eaque consequuntur at, minima
-        repellendus vero dolores. Laudantium."
+          placeholder="  Escriba aqui una reseña"
         />
+        <hr>
       </div>
 
       <div class="valoraciones">
@@ -550,7 +554,24 @@
                 <h4>09/12/2020</h4>
               </div>
             </div>
-            <p class="text-md">
+            <p class="text-md justificado-cuadrado">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              sapiente vitae omnis blanditiis cum similique illo veniam vel
+              inventore quas aspernatur eius eaque consequuntur at, minima
+              repellendus vero dolores. Laudantium.
+            </p>
+          </article>
+          <article class="flex-column gap-lg padding-md">
+            <div class="grid perfil-valoracion gap-md">
+              <img class="centered-self" src="../images/roman.jpg" alt="" />
+              <div class="datos">
+                <h4>Juanro Man</h4>
+                <h4>4.5/5</h4>
+                <h4>09/12/2020</h4>
+              </div>
+            
+            </div>
+            <p class="text-md justificado-cuadrado">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
               sapiente vitae omnis blanditiis cum similique illo veniam vel
               inventore quas aspernatur eius eaque consequuntur at, minima
@@ -566,23 +587,7 @@
                 <h4>09/12/2020</h4>
               </div>
             </div>
-            <p class="text-md">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-              sapiente vitae omnis blanditiis cum similique illo veniam vel
-              inventore quas aspernatur eius eaque consequuntur at, minima
-              repellendus vero dolores. Laudantium.
-            </p>
-          </article>
-          <article class="flex-column gap-lg padding-md">
-            <div class="grid perfil-valoracion gap-md">
-              <img class="centered-self" src="../images/roman.jpg" alt="" />
-              <div class="datos">
-                <h4>Juanro Man</h4>
-                <h4>4.5/5</h4>
-                <h4>09/12/2020</h4>
-              </div>
-            </div>
-            <p class="text-md">
+            <p class="text-md justificado-cuadrado">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
               sapiente vitae omnis blanditiis cum similique illo veniam vel
               inventore quas aspernatur eius eaque consequuntur at, minima
@@ -598,10 +603,10 @@
         </section>
       </div>
       <div class="flex-row botones-container gap-lg centered-child">
-        <button class="btn btn-secundario btn__background--cancel">
+        <button class="btn btn-secundario">
           Cancelar
         </button>
-        <button class="btn btn-principal btn__background--save">
+        <button class="btn btn-principal">
           Guardar cambios
         </button>
       </div>
