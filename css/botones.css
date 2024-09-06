@@ -41,6 +41,7 @@
 
 .btn__background--signIn {
   background-color: var(--color-celeste-oscuro);
+
   color: white;
   font-size: var(--text-md);
 
