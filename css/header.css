@@ -1,126 +1,19 @@
 header {
-
     background: linear-gradient(to bottom, var(--color-searchbar),var(--color-header));
     width: 100vw;
-    min-width: 80vw;
+
     height: var(--height-header);
-    display: flex;
-    align-items: center;
+
     justify-content: space-between;
 
     z-index: 1;
 }
-/* UNICO EN HEADER */
-.miPerfil {
-    /* UNICAMENTE PARA COMODIDAD DEL DROPDOWN */
-    height: 100%;
-    position: relative;
-        
-    & .miPerfil--ir{
-        gap: 0.5rem;
-        margin-right: 2rem;
-        height: 100%;
-        
-        & img.fotoPerfil{
-            height: 75%;
-            border: 1px solid orangered;
-            border-radius: 50%;
-        }
-        
-        & p{
-            font-size: var(--text-md);
-            font-weight: bold;
-            color: white;
-        }
-        
-        & .hamburguesita--tabletMobile{
-            display: none;
-            width: var(--text-xxl);
-            fill: white;
-        }
-        
-    } 
-    &:hover{
-        cursor: pointer;
-    }
-}
-.dropdown:hover .dropdown-content {
-    visibility: visible;
-    opacity: 1;
-    transition: opacity 0.5s ease-in-out, visibility 0.5s linear 0s;
-}
 
-.dropdown-content {
-    width: auto;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    gap: 1rem;
-    padding: 2rem 1rem;
-    visibility: hidden;  
-    opacity: 0;  
-    position: absolute;
-    top: 100%;
-    background-color: var(--color-searchbar);
-    border-radius: 0 0 1rem 1rem;
-    
-    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
-}
 
-@media screen and (max-width: 768px) {
-    .miPerfil {
-        & .miPerfil--ir{
-            & img.fotoPerfil{
-                display: none;
-            }
-            
-            & p{
-                display: none;
-            }
-            
-            & .hamburguesita--tabletMobile{
-                display: flex;
-            }
-        } 
-    }
-    .dropdown-content{
-        right: 0;
-        justify-items:  center;
-    }
-    
-}
-
-/* MOBILE*/
 @media screen and (max-width: 400px) {
     header{
         position: fixed;
         bottom: 0vh;   
     }
-    .botones-container {
-        margin-bottom: var(--height-header);
-    }
-    .miPerfil {
-        & .miPerfil--ir{
-            & img.fotoPerfil{
-                display: none;
-            }
-            
-            & p{
-                display: none;
-            }
-            & b {
-                font-size: 0.5rem;
-            }
-            & .hamburguesita--tabletMobile{
-                display: flex;
-            }
-        } 
-    }
-    .dropdown-content{
-        width: 100vw;
-        right: 0;
-        top: 0rem;
-        transform: translateY(-100%);
-        border-radius: 1rem 1rem 0 0;
-
-    }
 }
+

@@ -4,6 +4,10 @@ nav {
     width: 100vw;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* min-width: 30rem; */
+
     gap:  1rem 0;
     padding: 1rem 0;
 }
@@ -51,6 +55,5 @@ nav {
         height : var(--text-lg);
         width:  var(--text-lg);
         fill: white;
-      
     }
 }

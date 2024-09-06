@@ -1,46 +1,16 @@
 .valoraciones {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 100%;
-  margin-bottom: 4.5rem;
-}
-
-.valoraciones__header{
   width: 70%;
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  font-size: var(--text-xl);
+  margin-bottom: var(--height-header);
 }
 
-.estrella-dorada{
-  width: var(--text-xl);
-  height: var(--text-xl);
-}
-
-.valoracion-card{
-  height: max-content;
-  width: minmax(30rem, 60rem);
-}
 
 .perfil-valoracion{
-  display: grid;
-  grid-template-columns: 8rem 10rem;
-  grid-template-rows: 2rem 2rem 2rem;
+  grid-template-columns: 5.5rem 10rem;
+  grid-template-rows: auto;
   justify-content: center;
 }
 
-.foto-perfil-valoracion{
-  height: 6rem;
-  width:  6rem;
-  border-radius: 50%;
-  display: block;
-  margin: auto;
-}
-
-.contenido-valoracion{
-  padding-left: 1rem;
-  font-size: var(--text-sm);
-  text-align:justify ;
+.valoraciones__individuales{
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 }

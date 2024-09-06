@@ -39,7 +39,20 @@
   }
 }
 
-.btn__background--login {
+.btn__background--signIn {
+  background-color: var(--color-celeste-oscuro);
+
+  color: white;
+  font-size: var(--text-md);
+
+  &:hover {
+    filter: brightness(140%);
+    opacity: 0.8;
+    color: black;
+    font-weight: bold;
+  }
+}
+.btn__background--createAccount {
   background-color: var(--color-save);
   color: white;
   font-size: var(--text-md);
@@ -51,40 +64,26 @@
     font-weight: bold;
   }
 }
-
 .centered-inlineGrid {
   display: inline-grid;
   justify-content: center;
   align-content: center;
 }
 
-/* .agregar__amigo {
-  & i {
-    grid-column: 1/-1;
-    grid-row: 1/-1;
 
-    color: wheat;
-    cursor: pointer;
-  }
-}
-
-.agregar__libro {
-  width: 5rem;
-  height: 5rem;
-
-  align-self: center;
-
-  cursor: pointer;
-  margin: auto;
-} */
 
 .justified__content {
   justify-content: center;
 }
 
-.css-button-3d--green {
+.btn__verMas{
+  /* padding: 0.5rem var(--text-xxs); */
+  width: 100%;
+  text-align: center;
+}
+
+.btn__3d {
   color: #fff;
-  padding: 0.5rem var(--text-xxs);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -93,14 +92,15 @@
   outline: none;
   border-radius: 5px;
   border: none;
+  font-size: 1.5rem;
   background: #80ed99;
   box-shadow: 0 5px #57cc99;
 }
-.css-button-3d--green:hover {
+.btn__3d--green:hover {
   box-shadow: 0 3px #57cc99;
   top: 1px;
 }
-.css-button-3d--green:active {
+.btn__3d--green:active {
   box-shadow: 0 0 #57cc99;
   top: 5px;
 }
@@ -122,4 +122,16 @@
   width: 6rem;
   box-shadow: 1px 2px 4px rgb(24, 23, 23);
   border-radius: 50%;
+}
+
+
+.agregarOLD{
+  border-radius: 50%;
+  width: 7rem;
+  height: 7rem;
+  background-color: white;
+  color: black;
+  border: 2px solid black;
+  font-size: var(--text-xl);
+  cursor: pointer;
 }

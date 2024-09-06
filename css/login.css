@@ -24,54 +24,8 @@
     justify-content: center;
 }
 
-.campo {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    margin-bottom: 0.5rem;
-
-    & label{
-        font-size: var(--text-md);
-        font-weight: bold;
-    }
-
-    & input {
-        height: 4rem;
-        border: 1px solid grey;
-        border-radius: 0.5rem;
-        font-size: var(--text-md);
-        outline: none;
-        padding: 1rem;
-    }
-}
-
-.campo__aclaracion{
-    & .aclaracion{
-        color: var(--color-cancel);
-        display: flex;
-        font-size: var(--text-xs);
-        font-weight: bold;
-    }
-    & .aclaracion svg{
-        fill: var(--color-cancel);
-    }
-}
-.campo--obligatorio{
-    & label:after { content:" *"; color:var(--color-cancel);}
-}
-
-.campo--privado{
-    & .ocultar, .revelar svg{
-        position: absolute;
-        right: 1rem;
-        bottom: 0.2rem;
-        cursor: pointer;
-        fill:var(--color-cancel);
-    }
-}
-
 .registrarse{
-    font-size: var(--text-md);
+    /* font-size: var(--text-lg); */
     font-weight: bold;
     justify-content: center;
     & span{

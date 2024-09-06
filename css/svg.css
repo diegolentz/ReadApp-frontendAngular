@@ -1,6 +1,22 @@
 .svg-clasic {
-    margin: auto;
     align-items: center;
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.svg-clasic-heart {
+    align-items: center;
+    width: 3.4rem;
+    height: 3rem;
+}
+
+.estrella-dorada {
+    width: var(--text-xl);
+    height: var(--text-xl);
+}
+
+.svg-chico {
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
 }

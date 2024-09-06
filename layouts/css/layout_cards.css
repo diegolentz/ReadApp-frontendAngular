@@ -1,9 +1,0 @@
-    .layout-cards{
-        display: grid;
-        gap: 2rem;
-        width: 70%;
-        grid-template-columns: repeat(auto-fit, minmax(min(22rem,30rem), 1.5fr));
-        justify-items: center;
-        align-items: center;
-        margin:3rem auto 8rem;
-    }
