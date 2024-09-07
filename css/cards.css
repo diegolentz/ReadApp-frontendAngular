@@ -1,13 +1,13 @@
 .layout-cards {
-    width: 70%;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 0.7fr));
-    grid-auto-rows: 30rem;
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 0.7fr));
+    grid-auto-rows: 35rem;
     justify-content: center;
 }
 .recomendacion{
     width: 100%;
     height: 100%;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(auto-fit, minmax(9rem,1fr));
 
     background-color:#ffffff;
     border-radius: 1rem;
@@ -16,10 +16,12 @@
 
 .recomendacion__titulo{
     grid-column: 1/3;
+    font-size: x-large;
 }
 
 .recomendacion__descripcion{
-    text-align: justify;
+    font-size: small;
+    line-height: 1.5;
 }
 
 .recomendacion__libros{ 

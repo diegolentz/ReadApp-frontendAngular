@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = form.querySelector('#password').value;
         
         if (username == 'admin' && password == '1234') {
-            window.location.href = '/html/mis_recomendaciones.html';
+            window.location.href = '/html/recomendacionPrincipal.html';
         } else {
             alert('Nombre de usuario o contraseña incorrectos');
         }
