@@ -27,6 +27,9 @@ img.libro__portada{
 }
 
 .libro__contenido{
+    border-radius: 1rem;
+    padding: 1rem;
+    /* border: 1px solid black; */
     grid-area: descripcion;
 
     /* overflow: hidden; */
