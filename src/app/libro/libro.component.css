@@ -23,7 +23,7 @@ img.libro__portada{
     width: 10rem;
     height: 15rem;
     grid-area: portada;
-    border-radius: 0;
+    border-radius: 1rem;
 }
 
 .libro__contenido{
@@ -38,9 +38,8 @@ img.libro__portada{
     & .libro__info{
         & .dato{
             & svg{
-                width: 1.5rem;
-                height: 1.5rem;
-                fill:blue;
+                width: var(--text-xs);
+                height: var(--text-xs);
             }
         }
     }
