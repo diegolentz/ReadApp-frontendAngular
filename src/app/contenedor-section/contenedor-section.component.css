@@ -1,10 +1,11 @@
 /* Este archivo se lee en orden de la siguiente manera: */
-    /* 1 - DIMENSIONES CONTENEDOR   */
-    /* 2 - POSICIONAMIENTO          */
-    /* 3 - DISTRIBUCION ELEMENTOS   */
-    /* 4 - ESTILOS                  */
+/* 1 - DIMENSIONES CONTENEDOR   */
+/* 2 - POSICIONAMIENTO          */
+/* 3 - DISTRIBUCION ELEMENTOS   */
+/* 4 - ESTILOS                  */
 
-    /*  */
+/*  */
+
     .opcionSeleccionada{
         width: 100%;
     
