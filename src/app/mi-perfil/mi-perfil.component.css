@@ -1,3 +1,198 @@
+.miPerfil {
+    /* UNICAMENTE PARA DROPDOWN */
+    height: 100%;
+    position: relative;
+    
+    & .miPerfil--ir{
+        margin-right: 2rem;
+        color: var(--color-blanco);
+
+        & .hamburguesita--tabletMobile{
+            display: none;
+            width: var(--text-xxl);
+        }
+    } 
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .miPerfil {
+        justify-content: center;
+        width: 10rem;
+        & .miPerfil--ir{
+            justify-content: center;
+            & img{
+                display: none;
+            }
+            
+            & h4{
+                display: none;
+            }
+            
+            & .hamburguesita--tabletMobile{
+                display: flex;
+            }
+        } 
+    }
+}
+
+@media screen and (max-width: 400px) {
+
+    .miPerfil {
+        & .miPerfil--ir{
+  
+            & img{
+                display: none;
+            }
+            
+            & h4{
+                display: none;
+            }
+
+            & .hamburguesita--tabletMobile{
+                display: flex;
+            }
+        } 
+    }
+}
+
+
+
+
+/*svg*/
+.svg-clasic {
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.estrella-dorada {
+    width: var(--text-xl);
+    height: var(--text-xl);
+}
+
+.svg-chico {
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
+}
+
+
+
+/* Este archivo se lee en orden de la siguiente manera: */
+    /* 1 - DIMENSIONES CONTENEDOR   */
+    /* 2 - POSICIONAMIENTO          */
+    /* 3 - DISTRIBUCION ELEMENTOS   */
+    /* 4 - ESTILOS                  */
+
+    .perfil-usuario{
+        /* header y botones-container mismo height, por eso el *2*/
+        height: calc(100vh - var(--height-header)*2);
+        width: 100%;
+        
+        padding-bottom: 0;
+    
+        overflow-y: auto;
+    }
+    
+    .foto{
+        width: 12rem;
+        height: 12rem;
+    }
+    
+    .nombre{
+        text-align: center;
+    }
+    
+    
+    
+    @media screen and (max-width: 768px) {
+        .perfil-usuario{
+            height: auto;
+            
+            padding:    calc(var(--perfilUsuario-default)/2)
+                        calc(var(--perfilUsuario-default)/2)
+                        0rem;
+            gap: calc(var(--perfilUsuario-default)/2) ;
+            flex-direction: column;
+        }
+    }
+    
+    
+    
+    .opcion{
+        border-radius: 0.5rem;
+        background-color: var(--color-header);
+        cursor: pointer;
+        & h4{
+            text-align: center;
+        }
+    }
+    
+    /* ////////////////////////////////////////////////////////////////////// */
+    /* ////////////////////////////////////////////////////////////////////// */
+    /* ////////////////////////////////////////////////////////////////////// */
+    /* .opcion--dropdown TRABAJA ASI */
+    /*
+                    <a href="/html/perfilUsuario_info.html" class="opcion opcion--perfilUsuario">
+                        <i class="ph ph-info-bold"></i>
+                        <p>Informacion</p>
+                    </a>
+    */
+    .opcion--dropdown{
+        width: 100%;
+        justify-content: center;
+    
+        & svg{
+            /* OCULTA EL ICONO, DEJA EL */
+            display: none;
+        }
+    }
+
+    /* Este archivo se lee en orden de la siguiente manera: */
+    /* 1 - DIMENSIONES CONTENEDOR   */
+    /* 2 - POSICIONAMIENTO          */
+    /* 3 - DISTRIBUCION ELEMENTOS   */
+    /* 4 - ESTILOS                  */
+
+    /*  */
+.opcionSeleccionada{
+    width: 100%;
+
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 2rem;
+}
+
+.opcionSeleccionada__contenido{
+    height: 100%;
+
+    overflow-y: scroll;
+}
+
+.opcionSeleccionada__amigos{
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 0.8fr));
+    grid-auto-rows: minmax(auto, 6rem);
+
+    justify-content: center;
+}
+
+.opcionSeleccionada__libros{
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 30rem), 0.8fr));
+    grid-auto-rows: 20rem;
+    
+    justify-content: center;
+}
+
+.opcionSeleccionada__recomendaciones{
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
+    grid-auto-rows: 30rem;
+    justify-items: center;
+}
+
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap'); /* Consultar si importarla o linkearla*/
 /* Typography | Global */
 :root {
@@ -250,3 +445,4 @@ hr{
 .border{
     border-bottom: 2px solid grey;
 }
+    
