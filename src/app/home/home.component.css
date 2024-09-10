@@ -1,0 +1,12 @@
+.layout-cards {
+    width: 80%;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 0.7fr));
+    grid-auto-rows: 35rem;
+    justify-content: center;
+}
+
+.recomendaciones__container {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 0.7fr));
+    grid-auto-rows: 35rem;
+    justify-content: center;
+}
