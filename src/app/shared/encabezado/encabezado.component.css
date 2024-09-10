@@ -1,0 +1,9 @@
+.encabezado {
+    height: 100%;
+    cursor: pointer;
+    & h1{      
+        font-size: var(--text-xxl);
+        color: var(--color-blanco);
+        font-family: var(--fuente-default);
+    }
+}
