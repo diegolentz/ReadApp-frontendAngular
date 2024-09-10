@@ -104,6 +104,7 @@ img{
     border-radius: 50%;
 }
 
+
 /* //////////////////////////////////////////////////// */
 /* DISPLAYS */
 /* //////////////////////////////////////////////////// */
@@ -249,4 +250,21 @@ hr{
 
 .border{
     border-bottom: 2px solid grey;
+}
+
+.svg-clasic {
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+.estrella-dorada {
+    width: var(--text-xl);
+    height: var(--text-xl);
+}
+
+.svg-chico {
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
 }
