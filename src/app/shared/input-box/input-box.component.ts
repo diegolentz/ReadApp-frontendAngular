@@ -11,4 +11,5 @@ import { CommonModule } from '@angular/common';
 export class InputBoxComponent {
   @Input() inputType:string = 'radiobox-input';
   @Input() label:string = '';
+  @Input() name:string = '';
 }
