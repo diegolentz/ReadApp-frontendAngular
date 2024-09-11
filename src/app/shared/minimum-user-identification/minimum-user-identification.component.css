@@ -1,0 +1,9 @@
+
+h4{
+    width: fit-content;
+    height: auto;
+}
+.centered-self{
+    justify-self: center;
+    align-self: center;
+}
