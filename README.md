@@ -25,3 +25,54 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+login
+
+login contenedor
+inputs
+// si hay tiempo ingresar y crear cuenta y olvidaste contraseña
+
+header
+componenetes de la derecha
+
+nav
+input reutilizable
+check 
+
+-recomendaciones
+estrella libros reloj
+dar like
+eliminar
+
+-recomendacion loca
+view layout libros ? detalle / edicion
+mundito
+layout libros
+valoracion
+boton agregar +
+
+-edicion recomendacion
+sin mundito
+certificado -> leido
+fuegito -> libro a leer
+boton guardar
+boton cancelar
+
+-detalle recomendacion
+boton volver 
+
+-busqueda libro
+(2 acciones)
+
+-perfil
+terminar layout 
+componentes de panel del perfil
+y renderizado derecha
+
+amigos ultra reutilizable
+
+
+
+
