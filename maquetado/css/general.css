@@ -220,7 +220,7 @@ hr {
 
 
 /* llevar a componentes */
-/* img {
+img {
     width: var(--image-small);
     height: var(--image-small);
     border-radius: 50%;
@@ -304,4 +304,4 @@ hr {
 
 .border {
     border-bottom: 2px solid grey;
-} */
+}
