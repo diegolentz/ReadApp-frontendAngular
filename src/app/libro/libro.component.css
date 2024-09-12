@@ -1,9 +1,12 @@
 article{
-    max-width: 35rem;
+    max-width: 38rem;
     height: auto;
     border-radius: var(--borde-default);
     display: grid;
-    gap: var(--space-md);
+
+    gap: var(--space-xs);
+    
+    /* margin: 3rem; */
     padding: var(--space-md);
     
     &:hover{
@@ -22,9 +25,10 @@ article{
 
 .libro__portada{
     width: 10rem;
-    height: 15rem;
+    height: auto;
     grid-area: portada;
     border-radius: 1rem;
+    margin: auto;
 }
 
 .libro__contenido{
@@ -44,14 +48,18 @@ article{
         & .dato{
             display: flex;
             flex-direction: row; 
-            justify-items: center;
+            flex-wrap: wrap;
+            /* justify-items: left; */
             align-items: center;
             gap: var(--space-xs);
             margin: var(--space-xs);
+            & p {
+            font-size:var(--text-xs) ;
 
+        }
             & svg{
-                width: var(--text-xs);
-                height: var(--text-xs);
+                width: 1.5rem;
+                height: 1.5rem;
             }
         }
     }
