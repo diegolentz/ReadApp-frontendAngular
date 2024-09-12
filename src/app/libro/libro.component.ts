@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { BotoneraLibroComponent } from '../botonera-libro/botonera-libro.component';
 
 @Component({
   selector: 'app-libro',
   standalone: true,
-  imports: [],
+  imports: [BotoneraLibroComponent],
   templateUrl: './libro.component.html',
   styleUrl: './libro.component.css'
 })
