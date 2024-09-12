@@ -57,18 +57,3 @@ article{
     }
 }
 
-.libro__acciones{
-    grid-area: acciones;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-
-    & .accion{
-        cursor: pointer;
-        background: transparent;
-        border: none;
-        &:hover{
-            filter: drop-shadow(var(--color-hover-acciones));
-        }
-    }
-}
