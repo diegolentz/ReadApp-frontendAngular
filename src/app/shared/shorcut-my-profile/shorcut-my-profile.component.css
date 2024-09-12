@@ -1,0 +1,8 @@
+.user__profile-shortcut{
+    height: 100%;
+    margin-right: 2rem;
+
+    & svg {
+        fill: white;
+    }
+}

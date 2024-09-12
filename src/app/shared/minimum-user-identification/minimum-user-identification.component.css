@@ -1,9 +1,7 @@
 
-h4{
-    width: fit-content;
-    height: auto;
+.user__identification{
+    height: 100%;
+
+    color: white;
 }
-.centered-self{
-    justify-self: center;
-    align-self: center;
-}
+
