@@ -39,7 +39,7 @@ componenetes de la derecha
 
 nav
 input reutilizable
-check 
+
 
 -recomendaciones
 estrella libros reloj

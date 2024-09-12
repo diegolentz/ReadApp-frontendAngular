@@ -1,6 +1,6 @@
 article{
     max-width: 35rem;
-    height: 100%;
+    height: auto;
     border-radius: var(--borde-default);
     display: grid;
     gap: var(--space-md);
