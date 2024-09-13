@@ -142,21 +142,6 @@ div.input__label--effect{
         }
 }
 
-label.radiobox-input, label.checkbox-input{
-    gap: 2rem;
-    background-color: var(--color-celeste-claro);
-    filter: brightness(95%);
-    cursor: pointer;
-    border-radius: 0.5rem;
-    transition: background 0.1s;
-
-    &:has(> input:checked){
-        background-color: var(--color-celeste-oscuro);
-        color: whitesmoke;
-        filter: brightness(100%);
-        filter: drop-shadow(1px 2px 4px rgb(24, 23, 23));
-    }
-}
 
 input:invalid {
     border:1px solid red;

@@ -7,7 +7,7 @@
     .perfil-usuario{
         /* header y botones-container mismo height, por eso el *2*/
         height: calc(100vh - var(--height-header)*2);
-        width: 100%;
+        width: 80vw;
         
         padding-bottom: 0;
     

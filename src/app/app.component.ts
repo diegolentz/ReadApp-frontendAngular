@@ -7,11 +7,13 @@ import { ResenaComponent } from './resena/resena.component';
 import {ValoracionComponent} from './valoracion/valoracion.component'
 import { NavComponent } from './nav/nav.component';
 import { BotoneraLibroComponent } from './botonera-libro/botonera-libro.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,NavComponent,ResenaComponent,BotoneraLibroComponent, AmigosComponent, ContenedorSectionComponent,ValoracionComponent,LibroComponent],
+  imports: [RouterOutlet,NavComponent,MiPerfilComponent,HeaderComponent,ResenaComponent,BotoneraLibroComponent, AmigosComponent, ContenedorSectionComponent,ValoracionComponent,LibroComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
