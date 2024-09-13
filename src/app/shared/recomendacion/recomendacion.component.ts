@@ -10,5 +10,5 @@ import { NgFor } from '@angular/common';
 })
 export class RecomendacionComponent{
     //Late init
-    @Input() recomendacion!:Recomendacion 
+    @Input() recomendacion!:Recomendacion
 }
