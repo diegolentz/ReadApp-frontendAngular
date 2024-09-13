@@ -10,6 +10,7 @@ import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component'
   styleUrl: './shorcut-my-profile.component.css'
 })
 export class ShorcutMyProfileComponent {
+  displayShorcut = true
   users = [
     new User('','Phillipe Petank','ElPhilly95')
   ]

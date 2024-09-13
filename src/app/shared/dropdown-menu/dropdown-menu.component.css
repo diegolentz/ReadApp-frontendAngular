@@ -1,15 +1,20 @@
 .dropdown-content {
-    width: auto;
-
     position: absolute;
     top: 100%;
-    visibility: hidden;  
-    opacity: 0;  
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    padding: var(--space-md);
+
     background-color: var(--color-searchbar);
+
     border-radius: 0 0 1rem 1rem;
-    gap: 1rem;
-    
-    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+ 
     & a{
         & h4{
             color: var(--color-blanco);

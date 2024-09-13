@@ -1,0 +1,20 @@
+.option{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+
+    background-color: var(--color-header);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    & svg{
+        width: var(--space-lg);
+        height: auto;
+    }
+
+    /* &:hover{
+        box-shadow: var(--shadow-elevation-high);
+    } */
+}

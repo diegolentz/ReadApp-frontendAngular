@@ -1,14 +1,5 @@
-<div class="flex-column dropdown-content gap-lg padding-lg">
-    <a href="../html/perfilUsuario_info.html" class="flex-row padding-sm opcion opcion--dropdown opcion__effect--hover">
-      <h4>Mi perfil</h4>
-    </a>
-    <a href="../html/mis_recomendaciones.html" class="flex-row padding-sm opcion opcion--dropdown opcion__effect--hover">
-      <h4>Buscar recomendaciones</h4>
-    </a>
-    <a href="../html/busqueda_libros.html" class="flex-row padding-sm opcion opcion--dropdown opcion__effect--hover">
-      <h4>Buscar libros</h4>
-    </a>
-    <a href="../html/login.html" class="flex-row padding-sm opcion opcion--dropdown opcion__effect--hover">
-        <h4>Cerrar sesion</h4>
-      </a>
+<div class="dropdown-content" *ngIf="show">
+    <div *ngFor="let option of options_shortcutMenu">
+        <app-option [option]="option"></app-option>
+    </div>
 </div>
