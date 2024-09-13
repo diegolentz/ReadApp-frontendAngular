@@ -57,14 +57,12 @@
                 <app-input-box inputType="checkbox" label="Nativista" ></app-input-box>
                 <app-input-box inputType="checkbox" label="Poliglota" ></app-input-box>
                 <app-input-box inputType="checkbox" label="Experimentado" ></app-input-box>
-                <label class="checkbox-input">
-                    <input type="checkbox" id="myCheck" onclick="myFunction()">
-                    <h4 class="normal-font">Calculador</h4>
-                </label>
+                <app-input-box inputType="checkbox" label="Calculador" (change)="mostrarCalculador.show()" ></app-input-box>
+                
             </form>
         </div>
 
-        <form id="nuevosInputs" class="noDisplay">
+        <form id="nuevosInputs" *ngIf="mostrarCalculador.mostrar">
             <div class="campo">
                 <label>LIMITE MINIMO</label>
                 <input type="text" inputmode="numeric" required>
