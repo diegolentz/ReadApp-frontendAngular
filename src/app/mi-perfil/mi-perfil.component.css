@@ -8,9 +8,11 @@
         /* header y botones-container mismo height, por eso el *2*/
         height: calc(100vh - var(--height-header)*2);
         width: 80vw;
-        
+        display: flex;
+        flex-direction: row;
         padding-bottom: 0;
-    
         overflow-y: auto;
+        gap: var(--space-xl);
+        padding: var(--space-xl);
     }
     

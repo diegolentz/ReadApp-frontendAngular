@@ -13,3 +13,6 @@ export class InputBoxComponent {
   @Input() label:string = '';
   @Input() name:string = '';
 }
+
+
+
