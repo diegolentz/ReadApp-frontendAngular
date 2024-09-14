@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AmigosComponent } from "../amigos/amigos.component";
 import { NgFor } from '@angular/common';
 import { HostBinding } from '@angular/core';
@@ -15,6 +15,7 @@ import { HeaderComponent } from "../shared/header/header.component";
 })
 export class ContenedorSectionComponent {
   @HostBinding('style.width') width: string = '100%';
+  @Input() titulos!: string[]
   amigos = [
     new Amigo("icono.jpg", "Inosuke Hashibira", "inosukehashibira@gmail.com"),
     new Amigo("ippo.jpeg", "Ippo Makunouchi ", "ippomakunouchi90@hotmail.com"),
