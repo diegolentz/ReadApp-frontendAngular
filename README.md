@@ -76,3 +76,6 @@ amigos ultra reutilizable
 
 
 
+SELECT MIN(cant_paginas) FROM libros;
+
+

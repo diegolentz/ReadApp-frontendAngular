@@ -1,5 +1,7 @@
-
 .amigo{
+    display: grid;
+    padding: 0.5rem;
+    gap: 1rem;
     grid-template-columns: 0.25fr 1fr 0.25fr;
     border-radius: calc(var(--borde-default)/2);
     background-color: var(--color-hover-amigos);
@@ -19,12 +21,16 @@
         cursor: pointer;
     }
     & .amigo__nombre{
+        font-size: 1.5rem;
+        font-weight: bold;
         align-content: end;
         width: fit-content;
     }
 }
 
-.centered-self{
-    justify-self: center;
-    align-self: center;
+.hover-delete{
+    &:hover{
+        border-radius: 0.3rem;
+        background-color: var(--color-cancel);
+    }
 }
