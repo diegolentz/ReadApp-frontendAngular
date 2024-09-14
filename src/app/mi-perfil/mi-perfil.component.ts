@@ -15,6 +15,12 @@ import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
   styleUrl: './mi-perfil.component.css'
 })
 export class MiPerfilComponent {
-  
+  opcionesPerfil = [
+    new Option('information.svg','Informacion', '#208544', ''),
+    new Option('amigos.svg','Amigos', '#203885', ''),
+    new Option('librosLeidos.svg','Libros leidos', '#822085', ''),
+    new Option('librosALeer.svg','libros a leer', '#33d2c8', ''),
+    new Option('recomendacionesAValorar.svg','Recomendaciones a valorar', 'ff0000', '')
+  ]
   
 }

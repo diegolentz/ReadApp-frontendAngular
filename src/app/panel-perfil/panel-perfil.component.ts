@@ -12,16 +12,8 @@ import { OptionComponent } from '../shared/option/option.component';
 })
 export class PanelPerfilComponent {
   // panel = new PerfilUsuario()
-  // @Input() opciones!: Array<Option>
-  titulos = [
-    
-    new Option('information.svg','Informacion', 'white', ''),
-    new Option('amigos.svg','Amigos', 'white', ''),
-    new Option('librosLeidos.svg','Libros leidos', 'white', ''),
-    new Option('librosALeer.svg','libros a leer', 'white', ''),
-    new Option('recomendacionesAValorar.svg','Recomendaciones a valorar', 'white', '')
-
-  ]
+  @Input() opciones!: Option[]
+  
 }
 
   
