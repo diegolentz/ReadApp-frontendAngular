@@ -1,7 +1,9 @@
 
 <section class="opcionSeleccionada">
     <h2>parametrizar campo</h2>
-    <div class="opcionSeleccionada__contenido opcionSeleccionada__libros">
-        <ng-content></ng-content>
+    <div class="opcionSeleccionada__amigos opc">
+        <div *ngFor = "let amigo of amigos">
+             <app-amigos [amigo]="amigo"></app-amigos>
+        </div>
     </div>
 </section>

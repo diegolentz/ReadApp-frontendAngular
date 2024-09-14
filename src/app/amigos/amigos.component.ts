@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Amigo } from '../contenedor-section/contenedor-section.component';
 
 @Component({
   selector: 'app-amigos',
@@ -10,14 +11,8 @@ import { Component, input } from '@angular/core';
 
 export class AmigosComponent {
   title = 'Amigo'
-  amigo = new Amigo
+  @Input() amigo!:Amigo
 
 }
 
-class Amigo {
-  imagen = 'icono.jpg'
-  nombre = 'Inosuke Hashibira'
-  mail   = 'inosukehashibira@gmail.com'
-
-}
 

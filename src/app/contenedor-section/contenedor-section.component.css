@@ -8,31 +8,27 @@
 
     .opcionSeleccionada{
         width: 100%;
-        
         display: flex;
         flex-direction: column;
-        padding: var(--space-md);
+        padding: 2rem;
         border: 1px solid rgb(168, 167, 167);
-        gap: var(--space-lg);
+        gap:2rem;
         border-radius: 2rem;
+        
     }
-
     
     .opcionSeleccionada__contenido{
-        height: 100%;
         display: grid;
         gap: var(--space-lg);
-    
-        overflow-y: scroll;
-        
+        overflow-y: scroll;   
     }
     
     
     .opcionSeleccionada__amigos{
-        grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 0.8fr));
-        grid-auto-rows: minmax(auto, 6rem);
-    
+        display: grid;
         justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(min(30rem,100% ), 1fr));
+        gap: 1rem;
     }
     
     .opcionSeleccionada__libros{
