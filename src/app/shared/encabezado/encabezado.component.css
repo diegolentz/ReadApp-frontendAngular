@@ -1,9 +1,8 @@
 .encabezado {
     height: 100%;
+
+    display: flex ;
+    align-items: center;
+    
     cursor: pointer;
-    & h1{      
-        font-size: var(--text-xxl);
-        color: var(--color-blanco);
-        font-family: var(--fuente-default);
-    }
 }

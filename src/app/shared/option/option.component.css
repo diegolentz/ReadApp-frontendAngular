@@ -6,14 +6,15 @@
     padding: var(--space-sm);
     gap: var(--space-sm);
 
-    background-color: var(--color-header);
     border-radius: 0.5rem;
     cursor: pointer;
     & svg{
         width: var(--space-lg);
         height: auto;
     }
-
+    
+    /* background-color: var(--color-header); */
+    
     /* &:hover{
         box-shadow: var(--shadow-elevation-high);
     } */
