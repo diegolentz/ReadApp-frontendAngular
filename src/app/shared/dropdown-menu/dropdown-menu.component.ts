@@ -13,21 +13,22 @@ import { OptionComponent } from '../option/option.component';
 export class DropdownMenuComponent {
   @Input() show!:boolean
 
-  options_shortcutMenu = [
-    new Option('profile.svg','My profile', 'white', 'white'),
-    new Option('recomendation.svg','My recommendations', 'white', 'white'),
-    new Option('book.svg','Search books', 'white', 'white'),
-    new Option('log-out.svg','Log out', 'white', 'white'),
-  ]
+  optionLabels = ['My profile', 'My recommendations', 'Search books', 'Log out']
+  svgs = ['profile.svg', 'recomendation.svg', 'book.svg', 'log-out.svg']
+  colorDefault = 'white'
+
+
+  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault));
 }
+
 
 
 export class Option{
   constructor(
+    public label:string,
     public iconPath:string,
-    public name:string,
-    public iconColor:string,
-    public textColor:string
+    public textColor:string,
+    public iconColor:string
   ){}
 }
 
