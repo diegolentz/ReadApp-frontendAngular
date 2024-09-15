@@ -17,7 +17,6 @@ export class DropdownMenuComponent {
   svgs = ['profile.svg', 'recomendation.svg', 'book.svg', 'log-out.svg']
   colorDefault = 'white'
 
-
   options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault));
 }
 
