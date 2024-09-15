@@ -4,6 +4,8 @@ import { NgFor } from '@angular/common';
 import { HostBinding } from '@angular/core';
 
 import { HeaderComponent } from "../shared/header/header.component";  
+import { OptionComponent } from '../shared/option/option.component';
+import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
 
 
 @Component({
@@ -15,7 +17,8 @@ import { HeaderComponent } from "../shared/header/header.component";
 })
 export class ContenedorSectionComponent {
   @HostBinding('style.width') width: string = '100%';
-  @Input() titulos!: string[]
+
+  @Input() opcion!: Option
   amigos = [
     new Amigo("icono.jpg", "Inosuke Hashibira", "inosukehashibira@gmail.com"),
     new Amigo("ippo.jpeg", "Ippo Makunouchi ", "ippomakunouchi90@hotmail.com"),

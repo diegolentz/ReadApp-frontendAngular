@@ -9,7 +9,7 @@
 
     <div class="flex-column gap-md">
         <div *ngFor="let option of opciones">
-            <app-option [option]="option"></app-option>
+            <app-option (click)= "onClick(option)" [option]="option"></app-option>
         </div>
     </div>
 </aside>
