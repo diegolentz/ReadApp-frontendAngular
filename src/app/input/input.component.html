@@ -1,1 +1,8 @@
-<p>input works!</p>
+<!-- estos strings se llenan con la info correspondiente cuando pongamos el html en cada view -->
+
+<input type={{inputType()}} placeholder="placeholder" [(ngModel)]="input.text">
+   <!-- 
+   HAY QUE AGREGAR ESTO CUANDO TENGAMOS QUE EVENTO DESENCADENA EL INPUT
+   (input)="gestionarTipo(type)"
+   Asocia el evento de entrada (input) con el método gestionarTipo para gestionar el valor ingresado.
+   -->

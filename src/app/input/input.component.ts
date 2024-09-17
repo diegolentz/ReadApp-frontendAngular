@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-//importo INPUT
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -10,22 +9,30 @@ import { Component, Input } from '@angular/core';
 })
 
 export class InputComponent {
-    @Input() inputType: 'text' | 'number' = 'text';  // Input para definir el tipo de input, por defecto es 'text'
-    @Input() placeholder: string = '';  // Input opcional para el placeholder
-    @Input() value: string | number = '';  // Input opcional para el valor inicial del input 
 
-    gestionarInput(Tipo: any) : void {
-      Tipo.gestionarTipo()
+input = new Input
+
+  inputType(): Tipos {
+    if (this.input.textType) {
+      return 'Text'
     }
+    if (this.input.numberType) {
+      return 'Number'
+    }
+    return 'Date'
+  }
 }
 
-interface Tipo {
-  gestionarTipo(){}
-}
+class Input {
 
-//hay que hacer una clase para cada input
+  textType = false
+  numberType = false
+  dateType = false
 
-class TextForm implements Tipo {
-  gestionarTipo() {//aca va lo que haga este input
-    }
+  text() { this.textType = true}
+  number() { this.numberType = true}
+  date() { this.dateType = true}
+
 } 
+
+type Tipos = 'Text' | 'Number' | 'Date'
