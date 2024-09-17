@@ -26,25 +26,41 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-
-
-login
-
-login contenedor
-inputs
+LABURADO
 // si hay tiempo ingresar y crear cuenta y olvidaste contraseña
 
-header
-componenetes de la derecha
+login -> DELFI
+    login contenedor
+    inputs
 
-nav
-input reutilizable
+header -> ADRIAN
+    dropdown
+
+nav -> DIEGO
+    input reutilizable
 
 
--recomendaciones
-estrella libros reloj
-dar like
-eliminar
+home(recomendaciones) -> ADRIAN 
+    estrella libros reloj
+    dar like
+    eliminar
+
+
+busqueda libro -> DIEGO
+(2 acciones)
+
+componentes de panel del perfil -> VALEN
+perfil -> VALEN
+perfil-amigos - > PICA
+perfil-libros - > DIEGO
+terminar layout 
+y renderizado derecha
+
+
+
+PENDIENTE 
+SELECT MIN(cant_paginas) FROM libros;
+
 
 -recomendacion loca
 view layout libros ? detalle / edicion
@@ -63,19 +79,4 @@ boton cancelar
 -detalle recomendacion
 boton volver 
 
--busqueda libro
-(2 acciones)
-
--perfil
-terminar layout 
-componentes de panel del perfil
-y renderizado derecha
-
 amigos ultra reutilizable
-
-
-
-
-SELECT MIN(cant_paginas) FROM libros;
-
-
