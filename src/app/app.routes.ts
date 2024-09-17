@@ -13,13 +13,12 @@ export const routes: Routes = [
     {
         path: 'busqueda-libros',
         component : BusquedaLibrosComponent
-    },
-    {
+    },{
         path: 'mi-perfil',
         component: MiPerfilComponent,
+        children: [
+          { path: ':opcion', component: AmigosComponent },
+          { path: '', redirectTo: 'informacion', pathMatch: 'full' },
+        ]
     },
-    {
-        path: 'mi-perfil/:opcion',
-        component: MiPerfilComponent,
-    }
 ];
