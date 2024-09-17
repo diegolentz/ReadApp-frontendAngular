@@ -1,0 +1,15 @@
+<aside class="flex-column gap-xl">
+    <div class="flex-column centered-items gap-md">
+        <img class="foto" src="../images/icono.jpg" />
+        <div class="nombre">
+            <h2>Carlos Salvador Bilardo</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="flex-column gap-md">
+        <div *ngFor="let option of opciones" [routerLink]="['/mi-perfil', option.route]" routerLinkActive="router-link-active">
+            <app-option [option]="option"></app-option>
+        </div>
+    </div>
+</aside>

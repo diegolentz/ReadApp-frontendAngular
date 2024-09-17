@@ -1,0 +1,17 @@
+.libro__acciones{
+    grid-area: acciones;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 2rem;
+
+    & .accion{
+        cursor: pointer;
+        background: transparent;
+        border: none;
+        &:hover{
+            filter: drop-shadow(var(--color-hover-acciones));
+        }
+    }
+}

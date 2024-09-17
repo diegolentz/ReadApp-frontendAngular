@@ -1,0 +1,50 @@
+.botones-container {
+    height: var(--height-header);
+    width: 100%;
+    gap: var(--space-lg);
+    background-color: var(--color-fondo);
+    justify-items: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 400px) {
+    .botones-container {
+        margin-bottom: var(--height-header);
+        justify-content: center;
+    }
+}
+
+.btn {
+    height: 5rem;
+    padding: 0 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-secundario {
+    font-size: var(--text-md);
+    border: 1px solid var(--color-cancel);
+    background-color: var(--color-fondo);
+    filter: brightness(90%);
+
+
+    &:hover {
+        color: aliceblue;
+        background-color: var(--color-cancel);
+        filter: brightness(100%);
+    }
+}
+
+.btn-principal {
+    font-size: var(--text-md);
+    background: linear-gradient(to bottom, var(--color-save),var(--color-save-gradient));
+    filter: drop-shadow(0 0 0.75rem rgb(78, 76, 77));
+  
+    &:hover {
+      filter: brightness(140%);
+    }
+  }

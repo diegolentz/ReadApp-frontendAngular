@@ -1,0 +1,9 @@
+<app-header></app-header>
+
+<main class="grid recomendaciones__container margin-xl padding-md gap-xl">
+    <div *ngFor="let recomendacion of recomendaciones">
+        <app-recomendacion [recomendacion]="recomendacion"></app-recomendacion>
+    </div>
+</main>
+
+

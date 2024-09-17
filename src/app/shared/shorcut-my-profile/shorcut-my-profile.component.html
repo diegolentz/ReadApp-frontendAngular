@@ -1,0 +1,7 @@
+<div class="user__profile-shortcut" (mouseenter)="displayShorcut = !displayShorcut" (mouseleave)="displayShorcut = !displayShorcut">
+    <app-min-user-identification [user]="users[0]"></app-min-user-identification>
+
+    <svg-icon src="svg/burguer.svg" [svgStyle]="{ 'fill': 'white'}"></svg-icon>
+
+    <app-dropdown-menu [show]="displayShorcut"></app-dropdown-menu>
+</div>

@@ -1,0 +1,54 @@
+.gap-md {
+    gap: var(--space-md);
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.centered-items {
+    justify-items: center;
+    align-items: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.normal-font {
+    font-weight: normal;
+}
+
+.foto {
+    width: 12rem;
+    height: 12rem;
+}
+
+.nombre {
+    text-align: center;
+}
+
+
+.effect-shadow-hover {
+    &:hover {
+        text-shadow: 2px 2px 7px black;
+    }
+}
+
+.svg-clasic {
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .perfil-usuario {
+        height: auto;
+
+        padding: calc(var(--perfilUsuario-default)/2) calc(var(--perfilUsuario-default)/2) 0rem;
+        gap: calc(var(--perfilUsuario-default)/2);
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,67 @@
+article{
+    max-width: 38rem;
+    height: auto;
+    border-radius: var(--borde-default);
+    display: grid;
+
+    gap: var(--space-xs);
+    
+    /* margin: 3rem; */
+    padding: var(--space-md);
+    
+    &:hover{
+        box-shadow: var(--shadow-elevation-high);
+    }
+}
+
+.libro {
+    grid-template-areas:
+    "portada descripcion acciones";
+    grid-template-columns: 0.1fr 1.5fr 0.1fr;
+    
+    background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
+    transition: 0.25s;
+}
+
+.libro__portada{
+    width: 10rem;
+    height: auto;
+    grid-area: portada;
+    border-radius: 1rem;
+    margin: auto;
+}
+
+.libro__contenido{
+    grid-area: descripcion;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    border-radius: 1rem;
+    /* overflow: hidden; */
+    
+    & .libro__autor{
+        margin-bottom: 0.2rem;
+        font-size: var(--text-sm);
+    }
+    .libro__info{
+        & .dato{
+            display: flex;
+            flex-direction: row; 
+            flex-wrap: wrap;
+            /* justify-items: left; */
+            align-items: center;
+            gap: var(--space-xs);
+            margin: var(--space-xs);
+            & p {
+            font-size:var(--text-xs) ;
+
+        }
+            & svg{
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+    }
+}
+
