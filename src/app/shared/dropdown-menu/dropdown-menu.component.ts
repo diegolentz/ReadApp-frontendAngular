@@ -17,8 +17,7 @@ export class DropdownMenuComponent {
   optionLabels = ['My profile', 'My recommendations', 'Search books', 'Log out']
   svgs = ['profile.svg', 'recomendation.svg', 'book.svg', 'log-out.svg']
   colorDefault = 'white'
-  route_link = ['mi-perfil','mis-recomendaciones','busqueda-libros','login']
-  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault, this.route_link[i]));
+  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault));
 }
 
 
@@ -28,8 +27,7 @@ export class Option{
     public label:string,
     public iconPath:string,
     public textColor:string,
-    public iconColor:string,
-    public route:string
+    public iconColor:string
   ){}
 }
 
