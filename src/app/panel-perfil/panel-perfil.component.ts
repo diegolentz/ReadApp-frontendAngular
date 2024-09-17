@@ -13,11 +13,11 @@ import { RouterLink } from '@angular/router';
 export class PanelPerfilComponent {
   @Input() opciones!: Option[];
   // @Input() opcion!: Option;
-  @Output() opcionSelecionada = new EventEmitter<Option>();
+  // @Output() opcionSelecionada = new EventEmitter<Option>();
 
-  onClick(opcion: Option) {
-    this.opcionSelecionada.emit(opcion); // Emite el evento con la opción seleccionada
-  }
+  // onClick(opcion: Option) {
+  //   this.opcionSelecionada.emit(opcion); // Emite el evento con la opción seleccionada
+  // }
 }
 
   

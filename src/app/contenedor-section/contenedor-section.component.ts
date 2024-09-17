@@ -18,7 +18,7 @@ import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
 export class ContenedorSectionComponent {
   @HostBinding('style.width') width: string = '100%';
 
-  @Input() opcion!: Option
+  // @Input() opcion!: Option
   amigos = [
     new Amigo("icono.jpg", "Inosuke Hashibira", "inosukehashibira@gmail.com"),
     new Amigo("ippo.jpeg", "Ippo Makunouchi ", "ippomakunouchi90@hotmail.com"),
