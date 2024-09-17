@@ -1,38 +1,44 @@
 import { Component } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './input.component.html',
   styleUrl: './input.component.css'
 })
 
 export class InputComponent {
 
-input = new Input
+  
 
-  inputType(): Tipos {
-    if (this.input.textType) {
-      return 'Text'
-    }
-    if (this.input.numberType) {
-      return 'Number'
-    }
-    return 'Date'
+  constructor(private formBuilder:FormBuilder){
+    const formulario = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', []],
+      email: ['', [Validators.required, Validators.email]],
+      texto: ['', []],
+      fecha: ['', [Validators.required, Validador.dateValidator]],
+      numeros: [0, []]
+    })
   }
 }
 
-class Input {
 
-  textType = false
-  numberType = false
-  dateType = false
+class Validador{
 
-  text() { this.textType = true}
-  number() { this.numberType = true}
-  date() { this.dateType = true}
+  MIN_CH_USUARIO:number = 5;
 
-} 
+  static dateValidator(control:FormControl): ValidationErrors | null{
+    let hoy : Date = new Date();
+       if (new Date(control.value) < hoy)
+           return { "dateValidator": true };
+       return null;
+   }
 
-type Tipos = 'Text' | 'Number' | 'Date'
+   static usernameValidator(control:FormControl): ValidationErrors | null{
+    const 
+   }
+  }
+
