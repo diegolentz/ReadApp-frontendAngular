@@ -1,5 +1,7 @@
 header {
     background: linear-gradient(to bottom, var(--color-searchbar),var(--color-header));
+    display: flex;
+    flex-direction: row;
     width: 100vw;
 
     height: var(--height-header);

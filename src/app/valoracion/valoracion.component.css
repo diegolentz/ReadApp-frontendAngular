@@ -3,58 +3,49 @@
     margin-bottom: var(--height-header);
 }
 
-.flex-row {
+.puntuacion{
+    align-items: center;
     display: flex;
-    flex-direction: row; /* VALOR DEFAULT */
-}
-
-.gap-md {
+    flex-direction: row;
     gap: var(--space-md);
+    margin: 1rem;
 }
 
 .estrella-dorada {
     width: var(--text-xl);
     height: var(--text-xl);
 }
-
-.grid {
-    display: grid;
-}
-
 .valoraciones__individuales {
+    display: grid;
     grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: var(--space-md);
 }
 
-.flex-column {
+
+article{
     display: flex;
     flex-direction: column;
-}
-
-.gap-lg {
     gap: var(--space-lg);
-}
-
-.padding-md {
     padding: var(--space-md);
 }
 
 .perfil-valoracion {
+    display: grid;
     grid-template-columns: 5.5rem 10rem;
     grid-template-rows: auto;
     justify-content: center;
+    padding: var(--space-md);
+    gap: 1rem;
+    & img{
+        place-self: center;
+    }
 }
 
-.centered-self {
-    place-self: center;
-}
-
-.text-md {
+.descripcion{
     font-size: var(--text-md, 1.2em);
-}
-
-.justificado-cuadrado {
     text-align: justify;
 }
+
 
 .botonalineado {
     display: flex;
@@ -74,7 +65,7 @@
     border-radius: 50%;
 }
 
-.hover-click:active {
+.agregar:active {
     box-shadow: 0 0 2px darkslategray;
     transform: translateY(2px);
 }

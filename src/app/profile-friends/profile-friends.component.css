@@ -1,0 +1,27 @@
+
+.opcionSeleccionada{
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 2rem;   
+    padding: 2rem;
+}
+
+.opcionSeleccionada__amigos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(30rem,100% ), 1fr));
+    
+    gap:2rem;
+    margin: 1rem;
+}
+
+/* 
+.opcionSeleccionada__amigos{
+    display: grid;
+    justify-content: center;
+    gap: 1rem;
+} */
+svg{
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
+
+}

@@ -1,9 +1,9 @@
 .user__profile-shortcut{
     height: 100%;
-
+    justify-content: center;
     display: flex;
     gap: var(--space-md);
-
+    
     position: relative;
     align-items: center;
 }

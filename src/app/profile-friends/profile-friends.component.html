@@ -1,7 +1,10 @@
-<h2>Friends</h2>
-<!-- ACA FALTA UN COMPONENTE LAYOUT, CON  -->
-<div class="opcionSeleccionada__amigos opc">
-    <div *ngFor="let amigo of amigos">
-        <app-amigos [amigo]="amigo"></app-amigos>
+<div class="opcionSeleccionada">
+    <h2>Friends</h2>
+
+    <div class="opcionSeleccionada__amigos">
+        <div *ngFor="let amigo of amigos">
+            <app-amigos [amigo]="amigo"></app-amigos>
+        </div>
+    
     </div>
 </div>

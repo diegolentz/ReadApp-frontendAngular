@@ -11,11 +11,13 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MiPerfilComponent } from './mi-perfil/mi-perfil.component';
 import { BusquedaLibrosComponent } from "./busqueda-libros/busqueda-libros.component";
 import { PanelPerfilComponent } from "./panel-perfil/panel-perfil.component";
+import { BtnGuardarCancelarComponent } from './shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { InputBoxComponent } from './shared/input-box/input-box.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavComponent, MiPerfilComponent, HeaderComponent, ResenaComponent, BotoneraLibroComponent, AmigosComponent, ContenedorSectionComponent, ValoracionComponent, LibroComponent, BusquedaLibrosComponent, PanelPerfilComponent],
+  imports: [RouterOutlet,InputBoxComponent,ResenaComponent,BtnGuardarCancelarComponent, NavComponent, MiPerfilComponent, HeaderComponent, ResenaComponent, BotoneraLibroComponent, AmigosComponent, ContenedorSectionComponent, ValoracionComponent, LibroComponent, BusquedaLibrosComponent, PanelPerfilComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

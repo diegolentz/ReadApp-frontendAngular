@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { MinimumUserIdentificationComponent } from '../minimum-user-identification/minimum-user-identification.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { SvgIconComponent } from 'angular-svg-icon';
+import { AmigosComponent } from '../../amigos/amigos.component';
 @Component({
   selector: 'app-shorcut-my-profile',
   standalone: true,
-  imports: [MinimumUserIdentificationComponent, DropdownMenuComponent, SvgIconComponent],
+  imports: [MinimumUserIdentificationComponent,AmigosComponent, DropdownMenuComponent, SvgIconComponent],
   templateUrl: './shorcut-my-profile.component.html',
   styleUrl: './shorcut-my-profile.component.css'
 })

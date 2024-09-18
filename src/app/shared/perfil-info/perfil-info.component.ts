@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 
@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './perfil-info.component.css'
 })
 export class PerfilInfoComponent {
+  @HostBinding('style.width') width: string = '100%';
   mostrarCalculador = new MostrarCalculador();
 }
 

@@ -14,3 +14,14 @@
     gap: var(--space-xl);
     padding: var(--space-xl);
 }
+
+
+@media screen and (max-width: 768px) {
+    .perfil-usuario{
+        height: auto;
+        display: flex;
+        
+       
+        flex-direction: column;
+    }
+}

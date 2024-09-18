@@ -1,0 +1,16 @@
+
+.opcionSeleccionada{
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 2rem;   
+    padding: 2rem;
+}
+
+.opcionSeleccionada__libros{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 32rem), 0.8fr));
+    
+    gap:2rem;
+    margin: 1rem;
+}
+
+
