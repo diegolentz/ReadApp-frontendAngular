@@ -15,10 +15,11 @@ import { BgColorDirective } from '../directives/bg-color.directive';
 export class DropdownMenuComponent {
   @Input() show!:boolean
 
-  optionLabels = ['my-profile', 'my-recommendations', 'search-books', 'log-out']
+  optionLabels = ['My profile', 'My recommendations', 'Search books', 'Log out']
   svgs = ['profile.svg', 'recomendation.svg', 'book.svg', 'log-out.svg']
   colorDefault = 'white'
-  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault));
+  path = ['my-profile', 'my-recommendations', 'search-books', 'log-out']
+  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault, this.path[i]));
 }
 
 export class Option{
@@ -26,7 +27,8 @@ export class Option{
     public label:string,
     public iconPath:string,
     public textColor:string,
-    public iconColor:string
+    public iconColor:string,
+    public path : string
   ){}
 }
 
