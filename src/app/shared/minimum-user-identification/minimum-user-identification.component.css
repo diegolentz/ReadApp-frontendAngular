@@ -1,6 +1,13 @@
 
 .user__identification{
     height: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-md);
+    
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 
     color: white;
 }

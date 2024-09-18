@@ -28,11 +28,9 @@
 @media screen and (max-width: 768px) {
     .perfil-usuario{
         height: auto;
+        display: flex;
         
-        padding:    calc(var(--perfilUsuario-default)/2)
-                    calc(var(--perfilUsuario-default)/2)
-                    0rem;
-        gap: calc(var(--perfilUsuario-default)/2) ;
+       
         flex-direction: column;
     }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-resena',
@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './resena.component.css'
 })
 export class ResenaComponent {
-
+  @HostBinding('style.width') width: string = '100%';
 }

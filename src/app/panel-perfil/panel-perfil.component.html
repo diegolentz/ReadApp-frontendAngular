@@ -1,14 +1,14 @@
-<aside class="flex-column gap-xl">
-    <div class="flex-column centered-items gap-md">
-        <img class="foto" src="../images/icono.jpg" />
+<aside >
+    <div class="imagen ">
+        <img class="foto" src="icono.jpg" />
         <div class="nombre">
             <h2>Carlos Salvador Bilardo</h2>
             <hr>
         </div>
     </div>
 
-    <div class="flex-column gap-md">
-        <div *ngFor="let option of opciones" (click)="goTo(option.label)">
+    <div class="opciones ">
+        <div *ngFor="let option of opciones" (click)="goTo(option.path)">
             <app-option [option]="option"></app-option>
         </div>
     </div>

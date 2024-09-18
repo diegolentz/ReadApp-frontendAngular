@@ -211,6 +211,18 @@ hr{
     height: 0;
 }
 
+img{
+    width: var(--image-small);
+    height: var(--image-small);
+    border-radius: 50%;
+}
+
+/* 
+.svg-chico {
+    align-items: center;
+    width: 2.5rem;
+    height: auto;
+}
 .centered-items{
     justify-items: center;
     align-items: center;
@@ -244,16 +256,6 @@ hr{
     height: var(--text-xl);
 }
 
-.svg-chico {
-    align-items: center;
-    width: 2.5rem;
-    height: auto;
-}
-img{
-    width: var(--image-small);
-    height: var(--image-small);
-    border-radius: 50%;
-}
 
 .flex-column{
     display: flex;
@@ -268,4 +270,4 @@ img{
 
 .grid-fullColumn{
     grid-column: 1/-1;
-}
+} */

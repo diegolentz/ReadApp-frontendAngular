@@ -14,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MiPerfilComponent {
 
-  opcionTitulos = ['information', 'friends', 'books-readed', 'books-to-read','recommendations-to-value']
+  opcionTitulos = ['Information', 'Friends', 'Books readed', 'Books to read','Recommendations to value']
   svgs = ['information.svg',
           'amigos.svg',
           'librosLeidos.svg',
@@ -22,5 +22,6 @@ export class MiPerfilComponent {
           'recomendacionesAValorar.svg']
   colorDefault = ''
   colorSvg = ['#208544','#203885','#822085','#33d2c8','ff0000']
-  opcionesPerfil = this.opcionTitulos.map((titulo, i) => new Option( titulo,this.svgs[i],  this.colorDefault,this.colorSvg[i]));
+  path = ['information', 'friends', 'books-readed', 'books-to-read','recommendations-to-value']
+  opcionesPerfil = this.opcionTitulos.map((titulo, i) => new Option( titulo,this.svgs[i],  this.colorDefault,this.colorSvg[i],this.path[i]));
 }
