@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators} from '@angular/forms';
 
 @Component({
@@ -10,8 +10,10 @@ import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErro
 })
 
 export class InputComponent {
-
-  
+  @Input() inputType:string = 'text';
+  @Input() label:string = '';
+  @Input() id:string = '';
+  @Input() name:string = '';
 
   constructor(private formBuilder:FormBuilder){
     const formulario = this.formBuilder.group({
@@ -37,8 +39,5 @@ class Validador{
        return null;
    }
 
-   static usernameValidator(control:FormControl): ValidationErrors | null{
-    const 
-   }
   }
 
