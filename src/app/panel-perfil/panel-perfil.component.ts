@@ -2,7 +2,7 @@ import { Component, Input} from '@angular/core';
 import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
 import { NgFor } from '@angular/common';
 import { OptionComponent } from '../shared/option/option.component';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-panel-perfil',
   standalone: true,
@@ -12,4 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class PanelPerfilComponent {
   @Input() opciones!: Option[];
+  constructor(private router:Router, private route:ActivatedRoute){}
+  
+  goTo(option:string){
+    this.router.navigate([option], {relativeTo:this.route})
+  }
 }

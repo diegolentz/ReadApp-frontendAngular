@@ -1,46 +1,37 @@
-import { Directive, ElementRef, Input, HostBinding, HostListener, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appHoverBoxshadow]',
   standalone: true
 })
 export class HoverBoxshadowDirective {
-    constructor(private el: ElementRef) {
-        this.el.nativeElement.style.backgroundColor = 'yellow';
+    constructor(private el: ElementRef, private renderer: Renderer2) {}
+
+  // Aplica el box-shadow al hacer hover (mouseenter)
+  @HostListener('mouseenter') onMouseEnter() {
+    this.applyBoxShadow();
+  }
+
+  // Remueve el box-shadow cuando el mouse deja el elemento (mouseleave)
+  @HostListener('mouseleave') onMouseLeave() {
+    this.removeBoxShadow();
+  }
+
+  // Método para aplicar una sombra fija
+  private applyBoxShadow() {
+    // Obtén el valor de la variable CSS desde el :root
+    const boxShadowValue = getComputedStyle(document.documentElement).getPropertyValue('--shadow-elevation-high').trim();
+
+    // Verifica si el valor no está vacío y aplícalo
+    if (boxShadowValue) {
+      this.renderer.setStyle(this.el.nativeElement, 'box-shadow', boxShadowValue);
+    } else {
+      console.warn('No se encontró el valor para la variable CSS --shadow-elevation-high');
     }
-    @HostListener('mouseenter') onMouseEnter() {
-        this.highlight('yellow');
-    }
-    @HostListener('mouseleave') onMouseLeave() {
-        this.highlight('');
-    }
-    private highlight(color: string) {
-        this.el.nativeElement.style.backgroundColor = color;
-    }
-//   constructor(
-//     private elementRef:ElementRef, 
-//     private renderer:Renderer2
-//     ) { }
-    
-//     ngOnInit(){
-//       this.color = this.defaultColor;
-//     }
+  }
 
-
-//     @Input() defaultColor:string = '';
-//     @Input() highlight: string= 'lime';
-
-//     @HostBinding('style.color') color:string = this.defaultColor;
-
-
-//     @HostListener('mouseenter') mouseover(){
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'blue');
-
-//       this.color=this.highlight;
-//     }
-
-//     @HostListener('mouseleave') mouseleave(){
-//       this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'transparent');
-//       this.color=this.defaultColor;
-//     }
+  // Método para remover la sombra
+  private removeBoxShadow() {
+    this.renderer.removeStyle(this.el.nativeElement, 'box-shadow');
+  }
 }

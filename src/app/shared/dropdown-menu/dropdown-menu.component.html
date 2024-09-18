@@ -1,5 +1,6 @@
 <div class="dropdown-content" *ngIf="show">
-    <div *ngFor="let option of options_shortcutMenu" [routerLink]="['/', ]" routerLinkActive="router-link-active">
-        <app-option [option]="option"></app-option>
+    <div *ngFor="let option of options_shortcutMenu" [routerLink]="['/', option.label]"
+    routerLinkActive="router-link-active" appHoverBoxshadow appBgColor>
+        <app-option [option]="option" ></app-option>
     </div>
 </div>

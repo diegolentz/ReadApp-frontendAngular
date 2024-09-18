@@ -14,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
 })
 export class MiPerfilComponent {
 
-  opcionTitulos = ['informacion', 'amigos', 'libros-leidos', 'libros-a-leer','recomendaciones-a-valorar']
+  opcionTitulos = ['information', 'friends', 'books-readed', 'books-to-read','recommendations-to-value']
   svgs = ['information.svg',
           'amigos.svg',
           'librosLeidos.svg',

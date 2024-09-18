@@ -10,7 +10,7 @@ import { SvgIconComponent } from 'angular-svg-icon';
   styleUrl: './shorcut-my-profile.component.css'
 })
 export class ShorcutMyProfileComponent {
-  displayShorcut = true //False -> test. True -> debug
+  displayShorcut = false //False -> test. True -> debug
   users = [
     new User('','Phillipe Petank','ElPhilly95')
   ]

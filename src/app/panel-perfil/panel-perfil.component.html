@@ -8,8 +8,7 @@
     </div>
 
     <div class="flex-column gap-md">
-        <div *ngFor="let option of opciones" [routerLink]="['/mi-perfil', option.label]"
-        routerLinkActive="router-link-active">
+        <div *ngFor="let option of opciones" (click)="goTo(option.label)">
             <app-option [option]="option"></app-option>
         </div>
     </div>
