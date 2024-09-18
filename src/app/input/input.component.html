@@ -1,0 +1,12 @@
+<!-- estos strings se llenan con la info correspondiente cuando pongamos el html en cada view -->
+
+<!-- <input type={{inputType()}} placeholder="placeholder" [(ngModel)]="input.text">
+   
+   HAY QUE AGREGAR ESTO CUANDO TENGAMOS QUE EVENTO DESENCADENA EL INPUT
+   (input)="gestionarTipo(type)"
+   Asocia el evento de entrada (input) con el método gestionarTipo para gestionar el valor ingresado.
+   --> 
+   <div class="campo campo__aclaracion campo--obligatorio input__label--effect">
+      <input [type]="inputType" [id]="id" [name]="name" [formControlName]="inputType" required>
+      <label for="username">{{label}}</label>
+  </div>
