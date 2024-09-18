@@ -3,11 +3,12 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../nav/nav.component';
 import { ContenedorSectionComponent } from '../contenedor-section/contenedor-section.component';
 import { LibroComponent } from '../libro/libro.component';
+import { BooksComponent } from "../shared/layouts/books/books.component";
 
 @Component({
   selector: 'app-busqueda-libros',
   standalone: true,
-  imports: [HeaderComponent,LibroComponent,NavComponent,ContenedorSectionComponent],
+  imports: [HeaderComponent, LibroComponent, NavComponent, ContenedorSectionComponent, BooksComponent],
   templateUrl: './busqueda-libros.component.html',
   styleUrl: './busqueda-libros.component.css'
 })

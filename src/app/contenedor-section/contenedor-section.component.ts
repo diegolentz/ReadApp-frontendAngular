@@ -1,11 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { AmigosComponent } from "../amigos/amigos.component";
 import { NgFor } from '@angular/common';
 import { HostBinding } from '@angular/core';
 
 import { HeaderComponent } from "../shared/header/header.component";  
-import { OptionComponent } from '../shared/option/option.component';
-import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
 
 
 @Component({

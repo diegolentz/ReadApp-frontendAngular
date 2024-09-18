@@ -25,6 +25,7 @@ export class HomeComponent {
     new Recomendacion("R", true, "aaa",[this.libros[0]], 1.5, 100),
     new Recomendacion("F", false, "aaa",[this.libros[1]], 2.5, 40),
   ]
+  // opcionesPerfil = this.libros.map((titulo, i) => new Recomendacion( titulo);
 }
 
 export class Recomendacion{

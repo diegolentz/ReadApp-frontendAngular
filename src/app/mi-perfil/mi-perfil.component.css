@@ -1,17 +1,16 @@
 /* Este archivo se lee en orden de la siguiente manera: */
-    /* 1 - DIMENSIONES CONTENEDOR   */
-    /* 2 - POSICIONAMIENTO          */
-    /* 3 - DISTRIBUCION ELEMENTOS   */
-    /* 4 - ESTILOS                  */
+/* 1 - DIMENSIONES CONTENEDOR   */
+/* 2 - POSICIONAMIENTO          */
+/* 3 - DISTRIBUCION ELEMENTOS   */
+/* 4 - ESTILOS                  */
 
-    .perfil-usuario{
-        /* header y botones-container mismo height, por eso el *2*/
-        width: 100vw;
-        height: calc(100vh - var(--height-header)*2);
-        display: flex;
-        padding-bottom: 0;
-        overflow-y: auto;
-        gap: var(--space-xl);
-        padding: var(--space-xl);
-    }
-    
+.perfil-usuario {
+    /* header y botones-container mismo height, por eso el *2*/
+    width: 100vw;
+    height: calc(100vh - var(--height-header)*2);
+    display: flex;
+    padding-bottom: 0;
+    overflow-y: auto;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+}
