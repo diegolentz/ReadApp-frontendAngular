@@ -1,4 +1,4 @@
-.option{
+:host{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -12,10 +12,4 @@
         width: var(--space-lg);
         height: auto;
     }
-    
-    /* background-color: var(--color-header); */
-    
-    /* &:hover{
-        box-shadow: var(--shadow-elevation-high);
-    } */
 }

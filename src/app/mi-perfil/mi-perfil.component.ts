@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { PanelPerfilComponent } from "../panel-perfil/panel-perfil.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { HeaderComponent } from "../shared/header/header.component";
-import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
 import { RouterOutlet } from '@angular/router';
+import { Option } from '../shared/shorcut-my-profile/shorcut-my-profile.component';
 
 @Component({
   selector: 'app-mi-perfil',

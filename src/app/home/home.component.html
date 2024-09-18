@@ -1,9 +1,7 @@
 <app-header></app-header>
 
-<main class="recomendaciones__container">
+<app-recommendations>
     <div *ngFor="let recomendacion of recomendaciones">
         <app-recomendacion [recomendacion]="recomendacion"></app-recomendacion>
     </div>
-</main>
-
-
+</app-recommendations>
