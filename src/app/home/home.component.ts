@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { RecomendacionComponent } from '../shared/recomendacion/recomendacion.component';
 import { NgFor } from '@angular/common';
+import { RecommendationsComponent } from "../shared/layouts/recommendations/recommendations.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, NgFor, RecomendacionComponent],
+  imports: [HeaderComponent, NgFor, RecomendacionComponent, RecommendationsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

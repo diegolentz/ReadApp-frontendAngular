@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { Option } from '../shared/dropdown-menu/dropdown-menu.component';
+import { Option } from '../shared/shorcut-my-profile/shorcut-my-profile.component';
 import { NgFor } from '@angular/common';
 import { OptionComponent } from '../shared/option/option.component';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';

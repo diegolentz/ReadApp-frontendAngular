@@ -12,3 +12,9 @@
     color: white;
 }
 
+
+@media screen and (max-width: 600px) {
+    .user__identification{
+        display: none;
+    }
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MinimumUserIdentificationComponent } from './minimum-user-identification.component';
+import { UserIdentificationComponent } from './user-identification.component';
 
 describe('MinimumUserIdentificationComponent', () => {
-  let component: MinimumUserIdentificationComponent;
-  let fixture: ComponentFixture<MinimumUserIdentificationComponent>;
+  let component: UserIdentificationComponent;
+  let fixture: ComponentFixture<UserIdentificationComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MinimumUserIdentificationComponent]
+      imports: [UserIdentificationComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(MinimumUserIdentificationComponent);
+    fixture = TestBed.createComponent(UserIdentificationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
