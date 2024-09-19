@@ -6,4 +6,11 @@
     
     position: relative;
     align-items: center;
-}
+
+    & img{
+            width: var(--image-small);
+            height: var(--image-small);
+            border-radius: 50%;
+        }
+        
+    }

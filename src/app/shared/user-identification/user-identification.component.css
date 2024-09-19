@@ -10,6 +10,13 @@
     align-content: center;
 
     color: white;
+
+    & img{
+        width: var(--image-small);
+        height: var(--image-small);
+        border-radius: 50%;
+    }
+    
 }
 
 

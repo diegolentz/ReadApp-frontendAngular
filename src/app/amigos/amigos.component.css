@@ -10,8 +10,12 @@
         box-shadow: var(--shadow-elevation-high);
     }
 
+    
     & img{
         grid-row: 1/3;
+        width: var(--image-small);
+        height: var(--image-small);
+        border-radius: 50%;
         grid-column: 1/2;
     }
 
