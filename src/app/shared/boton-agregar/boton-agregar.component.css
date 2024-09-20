@@ -8,6 +8,7 @@
     width: 5rem;
     box-shadow: 1px 2px 4px rgb(24, 23, 23);
     border-radius: 50%;
+    margin: 0 0 2rem;
 }
 
 .hover-click:active{
