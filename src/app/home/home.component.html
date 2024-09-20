@@ -1,7 +1,7 @@
 <app-header></app-header>
 
-<app-recommendations>
-    <div *ngFor="let recomendacion of recomendaciones">
-        <app-recomendacion [recomendacion]="recomendacion"></app-recomendacion>
-    </div>
-</app-recommendations>
+<app-container-recommendations>
+    @for (recomendation of recomendaciones; track recomendation){
+        <app-recomendacion [recomendacion]="recomendation"></app-recomendacion>
+    }
+</app-container-recommendations>

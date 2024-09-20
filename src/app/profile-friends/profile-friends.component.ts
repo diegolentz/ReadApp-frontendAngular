@@ -1,18 +1,18 @@
 import { Component, HostBinding } from '@angular/core';
 import { AmigosComponent } from '../amigos/amigos.component';
 import { NgFor } from '@angular/common';
+import { ContainerFriendsComponent } from "../shared/layouts/friends/friends.component";
 
 @Component({
   selector: 'app-profile-friends',
   standalone: true,
-  imports: [AmigosComponent, NgFor],
+  imports: [AmigosComponent, NgFor, ContainerFriendsComponent],
   templateUrl: './profile-friends.component.html',
   styleUrl: './profile-friends.component.css'
 })
 export class ProfileFriendsComponent {
   @HostBinding('style.width') width: string = '100%';
 
-  // @Input() opcion!: Option
   amigos = [
     new Amigo("icono.jpg", "Inosuke Hashibira", "inosukehashibira@gmail.com"),
     new Amigo("ippo.jpeg", "Ippo Makunouchi ", "ippomakunouchi90@hotmail.com"),
