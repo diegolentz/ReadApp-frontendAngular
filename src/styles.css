@@ -71,7 +71,7 @@
         10px 9.9px 13.9px -2.6px hsl(var(--shadow-color) / 0.29),
         14.1px 14px 19.7px -3px hsl(var(--shadow-color) / 0.26),
         19.4px 19.2px 27px -3.4px hsl(var(--shadow-color) / 0.24);
-    --height-header: 7rem;
+    --height-header: 7rem; /* Se podria comentar */ 
 
     --perfilUsuario-default: 4rem;
     --books-default: 1.5rem;
@@ -96,7 +96,7 @@
     /* //////////////////////////////////////////////////// */
     /* VARIABLES PARA IMAGENES*/
     /* //////////////////////////////////////////////////// */
-    --image-small: 5rem;
+    --image-small: 5rem;/* Se podria comentar */
 }
 
 /* //////////////////////////////////////////////////// */
