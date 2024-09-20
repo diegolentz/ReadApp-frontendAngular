@@ -1,13 +1,4 @@
-.opcionSeleccionada{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    border: 1px solid rgb(168, 167, 167);
-    gap:2rem;
-    border-radius: 2rem;
-    
-}
+
 
 .opcionSeleccionada__info{
     display: grid;
