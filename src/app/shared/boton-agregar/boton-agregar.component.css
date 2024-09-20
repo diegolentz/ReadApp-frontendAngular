@@ -1,0 +1,18 @@
+
+.agregar {
+    margin: auto;
+    background-color: var(--color-header);
+    color: white;
+    border: none;
+    padding: 5px;
+    height: 5rem;
+    width: 5rem;
+    box-shadow: 1px 2px 4px rgb(24, 23, 23);
+    border-radius: 50%;
+}
+
+.hover-click:active{
+    box-shadow: 0 0 2px darkslategray;
+    transform: translateY(2px);
+   }
+   

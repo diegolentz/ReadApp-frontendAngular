@@ -38,6 +38,9 @@ article{
     gap: 1rem;
     & img{
         place-self: center;
+        width: var(--image-small);
+        height: var(--image-small);
+        border-radius: 50%;
     }
 }
 
@@ -45,7 +48,6 @@ article{
     font-size: var(--text-md, 1.2em);
     text-align: justify;
 }
-
 
 .botonalineado {
     display: flex;
