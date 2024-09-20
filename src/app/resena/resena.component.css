@@ -1,6 +1,6 @@
 .resenia{
     font-size: var(--text-md);
-    margin-bottom: 2rem;
+    margin:2rem 0 2rem;
     padding: 1rem;
     display: flex;
     flex-direction: column;
