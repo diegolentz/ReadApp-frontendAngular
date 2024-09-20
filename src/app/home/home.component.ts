@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { RecomendacionComponent } from '../shared/recomendacion/recomendacion.component';
-import { NgFor } from '@angular/common';
-import { RecommendationsComponent } from "../shared/layouts/recommendations/recommendations.component";
+import { ContainerRecommendationsComponent } from "../shared/layouts/recommendations/recommendations.component";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, NgFor, RecomendacionComponent, RecommendationsComponent],
+  imports: [HeaderComponent, RecomendacionComponent, ContainerRecommendationsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -26,7 +25,6 @@ export class HomeComponent {
     new Recomendacion("R", true, "aaa",[this.libros[0]], 1.5, 100),
     new Recomendacion("F", false, "aaa",[this.libros[1]], 2.5, 40),
   ]
-  // opcionesPerfil = this.libros.map((titulo, i) => new Recomendacion( titulo);
 }
 
 export class Recomendacion{

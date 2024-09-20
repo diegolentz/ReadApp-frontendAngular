@@ -1,9 +1,7 @@
-
 <h2>Readed books</h2>
-<div class="opcionSeleccionada__libros">
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-</div>
+
+<app-container-books>
+    @for (book of books; track book){
+    <app-libro [Book]="book"></app-libro>
+    }
+</app-container-books>

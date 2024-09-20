@@ -1,14 +1,8 @@
-
 <app-header></app-header>
 <app-nav></app-nav>
 
-<!-- ACA DEBERIA IR EL LAYOUT LIBROS COMPONENT -->
- <!-- REUTILIZATABLER EN CUALQUER LUGAR QUE USE LIBROS -->
-  <app-books-layout>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-    <app-libro></app-libro>
-  </app-books-layout>
+<app-container-books>
+  @for (book of books; track book){
+  <app-libro [Book]="book"></app-libro>
+  }
+</app-container-books>

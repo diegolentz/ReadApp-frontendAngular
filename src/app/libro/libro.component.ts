@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BotoneraLibroComponent } from '../botonera-libro/botonera-libro.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { BotoneraLibroComponent } from '../botonera-libro/botonera-libro.compone
 })
 
 export class LibroComponent {
+  @Input() Book!:Libro;
   libros: Libro[];
 
   constructor() {
@@ -99,7 +100,7 @@ export class LibroComponent {
   }
 }
 
-class Libro {
+export class Libro {
   constructor(
     public imagen: string,
     public titulo: string,
