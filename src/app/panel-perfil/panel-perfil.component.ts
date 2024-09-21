@@ -6,7 +6,7 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 @Component({
   selector: 'app-panel-perfil',
   standalone: true,
-  imports: [NgFor,OptionComponent, RouterLink],
+  imports: [NgFor,OptionComponent, RouterLink,],
   templateUrl: './panel-perfil.component.html',
   styleUrl: './panel-perfil.component.css'
 })

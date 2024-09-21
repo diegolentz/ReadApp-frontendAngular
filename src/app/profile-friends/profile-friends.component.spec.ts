@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileFriendsComponent } from './profile-friends.component';
 
+
 describe('ProfileFriendsComponent', () => {
   let component: ProfileFriendsComponent;
   let fixture: ComponentFixture<ProfileFriendsComponent>;
