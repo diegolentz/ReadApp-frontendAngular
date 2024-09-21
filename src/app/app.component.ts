@@ -13,11 +13,10 @@ import { NgIf } from '@angular/common';
 export class AppComponent {
   title = 'readapp-2024-grupo-9';
   constructor(private router: Router) {
-    
   }
 
-  // isLoginPage(): boolean {
-  //   return this.router.url === 'login'; // Ajusta esto si tu ruta de login es diferente
-  // }
+  isLoginPage(): boolean {
+    return this.router.url === '/login'; 
+  }
 }
 
