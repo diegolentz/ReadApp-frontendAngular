@@ -3,8 +3,6 @@
     margin: auto;
 }
 
-
-
 .busquedaLibros{
 
     /* UNICO */
@@ -21,9 +19,10 @@
 
   
 .resenia{
-    font-size: var(--text-md);
+    font-size: 2rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
+    
   
     & input{
         width: 100%;
@@ -48,10 +47,16 @@
       }
     }
   
-  .input-titulo {
+.input-titulo {
     width: 55vw;
     height: 3rem;
     outline: none;
     border-radius: 1rem;
   }
-    
+
+.contenedorTitulo__label{
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
