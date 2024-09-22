@@ -1,8 +1,8 @@
 <h2>Friends</h2>
 
 <app-container-friends>
-    @for (friend of amigos; track friend){
-        <app-amigos [amigo]="friend"></app-amigos>
+    @for (friend of friends; track friend){
+        <app-amigos [friend]="friend"></app-amigos>
     }
     <app-boton-agregar></app-boton-agregar>
 </app-container-friends>

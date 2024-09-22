@@ -1,8 +1,10 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { AmigosComponent } from '../amigos/amigos.component';
 import { NgFor } from '@angular/common';
 import { ContainerFriendsComponent } from "../shared/layouts/friends/friends.component";
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
+import { Friend } from '../../domain/friend';
+import { FriendService } from '../../service/friend.service';
 
 @Component({
   selector: 'app-profile-friends',
@@ -11,23 +13,16 @@ import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.com
   templateUrl: './profile-friends.component.html',
   styleUrl: './profile-friends.component.css'
 })
-export class ProfileFriendsComponent {
+export class ProfileFriendsComponent implements OnInit{
+
+  friends!: Friend[];
+
+  constructor(private friendService:FriendService){}
+  
+  ngOnInit(): void {
+    this.friends = this.friendService.mockGetRecommendations()
+  }
+
   @HostBinding('style.width') width: string = '100%';
 
-  amigos = [
-    new Amigo("icono.jpg", "Inosuke Hashibira", "inosukehashibira@gmail.com"),
-    new Amigo("ippo.jpeg", "Ippo Makunouchi ", "ippomakunouchi90@hotmail.com"),
-    new Amigo("dwightSchrute.jpeg", "Dwight Schrute", "dwightschrute@dunder-mifflin.com"),
-    new Amigo("kevinMalone.jpeg", "Kevin Malone", "kevinmalone@dunder-mifflin.com"),
-    new Amigo("creed.jpeg", "Creed Bratton", "creedbratton@dunder-mifflin.com"),
-    new Amigo("kellyKapoor.jpeg", "Kelly Kapoor", "kellykapoor@dunder-mifflin.com"),
-
-  ]
-}
-
-export class Amigo {
-  constructor(
-    public imagen : string,
-    public nombre: string,
-    public mail : string){}
 }

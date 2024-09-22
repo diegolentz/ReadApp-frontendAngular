@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Amigo } from '../contenedor-section/contenedor-section.component';
-
+import { Friend } from '../../domain/friend';
 @Component({
   selector: 'app-amigos',
   standalone: true,
@@ -10,9 +9,5 @@ import { Amigo } from '../contenedor-section/contenedor-section.component';
 })
 
 export class AmigosComponent {
-  title = 'Amigo'
-  @Input() amigo!:Amigo
-
+  @Input() friend!:Friend
 }
-
-
