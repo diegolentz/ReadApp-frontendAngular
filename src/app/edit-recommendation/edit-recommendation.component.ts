@@ -5,16 +5,15 @@ import { ProfileBooksToReadComponent } from '../profile-books-to-read/profile-bo
 import { ValoracionComponent } from '../valoracion/valoracion.component';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 @Component({
   selector: 'app-edit-recommendation',
   standalone: true,
-  imports: [NgIf,ResenaComponent,HeaderComponent,ProfileBooksToReadComponent,ValoracionComponent],
+  imports: [NgIf, ResenaComponent, HeaderComponent, ProfileBooksToReadComponent, ValoracionComponent, BtnGuardarCancelarComponent],
   templateUrl: './edit-recommendation.component.html',
   styleUrl: './edit-recommendation.component.css'
 })
 export class EditRecommendationComponent {
-  constructor(private router: Router) {}
-  isEditPage() {
-    return this.router.url === '/edit-recommendation'; 
-  }
+  
+  
 }
