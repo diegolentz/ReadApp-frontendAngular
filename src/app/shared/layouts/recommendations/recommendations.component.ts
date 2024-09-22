@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-container-recommendations',
   standalone: true,
@@ -8,5 +7,4 @@ import { Component } from '@angular/core';
   styleUrl: './recommendations.component.css'
 })
 export class ContainerRecommendationsComponent {
-
 }
