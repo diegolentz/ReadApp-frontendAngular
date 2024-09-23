@@ -1,12 +1,25 @@
-<!-- estos strings se llenan con la info correspondiente cuando pongamos el html en cada view -->
-
-<!-- <input type={{inputType()}} placeholder="placeholder" [(ngModel)]="input.text">
-   
-   HAY QUE AGREGAR ESTO CUANDO TENGAMOS QUE EVENTO DESENCADENA EL INPUT
-   (input)="gestionarTipo(type)"
-   Asocia el evento de entrada (input) con el método gestionarTipo para gestionar el valor ingresado.
-   --> 
-   <div class="campo campo__aclaracion campo--obligatorio input__label--effect">
-      <input [type]="inputType" [id]="id" [name]="name" [formControlName]="inputType" required>
-      <label for="username">{{label}}</label>
-  </div>
+<div class="campo">
+   <ng-container *ngIf="objeto.inputType() === 'textarea'; else inputTemplate">
+     <textarea 
+       [id]="id" 
+       [formControl]="formulario" 
+       [ngClass]="objeto.estilos()" 
+       cols="33">
+   </textarea>
+  
+   </ng-container>
+ 
+   <ng-template #inputTemplate>
+     <input 
+       [type]="objeto.inputType()" 
+       [id]="id" 
+       [formControl]="formulario" 
+       [ngClass]="objeto.estilos()">
+   </ng-template>
+ 
+   <label>{{ label }}</label>
+   <div *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)">
+     <span class="error-message">{{ getErrorMessage() }}</span>
+   </div>
+ </div>
+ 
