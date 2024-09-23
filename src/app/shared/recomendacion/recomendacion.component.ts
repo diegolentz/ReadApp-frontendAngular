@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Recommendation } from '../../../domain/recommendation';
-import { NgFor } from '@angular/common';
 import { Router } from '@angular/router';
+import { SvgIconComponent } from 'angular-svg-icon';
 @Component({
   selector: 'app-recomendacion',
   standalone: true,
-  imports: [NgFor],
+  imports: [SvgIconComponent],
   templateUrl: './recomendacion.component.html',
   styleUrl: './recomendacion.component.css'
 })
@@ -16,4 +16,5 @@ export class RecomendacionComponent {
   goTo(option: string) {
     this.router.navigate([option])
   }
+
 }

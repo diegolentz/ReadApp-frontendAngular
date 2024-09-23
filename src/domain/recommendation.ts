@@ -1,27 +1,40 @@
 import { Book } from "./book"
+import { Valoration } from "./valoration"
 
 export type RecommendationJSON = {
     titulo: string,
-    pertenencia: boolean,
+    author: string,
     descripcion: string,
     librosRecomendados: Array<Book>,
-    puntuacion: number,
-    tiempoEstimado: number
+    comment: string,
+    valorations: Array<Valoration>
 }
 
 export class Recommendation {
     constructor(
         public titulo: string = '',
-        public pertenencia: boolean = false,
+        public author: string = '',
         public descripcion: string = '',
         public librosRecomendados: Array<Book> = [],
-        public puntuacion: number = 10,
-        public tiempoEstimado: number = 10
+        public comment: string = '',
+        public valorations: Array<Valoration> = []
     ) { }
 
     get cantidadLibros() {
         return this.librosRecomendados.length
     }
+    getScore(){
+        return this.substractScoreFromValorations() 
+    }
+    
+    private substractScoreFromValorations(){
+        let score = 0
+        this.valorations.forEach(valoration => {
+          score += valoration.score
+        });
+        return score
+    }
+
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
         return Object.assign(new Recommendation(), recommendationJSON)
@@ -30,11 +43,11 @@ export class Recommendation {
     toJSON(): RecommendationJSON {
         return {
             titulo: this.titulo,
-            pertenencia: this.pertenencia,
+            author: this.author,
             descripcion: this.descripcion,
             librosRecomendados: this.librosRecomendados,
-            puntuacion: this.puntuacion,
-            tiempoEstimado: this.tiempoEstimado
+            comment: this.comment,
+            valorations: this.valorations
         }
     }
 }
