@@ -6,7 +6,6 @@ export type RecommendationJSON = {
     author: string,
     descripcion: string,
     librosRecomendados: Array<Book>,
-    comment: string,
     valorations: Array<Valoration>
 }
 
@@ -16,7 +15,6 @@ export class Recommendation {
         public author: string = '',
         public descripcion: string = '',
         public librosRecomendados: Array<Book> = [],
-        public comment: string = '',
         public valorations: Array<Valoration> = []
     ) { }
 
@@ -46,7 +44,6 @@ export class Recommendation {
             author: this.author,
             descripcion: this.descripcion,
             librosRecomendados: this.librosRecomendados,
-            comment: this.comment,
             valorations: this.valorations
         }
     }

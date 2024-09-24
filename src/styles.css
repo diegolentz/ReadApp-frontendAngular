@@ -99,49 +99,6 @@
     --image-small: 5rem;/* Se podria comentar */
 }
 
-/* //////////////////////////////////////////////////// */
-/* DISPLAYS */
-/* //////////////////////////////////////////////////// */
-
-/* //////////////////////////////////////////////////// */
-/* MARGINS */
-/* //////////////////////////////////////////////////// */
-/* .margin-xs {    margin: var(--space-xs);    }
-.margin-sm {    margin: var(--space-sm);    }
-.margin-md {    margin: var(--space-md);    }
-.margin-lg {    margin: var(--space-lg);    }
-.margin-xl {    margin: var(--space-xl);    }
-/* //////////////////////////////////////////////////// */
-/* PADDINGS */
-/* //////////////////////////////////////////////////// */
-/* .padding-xs {   padding: var(--space-xs);   }
-.padding-sm {   padding: var(--space-sm);   }
-.padding-md {   padding: var(--space-md);   }
-.padding-lg {   padding: var(--space-lg);   }
-.padding-xl {   padding: var(--space-xl);   }  */
-
-/* //////////////////////////////////////////////////// */
-/* PADDINGS TOTALES*/
-/* //////////////////////////////////////////////////// */
-/* .gap-xs {   gap: var(--space-xs);   }
-.gap-sm {   gap: var(--space-sm);   }
-.gap-md {   gap: var(--space-md);   }
-.gap-lg {   gap: var(--space-lg);   }
-.gap-xl {   gap: var(--space-xl);   }
-
-.column-gap-xs{ column-gap: var(--space-xs); }
-.column-gap-sm{ column-gap: var(--space-sm); }
-.column-gap-md{ column-gap: var(--space-md); }
-.column-gap-lg{ column-gap: var(--space-lg); }
-.column-gap-xl{ column-gap: var(--space-xl); }
-
-.row-gap-xs{ row-gap: var(--space-xs); }
-.row-gap-sm{ row-gap: var(--space-sm); }
-.row-gap-md{ row-gap: var(--space-md); }
-.row-gap-lg{ row-gap: var(--space-lg); }
-.row-gap-xl{ row-gap: var(--space-xl); } */
-
-
 h1,
 .text-xxl {
     font-size: var(--text-xxl, 2.074em);
@@ -166,19 +123,6 @@ p,
 .text-base {
     font-size: var(--text-base-size);
 }
-/* 
-small,
-.text-sm {
-    font-size: var(--text-sm, 0.833em);
-}
-
-.text-xs {
-    font-size: var(--text-xs, 0.694em);
-}
-
-.normal-font {
-    font-weight: normal;
-} */
 
 * {
     margin: 0;
@@ -210,64 +154,3 @@ a {
 hr{
     height: 0;
 }
-
-/* img{
-    width: var(--image-small);
-    height: var(--image-small);
-    border-radius: 50%;
-} */
-
-/* 
-.svg-chico {
-    align-items: center;
-    width: 2.5rem;
-    height: auto;
-}
-.centered-items{
-    justify-items: center;
-    align-items: center;
-}
-
-.centered-child{
-    justify-content: center;
-    align-items: center;
-}
-
-.centered-self{
-    place-self: center;
-}
-
-.justificado-cuadrado{
-    text-align: justify;
-}
-
-.border{
-    border-bottom: 2px solid grey;
-}
-
-.svg-clasic {
-    align-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-}
-
-.estrella-dorada {
-    width: var(--text-xl);
-    height: var(--text-xl);
-}
-
-
-.flex-column{
-    display: flex;
-    flex-direction: column;
-
-}
-.flex-row{
-    display: flex;
-    flex-direction: row;
-}
-.grid{ display: grid; }
-
-.grid-fullColumn{
-    grid-column: 1/-1;
-} */
