@@ -6,14 +6,16 @@ import { ValoracionComponent } from '../valoracion/valoracion.component';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
+import { InputComponent } from "../input/input.component";
+import { Texto } from '../input/input.component';
 @Component({
   selector: 'app-edit-recommendation',
   standalone: true,
-  imports: [NgIf, ResenaComponent, HeaderComponent, ProfileBooksToReadComponent, ValoracionComponent, BtnGuardarCancelarComponent],
+  imports: [NgIf, ResenaComponent, HeaderComponent, ProfileBooksToReadComponent, ValoracionComponent, BtnGuardarCancelarComponent, InputComponent],
   templateUrl: './edit-recommendation.component.html',
   styleUrl: './edit-recommendation.component.css'
 })
 export class EditRecommendationComponent {
-  
+    texto = Texto
   
 }
