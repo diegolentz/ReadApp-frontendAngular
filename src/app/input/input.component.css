@@ -53,18 +53,18 @@ div input:user-valid ~ label {
 }
 .usuario {
     height: 3rem;
-    width: 30rem;
+    width: auto;
 }
 
 .password {
     
     height: 3rem;
-    width: 20rem;
+    width: auto;
 }
 
 .email {
     height: 3rem;
-    width: 20rem;
+    width: auto;
     
 }
 
@@ -86,7 +86,7 @@ div input:user-valid ~ label {
 
 .fecha {
     height: 3rem;
-    width: 20rem;
+    width: auto;
     
     color: white;
     
@@ -99,10 +99,15 @@ input:user-valid, input:focus{
 
 .numero {
     height: 3rem;
-    width: 20rem;
+    width: auto;
 }
 
 .nav {
     height: 3rem;
-    width: 20rem;
+    width: auto;
+}
+.nombreApellido{
+    height: 3rem;
+    width: auto;
+    
 }

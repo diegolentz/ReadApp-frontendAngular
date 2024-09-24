@@ -89,7 +89,7 @@
 
 
 
-.campo {
+/* .campo {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -116,12 +116,12 @@
             border: 1px solid red;
         }
     }
-}
+} */
 
 
 .formulario-general {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(23rem, auto));
     gap: 1rem;
 }
 
