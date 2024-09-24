@@ -15,7 +15,7 @@ import { Username, NombreApellido,  Password, Email, Texto, Fecha, Numero} from 
 export class PerfilInfoComponent {
   @HostBinding('style.width') width: string = '100%';
   username = Username;
-  nombreApellido = NombreApellido
+  nombreApellido = NombreApellido;
   password = Password;
   email = Email;
   texto = Texto;
