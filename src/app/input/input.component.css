@@ -51,20 +51,25 @@ div input:user-valid ~ label {
 .error-message{
     color: red;
 }
+.nombreApellido{
+    height: 3rem;
+    width: auto;
+    
+}
 .usuario {
     height: 3rem;
-    width: 30rem;
+    width: auto;
 }
 
 .password {
     
     height: 3rem;
-    width: 20rem;
+    width: auto;
 }
 
 .email {
     height: 3rem;
-    width: 20rem;
+    width: auto;
     
 }
 
@@ -86,7 +91,7 @@ div input:user-valid ~ label {
 
 .fecha {
     height: 3rem;
-    width: 20rem;
+    width: auto;
     
     color: white;
     
@@ -99,10 +104,17 @@ input:user-valid, input:focus{
 
 .numero {
     height: 3rem;
-    width: 20rem;
+    width: auto;
+    
+}
+
+.numero::-webkit-outer-spin-button,
+.numero::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    /* margin: 0; */
 }
 
 .nav {
     height: 3rem;
-    width: 20rem;
+    width: auto;
 }
