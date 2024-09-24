@@ -13,27 +13,6 @@
             <app-input [objeto]="email" [label] ="' E-mail'" ></app-input>
             <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
 
-
-            <!-- <div class="campo__completable">
-                <input type="text" required>
-                <label>apellido</label>
-            </div>
-            <div class="campo__completable">
-                <input type="text" required>
-                <label>username</label>
-            </div>
-            <div class="campo__completable">
-                <input type="text" required>
-                <label>fecha de nacimiento</label>
-            </div>
-            <div class="campo__completable">
-                <input type="text" required>
-                <label>email</label>
-            </div>
-            <div class="campo__completable">
-                <input type="text" required>
-                <label>tiempo de lectura promedio</label>
-            </div> -->
         </form>
     </div>
 
@@ -68,13 +47,7 @@
     </div>
 
     <form id="nuevosInputs" *ngIf="mostrarCalculador.mostrar">
-        <div class="campo">
-            <label>LIMITE MINIMO</label>
-            <input type="text" inputmode="numeric" required>
-        </div>
-        <div class="campo">
-            <label>LIMITE MAXIMO</label>
-            <input type="text" inputmode="numeric" required>
-        </div>
+        <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
+        <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
     </form>
 </div>
