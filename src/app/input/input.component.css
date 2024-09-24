@@ -20,7 +20,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: var(--text-xxs);
+        font-size: var(--text-xs);
         font-weight: normal;
         position: absolute;
         left: 1rem;
@@ -76,17 +76,17 @@ div input:user-valid ~ label {
 .texto {
     border-radius: 1rem;
     height: 30rem;
-    width: 60rem;
+    width: 70vw;
     padding: 2rem;
-    border: 2px solid var(--color-fondo);
+    border: 2px solid var(--color-searchbar);
+    font-size: var(--space-lg);
     /* border-color: var(--color-fondo); */
 
     &.texto:focus {
-        border-color: var(--color-searchbar); /* Cambiar el color del borde al enfocar */
         outline: none;                       /* Quitar el contorno por defecto */
     }
-    
 }
+
 
 
 .fecha {

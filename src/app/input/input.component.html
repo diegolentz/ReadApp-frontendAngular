@@ -14,9 +14,9 @@
     [formControl]="formulario" 
     [ngClass]="objeto.estilos()" />
 </ng-template>
-
 <label>{{ label }}</label>
    <div *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)">
      <span class="error-message">{{ getErrorMessage() }}</span>
    </div>
   </div>
+
