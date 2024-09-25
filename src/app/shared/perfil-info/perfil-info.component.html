@@ -14,10 +14,8 @@
             <app-input [inputType]="'number'" label=" Tiempo de lectura promedio"></app-input>
             
             
-            <p>{{texto}}</p>
+            <!-- <p>{{texto}}</p> -->
         </div>
-
-
     </div>
 
     <hr>
@@ -29,9 +27,7 @@
             <app-input-box inputType="radio" name="radio__input" label="Ansioso"></app-input-box>
             <app-input-box inputType="radio" name="radio__input" label="Fanático"></app-input-box>
             <app-input-box inputType="radio" name="radio__input" label="Recurrente"></app-input-box>
-
         </div>
-
     </div>
 
     <hr>
@@ -47,12 +43,12 @@
             <app-input-box inputType="checkbox" label="Poliglota"></app-input-box>
             <app-input-box inputType="checkbox" label="Experimentado"></app-input-box>
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
+            <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
+                <app-input inputType="number" [label]="'Limite minimo'"></app-input>
+                <app-input inputType="number" [label]="'Limite maximo'"></app-input>
+            </div>
         </div>
     </div>
     
-    <div class="nuevosInputs" *ngIf="mostrarNuevosInputs"> <!-- Muestra los nuevos inputs solo si mostrarNuevosInputs es true -->
-        <app-input inputType="number" [label]="'Limite minimo'"></app-input>
-        <app-input inputType="number" [label]="'Limite maximo'"></app-input>
-    </div>
     
 </div>

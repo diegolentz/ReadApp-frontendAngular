@@ -34,14 +34,14 @@
 
 .formulario-general {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(23rem, auto));
+    grid-template-columns: repeat(auto-fit, minmax(23rem, auto));
     grid-template-rows: 5rem;
     gap: 1rem;
 }
 
 .formulario-lectura {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
     gap: 2rem;
 
     & label{
@@ -52,8 +52,9 @@
 
 .formulario-criterio {
     display: grid;
+    justify-content: center;
     grid-auto-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
     gap: 2rem;
     & label{
         display: flex;
@@ -62,12 +63,9 @@
 } 
 
 
-
-
-
-
 .nuevosInputs{
-    width: 25rem;
-    align-items: center;
+    width: 15rem;
+    left: auto;
+    top: auto;
 }
 
