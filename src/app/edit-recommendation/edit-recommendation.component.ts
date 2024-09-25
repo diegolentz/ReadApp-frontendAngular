@@ -7,7 +7,6 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { InputComponent } from "../input/input.component";
-import { Texto } from '../input/input.component';
 @Component({
   selector: 'app-edit-recommendation',
   standalone: true,
@@ -16,6 +15,5 @@ import { Texto } from '../input/input.component';
   styleUrl: './edit-recommendation.component.css'
 })
 export class EditRecommendationComponent {
-    texto = Texto
   
 }

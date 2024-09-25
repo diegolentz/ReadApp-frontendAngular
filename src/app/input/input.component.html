@@ -1,22 +1,6 @@
 <div class="campo">
-<textarea 
-  *ngIf="objeto.inputType() === 'textarea'; else inputTemplate"
-  [id]="id" 
-  [formControl]="formulario" 
-  [ngClass]="objeto.estilos()" 
-  cols="33">
-</textarea>
 
-<ng-template #inputTemplate>
-  <input 
-    [type]="objeto.inputType()" 
-    [id]="id" 
-    [formControl]="formulario" 
-    [ngClass]="objeto.estilos()" />
-</ng-template>
-<label>{{ label }}</label>
-   <div *ngIf="formulario.invalid && (formulario.dirty || formulario.touched)">
-     <span class="error-message">{{ getErrorMessage() }}</span>
-   </div>
-  </div>
+  <input [type]="inputType" [id]="id" />
+  <label>{{ label }}</label>
 
+</div>

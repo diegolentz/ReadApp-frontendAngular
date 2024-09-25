@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 
-import { Username,Password } from '../input/input.component';
+// import { Username,Password } from '../input/input.component';
 
 
 @Component({
@@ -15,8 +15,8 @@ import { Username,Password } from '../input/input.component';
 })
 export class LoginComponent {
 
-  username = Username
-  password = Password
+  // username = Username
+  // password = Password
   constructor(private router:Router, private route:ActivatedRoute){}
   
   goTo(option:string){

@@ -5,13 +5,12 @@
     <div class="info">
         <h3>General</h3>
         <form class="formulario-general">
-            <app-input [objeto]="nombreApellido" [label] ="' Nombre'" ></app-input>
-            <app-input [objeto]="nombreApellido" [label] ="' Apellido'" ></app-input>
-
-            <app-input [objeto]="username" [label] ="' Username'" ></app-input>
-            <app-input [objeto]="fecha" [label] ="' Fecha de nacimiento'" ></app-input>
-            <app-input [objeto]="email" [label] ="' E-mail'" ></app-input>
-            <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
+            <app-input inputType ="'text'" label =" Nombre" ></app-input>
+            <app-input inputType ="'text'" label =" Apellido" ></app-input>
+            <app-input inputType ="'text'" label =" Username" ></app-input>
+            <app-input inputType ="'date'" label =" Fecha de nacimiento" ></app-input>
+            <app-input inputType ="'text'" label =" E-mail" ></app-input>
+            <app-input inputType ="'number'" label =" Tiempo de lectura promedio" ></app-input>
 
         </form>
     </div>
@@ -47,7 +46,7 @@
     </div>
 
     <form id="nuevosInputs" *ngIf="mostrarCalculador.mostrar">
-        <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
-        <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
+        <!-- <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input>
+        <app-input [objeto]="numero" [label] ="' Tiempo de lectura promedio'" ></app-input> -->
     </form>
 </div>

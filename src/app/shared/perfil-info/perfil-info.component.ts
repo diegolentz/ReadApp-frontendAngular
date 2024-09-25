@@ -3,7 +3,6 @@ import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
 
-import { Username, NombreApellido,  Password, Email, Texto, Fecha, Numero} from '../../input/input.component';
 
 @Component({
   selector: 'app-perfil-info',
@@ -14,14 +13,14 @@ import { Username, NombreApellido,  Password, Email, Texto, Fecha, Numero} from 
 })
 export class PerfilInfoComponent {
   @HostBinding('style.width') width: string = '100%';
-  username = Username;
-  nombreApellido = NombreApellido;
-  password = Password;
-  email = Email;
-  texto = Texto;
-  fecha = Fecha;
-  numero = Numero;
+  // username = Username;
+  // nombreApellido = NombreApellido;
+  // password = Password;
+  // email = Email;
+  // texto = Texto;
+  // fecha = Fecha;
   mostrarCalculador = new MostrarCalculador();
+  numero !: string;
 }
 
 class MostrarCalculador{
