@@ -4,13 +4,14 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 
 
 
 @Component({
   selector: 'app-perfil-info',
   standalone: true,
-  imports: [InputBoxComponent, CommonModule, InputComponent,FormsModule],
+  imports: [InputBoxComponent, CommonModule, InputComponent,FormsModule,BtnGuardarCancelarComponent],
   templateUrl: './perfil-info.component.html',
   styleUrl: './perfil-info.component.css'
 })
@@ -21,6 +22,8 @@ export class PerfilInfoComponent {
   texto : string = "";
   numero !: string;
   mostrarNuevosInputs: boolean = false; 
+
+  boton = new BtnGuardarCancelarComponent()
 
   ngOnInit() {
     console.log(this.texto);
