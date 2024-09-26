@@ -9,10 +9,10 @@ export type ValorationJSON = {
 
 export class Valoration {
     constructor(
-        public author: string,
-        public score: number,
-        public date: Date,
-        public comment: string
+        public author: string = '',
+        public score: number = 0,
+        public date: Date = new Date(1914, 14, 14),
+        public comment: string = ''
     ) { }
 
 

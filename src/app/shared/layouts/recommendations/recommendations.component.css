@@ -1,6 +1,5 @@
 .recomendaciones__container {
     display: grid;
-    padding: var(--space-xl);
     gap: var(--space-xl);
     
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));

@@ -1,10 +1,20 @@
 export type BookJSON = {
-    titulo: string
+    titulo: string,
+    author: string,
+    words: number,
+    pages: number,
+    translations: Array<string>,
+    weeklySells: number
 }
 
 export class Book {
     constructor(
-        public titulo:string = ''
+        public titulo:string = '',
+        public author: string = '',
+        public words: number = 0,
+        public pages: number = 0,
+        public translations: Array<string> = [],
+        public weeklySells: number = 0
     ){}
 
     static fromJson(recommendationJSON: BookJSON): Book {
@@ -13,7 +23,12 @@ export class Book {
     
     toJSON(): BookJSON {
         return {
-            titulo: this.titulo
+            titulo: this.titulo,
+            author: this.author,
+            words: this.words,
+            pages: this.pages,
+            translations: this.translations,
+            weeklySells: this.weeklySells,
         }
     }
 }
