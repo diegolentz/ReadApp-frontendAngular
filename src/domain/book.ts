@@ -14,7 +14,8 @@ export class Book {
         public words: number = 0,
         public pages: number = 0,
         public translations: Array<string> = [],
-        public weeklySells: number = 0
+        public weeklySells: number = 0,
+        public imagen : string = ''
     ){}
 
     static fromJson(recommendationJSON: BookJSON): Book {
