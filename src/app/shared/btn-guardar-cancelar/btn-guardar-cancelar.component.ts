@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class BtnGuardarCancelarComponent {
 
+
+verificar(): Boolean {
+  return true;
+}
+
 }

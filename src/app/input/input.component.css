@@ -28,9 +28,10 @@
         transition: 0.35s;
     }
     
-    & input:focus {
+    & input:focus, input:user-valid {
         border-color: var(--color-searchbar);
         border-radius: 1rem;
+        color: black;
     }
 }
 
@@ -46,75 +47,12 @@ div input:user-valid ~ label {
     padding: 0.2rem;
 }
 
-
-/* ajustar medidas del imput, font height, etc */
-.error-message{
-    color: red;
-}
-.nombreApellido{
-    height: 3rem;
-    width: auto;
-    
-}
-.usuario {
-    height: 3rem;
-    width: auto;
-}
-
-.password {
-    
-    height: 3rem;
-    width: auto;
-}
-
-.email {
-    height: 3rem;
-    width: auto;
-    
-}
-
-.texto {
-    border-radius: 1rem;
-    height: 30rem;
-    width: 70vw;
-    padding: 2rem;
-    border: 2px solid var(--color-searchbar);
-    font-size: var(--space-lg);
-    /* border-color: var(--color-fondo); */
-
-    &.texto:focus {
-        outline: none;                       /* Quitar el contorno por defecto */
-    }
-}
-
-
-
-.fecha {
-    height: 3rem;
-    width: auto;
-    
+.campo input[type="date"] {
     color: white;
-    
-    
-}
-input:user-valid, input:focus{
-    color: black;
 }
 
-
-.numero {
-    height: 3rem;
-    width: auto;
-    
-}
-
-.numero::-webkit-outer-spin-button,
-.numero::-webkit-inner-spin-button {
+.campo input[type="number"]::-webkit-inner-spin-button,
+.campo input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
-    /* margin: 0; */
-}
-
-.nav {
-    height: 3rem;
-    width: auto;
+    margin: 0; 
 }
