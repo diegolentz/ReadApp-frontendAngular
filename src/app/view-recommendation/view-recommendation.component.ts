@@ -19,12 +19,12 @@ import { LibroComponent } from "../libro/libro.component";
   styleUrl: './view-recommendation.component.css'
 })
 export class ViewRecommendationComponent {
-  constructor(private router: Router) {}
+  constructor() {}
 
   recomendacion: Recommendation = RECOMMENDATIONS[0]
 
-  // isEditPage() {
-  //   return this.router.url === '/edit-recommendation'; 
-  // }
+  puedeEditar(): boolean {
+    return true
+  }
 
 }

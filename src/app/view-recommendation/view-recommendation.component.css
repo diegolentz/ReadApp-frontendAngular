@@ -22,7 +22,6 @@
     font-size: 2rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    
   
     & input{
         width: 100%;
@@ -30,7 +29,13 @@
       }
     }
   
-  
+.descripcion{
+
+  font-size: 1.8rem;
+  text-align: justify;
+  margin: 2rem 0 1.5rem;
+}
+
 .contenedorTitulo{
     display: flex;
     flex-direction: row;

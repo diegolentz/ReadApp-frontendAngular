@@ -7,7 +7,7 @@ article{
 
 .perfil-valoracion {
     display: grid;
-    grid-template-columns: 5.5rem 10rem;
+    grid-template-columns: 1fr 4fr;
     grid-template-rows: auto;
     justify-content: center;
     padding: 1rem;
@@ -23,4 +23,8 @@ article{
 .descripcion{
     font-size: 1.5rem;
     text-align: justify;
+}
+
+.datos{
+    width: 100%;
 }
