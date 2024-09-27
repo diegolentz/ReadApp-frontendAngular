@@ -1,8 +1,11 @@
 
 <app-nav></app-nav>
 
+
+<div>
 <app-container-books>
-  @for (book of books; track book){
-  <app-libro [book]="book"></app-libro>
-  }
+  <ng-container *ngFor="let book of books">
+    <app-libro [book]="book"></app-libro>
+  </ng-container>
 </app-container-books>
+</div>

@@ -4,7 +4,8 @@ export type BookJSON = {
     words: number,
     pages: number,
     translations: Array<string>,
-    weeklySells: number
+    weeklySells: number,
+    imagen : string 
 }
 
 export class Book {
@@ -30,6 +31,7 @@ export class Book {
             pages: this.pages,
             translations: this.translations,
             weeklySells: this.weeklySells,
+            imagen : this.imagen
         }
     }
 }
