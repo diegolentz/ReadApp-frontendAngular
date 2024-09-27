@@ -10,14 +10,15 @@ import { firstValueFrom, lastValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  
-  constructor(private httpClient: HttpClient) { }
-
+  constructor(private httpClient: HttpClient) {}
 
   async obtenerLibros(): Promise<Book[]> {
+    // llamada al servidor para obtener la lista de libros en formato BookJSON.
     const libros$ = this.httpClient.get<BookJSON[]>(`${REST_SERVER_URL}/libros`);
-    const bookJSON = await firstValueFrom(libros$);
-    return bookJSON.map((bookJSON) => Book.fromJson(bookJSON));
-  }
 
+    const bookJSON = await firstValueFrom(libros$);
+
+    // Mapea cada objeto JSON a una instancia de la clase `Book`.
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+  }
 }
