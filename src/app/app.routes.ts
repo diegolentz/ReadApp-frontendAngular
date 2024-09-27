@@ -9,7 +9,6 @@ import { ProfileRecommendationsComponent } from './profile-recommendations/profi
 import { ProfileBooksReadedComponent } from './profile-books-readed/profile-books-readed.component';
 import { ProfileBooksToReadComponent } from './profile-books-to-read/profile-books-to-read.component';
 import { LoginComponent } from './login/login.component';
-import { EditRecommendationComponent } from './edit-recommendation/edit-recommendation.component';
 import { ViewRecommendationComponent } from './view-recommendation/view-recommendation.component';
 
 export const routes: Routes = [
@@ -29,10 +28,6 @@ export const routes: Routes = [
     {
         path: 'view-recommendation',
         component: ViewRecommendationComponent,
-    },
-    {
-        path: 'edit-recommendation',
-        component: EditRecommendationComponent,
     },
     {
         path: 'search-books',

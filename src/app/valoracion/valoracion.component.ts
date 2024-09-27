@@ -15,10 +15,11 @@ import { Valoration } from '../../domain/valoration';
 export class ValoracionComponent implements OnInit {
   @Input() recomendacion!: Recommendation;
   valoraciones: Array<Valoration> = [];
-
+  
   ngOnInit() {
+    if (this.recomendacion) {
       this.valoraciones = this.recomendacion.valorations;
+    }
   }
-
 
 }
