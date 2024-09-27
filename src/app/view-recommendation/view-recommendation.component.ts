@@ -11,20 +11,21 @@ import { ContainerBooksComponent } from "../shared/layouts/books/books.component
 import { Recommendation } from '../../domain/recommendation';
 import { RECOMMENDATIONS } from '../../mock/mockRecommendations';
 import { LibroComponent } from "../libro/libro.component";
+import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
-  imports: [NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent],
+  imports: [NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent],
   templateUrl: './view-recommendation.component.html',
   styleUrl: './view-recommendation.component.css'
 })
 export class ViewRecommendationComponent {
-  constructor(private router: Router) {}
+  constructor() {}
 
   recomendacion: Recommendation = RECOMMENDATIONS[0]
 
-  // isEditPage() {
-  //   return this.router.url === '/edit-recommendation'; 
-  // }
+  noPuedeEditar(){
+    return true
+  }
 
 }

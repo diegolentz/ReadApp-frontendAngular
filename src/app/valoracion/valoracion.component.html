@@ -16,10 +16,10 @@
       <h3>4.5/5</h3>
     </div>
     <section class="valoraciones__individuales">
-      <app-valoracion-individual></app-valoracion-individual>
-      <app-valoracion-individual></app-valoracion-individual>
-      <app-valoracion-individual></app-valoracion-individual>
-      <app-valoracion-individual></app-valoracion-individual>
+      
+      @for (valoracion of valoraciones; track valoracion){
+        <app-valoracion-individual [valoracion]="valoracion"></app-valoracion-individual>
+        }
       
       <app-boton-agregar ></app-boton-agregar>
 

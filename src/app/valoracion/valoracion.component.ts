@@ -1,14 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { ValoracionIndividualComponent } from "../valoracion-individual/valoracion-individual.component";
+import { Recommendation } from '../../domain/recommendation';
+import { Valoration } from '../../domain/valoration';
+
 
 @Component({
   selector: 'app-valoracion',
   standalone: true,
   imports: [BotonAgregarComponent, ValoracionIndividualComponent],
   templateUrl: './valoracion.component.html',
-  styleUrl: './valoracion.component.css'
+  styleUrls: ['./valoracion.component.css']
 })
-export class ValoracionComponent {
+export class ValoracionComponent implements OnInit {
+  @Input() recomendacion!: Recommendation;
+  valoraciones: Array<Valoration> = [];
+  
+  ngOnInit() {
+    if (this.recomendacion) {
+      this.valoraciones = this.recomendacion.valorations;
+    }
+  }
 
 }

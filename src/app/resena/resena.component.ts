@@ -14,9 +14,5 @@ export class ResenaComponent {
   
   constructor(private router: Router) {}
 
-  isEditPage() {
-    return this.router.url === '/edit-recommendation'; 
-  }
-
 }
 
