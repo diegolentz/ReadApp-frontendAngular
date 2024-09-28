@@ -16,7 +16,7 @@ export class ProfileBooksReadedComponent implements OnInit {
   constructor(public bookService:BookService) {}
 
   books!:Array<Book>
-  ngOnInit(): void {
-    // this.books = this.bookService.mockGetBooks()  
+  async ngOnInit(): Promise<void> {
+    this.books = await this.bookService.obtenerLibros();
   }
 }

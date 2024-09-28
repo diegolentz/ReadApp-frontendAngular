@@ -20,8 +20,6 @@ export class BusquedaLibrosComponent {
   constructor(public bookService: BookService) { }
   books!: Book[];
   async ngOnInit() {
-
-    
     this.books = await this.bookService.obtenerLibros();
   }
 }
