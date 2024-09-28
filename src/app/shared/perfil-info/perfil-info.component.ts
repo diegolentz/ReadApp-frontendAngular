@@ -54,7 +54,7 @@ export class PerfilInfoComponent {
   ngOnInit(){
     Object.keys(this.perfilForm.controls).forEach(nombreForm => {
       var form = this.perfilForm.get(nombreForm)
-      form?.valueChanges.subscribe(valor => {
+      form?.statusChanges.subscribe(valor => {
         console.log(valor)
       })
     })

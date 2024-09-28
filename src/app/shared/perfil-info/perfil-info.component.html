@@ -7,12 +7,15 @@
 
         <form class="formulario-general" [formGroup]="perfilForm">
             <input type="text" formControlName="nombre" placeholder="nombre">
-            <!-- <app-input [inputType]="'text'" label=" Nombre"></app-input>
-            <app-input [inputType]="'text'" label=" Username" [(ngModel)]="texto"></app-input>
-            <app-input [inputType]="'text'" label=" Apellido" [(ngModel)]="texto"></app-input>
-            <app-input [inputType]="'date'" label=" Fecha de nacimiento" ></app-input>
-            <app-input [inputType]="'text'" label=" E-mail"></app-input>
-            <app-input [inputType]="'number'" label=" Tiempo de lectura promedio"></app-input> -->
+            <p *ngIf="perfilForm.get('nombre')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
+            <input type="text" formControlName="apellido" placeholder="apellido">
+            <p *ngIf="perfilForm.get('apellido')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
+            <input type="text" formControlName="username" placeholder="username">
+            <p *ngIf="perfilForm.get('username')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
+            <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento">
+            <p *ngIf="perfilForm.get('fecha de nacimiento')?.errors">Ingrese una fecha válida</p>
+            <input type="email" formControlName="email" placeholder="email">
+            <p *ngIf="perfilForm.get('email')?.errors">Ingrese un mail válido</p>
         </form>
     </div>
 
