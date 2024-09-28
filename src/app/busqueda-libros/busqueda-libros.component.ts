@@ -16,12 +16,10 @@ import { CommonModule, NgFor } from '@angular/common';
   styleUrl: './busqueda-libros.component.css'
 })
 export class BusquedaLibrosComponent {
-  books: Book[] = [];
   
-  constructor(public bookService:BookService) {}
-  
-
-  async ngOnInit(): Promise<void> {
+  constructor(public bookService: BookService) { }
+  books!: Book[];
+  async ngOnInit() {
 
     
     this.books = await this.bookService.obtenerLibros();
