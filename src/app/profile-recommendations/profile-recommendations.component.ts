@@ -1,5 +1,4 @@
 import { Component, HostBinding } from '@angular/core';
-import { ContainerRecommendationsComponent } from '../shared/layouts/recommendations/recommendations.component';
 import { RecomendacionComponent } from '../shared/recomendacion/recomendacion.component';
 import { Recommendation } from '../../domain/recommendation';
 import { RecommendationService } from '../../service/recommendation.service';
@@ -7,7 +6,7 @@ import { RecommendationService } from '../../service/recommendation.service';
 @Component({
   selector: 'app-profile-recommendations',
   standalone: true,
-  imports: [RecomendacionComponent, ContainerRecommendationsComponent],
+  imports: [RecomendacionComponent],
   templateUrl: './profile-recommendations.component.html',
   styleUrl: './profile-recommendations.component.css'
 })
@@ -17,7 +16,7 @@ export class ProfileRecommendationsComponent {
 
   constructor(private recommendationService:RecommendationService){}
   
-  ngOnInit(): void {
-    this.recommendations = this.recommendationService.mockGetRecommendations()
+  async ngOnInit() {
+    this.recommendations = await this.recommendationService.getRecommendations()
   }
 }
