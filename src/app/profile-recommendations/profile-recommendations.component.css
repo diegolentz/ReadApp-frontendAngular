@@ -1,6 +1,11 @@
 
-.opcionSeleccionada__recomendaciones{
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 25rem), 1fr));
-    grid-auto-rows: 30rem;
+.recommendations__container{
+    display: grid;
+    gap: var(--space-xl);
+    
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr));
+    grid-auto-rows: 35rem;
     justify-items: center;
 }
+
+
