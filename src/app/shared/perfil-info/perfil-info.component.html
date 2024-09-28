@@ -5,17 +5,14 @@
         <h3>General</h3>
 
 
-        <form class="formulario-general">
-
+        <form class="formulario-general" [formGroup]="perfilForm">
+            <input type="text" formControlName="nombre" placeholder="nombre">
             <!-- <app-input [inputType]="'text'" label=" Nombre"></app-input>
             <app-input [inputType]="'text'" label=" Username" [(ngModel)]="texto"></app-input>
             <app-input [inputType]="'text'" label=" Apellido" [(ngModel)]="texto"></app-input>
             <app-input [inputType]="'date'" label=" Fecha de nacimiento" ></app-input>
             <app-input [inputType]="'text'" label=" E-mail"></app-input>
             <app-input [inputType]="'number'" label=" Tiempo de lectura promedio"></app-input> -->
-            
-            
-            
         </form>
     </div>
 

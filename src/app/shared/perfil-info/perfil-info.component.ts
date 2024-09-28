@@ -2,7 +2,7 @@ import { Component, HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 
@@ -11,7 +11,7 @@ import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar
 @Component({
   selector: 'app-perfil-info',
   standalone: true,
-  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent],
+  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent, ReactiveFormsModule],
   templateUrl: './perfil-info.component.html',
   styleUrl: './perfil-info.component.css'
 })
@@ -49,6 +49,15 @@ export class PerfilInfoComponent {
   errorMessage(form:string){
     var error = this.fb.control(form).errors
     console.log(error)
+  }
+
+  ngOnInit(){
+    Object.keys(this.perfilForm.controls).forEach(nombreForm => {
+      var form = this.perfilForm.get(nombreForm)
+      form?.valueChanges.subscribe(valor => {
+        console.log(valor)
+      })
+    })
   }
 }
 
