@@ -43,8 +43,8 @@ export class PerfilInfoComponent {
     })
 
     this.calculadorForm = this.fb.group({
-      'numero min': [0, [Validators.min(0)]],
-      'numero max': [0, [Validators.min(0)]]
+      'numero min': [0],
+      'numero max': [0]
     })
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
@@ -110,13 +110,13 @@ export class MinMaxValidator {
       let min: number = minControl?.value
       let max: number = maxControl?.value
 
-      /* console.log("El minimo es:", min)
-      console.log("El maximo es:", max) */
-
-      if (min > max && max < min)
-        {maxControl?.setErrors({ "LessThanMin": true });}
+      if (min > max || min < 0)
+        {
+         maxControl?.setErrors({ "LessThanMin": true });}
       else
-      {minControl?.setErrors(null);}
+      {
+        maxControl?.setErrors(null);
+      }
     }
   }
 }

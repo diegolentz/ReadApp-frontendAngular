@@ -45,10 +45,9 @@
             <app-input-box inputType="checkbox" label="Experimentado"></app-input-box>
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
-                <input inputType="number" formControlName="numero min">
-                <p *ngIf="calculadorForm.get('numero min')?.errors">Ingrese un mail válido</p>
-                <input inputType="number" formControlName="numero max">
-                <p *ngIf="calculadorForm.get('numero max')?.errors">Ingrese un mail válido</p>
+                <input type="number" formControlName="numero min">
+                <input type="number" formControlName="numero max">
+                <p *ngIf="calculadorForm.errors">Ingrese un mail válido</p>
             </div>
         </form>
     </div>
