@@ -35,7 +35,7 @@
 
     <div class="info">
         <h3>Criterio de búsqueda</h3>
-        <div class="formulario-criterio">
+        <form class="formulario-criterio" [formGroup]="calculadorForm">
             <app-input-box inputType="checkbox" label="Precavido"></app-input-box>
             <app-input-box inputType="checkbox" label="Demandante"></app-input-box>
             <app-input-box inputType="checkbox" label="Cambiante"></app-input-box>
@@ -45,10 +45,12 @@
             <app-input-box inputType="checkbox" label="Experimentado"></app-input-box>
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
-                <app-input inputType="number" [label]="'Limite minimo'"></app-input>
-                <app-input inputType="number" [label]="'Limite maximo'"></app-input>
+                <input inputType="number" formControlName="numero min">
+                <p *ngIf="calculadorForm.get('numero min')?.errors">Ingrese un mail válido</p>
+                <input inputType="number" formControlName="numero max">
+                <p *ngIf="calculadorForm.get('numero max')?.errors">Ingrese un mail válido</p>
             </div>
-        </div>
+        </form>
     </div>
     
     
