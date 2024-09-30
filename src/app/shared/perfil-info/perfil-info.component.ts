@@ -18,20 +18,17 @@ import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar
 export class PerfilInfoComponent {
   @HostBinding('style.width') width: string = '100%';
 
+  /* Forms */
   perfilForm: FormGroup;
   calculadorForm: FormGroup;
-
   private chPermitidosNomb = '[a-zA-Z]*$'
   private chPermitidosUser = '^[a-zA-Z0-9]*$'
 
-  minLectura: number = 0;
+  /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
-
   mostrarNuevosInputs: boolean = false;
 
   boton = new BtnGuardarCancelarComponent()
-
-
 
   constructor(private fb: FormBuilder) {
     this.perfilForm = this.fb.group({
@@ -51,47 +48,32 @@ export class PerfilInfoComponent {
   }
 
 
+  errorMessage(form: FormGroup, campo: string, validator: string) {
+    const campoForm = form.get(campo)
+    const error = campoForm?.errors
+    if (campoForm?.value == '') return 'este campo es obligatorio'
+    if (validator == 'pattern' && error) return 'el campo contiene carácteres no permitidos'
+    if (validator == 'email' && error) return 'dominio del correo incorrecto'
+    if (validator == 'date validator' && error) return 'ingrese una fecha menor a hoy'
+    if (validator == 'minmax' && error) return 'el valor minimo no puede superar a l máximo o ser negativo'
+    return undefined
+  }
+
+
+
+
+
+  isValid() {
+    console.log("*************El form es*************:", this.perfilForm.valid && this.calculadorForm.valid)
+  }
+
+
 
   mostrar(event: any) {
     this.mostrarNuevosInputs = event.target.checked;
     this.resetCalculador() // Actualiza según si el checkbox está marcado o no
   }
-
-  errorMessage(form: FormGroup, campo:string, validator:string) {
-    const campoForm = form.get(campo)
-    const error = campoForm?.errors
-    if(campoForm?.value == '') return 'este campo es obligatorio'
-    if(validator == 'pattern' && error) return 'el campo contiene carácteres no permitidos'
-    if(validator == 'email' && error) return 'dominio del correo incorrecto'
-    if(validator == 'date validator' && error) return 'ingrese una fecha menor a hoy'
-    if(validator == 'minmax' && error) return 'el valor minimo no puede superar a l máximo o ser negativo'
-    return undefined
-  }
-
-  ngOnInit() {
-    Object.keys(this.perfilForm.controls).forEach(nombreForm => {
-      var form = this.perfilForm.get(nombreForm)
-      form?.statusChanges.subscribe(valor => {
-        console.log(valor)
-        this.isValid()
-      })
-    })
-
-    Object.keys(this.calculadorForm.controls).forEach(nombreForm => {
-      var form = this.calculadorForm.get(nombreForm)
-      form?.statusChanges.subscribe(valor => {
-        console.log(valor)
-      })
-    })
-
-    
-  }
-
-  isValid(){
-    console.log("*************El form es*************:", this.perfilForm.valid && this.calculadorForm.valid)
-  }
-
-  resetCalculador(){
+  resetCalculador() {
     this.calculadorForm.reset()
   }
 
@@ -128,11 +110,10 @@ export class MinMaxValidator {
       let min: number = minControl?.value
       let max: number = maxControl?.value
 
-      if (min > max || min < 0)
-        {
-         maxControl?.setErrors({ "LessThanMin": true });}
-      else
-      {
+      if (min > max || min < 0) {
+        maxControl?.setErrors({ "LessThanMin": true });
+      }
+      else {
         maxControl?.setErrors(null);
       }
     }
