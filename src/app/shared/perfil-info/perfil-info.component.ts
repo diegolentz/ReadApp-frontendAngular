@@ -53,12 +53,19 @@ export class PerfilInfoComponent {
 
 
   mostrar(event: any) {
-    this.mostrarNuevosInputs = event.target.checked; // Actualiza según si el checkbox está marcado o no
+    this.mostrarNuevosInputs = event.target.checked;
+    this.resetCalculador() // Actualiza según si el checkbox está marcado o no
   }
 
-  errorMessage(form: string) {
-    var error = this.fb.control(form).errors
-    console.log(error)
+  errorMessage(form: FormGroup, campo:string, validator:string) {
+    const campoForm = form.get(campo)
+    const error = campoForm?.errors
+    if(campoForm?.value == '') return 'este campo es obligatorio'
+    if(validator == 'pattern' && error) return 'el campo contiene carácteres no permitidos'
+    if(validator == 'email' && error) return 'dominio del correo incorrecto'
+    if(validator == 'date validator' && error) return 'ingrese una fecha menor a hoy'
+    if(validator == 'minmax' && error) return 'el valor minimo no puede superar a l máximo o ser negativo'
+    return undefined
   }
 
   ngOnInit() {
@@ -66,6 +73,7 @@ export class PerfilInfoComponent {
       var form = this.perfilForm.get(nombreForm)
       form?.statusChanges.subscribe(valor => {
         console.log(valor)
+        this.isValid()
       })
     })
 
@@ -75,6 +83,16 @@ export class PerfilInfoComponent {
         console.log(valor)
       })
     })
+
+    
+  }
+
+  isValid(){
+    console.log("*************El form es*************:", this.perfilForm.valid && this.calculadorForm.valid)
+  }
+
+  resetCalculador(){
+    this.calculadorForm.reset()
   }
 
 

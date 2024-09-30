@@ -6,16 +6,41 @@
 
 
         <form class="formulario-general" [formGroup]="perfilForm">
-            <input type="text" formControlName="nombre" placeholder="nombre">
-            <p *ngIf="perfilForm.get('nombre')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
-            <input type="text" formControlName="apellido" placeholder="apellido">
-            <p *ngIf="perfilForm.get('apellido')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
-            <input type="text" formControlName="username" placeholder="username">
-            <p *ngIf="perfilForm.get('username')?.errors">El campo no puede estar vacio o contener cáracteres especiales</p>
-            <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento">
-            <p *ngIf="perfilForm.get('fecha de nacimiento')?.errors">Ingrese una fecha válida</p>
-            <input type="email" formControlName="email" placeholder="email">
-            <p *ngIf="perfilForm.get('email')?.errors">Ingrese un mail válido</p>
+            <div class= "campo input__label--effect">
+                <input type="text" formControlName="nombre" placeholder="nombre">
+                <label>nombre</label>
+                <p *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))">{{errorMessage(perfilForm, 'nombre', 'pattern')}}</p>
+            </div>
+            
+
+            <div class= "campo input__label--effect">
+                <input type="text" formControlName="apellido" placeholder="apellido">
+                <label>apellido</label>
+                <p *ngIf="(errorMessage(perfilForm, 'apellido', 'pattern'))">{{errorMessage(perfilForm, 'apellido', 'pattern')}}</p>
+            </div>
+            
+
+            <div class= "campo input__label--effect">
+                <input type="text" formControlName="username" placeholder="username">
+                <label>username</label>
+                <p *ngIf="(errorMessage(perfilForm, 'username', 'pattern'))">{{errorMessage(perfilForm, 'username', 'pattern')}}</p>
+            </div>
+            
+
+            
+            <div class= "campo input__label--effect">
+                <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento">
+                <label>fecha de nacimiento</label>
+                <p *ngIf="(errorMessage(perfilForm, 'fecha de nacimiento', 'date validator'))">{{errorMessage(perfilForm, 'fecha de nacimiento', 'date validator')}}</p>
+            </div>
+            
+
+            <div class= "campo input__label--effect">
+                <input type="email" formControlName="email" placeholder="email">
+                <label>email</label>
+                <p *ngIf="(errorMessage(perfilForm, 'email', 'email'))">{{errorMessage(perfilForm, 'email', 'email')}}</p>
+            </div>
+            
         </form>
     </div>
 
@@ -45,9 +70,16 @@
             <app-input-box inputType="checkbox" label="Experimentado"></app-input-box>
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
-                <input type="number" formControlName="numero min">
-                <input type="number" formControlName="numero max">
-                <p *ngIf="calculadorForm.errors">Ingrese un mail válido</p>
+                <div class= "campo input__label--effect">
+                    <input type="number" formControlName="numero min">
+                    <label>MIN</label>
+                </div>
+                
+                <div class= "campo input__label--effect">
+                    <input type="number" formControlName="numero max">
+                    <label>MAX</label>
+                </div>
+                <p *ngIf="(errorMessage(calculadorForm, 'numero max', 'minmax'))">{{(errorMessage(calculadorForm, 'numero max', 'minmax'))}}</p>
             </div>
         </form>
     </div>
