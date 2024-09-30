@@ -26,7 +26,7 @@ export const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'view-recommendation',
+        path: 'view-recommendation/:id',
         component: ViewRecommendationComponent,
     },
     {

@@ -44,6 +44,6 @@
         </div>
     </div>
 
-    <a class="btn__verMas " (click)="goTo('view-recommendation')" appButtonHoverPressed>Ver Mas>></a>
+    <a class="btn__verMas " [routerLink]="['/view-recommendation',recomendacion.id]" appButtonHoverPressed>Ver Mas>></a>
 
 </article>
