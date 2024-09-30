@@ -1,21 +1,26 @@
 import { Book } from "./book"
+import { User } from "./user"
 import { Valoration } from "./valoration"
 
 export type RecommendationJSON = {
-    titulo: string,
-    author: string,
-    descripcion: string,
+    author: User,
     librosRecomendados: Array<Book>,
-    valorations: Array<Valoration>
+    titulo: string,
+    contenido: string,
+    publica: boolean,
+    valorations: Array<Valoration>,
+    id: number
 }
 
 export class Recommendation {
     constructor(
-        public titulo: string = '',
-        public author: string = '',
-        public descripcion: string = '',
+        public author: User = new User(),
         public librosRecomendados: Array<Book> = [],
-        public valorations: Array<Valoration> = []
+        public titulo: string = '',
+        public descripcion: string = '',
+        public publica: boolean = true,
+        public valorations: Array<Valoration> = [],
+        public id: number = 0
     ) { }
 
     get cantidadLibros() {
@@ -35,17 +40,26 @@ export class Recommendation {
 
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
-        return Object.assign(new Recommendation(), recommendationJSON)
+        return new Recommendation(
+            recommendationJSON.author,
+            recommendationJSON.librosRecomendados,
+            recommendationJSON.titulo,
+            recommendationJSON.contenido,
+            recommendationJSON.publica,
+            recommendationJSON.valorations,
+            recommendationJSON.id
+            )
     }
 
-    toJSON(): RecommendationJSON {
-        return {
-            titulo: this.titulo,
-            author: this.author,
-            descripcion: this.descripcion,
-            librosRecomendados: this.librosRecomendados,
-            valorations: this.valorations
-        }
-    }
+    // toJSON(): RecommendationJSON {
+    //     return {
+    //         author: this.author,
+    //         librosRecomendados: this.librosRecomendados,
+    //         titulo: this.titulo,
+    //         descripcion: this.descripcion,
+    //         publica: this.publica,
+    //         valorations: this.valorations
+    //     }
+    // }
 }
 

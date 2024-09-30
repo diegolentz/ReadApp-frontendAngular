@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../shorcut-my-profile/shorcut-my-profile.component';
+import { User } from '../../../domain/user';
 @Component({
   selector: 'app-user-identification',
   standalone: true,
