@@ -19,6 +19,7 @@
     </p>
 
     <div class="recomendacion__libros">
+        <!-- FALTA LOGICA PARA UN CARTEL QUE DIGA "N LIBROS MAS" -->
         @for(book of recomendacion.librosRecomendados; track book){
             <div class="libro-recomendado">
                 <svg-icon src="svg/recommendedBook.svg" [svgStyle]="{'fill': 'black'}"></svg-icon>

@@ -53,6 +53,8 @@
     grid-area: books;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    overflow: hidden;
     border-top: 2px solid grey;
     border-bottom: 2px solid grey;
 }

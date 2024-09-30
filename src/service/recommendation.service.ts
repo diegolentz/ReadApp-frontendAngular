@@ -16,6 +16,5 @@ export class RecommendationService {
     const recommendationsJSON = await lastValueFrom(recommendations$)
     return recommendationsJSON.map((recommendationJSON) => Recommendation.fromJson(recommendationJSON))
   }
-
 }
 

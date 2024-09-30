@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { UserIdentificationComponent } from '../user-identification/user-identification.component';
 import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { AmigosComponent } from '../../amigos/amigos.component';
 import { NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { OptionComponent } from '../option/option.component';
 import { BgColorDirective } from '../directives/bg-color.directive';
 import { HoverBoxshadowDirective } from '../directives/hover-boxshadow.directive';
+import { User } from '../../../domain/user';
 
 @Component({
   selector: 'app-shorcut-my-profile',
@@ -31,14 +31,6 @@ export class ShorcutMyProfileComponent implements OnInit{
   changeDisplay(){
     this.displayShorcut = !this.displayShorcut
   }
-}
-
-export class User{
-  constructor(
-    public photo:string,
-    public name:string,
-    public id:string,
-  ){}
 }
 
 export class Option{

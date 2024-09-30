@@ -7,6 +7,7 @@ export type AuthorJSON = {
 
 //libro devuelta por el backend
 export type BookJSON = {
+    
     id: number,
     autor: AuthorJSON; // me qedo con los datos qe me interesan de autor(nombre/apellido/id)
     cantidadPalabras: number;
