@@ -31,8 +31,8 @@ export class HomeComponent implements OnInit {
       (nuevoFiltro: string) => {
         //exp regular para quitar espacios en blanco y convertir a minusculas
         this.recommendations = nuevoFiltro ?
-          (this.allRecomendations.filter((recommendation) => recommendation.titulo.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
-            recommendation.descripcion.toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+          (this.allRecomendations.filter((recommendation) => recommendation.title.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+            recommendation.description.toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
           (this.allRecomendations);
       }
     );
