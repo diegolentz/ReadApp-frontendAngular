@@ -2,12 +2,12 @@
     <div class="perfil-valoracion">
       <img src="roman.jpg" alt="" />
       <div class="datos">
-        <h4>{{valoracion.author}}</h4>
-        <h4>{{valoracion.score}}</h4>
-        <h4>{{valoracion.date | date:'d/M/yyyy'}}</h4>
+        <h4>{{valoracion.autor.photo}}</h4>
+        <h4>{{valoracion.valor}}</h4>
+        <!-- <h4>{{valoracion.date | date:'d/M/yyyy'}}</h4> -->
       </div>
     </div>
     <p class="descripcion ">
-      {{valoracion.comment}}
+      {{valoracion.comentario}}
     </p>
   </article>

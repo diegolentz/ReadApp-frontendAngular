@@ -8,7 +8,7 @@ export type RecommendationJSON = {
     titulo: string,
     contenido: string,
     publica: boolean,
-    valorations: Array<Valoration>,
+    valoraciones: Array<Valoration>,
     id: number
 }
 
@@ -19,7 +19,7 @@ export class Recommendation {
         public titulo: string = '',
         public descripcion: string = '',
         public publica: boolean = true,
-        public valorations: Array<Valoration> = [],
+        public valoraciones: Array<Valoration> = [],
         public id: number = 0
     ) { }
 
@@ -32,8 +32,8 @@ export class Recommendation {
     
     private substractScoreFromValorations(){
         let score = 0
-        this.valorations.forEach(valoration => {
-          score += valoration.score
+        this.valoraciones.forEach(valoracion => {
+          score += valoracion.valor
         });
         return score
     }
@@ -47,7 +47,7 @@ export class Recommendation {
             recommendationJSON.titulo,
             recommendationJSON.contenido,
             recommendationJSON.publica,
-            recommendationJSON.valorations,
+            recommendationJSON.valoraciones,
             recommendationJSON.id
             )
     }

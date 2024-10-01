@@ -31,7 +31,6 @@ export class ViewRecommendationComponent implements OnInit{
       const recomendacionId = viewRecommendationParams['id'];
       try {
         this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
-        console.log('Recomendación:', this.recomendacion);
       } catch (error) {
         console.error('Error al obtener la recomendación:', error);
       }
