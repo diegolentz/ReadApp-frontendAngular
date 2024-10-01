@@ -18,5 +18,17 @@ export class HomeComponent implements OnInit{
   
   async ngOnInit() {
     this.recommendations = await this.recommendationService.getRecommendations()
+    this.subscribirFiltroCambiado();
+  }
+
+  subscribirFiltroCambiado() {
+    this.recommendationService.filtroCambiado.subscribe(
+      (nuevoFiltro: string) => {
+        this.recommendations = nuevoFiltro ? 
+        (this.recommendations.filter((recommendation) => recommendation.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
+        recommendation.descripcion.toLowerCase().includes(nuevoFiltro.toLowerCase()))) : 
+        (this.recommendations);
+      }
+    );
   }
 }

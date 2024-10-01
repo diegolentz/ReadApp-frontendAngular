@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms'; 
 import { BookService } from '../../service/book.service';
+import { RecommendationService } from '../../service/recommendation.service';
 
 @Component({
   selector: 'app-nav',
@@ -15,13 +16,15 @@ import { BookService } from '../../service/book.service';
 export class NavComponent {
   @Input() filtro: string = ""; 
 
-  constructor(private route: Router, public bookService : BookService) {}
+  constructor(private route: Router, public bookService : BookService, public recomendatioService : RecommendationService) {}
 
   estoyLibros(): boolean {
     return this.route.url === '/search-books';
   }
 
   enviarFiltro(){
-    this.bookService.aplicarFiltro(this.filtro)
+    (this.route.url === '/search-books')? 
+      this.bookService.aplicarFiltro(this.filtro) :
+       this.recomendatioService.aplicarFiltro(this.filtro); ;
   }
 }

@@ -22,16 +22,23 @@ export class BusquedaLibrosComponent {
   constructor(public bookService: BookService) {}
 
   async ngOnInit() {
-    // me traigo los libros
+
+    await this.obtenerLibros();
+    this.subscribirFiltroCambiado();
+    
+
+  }
+  async obtenerLibros() {
     this.allBooks = await this.bookService.obtenerLibros();
     this.books = this.allBooks;
-
-    // me subscribo a los cambios para filtrar
+  }
+  subscribirFiltroCambiado() {
     this.bookService.filtroCambiado.subscribe(
       (nuevoFiltro: string) => {
         this.books = nuevoFiltro ? 
-          this.allBooks.filter((book) => book.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) || book.author.toLowerCase().includes(nuevoFiltro.toLowerCase())) : 
-          this.allBooks;
+        (this.allBooks.filter((book) => book.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
+        book.author.toLowerCase().includes(nuevoFiltro.toLowerCase()))) : 
+        (this.allBooks);
       }
     );
   }

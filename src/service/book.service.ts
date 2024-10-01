@@ -14,7 +14,7 @@ export class BookService {
   constructor(private httpClient: HttpClient) {}
 
   async obtenerLibros(): Promise<Book[]> {
-    const libros$ = this.httpClient.get<BookJSON[]>(`${REST_SERVER_URL}/libros`);
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/libros');
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
