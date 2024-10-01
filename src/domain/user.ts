@@ -1,47 +1,58 @@
 
 export type UserJSON = {
-      photo:string,
-      name:string,
-      lastName:string,
-      alias:string,
-      birthDate: Date,
-      readVelocity:number,
-      email: string,
-      language:string,
-      id:number
+    fotoPath: string,
+    nombre: string,
+    apellido: string,
+    alias: string,
+    fechaNacimiento: Date,
+    palabrasPorMinutos: number,
+    direccionMail: string,
+    lenguaje: string,
+    id: number,
+    tipoDeLector: Map<any, any>,
+    perfil: Map<any, any>,
+    listaObservers: Array<any>,
+    autoresPreferidos: Array<any>,
+    librosLeidos: Array<any>,
+    cantidadVecesLeido: Array<any>,
+    librosALeer: Array<any>,
+    amigos: Array<any>,
+    recomendaciones: Array<any>,
+    recomendacionesAValorar: Array<any>,
+    recomendacionesValoradas: Map<any, any>
 }
 
 
-export class User{
+export class User {
     constructor(
-      public photo:string = "",
-      public name:string = "",
-      public lastName:string = "",
-      public alias:string = "",
-      public birthDate: Date = new Date(),
-      public readVelocity: number = -1,
-      public email: string = "",
-      public language: string = "",
-      public id:number = -1
-    ){}
+        public photo: string = "",
+        public name: string = "",
+        public lastName: string = "",
+        public alias: string = "",
+        public birthDate: Date = new Date(),
+        public readVelocity: number = -1,
+        public email: string = "",
+        public language: string = "",
+        public id: number = -1
+    ) { }
 
     static fromJson(userJSON: UserJSON): User {
         return new User(
-            userJSON.photo,
-            userJSON.name,
-            userJSON.lastName,
+            userJSON.fotoPath,
+            userJSON.nombre,
+            userJSON.apellido,
             userJSON.alias,
-            userJSON.birthDate,
-            userJSON.readVelocity,
-            userJSON.email,
-            userJSON.language,
+            userJSON.fechaNacimiento,
+            userJSON.palabrasPorMinutos,
+            userJSON.direccionMail,
+            userJSON.lenguaje,
             userJSON.id
-            )
+        )
     }
 
 }
 
-enum Language{
+enum Language {
     INGLES,
     ESPANIOL,
     ALEMAN,
