@@ -24,5 +24,10 @@ export class RecommendationService {
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
   }
+  async getRecommendationById(id:number):Promise<Recommendation> {
+    const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/'+id)
+    const recommendationJSON = await lastValueFrom(recommendation$)
+    return Recommendation.fromJson(recommendationJSON)
+  }
 }
 

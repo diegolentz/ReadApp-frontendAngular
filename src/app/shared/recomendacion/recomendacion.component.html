@@ -1,7 +1,7 @@
 <article class="recomendacion">
 
     <h2 class="recomendacion__titulo">
-        {{recomendacion.titulo}}
+        {{recomendacion.title}}
     </h2>
 
     <div class="actions">
@@ -15,12 +15,12 @@
     </div>
 
     <p class="recomendacion__descripcion">
-        {{recomendacion.descripcion}}
+        {{recomendacion.description}}
     </p>
 
     <div class="recomendacion__libros">
         <!-- FALTA LOGICA PARA UN CARTEL QUE DIGA "N LIBROS MAS" -->
-        @for(book of recomendacion.librosRecomendados; track book){
+        @for(book of recomendacion.recommendedBooks; track book){
             <div class="libro-recomendado">
                 <svg-icon src="svg/recommendedBook.svg" [svgStyle]="{'fill': 'black'}"></svg-icon>
                 <p>{{book.titulo}}</p>
@@ -44,6 +44,6 @@
         </div>
     </div>
 
-    <a class="btn__verMas " (click)="goTo('view-recommendation')" appButtonHoverPressed>Ver Mas>></a>
+    <a class="btn__verMas " [routerLink]="['/view-recommendation',recomendacion.id]" appButtonHoverPressed>Ver Mas>></a>
 
 </article>
