@@ -1,35 +1,30 @@
+import { User } from "./user"
 
 
 export type ValorationJSON = {
-    author: string,
     score: number,
-    date: Date,
     comment: string
+    author: User,
+    // date: Date,
 }
 
 export class Valoration {
     constructor(
-        public author: string = '',
-        public score: number = 0,
+        public score: number = 0,   
+        public comment: string = '',
+        public author: User  ,
         public date: Date = new Date(1914, 14, 14),
-        public comment: string = ''
     ) { }
 
-
-
-    // static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
-    //     return Object.assign(new Recommendation(), recommendationJSON)
-    // }
-
-    // toJSON(): RecommendationJSON {
-    //     return {
-    //         titulo: this.titulo,
-    //         pertenencia: this.pertenencia,
-    //         descripcion: this.descripcion,
-    //         librosRecomendados: this.librosRecomendados,
-    //         puntuacion: this.puntuacion,
-    //         tiempoEstimado: this.tiempoEstimado
-    //     }
-    // }
+    static fromJson(valorationJSON: ValorationJSON): Valoration {
+        return new Valoration(
+            valorationJSON.score,
+            valorationJSON.comment,
+            valorationJSON.author,
+            // valorationJSON.date,
+            
+            )
+    }
+ 
 }
 

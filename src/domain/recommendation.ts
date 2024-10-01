@@ -40,6 +40,7 @@ export class Recommendation {
 
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
+        
         return new Recommendation(
             recommendationJSON.author,
             recommendationJSON.librosRecomendados,

@@ -12,6 +12,8 @@ import { Recommendation } from '../../domain/recommendation';
 import { LibroComponent } from "../libro/libro.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { RecommendationService } from '../../service/recommendation.service';
+import { recomendacionDefault, RECOMMENDATIONS } from '../../mock/mockRecommendations';
+import { Valoration } from '../../domain/valoration';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
@@ -22,13 +24,14 @@ import { RecommendationService } from '../../service/recommendation.service';
 export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
-  recomendacion!: Recommendation 
+  recomendacion:Recommendation = recomendacionDefault
 
   async ngOnInit() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
       try {
         this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+        console.log('Recomendación:', this.recomendacion);
       } catch (error) {
         console.error('Error al obtener la recomendación:', error);
       }
