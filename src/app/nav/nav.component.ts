@@ -14,8 +14,10 @@ import { RecommendationService } from '../../service/recommendation.service';
   styleUrls: ['./nav.component.css'] 
 })
 export class NavComponent {
-  @Input() filtro: string = ""; 
 
+  @Input() filtro: string = "" ; 
+
+  
   constructor(private route: Router, public bookService : BookService, public recomendatioService : RecommendationService) {}
 
   estoyLibros(): boolean {

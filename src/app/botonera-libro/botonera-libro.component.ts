@@ -11,16 +11,17 @@ import { CommonModule, NgIf } from '@angular/common';
 export class BotoneraLibroComponent {
   constructor(private router: Router) {
   }
-  mostrar(id: string): boolean {
-    if (id === 'borrar' && this.router.url === '/search-books') {
-      return true;
-    }
-    if (id === 'aleer' && this.router.url === '/books-readed') {
-      return true;
-    }
-    if (id === 'leido' && this.router.url === '/books-to-read') {
-      return true;
-    }
-    return false;
+
+
+  mostrar(key: string): boolean {
+    
+    // hago un map con las rutas / valor y comparo con el parametro que recibo
+    const routeMap: { [key: string]: string } = {
+      'borrar': '/search-books',
+      'aleer': '/my-profile/books-to-read',
+      'leido': '/my-profile/books-readed'
+    };
+
+    return this.router.url === routeMap[key];
   }
 }
