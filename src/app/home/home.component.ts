@@ -11,12 +11,12 @@ import { NavComponent } from '../nav/nav.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   recommendations!: Recommendation[];
   allRecomendations!: Recommendation[];
 
-  constructor(private recommendationService:RecommendationService){}
-  
+  constructor(private recommendationService: RecommendationService) { }
+
   async ngOnInit() {
     await this.obtenerRecomendaciones();
     this.subscribirFiltroCambiado();
@@ -29,10 +29,11 @@ export class HomeComponent implements OnInit{
   subscribirFiltroCambiado() {
     this.recommendationService.filtroCambiado.subscribe(
       (nuevoFiltro: string) => {
-        this.recommendations = nuevoFiltro ? 
-        (this.allRecomendations.filter((recommendation) => recommendation.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
-        recommendation.descripcion.toLowerCase().includes(nuevoFiltro.toLowerCase()))) : 
-        (this.allRecomendations);
+        //exp regular para quitar espacios en blanco y convertir a minusculas
+        this.recommendations = nuevoFiltro ?
+          (this.allRecomendations.filter((recommendation) => recommendation.titulo.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+            recommendation.descripcion.toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+          (this.allRecomendations);
       }
     );
   }

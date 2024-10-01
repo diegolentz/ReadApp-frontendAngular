@@ -19,13 +19,13 @@ export class BusquedaLibrosComponent {
   books: Book[] = [];
   allBooks: Book[] = [];
 
-  constructor(public bookService: BookService) {}
+  constructor(public bookService: BookService) { }
 
   async ngOnInit() {
 
     await this.obtenerLibros();
     this.subscribirFiltroCambiado();
-    
+
 
   }
   async obtenerLibros() {
@@ -35,11 +35,14 @@ export class BusquedaLibrosComponent {
   subscribirFiltroCambiado() {
     this.bookService.filtroCambiado.subscribe(
       (nuevoFiltro: string) => {
-        this.books = nuevoFiltro ? 
-        (this.allBooks.filter((book) => book.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
-        book.author.toLowerCase().includes(nuevoFiltro.toLowerCase()))) : 
-        (this.allBooks);
+        //exp regular para quitar espacios en blanco y convertir a minusculas
+        this.books = nuevoFiltro ?
+          (this.allBooks.filter((book) => book.titulo.replace(/\s+/g, '').toLowerCase().includes(
+            nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+            book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+          (this.allBooks);
       }
     );
   }
 }
+
