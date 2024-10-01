@@ -26,10 +26,12 @@ article{
 
 .libro__portada{
     width: 10rem;
-    height: auto;
+    height: 85%;
     grid-area: portada;
     border-radius: 1rem;
     margin: auto;
+
+    
 }
 
 .libro__contenido{

@@ -3,11 +3,12 @@ import { LibroComponent } from '../libro/libro.component';
 import { ContainerBooksComponent } from "../shared/layouts/books/books.component";
 import { BookService } from '../../service/book.service';
 import { Book } from '../../domain/book';
+import { NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-profile-books-readed',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent],
+  imports: [LibroComponent, ContainerBooksComponent,NgFor],
   templateUrl: './profile-books-readed.component.html',
   styleUrl: './profile-books-readed.component.css'
 })
