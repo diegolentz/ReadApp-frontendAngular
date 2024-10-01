@@ -13,21 +13,26 @@ import { NavComponent } from '../nav/nav.component';
 })
 export class HomeComponent implements OnInit{
   recommendations!: Recommendation[];
+  allRecomendations!: Recommendation[];
 
   constructor(private recommendationService:RecommendationService){}
   
   async ngOnInit() {
-    this.recommendations = await this.recommendationService.getRecommendations()
+    await this.obtenerRecomendaciones();
     this.subscribirFiltroCambiado();
   }
 
+  async obtenerRecomendaciones() {
+    this.allRecomendations = await this.recommendationService.getRecommendations();
+    this.recommendations = this.allRecomendations;
+  }
   subscribirFiltroCambiado() {
     this.recommendationService.filtroCambiado.subscribe(
       (nuevoFiltro: string) => {
         this.recommendations = nuevoFiltro ? 
-        (this.recommendations.filter((recommendation) => recommendation.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
+        (this.allRecomendations.filter((recommendation) => recommendation.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase()) ||
         recommendation.descripcion.toLowerCase().includes(nuevoFiltro.toLowerCase()))) : 
-        (this.recommendations);
+        (this.allRecomendations);
       }
     );
   }
