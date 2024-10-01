@@ -16,4 +16,13 @@ export class ServiceUserService {
     const usersJSON = await lastValueFrom(users$)
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
   }
+
+  async setLoggedUser(id:number) : Promise<void>{
+    localStorage.setItem('loggedUser',id.toString())
+  }
+
+  async getLoggedUser() : Promise<number>{
+    return +(localStorage.getItem('loggedUser')!)
+  }
+  
 }
