@@ -1,4 +1,3 @@
-
 export type UserJSON = {
     fotoPath: string,
     nombre: string,
@@ -21,8 +20,8 @@ export type UserJSON = {
     recomendacionesAValorar: Array<any>,
     recomendacionesValoradas: Map<any, any>
 }
-
-
+ 
+ 
 export class User {
     constructor(
         public photo: string = "",
@@ -35,7 +34,7 @@ export class User {
         public language: string = "",
         public id: number = -1
     ) { }
-
+ 
     static fromJson(userJSON: UserJSON): User {
         return new User(
             userJSON.fotoPath,
@@ -49,9 +48,9 @@ export class User {
             userJSON.id
         )
     }
-
+ 
 }
-
+ 
 enum Language {
     INGLES,
     ESPANIOL,
