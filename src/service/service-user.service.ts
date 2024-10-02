@@ -17,6 +17,17 @@ export class ServiceUserService {
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
   }
 
+  async getUser(id:number): Promise<User>{
+    try{
+      const user = this.httpClient.get<UserJSON>(REST_SERVER_URL + '/users/' + id.toString())
+      return await lastValueFrom(user)
+    } catch(err){
+      throw new Error("El usuario no existe")
+    }
+   
+    
+  }
+
   async setLoggedUser(id:number) : Promise<void>{
     localStorage.setItem('loggedUser',id.toString())
   }
@@ -24,5 +35,5 @@ export class ServiceUserService {
   async getLoggedUser() : Promise<number>{
     return +(localStorage.getItem('loggedUser')!)
   }
-  
+
 }

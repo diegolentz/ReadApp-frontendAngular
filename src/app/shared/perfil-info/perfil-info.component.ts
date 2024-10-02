@@ -47,6 +47,10 @@ export class PerfilInfoComponent {
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
   }
 
+  ngOninit(){
+    console.log(this.UserService.getUser(1))
+  }
+
 
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
@@ -69,7 +73,8 @@ export class PerfilInfoComponent {
 
 
   async ngOnInit(){
-    await this.UserService.getLoggedUser()
+    let suuario = await this.UserService.getUser(1)
+    console.log(suuario)
   }
 
 }
