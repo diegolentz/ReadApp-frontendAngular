@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserIdentificationComponent } from '../user-identification/user-identification.component';
-import { DropdownMenuComponent } from '../dropdown-menu/dropdown-menu.component';
 import { SvgIconComponent } from 'angular-svg-icon';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { OptionComponent } from '../option/option.component';
 import { BgColorDirective } from '../directives/bg-color.directive';
 import { HoverBoxshadowDirective } from '../directives/hover-boxshadow.directive';
 import { User } from '../../../domain/user';
@@ -12,22 +10,27 @@ import { User } from '../../../domain/user';
 @Component({
   selector: 'app-shorcut-my-profile',
   standalone: true,
-  imports: [UserIdentificationComponent, DropdownMenuComponent,OptionComponent, SvgIconComponent, NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective],
+  imports: [UserIdentificationComponent, SvgIconComponent, NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective, NgIf],
   templateUrl: './shorcut-my-profile.component.html',
   styleUrl: './shorcut-my-profile.component.css'
 })
 export class ShorcutMyProfileComponent implements OnInit{
+
+  @Input() show!:boolean
   ngOnInit(): void {
     this.displayShorcut = false //False -> test. True -> debug
   }
   displayShorcut!:boolean
-  user = new User('profile-pic.jpg','Phillipe Petank','@'+'phillie95')
+  @Input() user!:User;
 
-  optionLabels = ['My profile', 'My recommendations', 'Search books', 'Log out']
-  svgs = ['profile.svg', 'recomendation.svg', 'book.svg', 'log-out.svg']
   colorDefault = 'white'
-  path = ['my-profile', 'my-recommendations', 'search-books', 'log-out']
-  options_shortcutMenu = this.optionLabels.map((label, i) => new Option(label, this.svgs[i], this.colorDefault, this.colorDefault, this.path[i]));
+  options = [
+    new Option('My profile', 'profile.svg', this.colorDefault, this.colorDefault, 'my-profile'),
+    new Option('My recommendations', 'recomendation.svg', this.colorDefault, this.colorDefault, 'my-recommendations'),
+    new Option('Search books', 'book.svg', this.colorDefault, this.colorDefault, 'search-books'),
+    new Option('Log out', 'log-out.svg', this.colorDefault, this.colorDefault, 'log-out')
+    
+  ]
   changeDisplay(){
     this.displayShorcut = !this.displayShorcut
   }

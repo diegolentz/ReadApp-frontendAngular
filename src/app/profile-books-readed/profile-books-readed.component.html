@@ -1,7 +1,7 @@
 <h2>Readed books</h2>
 
 <app-container-books>
-    @for (book of books; track book){
-    <app-libro [book]="book"></app-libro>
-    }
+    <ng-container *ngFor="let book of books">
+        <app-libro [book]="book"></app-libro>
+      </ng-container>
 </app-container-books>

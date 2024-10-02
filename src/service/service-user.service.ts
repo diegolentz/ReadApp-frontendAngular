@@ -7,17 +7,17 @@ import { REST_SERVER_URL } from './configuration';
 @Injectable({
   providedIn: 'root'
 })
-export class ServiceUserService {
+export class ServiceUser {
 
   constructor(private httpClient: HttpClient) { }
 
   async getUsers(): Promise<User[]> {
-    const users$ = this.httpClient.get<UserJSON[]>(REST_SERVER_URL + '/recommendations')
+    const users$ = this.httpClient.get<UserJSON[]>(REST_SERVER_URL + '/users')
     const usersJSON = await lastValueFrom(users$)
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
   }
 
-  async getUser(id:number): Promise<User>{
+  async getUserByID(id:number): Promise<User>{
     try{
       const user$ = this.httpClient.get<UserJSON>(REST_SERVER_URL + '/users/' + id.toString())
       const user = await (lastValueFrom(user$))
@@ -36,5 +36,6 @@ export class ServiceUserService {
   async getLoggedUser() : Promise<number>{
     return +(localStorage.getItem('loggedUser')!)
   }
+
 
 }

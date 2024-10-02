@@ -13,3 +13,5 @@ export const RECOMMENDATIONS: Recommendation[] = [
       [VALORATIONS[0],VALORATIONS[1]]
     )
   ];
+
+  export const recomendacionDefault = new Recommendation

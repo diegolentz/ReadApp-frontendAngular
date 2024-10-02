@@ -13,13 +13,10 @@ import { Valoration } from '../../domain/valoration';
   styleUrls: ['./valoracion.component.css']
 })
 export class ValoracionComponent implements OnInit {
-  @Input() recomendacion!: Recommendation;
-  valoraciones: Array<Valoration> = [];
+  @Input()valoraciones!: Array<Valoration> 
   
   ngOnInit() {
-    if (this.recomendacion) {
-      this.valoraciones = this.recomendacion.valorations;
-    }
+    
   }
 
 }

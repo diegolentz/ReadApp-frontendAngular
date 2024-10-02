@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BookService } from '../../service/book.service';
 import { Book } from '../../domain/book';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../nav/nav.component';
 import { ContenedorSectionComponent } from '../contenedor-section/contenedor-section.component';
@@ -17,21 +17,32 @@ import { ContainerBooksComponent } from '../shared/layouts/books/books.component
 })
 export class BusquedaLibrosComponent {
   books: Book[] = [];
+  allBooks: Book[] = [];
 
-  constructor(public bookService: BookService) {}
+  constructor(public bookService: BookService) { }
 
   async ngOnInit() {
-    // me traigo los libros
-    this.books = await this.bookService.obtenerLibros();
 
-    // me subscribo a los cambios para filtrar
+    await this.obtenerLibros();
+    this.subscribirFiltroCambiado();
+
+
+  }
+  async obtenerLibros() {
+    this.allBooks = await this.bookService.obtenerLibros();
+    this.books = this.allBooks;
+  }
+  subscribirFiltroCambiado() {
     this.bookService.filtroCambiado.subscribe(
-      async (nuevoFiltro: string) => {this.books = await this.bookService.obtenerLibros();
-      if (nuevoFiltro) {
-        this.books = this.books.filter((book) =>
-          book.titulo.toLowerCase().includes(nuevoFiltro.toLowerCase())
-        );
+      (nuevoFiltro: string) => {
+        //exp regular para quitar espacios en blanco y convertir a minusculas
+        this.books = nuevoFiltro ?
+          (this.allBooks.filter((book) => book.titulo.replace(/\s+/g, '').toLowerCase().includes(
+            nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+            book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+          (this.allBooks);
       }
-    });
+    );
   }
 }
+
