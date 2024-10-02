@@ -1,17 +1,9 @@
-//autor devuelta por el backend
-export type AuthorJSON = {
-    nombre: string;
-    apellido: string;
-    id: number;
-};
-
 //libro devuelta por el backend
 export type BookJSON = {
-    
     id: number,
-    autor: AuthorJSON; // me qedo con los datos qe me interesan de autor(nombre/apellido/id)
-    cantidadPalabras: number;
     titulo: string;
+    autor: string;
+    cantidadPalabras: number;
     cantidadPaginas: number;
     traducciones: Array<string>;
     ventasSemanales: number;
@@ -21,28 +13,40 @@ export type BookJSON = {
 export class Book {
     constructor(
         public id: number = 0,
-        public titulo: string = '',
+        public title: string = '',
         public author: string = '',
         public words: number = 0,
         public pages: number = 0,
-        public translations: number = 0,
+        public translations: Array<string> = [],
         public weeklySells: number = 0,
         public imagen: string = ''
     ) { }
 
     // Convertir de JSON a Book
     static fromJson(bookJSON: BookJSON): Book {
-        const nombreApellido = `${bookJSON.autor.nombre} ${bookJSON.autor.apellido}`;
         return new Book(
             bookJSON.id,
             bookJSON.titulo,
-            nombreApellido,
+            bookJSON.autor,
             bookJSON.cantidadPalabras,
             bookJSON.cantidadPaginas,
-            bookJSON.traducciones[0].length,
+            bookJSON.traducciones,
             bookJSON.ventasSemanales,
             bookJSON.imagen
         );
+    }
+
+    toJSON(): BookJSON {
+        return {
+            id: this.id,
+            titulo: this.title,
+            autor: this.author,
+            cantidadPalabras: this.words,
+            cantidadPaginas: this.pages,
+            traducciones: this.translations,
+            ventasSemanales: this.weeklySells,
+            imagen: this.imagen
+        }
     }
 }
 

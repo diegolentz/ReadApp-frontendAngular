@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { UserIdentificationComponent } from '../user-identification/user-identification.component';
-import { SvgIconComponent } from 'angular-svg-icon';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BgColorDirective } from '../directives/bg-color.directive';
@@ -10,7 +9,7 @@ import { User } from '../../../domain/user';
 @Component({
   selector: 'app-shorcut-my-profile',
   standalone: true,
-  imports: [UserIdentificationComponent, SvgIconComponent, NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective, NgIf],
+  imports: [UserIdentificationComponent, NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective, NgIf],
   templateUrl: './shorcut-my-profile.component.html',
   styleUrl: './shorcut-my-profile.component.css'
 })

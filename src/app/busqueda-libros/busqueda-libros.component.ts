@@ -37,7 +37,7 @@ export class BusquedaLibrosComponent {
       (nuevoFiltro: string) => {
         //exp regular para quitar espacios en blanco y convertir a minusculas
         this.books = nuevoFiltro ?
-          (this.allBooks.filter((book) => book.titulo.replace(/\s+/g, '').toLowerCase().includes(
+          (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
             nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
             book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
           (this.allBooks);
