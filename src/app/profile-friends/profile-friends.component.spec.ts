@@ -11,8 +11,8 @@ describe('ProfileFriendsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        ProfileFriendsComponent,
-        HttpClient]
+        ProfileFriendsComponent
+      ]
     })
     .compileComponents();
 
