@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
+import { FRIENDS } from '../mock/mockUser';
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,7 @@ export class ServiceUser {
     return +(localStorage.getItem('loggedUser')!)
   }
 
-
+  async getFriendsMock(): Promise<User[]> {
+    return FRIENDS
+  }
 }
