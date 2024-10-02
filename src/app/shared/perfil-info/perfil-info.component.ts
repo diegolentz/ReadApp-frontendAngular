@@ -72,9 +72,26 @@ export class PerfilInfoComponent {
   }
 
 
-  async ngOnInit(){
-    let suuario = await this.UserService.getUser(1)
-    console.log(suuario)
+async ngOnInit(){
+    let usu = await this.UserService.getUser(1)
+    this.perfilForm.patchValue({
+      'nombre' : usu.name,
+      'apellido' : usu.lastName,
+      'username' : usu.alias,
+      'fecha de nacimiento' : usu.birthDate,
+      'email' : usu.email
+    })
+
+    let ususs = await this.UserService.getUsers()
+    console.log(ususs)
+    /* this.UserService.getUser(1)
+    .then((usuario) => {
+      this.perfilForm.patchValue({
+        'nombre' : usuario.alias
+      })
+      console.log(usuario.name)
+    })
+     */    
   }
 
 }
