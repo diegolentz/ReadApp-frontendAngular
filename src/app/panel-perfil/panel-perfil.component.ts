@@ -1,11 +1,10 @@
 import { Component} from '@angular/core';
 import { NgFor } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
-import { SvgIconComponent } from 'angular-svg-icon';
 @Component({
   selector: 'app-panel-perfil',
   standalone: true,
-  imports: [NgFor, RouterLink, SvgIconComponent],
+  imports: [NgFor, RouterLink],
   templateUrl: './panel-perfil.component.html',
   styleUrl: './panel-perfil.component.css'
 })

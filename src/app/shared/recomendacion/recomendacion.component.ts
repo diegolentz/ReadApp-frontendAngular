@@ -1,13 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { Recommendation } from '../../../domain/recommendation';
 import { Router } from '@angular/router';
-import { SvgIconComponent } from 'angular-svg-icon';
 import { ButtonHoverPressedDirective } from '../directives/button-hover-pressed.directive';
 import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-recomendacion',
   standalone: true,
-  imports: [SvgIconComponent, ButtonHoverPressedDirective,RouterLink],
+  imports: [ButtonHoverPressedDirective,RouterLink],
   templateUrl: './recomendacion.component.html',
   styleUrl: './recomendacion.component.css'
 })

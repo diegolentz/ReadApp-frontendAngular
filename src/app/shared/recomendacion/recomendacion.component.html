@@ -6,11 +6,11 @@
 
     <div class="actions">
         <a (click)="goTo('view-recommendation')">
-            <svg-icon src="svg/edit.svg" [svgStyle]="{'fill': ''}"></svg-icon>
+            <img src="svg/edit.svg" alt="">
         </a>
 
         <a (click)="goTo('view-recommendation')">
-            <svg-icon src="svg/delete.svg" [svgStyle]="{'fill': ''}"></svg-icon>
+            <img src="svg/delete.svg" alt="">
         </a>
     </div>
 
@@ -22,23 +22,26 @@
         <!-- FALTA LOGICA PARA UN CARTEL QUE DIGA "N LIBROS MAS" -->
         @for(book of recomendacion.recommendedBooks; track book){
             <div class="libro-recomendado">
-                <svg-icon src="svg/recommendedBook.svg" [svgStyle]="{'fill': 'black'}"></svg-icon>
-                <p>{{book.titulo}}</p>
+                <img src="svg/recommendedBook.svg" alt="">
+                <p>{{book.title}}</p>
             </div> 
         }
     </div>
 
     <div class="recomendacion__datos">
+
         <div class="datoIcons">
-            <svg-icon src="svg/recommendationScore.svg" [svgStyle]="{'fill': 'gold'}"></svg-icon>
+            <img src="svg/recommendationScore.svg" alt="">
             <p>{{recomendacion.getScore()}}</p>
         </div>
+
         <div class="datoIcons">
-            <svg-icon src="svg/book2.svg" [svgStyle]="{'fill': 'brown'}"></svg-icon>
+            <img src="svg/book2.svg" alt="">
             <p>{{recomendacion.cantidadLibros}} Libros</p>
         </div>
+
         <div class="datoIcons">
-            <svg-icon src="svg/sandClock.svg" [svgStyle]="{'fill': 'purple'}"></svg-icon>
+            <img src="svg/sandClock.svg" alt="">
             <!-- FALTA DARLE LOGICA. ESTO DEPENDERIA DE CADA USUARIO Y SUS FORMAS DE LECTURA -->
             <p>5hs</p>
         </div>

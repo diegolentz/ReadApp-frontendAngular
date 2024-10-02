@@ -37,9 +37,9 @@ aside{
 
     border-radius: 0.5rem;
     cursor: pointer;
-    & svg{
+    & img{
         width: var(--space-lg);
-        height: auto;
+        height: var(--space-lg);
     }
 }
 

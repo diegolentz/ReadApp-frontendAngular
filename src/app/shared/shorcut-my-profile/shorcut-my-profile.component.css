@@ -8,9 +8,10 @@
     align-items: center;
 
     & img {
-        width: var(--image-small);
-        height: var(--image-small);
-        border-radius: 50%;
+        width: var(--space-xl);
+        height: var(--space-xl);
+        /* Para dejar color en blanco */
+        filter: invert(100%);
     }
 
 }
