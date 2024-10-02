@@ -5,7 +5,7 @@ import { REST_SERVER_URL } from '../../service/configuration'
 
 export const booksStub = BOOKS.map((book) => book.toJSON())
 
-export const getHttpClientSpy = () => {
+export const httpClientSpy = () => {
   const httpClientSpy = jasmine.createSpyObj('HttpClient', [
     'get',
     'put',
@@ -21,9 +21,5 @@ export const getHttpClientSpy = () => {
     .withArgs(`${REST_SERVER_URL}/libros/1`)
     .and.returnValue(of(booksStub[0]))
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // httpClientSpy.post.and.callFake((_url: string, body: any) =>
-  //   of({ ...body, id: 3 })
-  // )
   return httpClientSpy
 }

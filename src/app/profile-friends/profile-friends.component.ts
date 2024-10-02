@@ -4,7 +4,6 @@ import { NgFor } from '@angular/common';
 import { ContainerFriendsComponent } from "../shared/layouts/friends/friends.component";
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { Friend } from '../../domain/friend';
-import { FriendService } from '../../service/friend.service';
 
 @Component({
   selector: 'app-profile-friends',
@@ -17,10 +16,12 @@ export class ProfileFriendsComponent implements OnInit{
 
   friends!: Friend[];
 
-  constructor(private friendService:FriendService){}
+  // HAY QUE MIGRARLO A USER SERVICE
+  // constructor(private friendService:FriendService){}
   
   ngOnInit(): void {
-    this.friends = this.friendService.mockGetRecommendations()
+    // HAY QUE MIGRARLO A USER SERVICE
+    // this.friends = this.friendService.mockGetRecommendations()
   }
 
   @HostBinding('style.width') width: string = '100%';
