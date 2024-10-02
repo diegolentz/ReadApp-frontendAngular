@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
-import { ServiceUserService } from '../../../service/service-user.service';
+import { ServiceUser } from '../../../service/service-user.service';
 
 
 
@@ -30,7 +30,7 @@ export class PerfilInfoComponent {
 
   boton = new BtnGuardarCancelarComponent()
 
-  constructor(private fb: FormBuilder, private UserService:ServiceUserService) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
       'apellido': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -45,10 +45,6 @@ export class PerfilInfoComponent {
     })
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
-  }
-
-  ngOninit(){
-    console.log(this.UserService.getUser(1))
   }
 
 
@@ -72,28 +68,16 @@ export class PerfilInfoComponent {
   }
 
 
-async ngOnInit(){
-    let usu = await this.UserService.getUser(1)
+  async ngOnInit() {
+    let userData = await this.UserService.getUserByID(1)
     this.perfilForm.patchValue({
-      'nombre' : usu.name,
-      'apellido' : usu.lastName,
-      'username' : usu.alias,
-      'fecha de nacimiento' : usu.birthDate,
-      'email' : usu.email
+      'nombre': userData.name,
+      'apellido': userData.lastName,
+      'username': userData.alias,
+      'fecha de nacimiento': userData.birthDate,
+      'email': userData.email
     })
-
-    let ususs = await this.UserService.getUsers()
-    console.log(ususs)
-    /* this.UserService.getUser(1)
-    .then((usuario) => {
-      this.perfilForm.patchValue({
-        'nombre' : usuario.alias
-      })
-      console.log(usuario.name)
-    })
-     */    
   }
-
 }
 
 class MostrarCalculador {
