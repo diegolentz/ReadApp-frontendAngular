@@ -6,12 +6,14 @@
     </div>
 
     <div *ngIf="!noPuedeEditar()" class="contenedorTitulo">
-        <input class="input-titulo" type="text" value={{recomendacion.title}} placeholder="  Titulo de la recomendacion"/>
+        <input class="input-titulo" type="text" value={{recomendacion.title}} [(ngModel)]="recomendacion.title" placeholder="  Titulo de la recomendacion"/>
         <label class ="contenedorTitulo__label">
           <input type="checkbox">
           <h5>Visibilidad privada</h5>
         </label>
     </div>
+
+    
 
     <app-container-books>
         @for (book of recomendacion.recommendedBooks; track book){
@@ -30,7 +32,7 @@
     <div *ngIf="!noPuedeEditar()" class="resenia">
         <h2>Reseña</h2>
         <input
-          
+        [(ngModel)]="recomendacion.description"  
         class="descripcion"
           type="text"
           value={{recomendacion.description}}
@@ -42,5 +44,9 @@
     <app-valoracion [valoraciones]="recomendacion.valorations"></app-valoracion>
 
     <app-btn-guardar-cancelar *ngIf="!noPuedeEditar()"></app-btn-guardar-cancelar>
+
+    <app-btn-volver  *ngIf="noPuedeEditar()"></app-btn-volver>
+
+    
 
 </main>

@@ -52,15 +52,16 @@ export class Recommendation {
             )
     }
 
-    // toJSON(): RecommendationJSON {
-    //     return {
-    //         author: this.author,
-    //         librosRecomendados: this.librosRecomendados,
-    //         titulo: this.titulo,
-    //         descripcion: this.descripcion,
-    //         publica: this.publica,
-    //         valorations: this.valorations
-    //     }
-    // }
+    toJSON(): RecommendationJSON {
+        return {
+            id:this.id,
+            creador: this.author,
+            librosRecomendados: this.recommendedBooks,
+            titulo: this.title,
+            contenido: this.description,
+            publica: this._public,
+            valoraciones: this.valorations
+        }
+    }
 }
 
