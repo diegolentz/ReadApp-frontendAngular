@@ -37,12 +37,8 @@ export class LibrosAgregarComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.tipoContenido = this.route.snapshot.paramMap.get('origen');
 
-    if (this.tipoContenido === 'agregarLeidos') {
-      await this.dameALeer()
+    (this.tipoContenido === 'agregarLeidos') ? await this.dameALeer() : await this.dameLeidos();
 
-    } else if (this.tipoContenido === 'agregarALeer') {
-      await this.dameLeidos()
-    }
   }
 
   async dameLeidos() {
