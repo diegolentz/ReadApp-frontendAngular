@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON } from '../domain/tmpUser';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,6 @@ export class ServiceUser {
       throw new Error("El usuario no existe")
     }
    
-    
   }
 
   async setLoggedUser(id:number) : Promise<void>{
@@ -41,4 +41,18 @@ export class ServiceUser {
   async getFriendsMock(): Promise<User[]> {
     return FRIENDS
   }
+
+  async getUserBasicByID(id:number): Promise<UserBasic>{
+      const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
+      const user = await (lastValueFrom(user$))
+      const userBasic = UserBasic.prototype.fromJSON(user)
+      return userBasic
+  }
+
+  async getUserProfileByID(id:number): Promise<UserProfile>{
+    const user$ = this.httpClient.get<UserProfileJSON>(REST_SERVER_URL + '/user/profile/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userProfile = UserProfile.prototype.fromJSON(user)
+    return userProfile
+}
 }

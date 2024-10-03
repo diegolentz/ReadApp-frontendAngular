@@ -69,12 +69,13 @@ export class PerfilInfoComponent {
 
 
   async ngOnInit() {
-    let userData = await this.UserService.getUserByID(1)
+    let userData = await this.UserService.getUserProfileByID(1)
+    console.log(userData)
     this.perfilForm.patchValue({
-      'nombre': userData.name,
-      'apellido': userData.lastName,
+      'nombre': userData.nombre,
+      'apellido': userData.apellido,
       'username': userData.alias,
-      'fecha de nacimiento': userData.birthDate,
+      'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
   }

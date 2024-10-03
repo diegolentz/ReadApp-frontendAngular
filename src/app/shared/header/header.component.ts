@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { EncabezadoComponent } from '../encabezado/encabezado.component';
 import { ShorcutMyProfileComponent } from '../shorcut-my-profile/shorcut-my-profile.component';
-import { User } from '../../../domain/user';
+
 import { ServiceUser } from '../../../service/service-user.service';
+import { UserBasic } from '../../../domain/tmpUser';
+
 
 
 
@@ -14,13 +16,14 @@ import { ServiceUser } from '../../../service/service-user.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  user:User = new User()
+  user:UserBasic = new UserBasic();
   constructor(
     private userService:ServiceUser
   ){}
   
   async ngOnInit() {
-    this.user = await this.userService.getUserByID(1)
+    this.user = await this.userService.getUserBasicByID(1)
+    console.log(this.user)
   }
 }
 
