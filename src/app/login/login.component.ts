@@ -29,10 +29,5 @@ export class LoginComponent implements OnInit {
   // id mockeado
   saveIdToLocalStorage() {
     localStorage.setItem('id', this.id.toString());
-
-
   }
-
-
-
 }
