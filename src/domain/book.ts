@@ -7,9 +7,9 @@ export type AuthorJSON = {
 
 //libro devuelta por el backend
 export type BookJSON = {
-    
+
     id: number,
-    autor: AuthorJSON; // me qedo con los datos qe me interesan de autor(nombre/apellido/id)
+    autor: string; // me qedo con los datos qe me interesan de autor(nombre/apellido/id)
     cantidadPalabras: number;
     titulo: string;
     cantidadPaginas: number;
@@ -32,11 +32,10 @@ export class Book {
 
     // Convertir de JSON a Book
     static fromJson(bookJSON: BookJSON): Book {
-        const nombreApellido = `${bookJSON.autor.nombre} ${bookJSON.autor.apellido}`;
         return new Book(
             bookJSON.id,
             bookJSON.titulo,
-            nombreApellido,
+            bookJSON.autor,
             bookJSON.cantidadPalabras,
             bookJSON.cantidadPaginas,
             bookJSON.traducciones[0].length,

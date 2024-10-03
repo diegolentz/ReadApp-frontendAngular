@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
-
-// import { Username,Password } from '../input/input.component';
 
 
 @Component({
@@ -11,15 +9,30 @@ import { InputComponent } from '../input/input.component';
   standalone: true,
   imports: [EncabezadoComponent, InputComponent],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
+  id = 1;
+
+  ngOnInit() {
+    // this.saveIdToLocalStorage(); // cuando inicio login, mockeo un ud
+  }
   // username = Username
   // password = Password
-  constructor(private router:Router, private route:ActivatedRoute){}
-  
-  goTo(option:string){
+  constructor(private router: Router) { }
+
+  goTo(option: string) {
     this.router.navigate([option])
   }
+
+  // id mockeado
+  saveIdToLocalStorage() {
+    localStorage.setItem('id', this.id.toString());
+
+
+  }
+
+
+
 }
