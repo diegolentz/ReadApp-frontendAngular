@@ -2,9 +2,9 @@ import { Component, HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { ServiceUser } from '../../../service/service-user.service';
 
 
 
@@ -30,7 +30,7 @@ export class PerfilInfoComponent {
 
   boton = new BtnGuardarCancelarComponent()
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
       'apellido': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -59,16 +59,6 @@ export class PerfilInfoComponent {
     return undefined
   }
 
-
-
-
-
-  isValid() {
-    console.log("*************El form es*************:", this.perfilForm.valid && this.calculadorForm.valid)
-  }
-
-
-
   mostrar(event: any) {
     this.mostrarNuevosInputs = event.target.checked;
     this.resetCalculador() // Actualiza según si el checkbox está marcado o no
@@ -78,6 +68,16 @@ export class PerfilInfoComponent {
   }
 
 
+  async ngOnInit() {
+    let userData = await this.UserService.getUserByID(1)
+    this.perfilForm.patchValue({
+      'nombre': userData.name,
+      'apellido': userData.lastName,
+      'username': userData.alias,
+      'fecha de nacimiento': userData.birthDate,
+      'email': userData.email
+    })
+  }
 }
 
 class MostrarCalculador {

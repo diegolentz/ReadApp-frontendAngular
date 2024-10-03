@@ -1,12 +1,18 @@
 <div class="user__profile-shortcut" (click)="changeDisplay()">
     <app-user-identification [user]="user"></app-user-identification>
 
-    <svg-icon src="svg/burguer.svg" [svgStyle]="{ 'fill': 'white'}"></svg-icon>
+    <img src="svg/burguer.svg" alt="">
+    
+    <div class="dropdown__menu" *ngIf="displayShorcut">
+        @for (option of options; track option) {
+            <div class="option__container" [routerLink]="['/', option.path]"
+            routerLinkActive="router-link-active" appHoverBoxshadow appBgColor>
 
-    <app-dropdown-menu [show]="displayShorcut">
-        <div *ngFor="let option of options_shortcutMenu" [routerLink]="['/', option.path]"
-            routerLinkActive="router-link-active">
-            <app-option [option]="option" appHoverBoxshadow appBgColor></app-option>
-        </div>
-    </app-dropdown-menu>
+                <img src="svg/{{option.iconPath}}" alt="">
+                
+                <h4 [style.color]="option.textColor">{{option.label}}</h4>
+
+            </div>
+        }
+    </div>
 </div>

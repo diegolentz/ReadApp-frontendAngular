@@ -27,6 +27,22 @@ aside{
     gap: var(--space-md);
 }
 
+.option__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    padding: var(--space-sm);
+    gap: var(--space-sm);
+
+    border-radius: 0.5rem;
+    cursor: pointer;
+    & img{
+        width: var(--space-lg);
+        height: var(--space-lg);
+    }
+}
+
 /* las opciones del panel se printean con el for... 
 habria qe acomodar el css en el objeto option */
 .effect-shadow-hover {

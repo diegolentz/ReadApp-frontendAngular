@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserIdentificationComponent } from './user-identification.component';
+import { User } from '../../../domain/user';
 
 describe('MinimumUserIdentificationComponent', () => {
   let component: UserIdentificationComponent;
@@ -14,6 +15,7 @@ describe('MinimumUserIdentificationComponent', () => {
 
     fixture = TestBed.createComponent(UserIdentificationComponent);
     component = fixture.componentInstance;
+    component.user = new User()
     fixture.detectChanges();
   });
 

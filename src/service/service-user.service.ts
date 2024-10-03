@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
+import { FRIENDS } from '../mock/mockUser';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +18,27 @@ export class ServiceUser {
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
   }
 
-  async getUserByID(userID:number): Promise<User> {
-    const user$ = this.httpClient.get<UserJSON>(REST_SERVER_URL + `/users/${userID}`)
-    const userJSON = (await lastValueFrom(user$))
-    return User.fromJson(userJSON)
+  async getUserByID(id:number): Promise<User>{
+    try{
+      const user$ = this.httpClient.get<UserJSON>(REST_SERVER_URL + '/users/' + id.toString())
+      const user = await (lastValueFrom(user$))
+      return User.fromJson(user)
+    } catch(err){
+      throw new Error("El usuario no existe")
+    }
+   
+    
+  }
+
+  async setLoggedUser(id:number) : Promise<void>{
+    localStorage.setItem('loggedUser',id.toString())
+  }
+
+  async getLoggedUser() : Promise<number>{
+    return +(localStorage.getItem('loggedUser')!)
+  }
+
+  async getFriendsMock(): Promise<User[]> {
+    return FRIENDS
   }
 }

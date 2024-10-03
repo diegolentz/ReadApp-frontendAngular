@@ -8,8 +8,15 @@
     </div>
 
     <div class="opciones ">
-        <div *ngFor="let option of opciones" (click)="goTo(option.path)">
-            <app-option [option]="option"></app-option>
-        </div>
+        @for (option of options; track option) {
+            <div class="option__container" [routerLink]="['/my-profile/', option.path]"
+            routerLinkActive="router-link-active" appHoverBoxshadow appBgColor>
+            
+                <img src="svg/{{option.iconPath}}" alt="">
+
+                <h4 [style.color]="option.textColor">{{option.label}}</h4>
+
+            </div>
+        }
     </div>
 </aside>

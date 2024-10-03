@@ -1,14 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavComponent } from './nav.component';
+import { HttpClient } from '@angular/common/http';
 
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
-
+  let httpClientSpy: jasmine.SpyObj<HttpClient>
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavComponent]
+      imports: [NavComponent],
+      providers: [
+        {provide: HttpClient, useValue: httpClientSpy},
+      ]
     })
     .compileComponents();
 

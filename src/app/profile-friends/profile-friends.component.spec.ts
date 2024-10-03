@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileFriendsComponent } from './profile-friends.component';
+import { HttpClient } from '@angular/common/http';
 
 
 describe('ProfileFriendsComponent', () => {
@@ -9,7 +10,9 @@ describe('ProfileFriendsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ProfileFriendsComponent]
+      imports: [
+        ProfileFriendsComponent
+      ]
     })
     .compileComponents();
 
