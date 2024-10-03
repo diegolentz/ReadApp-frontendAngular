@@ -1,12 +1,13 @@
 //libro devuelta por el backend
 export type BookJSON = {
-    id: number,
-    titulo: string;
-    autor: string;
+
+    autor: string; // me qedo con los datos qe me interesan de autor(nombre/apellido/id)
     cantidadPalabras: number;
     cantidadPaginas: number;
-    traducciones: Array<string>;
     ventasSemanales: number;
+    traducciones: Array<string>;
+    titulo: string;
+    id: number,
     imagen: string;
 };
 

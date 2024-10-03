@@ -8,16 +8,21 @@ import { NgFor } from '@angular/common';
 @Component({
   selector: 'app-profile-books-readed',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent,NgFor],
+  imports: [LibroComponent, ContainerBooksComponent, NgFor],
   templateUrl: './profile-books-readed.component.html',
   styleUrl: './profile-books-readed.component.css'
 })
 export class ProfileBooksReadedComponent implements OnInit {
   @HostBinding('style.width') width: string = '100%';
-  constructor(public bookService:BookService) {}
+  constructor(public bookService: BookService) { }
 
-  books!:Array<Book>
+  books!: Book[];
   async ngOnInit(): Promise<void> {
-    this.books = await this.bookService.obtenerLibros();
+    await this.obtenerLibrosLeidos();
+  }
+
+
+  async obtenerLibrosLeidos() {
+    this.books = await this.bookService.obtenerLeidos();
   }
 }
