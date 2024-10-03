@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class BookService {
   filtro: string = '';
+
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
 
   constructor(private httpClient: HttpClient) { }
@@ -41,5 +42,13 @@ export class BookService {
     this.filtro = filtro;
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
+  }
+
+  async contenidoEspecifico(tipoContenido: string): Promise<Book[]> {
+    if (tipoContenido === 'agregarLeidos') {
+      return this.obtenerALeer();
+    } else {
+      return this.obtenerLeidos();
+    }
   }
 }
