@@ -1,7 +1,17 @@
 <div class="user__profile-shortcut" (click)="changeDisplay()">
-    <app-user-identification [user]="user"></app-user-identification>
 
-    <img src="svg/burguer.svg" alt="">
+    <div class="user__identification">
+    
+        <img src={{user.fotoPath}} alt="">
+    
+        <div class="flex-column gap-xs">
+            <h4>{{user.nombre}}</h4>
+            <h4>{{'@' + user.alias}}</h4>  
+        </div>
+    
+    </div>
+
+    <img class="burguer" src="svg/burguer.svg" alt="">
     
     <div class="dropdown__menu" *ngIf="displayShorcut">
         @for (option of options; track option) {
