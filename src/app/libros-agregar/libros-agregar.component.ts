@@ -18,27 +18,15 @@ import { ActivatedRoute } from '@angular/router';
 export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
 
-  tipoContenido: string | null = null;
   books!: Book[];
 
   async ngOnInit(): Promise<void> {
-    this.tipoContenido = this.route.snapshot.paramMap.get('origen');
-    if (this.tipoContenido) {
-      this.mostrarLibros()
-    }
+    await this.mostrarLibros();
   }
+
 
   async mostrarLibros() {
-    if (this.tipoContenido) {
-      this.books = await this.bookService.agregarLibrosRender(this.tipoContenido);
-    }
+    this.books = await this.bookService.agregarLibrosRender();
   }
 
-  async dameLeidos() {
-    this.books = await this.bookService.obtenerLibros();
-  }
-
-  async dameALeer() {
-    this.books = await this.bookService.obtenerALeer();
-  }
 }

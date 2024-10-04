@@ -20,9 +20,9 @@ export class BotoneraLibroComponent {
     return !excludedRoutes.includes(this.router.url);
   }
 
-  mostrar(): boolean {
+  ocultarAgregar(): boolean {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/add-Books;origen=agregarLeidos', '/add-Books;origen=agregarALeer'];
+    const excludedRoutes = ['/add-Books'];
     return excludedRoutes.includes(this.router.url);
   }
 }
