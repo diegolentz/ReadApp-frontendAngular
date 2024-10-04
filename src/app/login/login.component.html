@@ -5,7 +5,7 @@
             <app-encabezado></app-encabezado> 
            
             <div class="campo">
-                <input type="text" id="username" name="username" maxlength="30" required>
+                <input type="text" id="username" name="username" maxlength="30" required [(ngModel)]="loginRequest.username">
                 <label for="username">Username</label>
                 <div class="aclaracion ">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="18" fill="#000000" viewBox="0 0 256 256">
@@ -18,7 +18,7 @@
             </div>
 
             <div class="campo ">
-                <input type="password" id="password" name="password" maxlength="30" required>
+                <input type="password" id="password" name="password" maxlength="30" required [(ngModel)]="loginRequest.password">
 
                 <label for="password">Password</label>
                 <i class="eye">
@@ -30,7 +30,7 @@
                 </i>
             </div>
 
-            <button type="submit" class="btn__signIn" (click)="tryLogin()" (click)="goTo('home')">INGRESAR</button>
+            <button type="submit" class="btn__signIn" (click)="tryLogin()">INGRESAR</button>
             <!-- FALTA DEJAR MAS LINDO EL goTo, para que no sea codeado a manopla -->
             <button type="submit" class="btn__createAccount btn ">CREAR CUENTA</button>
             <a href="">

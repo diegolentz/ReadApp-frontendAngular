@@ -4,6 +4,7 @@ import { ShorcutMyProfileComponent } from '../shorcut-my-profile/shorcut-my-prof
 
 import { ServiceUser } from '../../../service/service-user.service';
 import { UserBasic } from '../../../domain/tmpUser';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -22,8 +23,22 @@ export class HeaderComponent {
   ){}
   
   async ngOnInit() {
-    this.user = await this.userService.getUserBasicByID(1)
-    console.log(this.user)
+    //SI EL ID INGRESADO PARA LA PETICION GET DEL SERVICE NO ES VALIDO, ATRAPA LA EXCEPCION
+    //PERMITE MOSTRAR ERRORES AL USUARIO E INCLUSO 
+    try{
+      const usuarioLogueadoID = Number(localStorage.getItem('id'))
+      this.user = await this.userService.getUserBasicByID(usuarioLogueadoID)
+    }
+    catch(error:any){
+      if(error instanceof HttpErrorResponse){
+        //Solo me interesa HttpErrorResponde
+        console.log(error.error["timestamp"])
+        console.log(error.error["status"])
+        console.log(error.error["error"])
+        console.log(error.error["message"])
+        console.log(error.error["path"])
+      }
+    }
   }
 }
 
