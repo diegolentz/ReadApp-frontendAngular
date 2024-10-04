@@ -38,10 +38,6 @@ export class ServiceUser {
     return +(localStorage.getItem('loggedUser')!)
   }
 
-  async getFriendsMock(): Promise<User[]> {
-    return FRIENDS
-  }
-
   async getUserBasicByID(id:number): Promise<UserBasic>{
       const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
       const user = await (lastValueFrom(user$))

@@ -23,6 +23,10 @@ export class UserBasic implements DomainObject{
         public palabrasPorMinutos: number = -1,
     ) { }
 
+    public fromJSON(userJSON: UserBasicJSON): UserBasic {
+        return Object.assign(new UserBasic() ,userJSON)
+    }
+    
     public toJSON(user:UserBasic):UserBasicJSON {
         return {
             id: user.id,
@@ -35,9 +39,6 @@ export class UserBasic implements DomainObject{
         }
     }
  
-    public fromJSON(userJSON: UserBasicJSON): UserBasic {
-        return Object.assign(new UserBasic() ,userJSON)
-    }
 }
 
 

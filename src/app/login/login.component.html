@@ -2,11 +2,7 @@
 
     <div class="contenedorFormulario">
         <form id="loginForm" class="formulario-login" action="/submit-login" method="post">
-            <app-encabezado></app-encabezado> <!-- componente reutilizable -->
-
-            <!-- <app-input [objeto]="username" [label] ="' input usuario'" ></app-input>
-            <app-input [objeto]="password" [label] ="' input password'" ></app-input>
-            -->
+            <app-encabezado></app-encabezado> 
            
             <div class="campo">
                 <input type="text" id="username" name="username" maxlength="30" required>
@@ -34,7 +30,7 @@
                 </i>
             </div>
 
-            <button type="submit" class="btn__signIn" (click)="goTo('home')">INGRESAR</button>
+            <button type="submit" class="btn__signIn" (click)="tryLogin()" (click)="goTo('home')">INGRESAR</button>
             <!-- FALTA DEJAR MAS LINDO EL goTo, para que no sea codeado a manopla -->
             <button type="submit" class="btn__createAccount btn ">CREAR CUENTA</button>
             <a href="">
