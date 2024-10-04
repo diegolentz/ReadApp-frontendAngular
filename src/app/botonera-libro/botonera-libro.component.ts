@@ -22,7 +22,7 @@ export class BotoneraLibroComponent {
 
   ocultarAgregar(): boolean {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/add-Books', '/add-Books'];
+    const excludedRoutes = ['/add-Books'];
     return excludedRoutes.includes(this.router.url);
   }
 }
