@@ -13,15 +13,16 @@ export class BotoneraLibroComponent {
   }
 
 
-  mostrar(key: string): boolean {
-    
-    // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const routeMap: { [key: string]: string } = {
-      'borrar': '/search-books',
-      'aleer': '/my-profile/books-to-read',
-      'leido': '/my-profile/books-readed'
-    };
+  ocultarBorrar(): boolean {
 
-    return this.router.url === routeMap[key];
+    // hago un map con las rutas / valor y comparo con el parametro que recibo
+    const excludedRoutes = ['/search-books', '/add-Books;origen=agregarLeidos', '/add-Books;origen=agregarALeer'];
+    return !excludedRoutes.includes(this.router.url);
+  }
+
+  mostrar(): boolean {
+    // hago un map con las rutas / valor y comparo con el parametro que recibo
+    const excludedRoutes = ['/add-Books;origen=agregarLeidos', '/add-Books;origen=agregarALeer'];
+    return excludedRoutes.includes(this.router.url);
   }
 }

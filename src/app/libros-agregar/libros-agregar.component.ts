@@ -10,23 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-libros-agregar',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, CommonModule,],
+  imports: [LibroComponent, ContainerBooksComponent, CommonModule],
   templateUrl: './libros-agregar.component.html',
   styleUrl: './libros-agregar.component.css'
 })
-// export class LibrosAgregarComponent {
-//   constructor(public bookService: BookService) { }
-
-//   books!: Book[];
-//   async ngOnInit(): Promise<void> {
-
-//     await this.obtenerLibrosALeer();
-//   }
-
-//   async obtenerLibrosALeer() {
-//     this.books = await this.bookService.obtenerALeer();
-//   }
-// }
 
 export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
@@ -36,9 +23,15 @@ export class LibrosAgregarComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.tipoContenido = this.route.snapshot.paramMap.get('origen');
+    if (this.tipoContenido) {
+      this.mostrarLibros()
+    }
+  }
 
-    (this.tipoContenido === 'agregarLeidos') ? await this.dameALeer() : await this.dameLeidos();
-
+  async mostrarLibros() {
+    if (this.tipoContenido) {
+      this.books = await this.bookService.agregarLibrosRender(this.tipoContenido);
+    }
   }
 
   async dameLeidos() {

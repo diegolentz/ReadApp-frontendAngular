@@ -7,11 +7,13 @@
     gap: 2rem;
 
     & .accion{
-        cursor: pointer;
         background: transparent;
+        cursor: pointer;
         border: none;
         &:hover{
             filter: drop-shadow(var(--color-hover-acciones));
+            /* quiero que aumente el tamano cuando hago el hover; */
+            transform: scale(1.1);
         }
     }
 }
