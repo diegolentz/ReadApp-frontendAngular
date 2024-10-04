@@ -79,6 +79,21 @@ export class PerfilInfoComponent {
     return lista.includes(valor)
   }
 
+  modificarBusqueda(valor:string, lista:Array<string>){
+    if (this.estaEn(valor,lista)){
+      const indice = lista.indexOf(valor)
+      delete lista[indice]
+    } else {
+      lista.push(valor)
+    }
+  }
+
+  modificarLectura(valor:string, lista:Array<string>){
+    lista.pop()
+    lista.push(valor)
+    console.log(lista)
+  }
+
   async ngOnInit() {
     let userData = await this.UserService.getUserByID(1)
     this.perfilForm.patchValue({

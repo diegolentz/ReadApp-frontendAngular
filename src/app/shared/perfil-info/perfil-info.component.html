@@ -50,7 +50,7 @@
         <h3>Forma de lectura</h3>
         <div class="formulario-lectura">
             @for (forma of formasDeLectura; track $index) {
-                <app-input-box inputType="radio" name="radio__input" [label]="forma" [isChecked]="estaEn(forma,userLectura)"></app-input-box>
+                <app-input-box inputType="radio" name="radio__input" [label]="forma" [isChecked]="estaEn(forma,userLectura)" (change) = "modificarLectura(forma,userLectura)"></app-input-box>
             }
         </div>
     </div>
@@ -61,7 +61,7 @@
         <h3>Criterio de búsqueda</h3>
         <form class="formulario-criterio" [formGroup]="calculadorForm">
             @for (criterio of criteriosBusqueda; track $index) {
-                <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)"></app-input-box>
+                <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)"></app-input-box>
             }
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
