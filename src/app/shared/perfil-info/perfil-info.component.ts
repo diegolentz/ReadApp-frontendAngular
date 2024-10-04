@@ -30,6 +30,11 @@ export class PerfilInfoComponent {
 
   boton = new BtnGuardarCancelarComponent()
 
+  criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
+  formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
+  userLectura : Array<string>
+  userBusqueda : Array<string>
+
   constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -45,6 +50,9 @@ export class PerfilInfoComponent {
     })
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
+
+    this.userLectura = ['Promedio']
+    this.userBusqueda = ['Precavido', 'Cambiante']
   }
 
 
@@ -67,6 +75,24 @@ export class PerfilInfoComponent {
     this.calculadorForm.reset()
   }
 
+  estaEn(valor:string, lista:Array<string>){
+    return lista.includes(valor)
+  }
+
+  modificarBusqueda(valor:string, lista:Array<string>){
+    if (this.estaEn(valor,lista)){
+      const indice = lista.indexOf(valor)
+      delete lista[indice]
+    } else {
+      lista.push(valor)
+    }
+  }
+
+  modificarLectura(valor:string, lista:Array<string>){
+    lista.pop()
+    lista.push(valor)
+    console.log(lista)
+  }
 
   async ngOnInit() {
     let userData = await this.UserService.getUserByID(1)
@@ -78,6 +104,8 @@ export class PerfilInfoComponent {
       'email': userData.email
     })
   }
+
+
 }
 
 class MostrarCalculador {
