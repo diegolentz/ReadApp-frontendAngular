@@ -10,6 +10,7 @@ import { ProfileBooksReadedComponent } from './profile-books-readed/profile-book
 import { ProfileBooksToReadComponent } from './profile-books-to-read/profile-books-to-read.component';
 import { LoginComponent } from './login/login.component';
 import { ViewRecommendationComponent } from './view-recommendation/view-recommendation.component';
+import { LibrosAgregarComponent } from './libros-agregar/libros-agregar.component';
 
 export const routes: Routes = [
     {
@@ -31,12 +32,17 @@ export const routes: Routes = [
     },
     {
         path: 'search-books',
-        component : BusquedaLibrosComponent
-    },{
+        component: BusquedaLibrosComponent
+    },
+    {
+        path: 'add-Books',
+        component: LibrosAgregarComponent,
+    },
+    {
         path: 'my-profile',
         component: MiPerfilComponent,
         children: [
-            { path: 'information', component: PerfilInfoComponent }, 
+            { path: 'information', component: PerfilInfoComponent },
             { path: 'friends', component: ProfileFriendsComponent },
             { path: 'books-readed', component: ProfileBooksReadedComponent },
             { path: 'books-to-read', component: ProfileBooksToReadComponent },

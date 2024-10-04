@@ -8,9 +8,7 @@ describe('EncabezadoComponent', () => {
   let component: EncabezadoComponent;
   let fixture: ComponentFixture<EncabezadoComponent>;
   let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>
-  // const fakeActivatedRoute = {
-  //   snapshot: { data: { ... } }
-  // } as ActivatedRoute;
+  
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [

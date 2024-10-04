@@ -23,8 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   async obtenerRecomendaciones() {
-    this.allRecomendations = await this.recommendationService.getRecommendations();
-    this.recommendations = this.allRecomendations;
+    this.recommendations = await this.recommendationService.getRecommendations();
   }
   subscribirFiltroCambiado() {
     this.recommendationService.filtroCambiado.subscribe(

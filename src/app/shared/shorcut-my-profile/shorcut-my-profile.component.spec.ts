@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShorcutMyProfileComponent } from './shorcut-my-profile.component';
+import { User } from '../../../domain/user';
 
 describe('ShorcutMyProfileComponent', () => {
   let component: ShorcutMyProfileComponent;
@@ -14,6 +15,7 @@ describe('ShorcutMyProfileComponent', () => {
 
     fixture = TestBed.createComponent(ShorcutMyProfileComponent);
     component = fixture.componentInstance;
+    component.user = new User()
     fixture.detectChanges();
   });
 
