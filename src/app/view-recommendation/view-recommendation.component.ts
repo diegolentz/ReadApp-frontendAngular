@@ -43,8 +43,8 @@ export class ViewRecommendationComponent implements OnInit{
     });
   }
 
-  async editarRecomendacion(recomendacion:Recommendation){
-    this.recommendationService.actualizarRecomendacion(recomendacion)
+  async editarRecomendacion(/*recomendacion:Recommendation*/){
+    this.recommendationService.actualizarRecomendacion(this.recomendacion)
   }
   
 
