@@ -17,21 +17,21 @@ import { ContainerBooksComponent } from '../shared/layouts/books/books.component
 })
 export class BusquedaLibrosComponent {
   books: Book[] = [];
-  allBooks: Book[] = [];
+  // allBooks: Book[] = [];
 
   constructor(public bookService: BookService) { }
 
   async ngOnInit() {
 
-    await this.obtenerLibros();
-    // this.subscribirFiltroCambiado();
+    this.books = await this.bookService.obtenerLibrosFiltrados();
+    // await this.obtenerLibros();
+    // this.obtenerLibros();
 
   }
   async obtenerLibros() {
     //this.allBooks = await this.bookService.obtenerLibros();
     //this.books = this.allBooks;
 
-    this.books = await this.bookService.obtenerLibrosFiltrados();
 
   }
 

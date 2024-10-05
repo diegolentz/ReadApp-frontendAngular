@@ -9,8 +9,9 @@ import { lastValueFrom } from 'rxjs';
 })
 
 export class BookService {
-  filtro: string = '';
+  filtro: string = 'frontera';
   renderizar: string = '';
+  allBooks: Book[] = [];
 
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
 
@@ -56,18 +57,22 @@ export class BookService {
     this.filtroCambiado.emit(this.filtro);
   }
 
-  obtenerLibrosFiltrados() {
-    //MODIFICAR PARA QUE DEVUELVA CON EL FILTRO APLICADO
+  async obtenerLibrosFiltrados(): Promise<Book[]> {
+    //MODIFICAR PARA QUE DEVUELVA CON EL FILTRO 
+    this.allBooks = await this.obtenerLibros()
+
     this.filtroCambiado.subscribe(
       (nuevoFiltro: string) => {
         //exp regular para quitar espacios en blanco y convertir a minusculas
-        this.obtenerLibros = nuevoFiltro ?
+        this.allBooks = nuevoFiltro ?
           (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
             nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
             book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
           (this.allBooks);
       }
     );
+
+    return this.allBooks
   }
 
   async agregarLibrosRender(): Promise<Book[]> {

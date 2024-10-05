@@ -17,7 +17,6 @@ export class NavComponent {
 
   @Input() filtro: string = "";
 
-
   constructor(private route: Router, public bookService: BookService, public recomendatioService: RecommendationService) { }
 
   estoyLibros(): boolean {
