@@ -1,9 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON } from '../domain/tmpUser';
+import { LoginRequest } from '../app/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,27 +20,49 @@ export class ServiceUser {
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
   }
 
-  async getUserByID(id:number): Promise<User>{
-    try{
+  async getUserByID(id: number): Promise<User> {
+    try {
       const user$ = this.httpClient.get<UserJSON>(REST_SERVER_URL + '/users/' + id.toString())
       const user = await (lastValueFrom(user$))
       return User.fromJson(user)
-    } catch(err){
+    } catch (err) {
       throw new Error("El usuario no existe")
     }
-   
-    
+
   }
 
-  async setLoggedUser(id:number) : Promise<void>{
-    localStorage.setItem('loggedUser',id.toString())
+  async setLoggedUser(id: number): Promise<void> {
+    localStorage.setItem('loggedUser', id.toString())
   }
 
-  async getLoggedUser() : Promise<number>{
+  async getLoggedUser(): Promise<number> {
     return +(localStorage.getItem('loggedUser')!)
   }
 
-  async getFriendsMock(): Promise<User[]> {
-    return FRIENDS
+
+  async getUserBasicByID(id: number): Promise<UserBasic> {
+    const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userBasic = UserBasic.prototype.fromJSON(user)
+    return userBasic
+
   }
+
+  async getUserProfileByID(id: number): Promise<UserProfile> {
+    const user$ = this.httpClient.get<UserProfileJSON>(REST_SERVER_URL + '/user/profile/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userProfile = UserProfile.prototype.fromJSON(user)
+    return userProfile
+  }
+
+  async login(loginRequest: LoginRequest): Promise<LoginResponse> {
+    const loginResponse$ = this.httpClient.post<LoginResponse>(REST_SERVER_URL + '/login', loginRequest)
+    const loginResponse = await (lastValueFrom(loginResponse$))
+    return loginResponse
+  }
+  
+}
+
+type LoginResponse = {
+  userID:number
 }
