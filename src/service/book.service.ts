@@ -46,23 +46,11 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-  render(render: string) {
-    this.renderizar = render;
-  }
+
   aplicarFiltro(filtro: string) {
     this.filtro = filtro;
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
   }
 
-  async agregarLibrosRender(): Promise<Book[]> {
-    if (this.renderizar === 'agregarLeidos') {
-      return this.obtenerALeer();
-    } else if (this.renderizar === 'agregarALeer') {
-      return this.obtenerParaLeer();
-    } else {
-      window.history.back();
-      return [];
-    }
-  }
 }
