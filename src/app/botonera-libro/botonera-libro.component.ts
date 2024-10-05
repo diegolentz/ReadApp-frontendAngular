@@ -16,7 +16,7 @@ export class BotoneraLibroComponent {
   ocultarBorrar(): boolean {
 
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/search-books', '/add-Books;origen=agregarLeidos', '/add-Books;origen=agregarALeer'];
+    const excludedRoutes = ['/search-books', '/add-Books'];
     return !excludedRoutes.includes(this.router.url);
   }
 
