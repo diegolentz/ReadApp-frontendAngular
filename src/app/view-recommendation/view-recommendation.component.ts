@@ -27,16 +27,13 @@ export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
   recomendacion:Recommendation = recomendacionDefault
-  titulo!:string
-  visibilidad!:boolean
-  libros!:Array<Book>
-  resena!:string
 
   async ngOnInit() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
       try {
         this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+        console.log(this.recomendacion)
       } catch (error) {
         console.error('Error al obtener la recomendación:', error);
       }
@@ -45,6 +42,8 @@ export class ViewRecommendationComponent implements OnInit{
 
   async editarRecomendacion(/*recomendacion:Recommendation*/){
     this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    console.log(this.recomendacion)
+  
   }
   
 

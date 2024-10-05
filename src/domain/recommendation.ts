@@ -3,7 +3,7 @@ import { User } from "./user"
 import { Valoration } from "./valoration"
 
 export type RecommendationJSON = {
-    creador: User,
+    creador: number,
     librosRecomendados: Array<Book>,
     titulo: string,
     contenido: string,
@@ -14,7 +14,7 @@ export type RecommendationJSON = {
 
 export class Recommendation {
     constructor(
-        public author: User = new User(),
+        public author: number = -1,
         public recommendedBooks: Array<Book> = [],
         public title: string = '',
         public description: string = '',
@@ -33,11 +33,11 @@ export class Recommendation {
     private substractScoreFromValorations(){
         let score = 0
         this.valorations.forEach(valoration => {
-          score += valoration.valor
+            score += valoration.valor
         });
         return score
     }
-
+    
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
         
@@ -65,3 +65,34 @@ export class Recommendation {
     }
 }
 
+
+export type RecommendationDetalleJSON = {
+    librosRecomendados: Array<Book>,
+    titulo: string,
+    contenido: string,
+    publica: boolean,
+    valoraciones: Array<Valoration>,
+    id: number
+}
+
+export class RecommendationDetalle {
+    constructor(
+        public id: number = 0,
+        public recommendedBooks: Array<Book> = [],
+        public title: string = '',
+        public description: string = '',
+        public _public: boolean = true,
+        public valorations: Array<Valoration> = [],
+    ) { }
+
+    toJSON(): RecommendationDetalleJSON {
+        return {
+            id:this.id,
+            librosRecomendados: this.recommendedBooks,
+            titulo: this.title,
+            contenido: this.description,
+            publica: this._public,
+            valoraciones: this.valorations
+        }
+    }
+}
