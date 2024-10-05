@@ -1,26 +1,31 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserIdentificationComponent } from '../user-identification/user-identification.component';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { BgColorDirective } from '../directives/bg-color.directive';
 import { HoverBoxshadowDirective } from '../directives/hover-boxshadow.directive';
-import { User } from '../../../domain/user';
+import { UserBasic } from '../../../domain/tmpUser';
 
 @Component({
   selector: 'app-shorcut-my-profile',
   standalone: true,
-  imports: [UserIdentificationComponent, NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective, NgIf],
+  imports: [NgFor, RouterLink, BgColorDirective, HoverBoxshadowDirective, NgIf],
   templateUrl: './shorcut-my-profile.component.html',
   styleUrl: './shorcut-my-profile.component.css'
 })
 export class ShorcutMyProfileComponent implements OnInit{
 
   @Input() show!:boolean
+  @Input() user!:UserBasic;
+
+  displayShorcut!:boolean
+
   ngOnInit(): void {
     this.displayShorcut = false //False -> test. True -> debug
   }
-  displayShorcut!:boolean
-  @Input() user!:User;
+
+  changeDisplay(){
+    this.displayShorcut = !this.displayShorcut
+  }
 
   colorDefault = 'white'
   options = [
@@ -30,9 +35,6 @@ export class ShorcutMyProfileComponent implements OnInit{
     new Option('Log out', 'log-out.svg', this.colorDefault, this.colorDefault, 'log-out')
     
   ]
-  changeDisplay(){
-    this.displayShorcut = !this.displayShorcut
-  }
 }
 
 export class Option{

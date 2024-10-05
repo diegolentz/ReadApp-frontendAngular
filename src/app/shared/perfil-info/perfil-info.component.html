@@ -49,10 +49,9 @@
     <div class="info">
         <h3>Forma de lectura</h3>
         <div class="formulario-lectura">
-            <app-input-box inputType="radio" name="radio__input" label="Promedio"></app-input-box>
-            <app-input-box inputType="radio" name="radio__input" label="Ansioso"></app-input-box>
-            <app-input-box inputType="radio" name="radio__input" label="Fanático"></app-input-box>
-            <app-input-box inputType="radio" name="radio__input" label="Recurrente"></app-input-box>
+            @for (forma of formasDeLectura; track $index) {
+                <app-input-box inputType="radio" name="radio__input" [label]="forma" [isChecked]="estaEn(forma,userLectura)" (change) = "modificarLectura(forma,userLectura)"></app-input-box>
+            }
         </div>
     </div>
 
@@ -61,20 +60,15 @@
     <div class="info">
         <h3>Criterio de búsqueda</h3>
         <form class="formulario-criterio" [formGroup]="calculadorForm">
-            <app-input-box inputType="checkbox" label="Precavido"></app-input-box>
-            <app-input-box inputType="checkbox" label="Demandante"></app-input-box>
-            <app-input-box inputType="checkbox" label="Cambiante"></app-input-box>
-            <app-input-box inputType="checkbox" label="Leedor"></app-input-box>
-            <app-input-box inputType="checkbox" label="Nativista"></app-input-box>
-            <app-input-box inputType="checkbox" label="Poliglota"></app-input-box>
-            <app-input-box inputType="checkbox" label="Experimentado"></app-input-box>
+            @for (criterio of criteriosBusqueda; track $index) {
+                <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)"></app-input-box>
+            }
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
                 <div class= "campo input__label--effect">
                     <input type="number" formControlName="numero min">
                     <label>MIN</label>
                 </div>
-                
                 <div class= "campo input__label--effect">
                     <input type="number" formControlName="numero max">
                     <label>MAX</label>

@@ -3,7 +3,6 @@ import { AmigosComponent } from '../amigos/amigos.component';
 import { NgFor } from '@angular/common';
 import { ContainerFriendsComponent } from "../shared/layouts/friends/friends.component";
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
-import { Friend } from '../../domain/friend';
 import { ServiceUser } from '../../service/service-user.service';
 import { User } from '../../domain/user';
 
@@ -27,6 +26,6 @@ export class ProfileFriendsComponent implements OnInit{
   @HostBinding('style.width') width: string = '100%';
 
   async getFriend(){
-    this.friends = await this.userService.getFriendsMock();
+    this.friends = await this.userService.getUsers();
   }
 }

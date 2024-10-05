@@ -9,6 +9,7 @@ import { lastValueFrom } from 'rxjs';
 })
 export class BookService {
   filtro: string = '';
+  renderizar: string = '';
 
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
 
@@ -37,18 +38,28 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-
+  async obtenerParaLeer(): Promise<Book[]> {
+    const userId = 1;//deberia usar localStorage
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
+      params: { idUser: userId }
+    });
+    const bookJSON = await lastValueFrom(libros$);
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+  }
+  render(render: string) {
+    this.renderizar = render;
+  }
   aplicarFiltro(filtro: string) {
     this.filtro = filtro;
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
   }
 
-  async contenidoEspecifico(tipoContenido: string): Promise<Book[]> {
-    if (tipoContenido === 'agregarLeidos') {
+  async agregarLibrosRender(): Promise<Book[]> {
+    if (this.renderizar == 'agregarLeidos') {
       return this.obtenerALeer();
     } else {
-      return this.obtenerLeidos();
+      return this.obtenerParaLeer();
     }
   }
 }
