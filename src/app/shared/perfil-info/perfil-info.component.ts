@@ -32,8 +32,8 @@ export class PerfilInfoComponent {
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
-  userLectura : Array<string>
-  userBusqueda : Array<string>
+  userLectura : Array<string> = []
+  userBusqueda : Array<string> = []
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
@@ -51,8 +51,6 @@ export class PerfilInfoComponent {
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
 
-    this.userLectura = ['Promedio']
-    this.userBusqueda = ['Precavido', 'Cambiante']
   }
 
 
@@ -104,6 +102,10 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
+
+    this.userLectura.push(userData.tipoDeLector)
+    this.userBusqueda = userData.perfil
+
   }
 
 
