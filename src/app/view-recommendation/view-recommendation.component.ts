@@ -12,7 +12,6 @@ import { Recommendation } from '../../domain/recommendation';
 import { LibroComponent } from "../libro/libro.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { RecommendationService } from '../../service/recommendation.service';
-import { recomendacionDefault, RECOMMENDATIONS } from '../../mock/mockRecommendations';
 import { BtnVolverComponent } from "../btn-volver/btn-volver.component";
 import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
@@ -26,7 +25,7 @@ import { FormsModule } from '@angular/forms';
 export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
-  recomendacion:Recommendation = recomendacionDefault
+  recomendacion!:Recommendation 
 
   async ngOnInit() {
     this.route.params.subscribe(async (viewRecommendationParams) => {

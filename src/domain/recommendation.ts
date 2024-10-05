@@ -1,20 +1,20 @@
-import { Book } from "./book"
+import { Book, BookJSON } from "./book"
 import { User } from "./user"
-import { Valoration } from "./valoration"
+import { Valoration, ValorationJSON } from "./valoration"
 
 export type RecommendationJSON = {
-    creador: number,
-    librosRecomendados: Array<Book>,
+    creador: string,
+    librosRecomendados: Array<BookJSON>,
     titulo: string,
     contenido: string,
     publica: boolean,
-    valoraciones: Array<Valoration>,
+    valoraciones: Array<ValorationJSON>,
     id: number
 }
 
 export class Recommendation {
     constructor(
-        public author: number = -1,
+        public author: string = "",
         public recommendedBooks: Array<Book> = [],
         public title: string = '',
         public description: string = '',
@@ -43,24 +43,24 @@ export class Recommendation {
         
         return new Recommendation(
             recommendationJSON.creador,
-            recommendationJSON.librosRecomendados,
+            recommendationJSON.librosRecomendados.map(it => Book.fromJson(it)),
             recommendationJSON.titulo,
             recommendationJSON.contenido,
             recommendationJSON.publica,
-            recommendationJSON.valoraciones,
+            recommendationJSON.valoraciones.map(it => Valoration.fromJson(it) ),
             recommendationJSON.id
             )
     }
 
     toJSON(): RecommendationJSON {
         return {
-            id:this.id,
             creador: this.author,
-            librosRecomendados: this.recommendedBooks,
+            librosRecomendados: this.recommendedBooks.map(it => it.toJSON()),
             titulo: this.title,
             contenido: this.description,
             publica: this._public,
-            valoraciones: this.valorations
+            valoraciones: this.valorations.map(it=> it.toJSON()),
+            id:this.id,
         }
     }
 }
