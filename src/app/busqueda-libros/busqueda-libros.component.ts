@@ -24,25 +24,28 @@ export class BusquedaLibrosComponent {
   async ngOnInit() {
 
     await this.obtenerLibros();
-    this.subscribirFiltroCambiado();
-
+    // this.subscribirFiltroCambiado();
 
   }
   async obtenerLibros() {
-    this.allBooks = await this.bookService.obtenerLibros();
-    this.books = this.allBooks;
+    //this.allBooks = await this.bookService.obtenerLibros();
+    //this.books = this.allBooks;
+
+    this.books = await this.bookService.obtenerLibrosFiltrados();
+
   }
-  subscribirFiltroCambiado() {
-    this.bookService.filtroCambiado.subscribe(
-      (nuevoFiltro: string) => {
-        //exp regular para quitar espacios en blanco y convertir a minusculas
-        this.books = nuevoFiltro ?
-          (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
-            nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
-            book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
-          (this.allBooks);
-      }
-    );
-  }
+
+  // subscribirFiltroCambiado() {
+  //   this.bookService.filtroCambiado.subscribe(
+  //     (nuevoFiltro: string) => {
+  //       //exp regular para quitar espacios en blanco y convertir a minusculas
+  //       this.books = nuevoFiltro ?
+  //         (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
+  //           nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+  //           book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+  //         (this.allBooks);
+  //     }
+  //   );
+  // }
 }
 

@@ -7,6 +7,7 @@ import { lastValueFrom } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class BookService {
   filtro: string = '';
   renderizar: string = '';
@@ -53,6 +54,20 @@ export class BookService {
     this.filtro = filtro;
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
+  }
+
+  obtenerLibrosFiltrados() {
+    //MODIFICAR PARA QUE DEVUELVA CON EL FILTRO APLICADO
+    this.filtroCambiado.subscribe(
+      (nuevoFiltro: string) => {
+        //exp regular para quitar espacios en blanco y convertir a minusculas
+        this.obtenerLibros = nuevoFiltro ?
+          (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
+            nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+            book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+          (this.allBooks);
+      }
+    );
   }
 
   async agregarLibrosRender(): Promise<Book[]> {
