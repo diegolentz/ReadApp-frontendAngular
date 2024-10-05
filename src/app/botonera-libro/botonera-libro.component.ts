@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
+import { Book } from '../../domain/book';
+import { BookService } from '../../service/book.service';
 @Component({
   selector: 'app-botonera-libro',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,],
   templateUrl: './botonera-libro.component.html',
   styleUrl: './botonera-libro.component.css'
 })
 export class BotoneraLibroComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, private bookService: BookService) {
   }
 
+  @Input() libro!: Book
 
   ocultarBorrar(): boolean {
 
@@ -24,5 +27,9 @@ export class BotoneraLibroComponent {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
     const excludedRoutes = ['/add-Books/books-to-read', '/add-Books/books-readed'];
     return excludedRoutes.includes(this.router.url);
+  }
+
+  agregar(libro: Book) {
+    this.bookService.quitarVista(libro);
   }
 }

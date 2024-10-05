@@ -34,10 +34,10 @@ export const routes: Routes = [
         path: 'search-books',
         component: BusquedaLibrosComponent
     },
-    {
-        path: 'add-Books/:tipo',
-        component: LibrosAgregarComponent,
-    },
+    // {
+    //     path: 'add-Books/:tipo',
+    //     component: LibrosAgregarComponent,
+    // },
     {
         path: 'my-profile',
         component: MiPerfilComponent,
@@ -47,7 +47,9 @@ export const routes: Routes = [
             { path: 'books-readed', component: ProfileBooksReadedComponent },
             { path: 'books-to-read', component: ProfileBooksToReadComponent },
             { path: 'recommendations-to-value', component: ProfileRecommendationsComponent },
+            { path: 'add-Books/:tipo', component: LibrosAgregarComponent },
             { path: '', redirectTo: 'information', pathMatch: 'full' },
+
         ]
     },
     { path: '**', redirectTo: 'login', pathMatch: 'full' }//ESTE VA ULTIMO

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../../../service/book.service';
 
 @Component({
@@ -12,10 +12,10 @@ import { BookService } from '../../../service/book.service';
 })
 export class BotonAgregarComponent {
 
-  constructor(private route: Router, public bookService: BookService) { }
+  constructor(private route: ActivatedRoute, private router: Router, public bookService: BookService) { }
   @Input() tipo: string = '';
   agregarLibros() {
     // Redirige y renderiza lo que se manda por params
-    this.route.navigate(['/add-Books', this.tipo]);
+    this.router.navigate(["add-books", this.tipo], { relativeTo: this.route });
   }
 }
