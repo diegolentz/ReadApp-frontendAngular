@@ -11,7 +11,10 @@ export class BookService {
   filtro: string = '';
   renderizar: string = '';
 
-  filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
+  libros!: Book;
+
+  filtroCambiado = new EventEmitter<string>();
+  libroCambiado = new EventEmitter<Book>();
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,6 +28,7 @@ export class BookService {
     const userId = 1;//deberia usar localStorage
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosALeer', {
       params: { idUser: userId }
+
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
@@ -46,20 +50,18 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-  render(render: string) {
-    this.renderizar = render;
-  }
+
   aplicarFiltro(filtro: string) {
     this.filtro = filtro;
     //filtro cambiado emite el cambio en filtro
     this.filtroCambiado.emit(this.filtro);
   }
+  quitarVista(book: Book) {
+    this.libros = book;
+    this.libroCambiado.emit(this.libros);
 
-  async agregarLibrosRender(): Promise<Book[]> {
-    if (this.renderizar == 'agregarLeidos') {
-      return this.obtenerALeer();
-    } else {
-      return this.obtenerParaLeer();
-    }
+    // console.log(this.libros);
   }
+
+
 }

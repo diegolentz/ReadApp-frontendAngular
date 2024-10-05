@@ -17,13 +17,24 @@ export class ProfileBooksReadedComponent implements OnInit {
   @HostBinding('style.width') width: string = '100%';
   constructor(public bookService: BookService) { }
 
-  books!: Book[];
+  books: Book[] = [];
+  librosAgregados: Book[] = [];
   async ngOnInit(): Promise<void> {
     await this.obtenerLibrosLeidos();
+    this.quitadosDeLaVista()
   }
 
 
   async obtenerLibrosLeidos() {
     this.books = await this.bookService.obtenerLeidos();
+  }
+  quitadosDeLaVista() {
+    this.bookService.libroCambiado.subscribe(
+      (nuevoLibro: Book) => {
+        this.librosAgregados.push(nuevoLibro);
+        this.books = this.books.filter(book => book.id !== nuevoLibro.id);
+        // console.log(this.books);
+      }
+    );
   }
 }
