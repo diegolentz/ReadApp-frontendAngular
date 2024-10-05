@@ -56,10 +56,13 @@ export class BookService {
   }
 
   async agregarLibrosRender(): Promise<Book[]> {
-    if (this.renderizar == 'agregarLeidos') {
+    if (this.renderizar === 'agregarLeidos') {
       return this.obtenerALeer();
-    } else {
+    } else if (this.renderizar === 'agregarALeer') {
       return this.obtenerParaLeer();
+    } else {
+      window.history.back();
+      return [];
     }
   }
 }

@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
 import { ActivatedRoute } from '@angular/router';
+import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
 
 
 @Component({
   selector: 'app-libros-agregar',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, CommonModule],
+  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent],
   templateUrl: './libros-agregar.component.html',
   styleUrl: './libros-agregar.component.css'
 })
