@@ -7,22 +7,22 @@
 
         <form class="formulario-general" [formGroup]="perfilForm">
             <div class= "campo input__label--effect">
-                <input type="text" formControlName="nombre" placeholder="nombre">
+                <input type="text" formControlName="nombre" placeholder="nombre" [readonly] = "!esEditor">
                 <label>nombre</label>
-                <app-form-error *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'nombre', 'pattern')"></app-form-error>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'nombre', 'pattern')" ></app-form-error>
             </div>
             
             
 
             <div class= "campo input__label--effect">
-                <input type="text" formControlName="apellido" placeholder="apellido">
+                <input type="text" formControlName="apellido" placeholder="apellido" [readonly] = "!esEditor">
                 <label>apellido</label>
                 <app-form-error *ngIf="(errorMessage(perfilForm, 'apellido', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'apellido', 'pattern')"></app-form-error>
             </div>
             
 
             <div class= "campo input__label--effect">
-                <input type="text" formControlName="username" placeholder="username">
+                <input type="text" formControlName="username" placeholder="username" [readonly] = "!esEditor">
                 <label>username</label>
                 <app-form-error *ngIf="(errorMessage(perfilForm, 'username', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'username', 'pattern')"></app-form-error>
             </div>
@@ -30,14 +30,14 @@
 
             
             <div class= "campo input__label--effect">
-                <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento">
+                <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento" [readonly] = "!esEditor">
                 <label>fecha de nacimiento</label>
                 <app-form-error *ngIf="(errorMessage(perfilForm, 'fecha de nacimiento', 'date validator'))" [errorMessage]="errorMessage(perfilForm, 'fecha de nacimiento', 'date validator')"></app-form-error>
             </div>
             
 
             <div class= "campo input__label--effect">
-                <input type="email" formControlName="email" placeholder="email">
+                <input type="email" formControlName="email" placeholder="email" [readonly] = "!esEditor">
                 <label>email</label>
                 <app-form-error *ngIf="(errorMessage(perfilForm, 'email', 'email'))" [errorMessage]="errorMessage(perfilForm, 'email', 'email')"></app-form-error>
             </div>
@@ -51,7 +51,7 @@
         <h3>Forma de lectura</h3>
         <div class="formulario-lectura">
             @for (forma of formasDeLectura; track $index) {
-                <app-input-box inputType="radio" name="radio__input" [label]="forma" [isChecked]="estaEn(forma,userLectura)" (change) = "modificarLectura(forma,userLectura)"></app-input-box>
+                <app-input-box inputType="radio" name="radio__input" [label]="forma" [isChecked]="estaEn(forma,userLectura)" (change) = "modificarLectura(forma,userLectura)" [deshablitado]="!esEditor"></app-input-box>
             }
         </div>
     </div>
@@ -62,7 +62,7 @@
         <h3>Criterio de búsqueda</h3>
         <form class="formulario-criterio" [formGroup]="calculadorForm">
             @for (criterio of criteriosBusqueda; track $index) {
-                <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)"></app-input-box>
+                <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)" [deshablitado]="!esEditor"></app-input-box>
             }
             <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">

@@ -22,8 +22,9 @@ export class PerfilInfoComponent {
   /* Forms */
   perfilForm: FormGroup;
   calculadorForm: FormGroup;
-  private chPermitidosNomb = '[a-zA-Z]*$'
-  private chPermitidosUser = '^[a-zA-Z0-9]*$'
+  private chPermitidosNomb = '[a-zA-Z]*$';
+  private chPermitidosUser = '^[a-zA-Z0-9]*$';
+  esEditor:boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -54,6 +55,9 @@ export class PerfilInfoComponent {
 
   }
 
+  puedeEditar(){
+    this.esEditor = false
+  }
 
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
@@ -106,6 +110,8 @@ export class PerfilInfoComponent {
 
     this.userLectura.push(userData.tipoDeLector)
     this.userBusqueda = userData.perfil
+
+    this.puedeEditar()
 
   }
 
