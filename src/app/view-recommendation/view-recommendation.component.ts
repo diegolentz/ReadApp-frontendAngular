@@ -12,34 +12,41 @@ import { Recommendation } from '../../domain/recommendation';
 import { LibroComponent } from "../libro/libro.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { RecommendationService } from '../../service/recommendation.service';
-import { recomendacionDefault, RECOMMENDATIONS } from '../../mock/mockRecommendations';
-import { Valoration } from '../../domain/valoration';
+import { BtnVolverComponent } from "../btn-volver/btn-volver.component";
+import { Book } from '../../domain/book';
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
-  imports: [NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent],
+  imports: [FormsModule,NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent, BtnVolverComponent],
   templateUrl: './view-recommendation.component.html',
   styleUrl: './view-recommendation.component.css'
 })
 export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
-  recomendacion:Recommendation = recomendacionDefault
+  recomendacion!:Recommendation 
 
   async ngOnInit() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
       try {
         this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
-        console.log('Recomendación:', this.recomendacion);
       } catch (error) {
         console.error('Error al obtener la recomendación:', error);
       }
     });
   }
 
+  async editarRecomendacion(){
+    this.recommendationService.actualizarRecomendacion(this.recomendacion)
+  }
+  
   noPuedeEditar(){
     return true
   }
 
+  goTo(option:string){
+    this.router.navigate([option])
+  }
 }
