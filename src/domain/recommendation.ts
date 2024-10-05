@@ -65,7 +65,6 @@ export class Recommendation {
     }
 }
 
-
 export type RecommendationDetalleJSON = {
     librosRecomendados: Array<Book>,
     titulo: string,
@@ -75,24 +74,3 @@ export type RecommendationDetalleJSON = {
     id: number
 }
 
-export class RecommendationDetalle {
-    constructor(
-        public id: number = 0,
-        public recommendedBooks: Array<Book> = [],
-        public title: string = '',
-        public description: string = '',
-        public _public: boolean = true,
-        public valorations: Array<Valoration> = [],
-    ) { }
-
-    toJSON(): RecommendationDetalleJSON {
-        return {
-            id:this.id,
-            librosRecomendados: this.recommendedBooks,
-            titulo: this.title,
-            contenido: this.description,
-            publica: this._public,
-            valoraciones: this.valorations
-        }
-    }
-}

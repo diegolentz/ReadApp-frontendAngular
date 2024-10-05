@@ -20,12 +20,11 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     await this.obtenerRecomendaciones();
     this.subscribirFiltroCambiado();
-    
+      
   }
 
   async obtenerRecomendaciones() {
     this.recommendations = await this.recommendationService.getRecommendations();
-    // console.log(this.recommendations)
   }
   subscribirFiltroCambiado() {
     this.recommendationService.filtroCambiado.subscribe(

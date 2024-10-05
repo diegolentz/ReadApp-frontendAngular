@@ -32,22 +32,18 @@ export class ViewRecommendationComponent implements OnInit{
       const recomendacionId = viewRecommendationParams['id'];
       try {
         this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
-        console.log(this.recomendacion)
       } catch (error) {
         console.error('Error al obtener la recomendación:', error);
       }
     });
   }
 
-  async editarRecomendacion(/*recomendacion:Recommendation*/){
+  async editarRecomendacion(){
     this.recommendationService.actualizarRecomendacion(this.recomendacion)
-    console.log(this.recomendacion)
-  
   }
   
-
   noPuedeEditar(){
-    return false
+    return true
   }
 
   goTo(option:string){
