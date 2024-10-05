@@ -97,7 +97,7 @@
         font-weight: normal;
         position: absolute;
         left: 1rem;
-        top: 0.8rem;
+        top: -2rem;
         transition: 0.35s;
     }
     
@@ -110,7 +110,7 @@
 
 div input:focus ~ label,
 div input:user-valid ~ label {
-    transform: translateY(-2rem);
+    /* transform: translateY(-2rem); */
     font-size: 1em;
     background-color: var(--color-searchbar);
     border: 1px solid;
@@ -120,9 +120,7 @@ div input:user-valid ~ label {
     padding: 0.2rem;
 }
 
-.campo input[type="date"] {
-    color: white;
-}
+
 
 .campo input[type="number"]::-webkit-inner-spin-button,
 .campo input[type="number"]::-webkit-outer-spin-button {
