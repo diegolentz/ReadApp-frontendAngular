@@ -35,7 +35,7 @@ export const routes: Routes = [
         component: BusquedaLibrosComponent
     },
     {
-        path: 'add-Books',
+        path: 'add-Books/:tipo',
         component: LibrosAgregarComponent,
     },
     {
