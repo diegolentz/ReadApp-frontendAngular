@@ -37,7 +37,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(23rem, auto));
     grid-template-rows: 5rem;
-    gap: 1rem;
+    gap: 4.5rem;
     margin-bottom: 2rem;
 }
 

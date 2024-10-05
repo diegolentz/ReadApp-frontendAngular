@@ -9,21 +9,22 @@
             <div class= "campo input__label--effect">
                 <input type="text" formControlName="nombre" placeholder="nombre">
                 <label>nombre</label>
-                <p *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))">{{errorMessage(perfilForm, 'nombre', 'pattern')}}</p>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'nombre', 'pattern')"></app-form-error>
             </div>
+            
             
 
             <div class= "campo input__label--effect">
                 <input type="text" formControlName="apellido" placeholder="apellido">
                 <label>apellido</label>
-                <p *ngIf="(errorMessage(perfilForm, 'apellido', 'pattern'))">{{errorMessage(perfilForm, 'apellido', 'pattern')}}</p>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'apellido', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'apellido', 'pattern')"></app-form-error>
             </div>
             
 
             <div class= "campo input__label--effect">
                 <input type="text" formControlName="username" placeholder="username">
                 <label>username</label>
-                <p *ngIf="(errorMessage(perfilForm, 'username', 'pattern'))">{{errorMessage(perfilForm, 'username', 'pattern')}}</p>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'username', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'username', 'pattern')"></app-form-error>
             </div>
             
 
@@ -31,14 +32,14 @@
             <div class= "campo input__label--effect">
                 <input type="date" formControlName="fecha de nacimiento" placeholder="fecha de nacimiento">
                 <label>fecha de nacimiento</label>
-                <p *ngIf="(errorMessage(perfilForm, 'fecha de nacimiento', 'date validator'))">{{errorMessage(perfilForm, 'fecha de nacimiento', 'date validator')}}</p>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'fecha de nacimiento', 'date validator'))" [errorMessage]="errorMessage(perfilForm, 'fecha de nacimiento', 'date validator')"></app-form-error>
             </div>
             
 
             <div class= "campo input__label--effect">
                 <input type="email" formControlName="email" placeholder="email">
                 <label>email</label>
-                <p *ngIf="(errorMessage(perfilForm, 'email', 'email'))">{{errorMessage(perfilForm, 'email', 'email')}}</p>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'email', 'email'))" [errorMessage]="errorMessage(perfilForm, 'email', 'email')"></app-form-error>
             </div>
             
         </form>
@@ -73,7 +74,7 @@
                     <input type="number" formControlName="numero max">
                     <label>MAX</label>
                 </div>
-                <p *ngIf="(errorMessage(calculadorForm, 'numero max', 'minmax'))">{{(errorMessage(calculadorForm, 'numero max', 'minmax'))}}</p>
+                <app-form-error *ngIf="(errorMessage(calculadorForm, 'numero max', 'minmax'))" [errorMessage]="(errorMessage(calculadorForm, 'numero max', 'minmax'))"></app-form-error>
             </div>
         </form>
     </div>

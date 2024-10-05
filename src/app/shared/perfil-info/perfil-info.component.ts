@@ -5,13 +5,14 @@ import { InputComponent } from '../../input/input.component';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
+import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
 
 
 
 @Component({
   selector: 'app-perfil-info',
   standalone: true,
-  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent, ReactiveFormsModule],
+  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent, ReactiveFormsModule, FormErrorComponent],
   templateUrl: './perfil-info.component.html',
   styleUrl: './perfil-info.component.css'
 })
