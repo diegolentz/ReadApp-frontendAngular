@@ -12,28 +12,28 @@ import { NavComponent } from '../nav/nav.component';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  recommendations!: Recommendation[];
+  recommendations: Recommendation[] = [];
   allRecomendations!: Recommendation[];
+  filtro: string = ""
 
   constructor(private recommendationService: RecommendationService) { }
 
   async ngOnInit() {
-    await this.obtenerRecomendaciones();
-    this.subscribirFiltroCambiado();
-  }
-
-  async obtenerRecomendaciones() {
     this.recommendations = await this.recommendationService.getRecommendations();
   }
-  subscribirFiltroCambiado() {
-    this.recommendationService.filtroCambiado.subscribe(
-      (nuevoFiltro: string) => {
-        //exp regular para quitar espacios en blanco y convertir a minusculas
-        this.recommendations = nuevoFiltro ?
-          (this.allRecomendations.filter((recommendation) => recommendation.title.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
-            recommendation.description.toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
-          (this.allRecomendations);
-      }
-    );
+
+  // async obtenerRecomendaciones() {
+  //   this.recommendations = await this.recommendationService.getRecommendations();
+  // }
+
+  async addFilter(newFilter: string) {
+    this.filtro = newFilter
+    this.recommendations = await this.recommendationService.getRecommendations()
+    this.recommendations = this.filtro ?
+      (this.recommendations.filter((recommendation) => recommendation.title.replace(/\s+/g, '').toLowerCase().includes(
+        this.filtro.replace(/\s+/g, '').toLowerCase()) ||
+        recommendation.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
+      (this.recommendations);
   }
+
 }

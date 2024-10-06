@@ -1,4 +1,4 @@
-<app-nav></app-nav>
+<app-nav (newFilterEvent)="addFilter($event)"></app-nav>
 <main class="recomendattions__container">
         @for (recomendation of recommendations; track recomendation){
             <app-recomendacion [recomendacion]="recomendation"></app-recomendacion>

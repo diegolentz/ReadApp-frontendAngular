@@ -51,17 +51,16 @@ export class BookService {
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
 
-  aplicarFiltro(filtro: string) {
-    this.filtro = filtro;
-    //filtro cambiado emite el cambio en filtro
-    this.filtroCambiado.emit(this.filtro);
-  }
+  // aplicarFiltro(filtro: string) {
+  //   this.filtro = filtro;
+  //   //filtro cambiado emite el cambio en filtro
+  //   this.filtroCambiado.emit(this.filtro);
+  //}
   quitarVista(book: Book) {
     this.libros = book;
     this.libroCambiado.emit(this.libros);
 
     // console.log(this.libros);
   }
-
 
 }
