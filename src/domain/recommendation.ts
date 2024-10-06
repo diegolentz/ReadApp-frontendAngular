@@ -12,6 +12,14 @@ export type RecommendationJSON = {
     id: number
 }
 
+export type RecommendationEditJSON = {
+    titulo:string,
+    librosRecomendados: Array<BookJSON>,
+    contenido:string,
+    publica:boolean,
+    id:number
+}
+
 export class Recommendation {
     constructor(
         public author: string = "",
@@ -60,6 +68,16 @@ export class Recommendation {
             contenido: this.description,
             publica: this._public,
             valoraciones: this.valorations.map(it=> it.toJSON()),
+            id:this.id,
+        }
+    }
+
+    toEditarJSON(): RecommendationEditJSON {
+        return {
+            titulo: this.title,
+            librosRecomendados: this.recommendedBooks.map(it => it.toJSON()),
+            contenido: this.description,
+            publica: this._public,
             id:this.id,
         }
     }
