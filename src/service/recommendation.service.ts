@@ -33,7 +33,7 @@ export class RecommendationService {
   async actualizarRecomendacion(recomendacion: Recommendation){
     const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
       REST_SERVER_URL + `/recommendations`,
-      recomendacion.toJSON
+      recomendacion.toEditarJSON()
     ))
     
     return recomendacionNueva
