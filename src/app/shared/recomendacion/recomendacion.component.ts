@@ -18,4 +18,5 @@ export class RecomendacionComponent {
     this.router.navigate([option])
   }
 
+
 }

@@ -1,20 +1,20 @@
-import { Book } from "./book"
+import { Book, BookJSON } from "./book"
 import { User } from "./user"
-import { Valoration } from "./valoration"
+import { Valoration, ValorationJSON } from "./valoration"
 
 export type RecommendationJSON = {
-    creador: User,
-    librosRecomendados: Array<Book>,
+    creador: string,
+    librosRecomendados: Array<BookJSON>,
     titulo: string,
     contenido: string,
     publica: boolean,
-    valoraciones: Array<Valoration>,
+    valoraciones: Array<ValorationJSON>,
     id: number
 }
 
 export class Recommendation {
     constructor(
-        public author: User = new User(),
+        public author: string = "",
         public recommendedBooks: Array<Book> = [],
         public title: string = '',
         public description: string = '',
@@ -33,34 +33,44 @@ export class Recommendation {
     private substractScoreFromValorations(){
         let score = 0
         this.valorations.forEach(valoration => {
-          score += valoration.valor
+            score += valoration.valor
         });
         return score
     }
-
+    
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
         
         return new Recommendation(
             recommendationJSON.creador,
-            recommendationJSON.librosRecomendados,
+            recommendationJSON.librosRecomendados.map(it => Book.fromJson(it)),
             recommendationJSON.titulo,
             recommendationJSON.contenido,
             recommendationJSON.publica,
-            recommendationJSON.valoraciones,
+            recommendationJSON.valoraciones.map(it => Valoration.fromJson(it) ),
             recommendationJSON.id
             )
     }
 
-    // toJSON(): RecommendationJSON {
-    //     return {
-    //         author: this.author,
-    //         librosRecomendados: this.librosRecomendados,
-    //         titulo: this.titulo,
-    //         descripcion: this.descripcion,
-    //         publica: this.publica,
-    //         valorations: this.valorations
-    //     }
-    // }
+    toJSON(): RecommendationJSON {
+        return {
+            creador: this.author,
+            librosRecomendados: this.recommendedBooks.map(it => it.toJSON()),
+            titulo: this.title,
+            contenido: this.description,
+            publica: this._public,
+            valoraciones: this.valorations.map(it=> it.toJSON()),
+            id:this.id,
+        }
+    }
+}
+
+export type RecommendationDetalleJSON = {
+    librosRecomendados: Array<Book>,
+    titulo: string,
+    contenido: string,
+    publica: boolean,
+    valoraciones: Array<Valoration>,
+    id: number
 }
 
