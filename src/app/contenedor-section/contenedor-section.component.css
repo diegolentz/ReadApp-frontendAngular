@@ -14,6 +14,8 @@
         border: 1px solid rgb(168, 167, 167);
         gap:2rem;
         border-radius: 2rem;
+        justify-content: center;
+        align-content: center;
         
     }
     
