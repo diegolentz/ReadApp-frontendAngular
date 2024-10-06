@@ -42,7 +42,7 @@ export class ViewRecommendationComponent implements OnInit{
   async editarRecomendacion(){
     this.recommendationService.actualizarRecomendacion(this.recomendacion)
   }
-  
+
   noPuedeEditar(){
     return false
   }

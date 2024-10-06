@@ -8,7 +8,7 @@
     <div *ngIf="!noPuedeEditar()" class="contenedorTitulo">
         <input class="input-titulo" type="text" value={{recomendacion.title}} [(ngModel)]="recomendacion.title" placeholder="  Titulo de la recomendacion"/>
         <label class ="contenedorTitulo__label">
-          <input type="checkbox">
+          <input type="checkbox" [(ngModel)]="recomendacion._public">
           <h5>Visibilidad privada</h5>
         </label>
     </div>
