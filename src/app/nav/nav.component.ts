@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CheckNavComponent } from '../check-nav/check-nav.component';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -15,8 +15,13 @@ import { RecommendationService } from '../../service/recommendation.service';
 })
 export class NavComponent {
 
-  @Input() filtro: string = "";
+  @Output() newFilterEvent = new EventEmitter<string>();
 
+  addFiltro(value: string) {
+    this.newFilterEvent.emit(value);
+  }
+
+  // @Input() filtro: string = "";
 
   constructor(private route: Router, public bookService: BookService, public recomendatioService: RecommendationService) { }
 
@@ -24,10 +29,10 @@ export class NavComponent {
     return this.route.url === '/search-books';
   }
 
-  enviarFiltro() {
-    (this.route.url === '/search-books') ?
-      this.bookService.aplicarFiltro(this.filtro) :
-      this.recomendatioService.aplicarFiltro(this.filtro);
-
-  }
+  // enviarFiltro() {
+  //   this.estoyLibros() ?
+  //     //(this.route.url === '/search-books')? 
+  //     this.bookService.aplicarFiltro(this.filtro) :
+  //     this.recomendatioService.aplicarFiltro(this.filtro);
+  // }
 }

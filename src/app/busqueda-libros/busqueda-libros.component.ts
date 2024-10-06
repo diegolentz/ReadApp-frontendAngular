@@ -17,32 +17,49 @@ import { ContainerBooksComponent } from '../shared/layouts/books/books.component
 })
 export class BusquedaLibrosComponent {
   books: Book[] = [];
-  allBooks: Book[] = [];
+  // allBooks: Book[] = [];
+  filtro: string = ""
 
   constructor(public bookService: BookService) { }
 
   async ngOnInit() {
 
-    await this.obtenerLibros();
-    this.subscribirFiltroCambiado();
+    this.books = await this.bookService.obtenerLibros();
+    //this.books = await this.bookService.obtenerLibrosFiltrados();
+    // await this.obtenerLibros();
+    // this.obtenerLibros();
 
+  }
 
+  async addFilter(newFilter: string) {
+    this.filtro = newFilter
+    this.books = await this.bookService.obtenerLibros()
+    this.books = this.filtro ?
+      (this.books.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
+        this.filtro.replace(/\s+/g, '').toLowerCase()) ||
+        book.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
+      (this.books);
   }
-  async obtenerLibros() {
-    this.allBooks = await this.bookService.obtenerLibros();
-    this.books = this.allBooks;
-  }
-  subscribirFiltroCambiado() {
-    this.bookService.filtroCambiado.subscribe(
-      (nuevoFiltro: string) => {
-        //exp regular para quitar espacios en blanco y convertir a minusculas
-        this.books = nuevoFiltro ?
-          (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
-            nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
-            book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
-          (this.allBooks);
-      }
-    );
-  }
+
 }
+
+
+//   async obtenerLibros() {
+
+//   //this.books = this.allBooks;
+// }
+
+// subscribirFiltroCambiado() {
+//   this.bookService.filtroCambiado.subscribe(
+//     (nuevoFiltro: string) => {
+//       //exp regular para quitar espacios en blanco y convertir a minusculas
+//       this.books = nuevoFiltro ?
+//         (this.allBooks.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
+//           nuevoFiltro.replace(/\s+/g, '').toLowerCase()) ||
+//           book.author.replace(/\s+/g, '').toLowerCase().includes(nuevoFiltro.replace(/\s+/g, '').toLowerCase()))) :
+//         (this.allBooks);
+//     }
+//   );
+// }
+
 
