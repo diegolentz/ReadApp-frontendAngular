@@ -19,13 +19,13 @@ export class BotoneraLibroComponent {
   ocultarBorrar(): boolean {
 
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/search-books', '/my-profile/add-books/books-readed', '/my-profile/add-books/books-to-read'];
+    const excludedRoutes = ['/search-books', '/add-Books/books-to-read', '/add-Books/books-readed'];
     return !excludedRoutes.includes(this.router.url);
   }
 
   ocultarAgregar(): boolean {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/my-profile/add-books/books-readed', '/my-profile/add-books/books-to-read'];
+    const excludedRoutes = ['/add-Books/books-to-read', '/add-Books/books-readed'];
     return excludedRoutes.includes(this.router.url);
   }
 
