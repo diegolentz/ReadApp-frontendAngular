@@ -44,7 +44,7 @@ export class ViewRecommendationComponent implements OnInit{
   }
   
   noPuedeEditar(){
-    return true
+    return false
   }
 
   goTo(option:string){
