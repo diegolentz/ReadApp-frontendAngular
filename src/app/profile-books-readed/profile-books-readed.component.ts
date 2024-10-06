@@ -19,21 +19,17 @@ export class ProfileBooksReadedComponent implements OnInit {
 
   books: Book[] = [];
   librosAgregados: Book[] = [];
+
   async ngOnInit(): Promise<void> {
-    await this.obtenerLibrosLeidos();
-    this.quitadosDeLaVista()
+    await this.obtenerLibros();
   }
 
-
-  async obtenerLibrosLeidos() {
+  async obtenerLibros() {
     this.books = await this.bookService.obtenerLeidos();
-  }
-  quitadosDeLaVista() {
     this.bookService.libroCambiado.subscribe(
       (nuevoLibro: Book) => {
         this.librosAgregados.push(nuevoLibro);
         this.books = this.books.filter(book => book.id !== nuevoLibro.id);
-        // console.log(this.books);
       }
     );
   }

@@ -17,8 +17,10 @@ import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
 export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
 
-  books!: Book[];
   tipoContenido!: string;
+
+  books!: Book[];
+  librosAgregados: Book[] = [];
 
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
@@ -32,5 +34,12 @@ export class LibrosAgregarComponent implements OnInit {
     this.books = (this.tipoContenido === 'books-to-read')
       ? await this.bookService.obtenerParaLeer()
       : await this.bookService.obtenerALeer();
+
+    this.bookService.libroCambiado.subscribe(
+      (nuevoLibro: Book) => {
+        this.librosAgregados.push(nuevoLibro);
+        this.books = this.books.filter(book => book.id !== nuevoLibro.id);
+      }
+    );
   }
 }
