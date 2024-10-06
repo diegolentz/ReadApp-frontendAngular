@@ -48,7 +48,7 @@ export const routes: Routes = [
             { path: 'books-to-read', component: ProfileBooksToReadComponent },
             { path: 'add-books/:tipo', component: LibrosAgregarComponent },
             { path: 'recommendations-to-value', component: ProfileRecommendationsComponent },
-            // { path: '', redirectTo: 'information', pathMatch: 'full' },
+            { path: '', redirectTo: 'information', pathMatch: 'full' },
 
         ]
     },
