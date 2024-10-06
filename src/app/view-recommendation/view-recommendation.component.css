@@ -1,6 +1,9 @@
 .contenedor_edicion_recomendacion{
     width: 70%;
     margin: auto;
+    img{
+      width: 5rem;
+    }
 }
 
 .busquedaLibros{
