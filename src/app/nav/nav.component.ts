@@ -21,18 +21,10 @@ export class NavComponent {
     this.newFilterEvent.emit(value);
   }
 
-  // @Input() filtro: string = "";
-
-  constructor(private route: Router, public bookService: BookService, public recomendatioService: RecommendationService) { }
+  constructor(private route: Router) { }
 
   estoyLibros(): boolean {
     return this.route.url === '/search-books';
   }
 
-  // enviarFiltro() {
-  //   this.estoyLibros() ?
-  //     //(this.route.url === '/search-books')? 
-  //     this.bookService.aplicarFiltro(this.filtro) :
-  //     this.recomendatioService.aplicarFiltro(this.filtro);
-  // }
 }

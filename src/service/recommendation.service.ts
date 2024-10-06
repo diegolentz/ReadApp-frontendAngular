@@ -1,4 +1,4 @@
-import { Injectable, Input ,EventEmitter} from '@angular/core';
+import { Injectable, Input, EventEmitter } from '@angular/core';
 import { Recommendation, RecommendationJSON } from '../domain/recommendation';
 import { HttpClient } from '@angular/common/http';
 import { REST_SERVER_URL } from './configuration';
@@ -19,26 +19,21 @@ export class RecommendationService {
     return recommendationsJSON.map((recommendationJSON) => Recommendation.fromJson(recommendationJSON))
   }
 
-  aplicarFiltro(filtro: string) {
-    this.filtro = filtro;
-    //filtro cambiado emite el cambio en filtro
-    this.filtroCambiado.emit(this.filtro);
-  }
-  async getRecommendationById(id:number):Promise<Recommendation> {
-    const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/'+ id)
+  async getRecommendationById(id: number): Promise<Recommendation> {
+    const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
     const recommendationJSON = await lastValueFrom(recommendation$)
     return Recommendation.fromJson(recommendationJSON)
   }
 
-  async actualizarRecomendacion(recomendacion: Recommendation){
+  async actualizarRecomendacion(recomendacion: Recommendation) {
     const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
       REST_SERVER_URL + `/recommendations`,
       recomendacion.toEditarJSON()
     ))
-    
+
     return recomendacionNueva
-     
+
   }
 
-} 
+}
 
