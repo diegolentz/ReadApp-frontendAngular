@@ -1,9 +1,8 @@
 .opcionSeleccionada__libros{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 32rem), 0.4fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 32rem), 0.8fr));
     justify-content: center;
     gap:1.5rem;
-    /* height: 60%; */
     /* margin: 5rem; */
 }
 

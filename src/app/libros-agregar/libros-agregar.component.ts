@@ -18,9 +18,7 @@ export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
 
   books!: Book[];
-  librosAgregados: Book[] = [];
   tipoContenido!: string;
-
 
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
@@ -28,22 +26,11 @@ export class LibrosAgregarComponent implements OnInit {
     });
 
     await this.mostrarLibros();
-    this.quitadosDeLaVista();
   }
 
   async mostrarLibros() {
     this.books = (this.tipoContenido === 'books-to-read')
       ? await this.bookService.obtenerParaLeer()
       : await this.bookService.obtenerALeer();
-  }
-
-  quitadosDeLaVista() {
-    this.bookService.libroCambiado.subscribe(
-      (nuevoLibro: Book) => {
-        this.librosAgregados.push(nuevoLibro);
-        this.books = this.books.filter(book => book.id !== nuevoLibro.id);
-        // console.log(this.books);
-      }
-    );
   }
 }

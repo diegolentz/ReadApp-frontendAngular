@@ -22,9 +22,6 @@ article{
     
     background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
     transition: 0.25s;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
 }
 
 .libro__portada{
