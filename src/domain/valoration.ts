@@ -5,7 +5,7 @@ export type ValorationJSON = {
     author: string,
     score: number,
     fecha: Date,
-    comentario: string,
+    comentario: string
 }
 
 export class Valoration {
@@ -13,7 +13,7 @@ export class Valoration {
         public autor: string,
         public valor: number = 0,   
         public fecha: Date = new Date(1914, 14, 14),
-        public comentario: string = '',
+        public comentario: string 
     ) { }
 
     static fromJson(valorationJSON: ValorationJSON): Valoration {
@@ -21,8 +21,7 @@ export class Valoration {
             valorationJSON.author,
             valorationJSON.score,
             valorationJSON.fecha,
-            valorationJSON.comentario,
-            
+            valorationJSON.comentario
             )
     }
 
@@ -31,7 +30,7 @@ export class Valoration {
             author: this.autor,
             score: this.valor,
             fecha: this.fecha,
-            comentario:this.comentario
+            comentario: this.comentario
         } 
 
     }

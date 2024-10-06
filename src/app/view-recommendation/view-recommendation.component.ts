@@ -15,10 +15,11 @@ import { RecommendationService } from '../../service/recommendation.service';
 import { BtnVolverComponent } from "../btn-volver/btn-volver.component";
 import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
+import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
-  imports: [FormsModule,NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent, BtnVolverComponent],
+  imports: [FormsModule, NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent, BtnVolverComponent, VolverAtrasComponent],
   templateUrl: './view-recommendation.component.html',
   styleUrl: './view-recommendation.component.css'
 })
