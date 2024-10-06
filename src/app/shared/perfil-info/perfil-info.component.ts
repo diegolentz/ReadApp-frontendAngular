@@ -5,13 +5,14 @@ import { InputComponent } from '../../input/input.component';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
+import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
 
 
 
 @Component({
   selector: 'app-perfil-info',
   standalone: true,
-  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent, ReactiveFormsModule],
+  imports: [InputBoxComponent, CommonModule, InputComponent, FormsModule, BtnGuardarCancelarComponent, ReactiveFormsModule, FormErrorComponent],
   templateUrl: './perfil-info.component.html',
   styleUrl: './perfil-info.component.css'
 })
@@ -21,8 +22,9 @@ export class PerfilInfoComponent {
   /* Forms */
   perfilForm: FormGroup;
   calculadorForm: FormGroup;
-  private chPermitidosNomb = '[a-zA-Z]*$'
-  private chPermitidosUser = '^[a-zA-Z0-9]*$'
+  private chPermitidosNomb = '[a-zA-Z]*$';
+  private chPermitidosUser = '^[a-zA-Z0-9]*$';
+  esEditor:boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -32,8 +34,8 @@ export class PerfilInfoComponent {
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
-  userLectura : Array<string>
-  userBusqueda : Array<string>
+  userLectura : Array<string> = []
+  userBusqueda : Array<string> = []
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
@@ -51,10 +53,11 @@ export class PerfilInfoComponent {
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
 
-    this.userLectura = ['Promedio']
-    this.userBusqueda = ['Precavido', 'Cambiante']
   }
 
+  puedeEditar(){
+    this.esEditor = false
+  }
 
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
@@ -104,6 +107,12 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
+
+    this.userLectura.push(userData.tipoDeLector)
+    this.userBusqueda = userData.perfil
+
+    this.puedeEditar()
+
   }
 
 

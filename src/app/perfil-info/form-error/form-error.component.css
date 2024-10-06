@@ -1,0 +1,5 @@
+.error{
+    color: rgb(255, 30, 0);
+    font-size: var(--text-md);
+    text-align: center;
+}
