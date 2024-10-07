@@ -6,11 +6,12 @@ import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
+import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 
 @Component({
   selector: 'app-libros-agregar',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent],
+  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent, BtnGuardarCancelarComponent],
   templateUrl: './libros-agregar.component.html',
   styleUrl: './libros-agregar.component.css'
 })

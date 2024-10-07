@@ -5,10 +5,11 @@ import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
 import { NgFor } from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
+import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 @Component({
   selector: 'app-profile-books-to-read',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, NgFor, BotonAgregarComponent],
+  imports: [LibroComponent, ContainerBooksComponent, NgFor, BotonAgregarComponent, BtnGuardarCancelarComponent],
   templateUrl: './profile-books-to-read.component.html',
   styleUrl: './profile-books-to-read.component.css'
 })
