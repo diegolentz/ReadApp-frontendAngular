@@ -41,9 +41,11 @@
 
     <app-valoracion [valoraciones]="recomendacion.valorations"></app-valoracion>
 
-    <app-btn-guardar-cancelar *ngIf="!noPuedeEditar()"></app-btn-guardar-cancelar>
-
-    <button (click)="editarRecomendacion()">boton de prueba</button>
+    <app-btn-guardar-cancelar 
+        *ngIf="!noPuedeEditar()"
+        (guardar)="editarRecomendacion()"
+        (onCancelar)="paginaAnterior()">
+    </app-btn-guardar-cancelar>
 
     <app-volver-atras *ngIf="noPuedeEditar()" ></app-volver-atras>
 
