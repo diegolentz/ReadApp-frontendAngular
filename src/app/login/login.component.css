@@ -1,10 +1,8 @@
 /* Fondo del formulario y layout general */
-.fondo-background {
-    background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+main {
+    /* background-image: url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
     background-size: cover;
-}
-
-.contenedorFormulario {
+    background-image: url('https://img.freepik.com/fotos-premium/estanterias-libros-fondo-pantalla-hd-imagen-fotografica_993236-8465.jpg?w=1380');
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -15,7 +13,7 @@
 }
 
 /* Estilos para el formulario de login */
-.formulario-login {
+.form__container {
     width: 40rem;
     min-width: 20rem;
     display: flex;
@@ -30,7 +28,7 @@
 }
 
 /* Borde animado del formulario */
-.formulario-login::before {
+.form__container::before {
     content: "";
     position: absolute;
     inset: -10rem;
@@ -40,7 +38,7 @@
 }
 
 /* Fondo del formulario (hereda el fondo del contenedor) */
-.formulario-login::after {
+.form__container::after {
     content: "";
     position: absolute;
     inset: 1.5rem;
@@ -57,12 +55,9 @@
     }
 }
 
-/* Encabezado */
-.encabezado {
+.form{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    flex-direction: column;
 }
 
 /* Campo del formulario */
