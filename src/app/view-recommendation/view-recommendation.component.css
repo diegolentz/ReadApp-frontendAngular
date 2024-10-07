@@ -23,7 +23,7 @@
   
 .resenia{
     font-size: 2rem;
-    margin-bottom: 2rem;
+    margin:2rem 0 1.5rem;
     padding-bottom: 1rem;
   
     & input{
