@@ -26,6 +26,7 @@ export class BookService {
 
   async obtenerALeer(): Promise<Book[]> {
     const userId = 1;//deberia usar localStorage
+    // const userId = Number(localStorage.getItem('userId'));
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosALeer', {
       params: { idUser: userId }
 
@@ -36,6 +37,7 @@ export class BookService {
 
   async obtenerLeidos(): Promise<Book[]> {
     const userId = 1;//deberia usar localStorage
+    // const userId = Number(localStorage.getItem('userId'));
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosLeidos', {
       params: { idUser: userId } //
     });
@@ -44,6 +46,7 @@ export class BookService {
   }
   async obtenerParaLeer(): Promise<Book[]> {
     const userId = 1;//deberia usar localStorage
+    // const userId = Number(localStorage.getItem('userId'));
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
       params: { idUser: userId }
     });
