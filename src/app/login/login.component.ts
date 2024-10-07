@@ -4,7 +4,7 @@ import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 import { ServiceUser } from '../../service/service-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Form, FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 
 
@@ -21,10 +21,12 @@ export class LoginComponent implements OnInit{
   formStrategy:FormStrategy = new LoginForm()
   form!: FormGroup
   formFields!: Array<InputForm>
-  
+  formButtons!:Array<FormButton>
+
   ngOnInit(): void {
     this.form = this.formStrategy.createForm()
     this.formFields = this.formStrategy.getFormFields()
+    this.formButtons = this.formStrategy.getFormButtons()
   }
 
   id!: number;
@@ -61,13 +63,15 @@ export class LoginComponent implements OnInit{
   }
 
   showFormCreateAccount() {
-    this.formStrategy = new NewAccountForm()
-    this.ngOnInit()
+    console.log("create")
+    // this.formStrategy = new NewAccountForm()
+    // this.ngOnInit()
   }
 
   showPasswordRecovery() {
-    this.formStrategy = new PasswordRecoveryForm()
-    this.ngOnInit()
+    console.log("delete")
+    // this.formStrategy = new PasswordRecoveryForm()
+    // this.ngOnInit()
   }
 }
 
@@ -94,7 +98,8 @@ export class LoginRequest {
 
 interface FormStrategy {
   createForm(): FormGroup
-  getFormFields(): any
+  getFormFields(): Array<InputForm>
+  getFormButtons(): Array<FormButton>
 }
 
 class LoginForm implements FormStrategy {
@@ -104,12 +109,20 @@ class LoginForm implements FormStrategy {
       password: new FormControl(''),
     });
   }
-  getFormFields(){
+  getFormFields():Array<InputForm>{
     return [
       { label: 'Username', type: 'username', name: 'username' },
-      { label: 'Password', type: 'password', name: 'password' },
+      { label: 'Password', type: 'password', name: 'password' }
     ];
   }
+  getFormButtons():Array<FormButton>{
+    return [
+      { label: 'Log in', action:LoginComponent.prototype.tryLogin},
+      { label: 'Create account', action:LoginComponent.prototype.showFormCreateAccount},
+      { label: 'Forgot password', action:LoginComponent.prototype.showPasswordRecovery}
+    ]
+  }
+
 }
 
 class NewAccountForm implements FormStrategy {
@@ -123,7 +136,7 @@ class NewAccountForm implements FormStrategy {
       name: new FormControl(''),
     });
   }
-  getFormFields(){
+  getFormFields():Array<InputForm>{
     return [
       { label: 'Email', type: 'email', name: 'email' },
       { label: 'Username', type: 'username', name: 'username' },
@@ -131,6 +144,13 @@ class NewAccountForm implements FormStrategy {
       { label: 'Name', type: 'name', name: 'name' },
     ];
   }
+  getFormButtons():Array<FormButton>{
+    return [
+      { label: 'Create account', action:LoginComponent.prototype.tryLogin},
+      { label: 'Log in', action:LoginComponent.prototype.showFormLogin},
+    ]
+  }
+
 }
 
 class PasswordRecoveryForm implements FormStrategy {
@@ -147,34 +167,24 @@ class PasswordRecoveryForm implements FormStrategy {
       { label: 'Username', type: 'username', name: 'username' },
     ];
   }
-
-}
-
-export class FormStrategyFactory {
-
-  createFormStrategy(formType: FormType): FormStrategy {
-
-    switch (formType) {
-      case FormType.LOGIN:
-        return new LoginForm();
-      case FormType.PASSWORD_RECOVERY:
-        return new NewAccountForm();
-      case FormType.CREATE_ACCOUNT:
-        return new PasswordRecoveryForm();
-      default:
-        throw new Error(`Unknown form type: ${formType}`);
-    }
+  getFormButtons():Array<FormButton>{
+    return [
+      { label: 'Recover password', action:LoginComponent.prototype.showFormLogin},
+      { label: 'Go back to log in', action:LoginComponent.prototype.showFormLogin}
+    ]
   }
 }
 
-enum FormType {
-  LOGIN,
-  PASSWORD_RECOVERY,
-  CREATE_ACCOUNT
-}
 
 type InputForm = {
   label:string,
   type:string,
   name:string
 }
+
+type FormButton = {
+  label:string
+  action:CommonMethod
+}
+
+type CommonMethod = () => void

@@ -107,19 +107,18 @@
             <div formArrayName="fields">
                 <div *ngFor="let field of formFields" class="campo">
         
-                <input type="text" maxlength="30" required>
+                    <input type="text" maxlength="30" required>
 
-                <label>{{ field.label }}</label>
+                    <label>{{ field.label }}</label>
         
                 </div>
-        
+                <div *ngFor="let button of formButtons">
+
+                    <button type="submit" class="btn__signIn" (click)="button.action()">{{button.label}}</button>
+    
+                </div>
             </div>
-            <div>
-                <button type="submit" class="btn__signIn" (click)="tryLogin()">INGRESAR</button>
-                <button type="submit" class="btn__signIn" (click)="showFormLogin()">LOG IN</button>
-                <button type="submit" class="btn__createAccount btn" (click)="this.showFormCreateAccount()">CREAR CUENTA</button>
-                <button type="submit" class="btn__createAccount btn" (click)="this.showPasswordRecovery()">CONTRASENIA</button>
-            </div>
+           
         </form>
         
     </div>
