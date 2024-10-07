@@ -42,8 +42,8 @@ export class ViewRecommendationComponent implements OnInit{
     this.recommendationService.actualizarRecomendacion(this.recomendacion)
   }
 
-  paginaAnterior() {
-    window.history.back();
+  cancelar() {
+      window.location.reload()
   }
 
   noPuedeEditar(){

@@ -44,7 +44,7 @@
     <app-btn-guardar-cancelar 
         *ngIf="!noPuedeEditar()"
         (guardar)="editarRecomendacion()"
-        (onCancelar)="paginaAnterior()">
+        (cancelar)="cancelar()">
     </app-btn-guardar-cancelar>
 
     <app-volver-atras *ngIf="noPuedeEditar()" ></app-volver-atras>
