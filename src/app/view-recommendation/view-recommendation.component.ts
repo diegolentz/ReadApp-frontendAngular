@@ -39,7 +39,8 @@ export class ViewRecommendationComponent implements OnInit{
   }
 
   async editarRecomendacion(){
-    this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    await window.location.reload()
   }
 
   cancelar() {
