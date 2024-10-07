@@ -30,9 +30,7 @@ export class RecommendationService {
       REST_SERVER_URL + `/recommendations`,
       recomendacion.toEditarJSON()
     ))
-
     return recomendacionNueva
-
   }
 
 }
