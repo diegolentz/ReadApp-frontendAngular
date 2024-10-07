@@ -1,9 +1,8 @@
-<div>
-    <h2>Add the book that interests you!</h2>
-    <app-container-books>
-    <ng-container *ngFor="let book of books">
-        <app-libro [book]="book"></app-libro>
-      </ng-container>
+<h2>Add the book that interests you!</h2>
+<app-container-books>
+  <ng-container *ngFor="let book of books">
+    <app-libro [book]="book"></app-libro>
+  </ng-container>
 </app-container-books>
-<app-volver-atras></app-volver-atras>
-</div>
+<app-btn-guardar-cancelar></app-btn-guardar-cancelar>
+

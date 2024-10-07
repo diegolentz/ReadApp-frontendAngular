@@ -5,11 +5,12 @@ import { BookService } from '../../service/book.service';
 import { Book } from '../../domain/book';
 import { NgFor } from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
+import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 
 @Component({
   selector: 'app-profile-books-readed',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, NgFor, BotonAgregarComponent],
+  imports: [LibroComponent, ContainerBooksComponent, NgFor, BotonAgregarComponent, BtnGuardarCancelarComponent],
   templateUrl: './profile-books-readed.component.html',
   styleUrl: './profile-books-readed.component.css'
 })
@@ -19,21 +20,17 @@ export class ProfileBooksReadedComponent implements OnInit {
 
   books: Book[] = [];
   librosAgregados: Book[] = [];
+
   async ngOnInit(): Promise<void> {
-    await this.obtenerLibrosLeidos();
-    this.quitadosDeLaVista()
+    await this.obtenerLibros();
   }
 
-
-  async obtenerLibrosLeidos() {
+  async obtenerLibros() {
     this.books = await this.bookService.obtenerLeidos();
-  }
-  quitadosDeLaVista() {
     this.bookService.libroCambiado.subscribe(
       (nuevoLibro: Book) => {
         this.librosAgregados.push(nuevoLibro);
         this.books = this.books.filter(book => book.id !== nuevoLibro.id);
-        // console.log(this.books);
       }
     );
   }
