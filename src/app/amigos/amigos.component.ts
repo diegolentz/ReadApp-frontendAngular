@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { User } from '../../domain/user';
+import { UserFriend } from '../../domain/tmpUser';
 @Component({
   selector: 'app-amigos',
   standalone: true,
@@ -9,5 +10,6 @@ import { User } from '../../domain/user';
 })
 
 export class AmigosComponent {
-  @Input() userFriend!:User
+  @Input() userFriend!: UserFriend
 }
+

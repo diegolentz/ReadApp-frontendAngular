@@ -6,6 +6,7 @@ import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.com
 import { ServiceUser } from '../../service/service-user.service';
 import { User } from '../../domain/user';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { UserProfileFriend } from '../../domain/tmpUser';
 
 @Component({
   selector: 'app-profile-friends',
@@ -16,17 +17,18 @@ import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-
 })
 export class ProfileFriendsComponent implements OnInit {
 
-  friends!: User[];
+  friends!: UserProfileFriend;
 
   constructor(private userService: ServiceUser) { }
 
   async ngOnInit() {
     await this.getFriend()
+    console.log(this.friends)
   }
 
   @HostBinding('style.width') width: string = '100%';
 
   async getFriend() {
-    this.friends = await this.userService.getUsers();
+    this.friends = await this.userService.getUserFriendsByID(3);
   }
 }
