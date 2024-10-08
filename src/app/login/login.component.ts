@@ -4,7 +4,7 @@ import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 import { ServiceUser } from '../../service/service-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormControl, FormGroup, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
 
 
@@ -15,23 +15,29 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit{
+export class LoginComponent{
   constructor(private router: Router, private serviceUser: ServiceUser) { }
-  
-  formStrategy:FormStrategy = new LoginForm()
-  form!: FormGroup
-  formFields!: Array<InputForm>
-  formButtons!:Array<FormButton>
 
-  ngOnInit(): void {
-    this.form = this.formStrategy.createForm()
-    this.formFields = this.formStrategy.getFormFields()
-    this.formButtons = this.formStrategy.getFormButtons()
-  }
+  formType:FormType = FormType.LOG_IN
+
+  loginRequest :LoginRequest = {
+    username: '',
+    password: ''
+  };
+
+  newAccountRequest :NewAccountRequest = {
+    username: '',
+    password: '',
+    email: '',
+    name: ''
+  };
+
+  passwordRecoveryRequest :PasswordRecoveryRequest = {
+    email: '',
+    username: ''
+  };
 
   id!: number;
-  loginRequest: LoginRequest = new LoginRequest("", "")
-
 
   goTo(option: string) {
     this.router.navigate([option])
@@ -39,7 +45,6 @@ export class LoginComponent implements OnInit{
 
   async tryLogin() {
     try {
-      console.log(this.loginRequest.passwordEmpty())
       const response = await this.serviceUser.login(this.loginRequest)
       this.id = response.userID
       localStorage.setItem('id', this.id.toString());
@@ -49,142 +54,83 @@ export class LoginComponent implements OnInit{
     catch (error: any) {
       if (error instanceof HttpErrorResponse) {
         //Solo me interesa HttpErrorResponde
-        console.log(error.error["timestamp"])
         console.log(error.error["status"])
         console.log(error.error["error"])
-        console.log(error.error["message"])
-        console.log(error.error["path"])
+        alert(error.error["message"])
       }
     }
   }
-  showFormLogin() {
-    this.formStrategy = new LoginForm()
-    this.ngOnInit()
-  }
 
-  showFormCreateAccount() {
-    console.log("create")
-    // this.formStrategy = new NewAccountForm()
-    // this.ngOnInit()
-  }
+  async tryCreateAccount() {
+    try {
+      console.log("NEW ACCOUNT")
+      // const response = await this.serviceUser.login(this.loginRequest)
 
-  showPasswordRecovery() {
-    console.log("delete")
-    // this.formStrategy = new PasswordRecoveryForm()
-    // this.ngOnInit()
-  }
-}
-
-export class LoginRequest {
-  constructor(
-    public username: string,
-    public password: string
-  ) { }
-
-  usernameEmpty() {
-    return this.username.length == 0
-  }
-
-  passwordEmpty() {
-    return this.password.length == 0
-  }
-
-  checkEmptyFields() {
-    if (this.usernameEmpty() || this.passwordEmpty()) {
-      alert("Debe completar todos los campos")
+    }
+    catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
+        //Solo me interesa HttpErrorResponde
+        console.log(error.error["status"])
+        console.log(error.error["error"])
+        console.log(error.error["message"])
+      }
     }
   }
-}
 
-interface FormStrategy {
-  createForm(): FormGroup
-  getFormFields(): Array<InputForm>
-  getFormButtons(): Array<FormButton>
-}
+  async tryPasswordRecovery() {
+    try {
+      console.log("PASSWORD")
+      // const response = await this.serviceUser.login(this.loginRequest)
 
-class LoginForm implements FormStrategy {
-  createForm(): FormGroup {
-    return new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-    });
+    }
+    catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
+        console.log(error.error["status"])
+        console.log(error.error["error"])
+        console.log(error.error["message"])
+      }
+    }
   }
-  getFormFields():Array<InputForm>{
-    return [
-      { label: 'Username', type: 'username', name: 'username' },
-      { label: 'Password', type: 'password', name: 'password' }
-    ];
+  changeToLogin(){
+    this.formType = FormType.LOG_IN
   }
-  getFormButtons():Array<FormButton>{
-    return [
-      { label: 'Log in', action:LoginComponent.prototype.tryLogin},
-      { label: 'Create account', action:LoginComponent.prototype.showFormCreateAccount},
-      { label: 'Forgot password', action:LoginComponent.prototype.showPasswordRecovery}
-    ]
+  changeToCreateAccount(){
+    this.formType = FormType.NEW_ACCOUNT
   }
-
-}
-
-class NewAccountForm implements FormStrategy {
-
-
-  createForm(): FormGroup {
-    return new FormGroup({
-      email: new FormControl(''),
-      username: new FormControl(''),
-      password: new FormControl(''),
-      name: new FormControl(''),
-    });
+  changeToPasswordRecovery(){
+    this.formType = FormType.PASSWORD_RECOVERY
   }
-  getFormFields():Array<InputForm>{
-    return [
-      { label: 'Email', type: 'email', name: 'email' },
-      { label: 'Username', type: 'username', name: 'username' },
-      { label: 'Password', type: 'password', name: 'password' },
-      { label: 'Name', type: 'name', name: 'name' },
-    ];
+  showFormLogin():boolean {
+    return this.formType == FormType.LOG_IN
   }
-  getFormButtons():Array<FormButton>{
-    return [
-      { label: 'Create account', action:LoginComponent.prototype.tryLogin},
-      { label: 'Log in', action:LoginComponent.prototype.showFormLogin},
-    ]
+  showFormCreateAccount() {
+    return this.formType == FormType.NEW_ACCOUNT
+  }
+  showPasswordRecovery() {
+    return this.formType == FormType.PASSWORD_RECOVERY
   }
 
 }
 
-class PasswordRecoveryForm implements FormStrategy {
-
-  createForm(): FormGroup {
-    return new FormGroup({
-      email: new FormControl(''),
-      username: new FormControl('')
-    });
-  }
-  getFormFields():Array<InputForm>{
-    return [
-      { label: 'Email', type: 'email', name: 'email' },
-      { label: 'Username', type: 'username', name: 'username' },
-    ];
-  }
-  getFormButtons():Array<FormButton>{
-    return [
-      { label: 'Recover password', action:LoginComponent.prototype.showFormLogin},
-      { label: 'Go back to log in', action:LoginComponent.prototype.showFormLogin}
-    ]
-  }
+enum FormType{
+  LOG_IN,
+  NEW_ACCOUNT,
+  PASSWORD_RECOVERY
 }
 
+export type LoginRequest = {
+  username:string
+  password:string
+}
 
-type InputForm = {
-  label:string,
-  type:string,
+export type NewAccountRequest = {
+  email:string
+  username:string
+  password:string
   name:string
 }
 
-type FormButton = {
-  label:string
-  action:CommonMethod
+export type PasswordRecoveryRequest = {
+  email:string,
+  username:string
 }
-
-type CommonMethod = () => void
