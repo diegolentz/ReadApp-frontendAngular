@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON } from '../domain/tmpUser';
 import { LoginRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -49,9 +49,18 @@ export class ServiceUser {
     const loginResponse = await (lastValueFrom(loginResponse$))
     return loginResponse
   }
-  
+
+  async getUserFriendsByID(id: number): Promise<UserProfileFriend> {
+    const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userProfileFriend = UserProfileFriend.prototype.fromJSON(user)
+    return userProfileFriend
+  }
+
 }
 
 type LoginResponse = {
-  userID:number
+  userID: number
 }
+
+
