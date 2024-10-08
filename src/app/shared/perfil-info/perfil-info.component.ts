@@ -119,12 +119,12 @@ export class PerfilInfoComponent {
     if (this.perfilForm.valid) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
         1,
-        this.perfilForm.get("nombre")?.value,
-        this.perfilForm.get("apellido")?.value,
-        this.perfilForm.get("username")?.value,
+        this.getValue("nombre"),
+        this.getValue("apellido"),
+        this.getValue("username"),
         null,
-        this.perfilForm.get("fecha de nacimiento")?.value,
-        this.perfilForm.get("email")?.value,
+        this.getValue("fecha de nacimiento"),
+        this.getValue("email"),
         this.userBusqueda,
         this.userLectura[0]
       ))
@@ -133,6 +133,14 @@ export class PerfilInfoComponent {
       alert("El formulario tiene campos inválidos")
     }
 
+  }
+
+  getValue(campo:string){
+    const valor = this.perfilForm.get(campo)
+    if(valor?.dirty){
+      return valor.value
+    }
+    return null
   }
 
 }

@@ -65,6 +65,7 @@ export class ServiceUser {
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
+    console.log(infoNueva)
   }
   
 }
