@@ -5,7 +5,7 @@ import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
 import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON } from '../domain/tmpUser';
-import { LoginRequest } from '../app/login/login.component';
+import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,17 +18,6 @@ export class ServiceUser {
     const users$ = this.httpClient.get<UserJSON[]>(REST_SERVER_URL + '/users')
     const usersJSON = await lastValueFrom(users$)
     return usersJSON.map((userJSON) => User.fromJson(userJSON))
-  }
-
-  async getUserByID(id: number): Promise<User> {
-    try {
-      const user$ = this.httpClient.get<UserJSON>(REST_SERVER_URL + '/users/' + id.toString())
-      const user = await (lastValueFrom(user$))
-      return User.fromJson(user)
-    } catch (err) {
-      throw new Error("El usuario no existe")
-    }
-
   }
 
   async setLoggedUser(id: number): Promise<void> {
@@ -68,10 +57,17 @@ export class ServiceUser {
     return userProfileFriend
   }
 
+  async newAccount(newAccountRequest: NewAccountRequest): Promise<NewAccountResponse> {
+    const newAccountResponse$ = this.httpClient.post<NewAccountResponse>(REST_SERVER_URL + '/createAccount', newAccountRequest)
+    const newAccountResponse = await (lastValueFrom(newAccountResponse$))
+    return newAccountResponse
+  }
 }
 
 type LoginResponse = {
   userID: number
 }
 
-
+type NewAccountResponse = {
+  message:string
+}
