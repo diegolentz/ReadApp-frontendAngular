@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { UserBasic, UserBasicJSON, UserInformacion, UserProfile, UserProfileJSON } from '../domain/tmpUser';
+import { FRIENDS } from '../mock/mockUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion } from '../domain/tmpUser';
 import { LoginRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -60,6 +61,7 @@ export class ServiceUser {
     return loginResponse
   }
 
+
   async actualizarInfoUsuario(infoNueva:UserInformacion){
     await lastValueFrom(this.httpClient.put<UserInformacion>(
       REST_SERVER_URL + '/updateInfoUsuario',
@@ -68,8 +70,18 @@ export class ServiceUser {
     console.log(infoNueva)
   }
   
+
+  async getUserFriendsByID(id: number): Promise<UserProfileFriend> {
+    const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userProfileFriend = UserProfileFriend.prototype.fromJSON(user)
+    return userProfileFriend
+  }
+
 }
 
 type LoginResponse = {
-  userID:number
+  userID: number
 }
+
+
