@@ -6,19 +6,22 @@ import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
 import { ActivatedRoute } from '@angular/router';
 import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
+import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 
 @Component({
   selector: 'app-libros-agregar',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent],
+  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent, BtnGuardarCancelarComponent],
   templateUrl: './libros-agregar.component.html',
   styleUrl: './libros-agregar.component.css'
 })
 export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
 
-  books!: Book[];
   tipoContenido!: string;
+
+  books!: Book[];
+  librosAgregados: Book[] = [];
 
   async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
@@ -32,5 +35,12 @@ export class LibrosAgregarComponent implements OnInit {
     this.books = (this.tipoContenido === 'books-to-read')
       ? await this.bookService.obtenerParaLeer()
       : await this.bookService.obtenerALeer();
+
+    this.bookService.libroCambiado.subscribe(
+      (nuevoLibro: Book) => {
+        this.librosAgregados.push(nuevoLibro);
+        this.books = this.books.filter(book => book.id !== nuevoLibro.id);
+      }
+    );
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-btn-guardar-cancelar',
@@ -8,7 +8,16 @@ import { Component } from '@angular/core';
   styleUrl: './btn-guardar-cancelar.component.css'
 })
 export class BtnGuardarCancelarComponent {
+  @Output() guardar = new EventEmitter<void>();
+  @Output() cancelar = new EventEmitter<void>();
 
+  onGuardar() {
+    this.guardar.emit();
+  }
+
+  onCancelar() {
+    this.cancelar.emit();
+  }
 
 verificar(): Boolean {
   return true;

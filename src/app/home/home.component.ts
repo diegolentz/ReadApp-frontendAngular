@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     this.recommendations = await this.recommendationService.getRecommendations();
+    console.log(this.recommendations)
   }
 
   // async obtenerRecomendaciones() {

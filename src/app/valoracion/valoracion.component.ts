@@ -14,6 +14,7 @@ import { Valoration } from '../../domain/valoration';
 })
 export class ValoracionComponent implements OnInit {
   @Input()valoraciones!: Array<Valoration> 
+  @Input()score!:number
   
   ngOnInit() {
     

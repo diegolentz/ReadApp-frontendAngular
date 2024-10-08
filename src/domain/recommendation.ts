@@ -34,7 +34,7 @@ export class Recommendation {
     get cantidadLibros() {
         return this.recommendedBooks.length
     }
-    getScore(){
+    get score(){
         return this.substractScoreFromValorations() 
     }
     
@@ -43,7 +43,7 @@ export class Recommendation {
         this.valorations.forEach(valoration => {
             score += valoration.valor
         });
-        return score
+        return this.valorations.length > 0 ? score / this.valorations.length : 0; 
     }
     
 

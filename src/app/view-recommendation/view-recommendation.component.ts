@@ -12,14 +12,13 @@ import { Recommendation } from '../../domain/recommendation';
 import { LibroComponent } from "../libro/libro.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
 import { RecommendationService } from '../../service/recommendation.service';
-import { BtnVolverComponent } from "../btn-volver/btn-volver.component";
 import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
 import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
-  imports: [FormsModule, NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent, BtnVolverComponent, VolverAtrasComponent],
+  imports: [FormsModule, NgFor, NgIf, ProfileBooksReadedComponent, ProfileBooksToReadComponent, HeaderComponent, ResenaComponent, BotonAgregarComponent, ValoracionComponent, ContainerBooksComponent, LibroComponent, BtnGuardarCancelarComponent, VolverAtrasComponent],
   templateUrl: './view-recommendation.component.html',
   styleUrl: './view-recommendation.component.css'
 })
@@ -40,11 +39,16 @@ export class ViewRecommendationComponent implements OnInit{
   }
 
   async editarRecomendacion(){
-    this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    await window.location.reload()
+  }
+
+  cancelar() {
+      window.location.reload()
   }
 
   noPuedeEditar(){
-    return false
+    return true  
   }
 
   goTo(option:string){
