@@ -5,7 +5,7 @@ import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
 import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON } from '../domain/tmpUser';
-import { LoginRequest } from '../app/login/login.component';
+import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
 
 @Injectable({
   providedIn: 'root'
@@ -57,10 +57,17 @@ export class ServiceUser {
     return userProfileFriend
   }
 
+  async newAccount(newAccountRequest: NewAccountRequest): Promise<NewAccountResponse> {
+    const newAccountResponse$ = this.httpClient.post<NewAccountResponse>(REST_SERVER_URL + '/createAccount', newAccountRequest)
+    const newAccountResponse = await (lastValueFrom(newAccountResponse$))
+    return newAccountResponse
+  }
 }
 
 type LoginResponse = {
   userID: number
 }
 
-
+type NewAccountResponse = {
+  message:string
+}

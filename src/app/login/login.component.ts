@@ -56,6 +56,7 @@ export class LoginComponent{
         //Solo me interesa HttpErrorResponde
         console.log(error.error["status"])
         console.log(error.error["error"])
+        console.log(error.error["message"])
         alert(error.error["message"])
       }
     }
@@ -63,16 +64,15 @@ export class LoginComponent{
 
   async tryCreateAccount() {
     try {
-      console.log("NEW ACCOUNT")
-      // const response = await this.serviceUser.login(this.loginRequest)
-
+      const response = await this.serviceUser.newAccount(this.newAccountRequest)
+      alert(response.message)
+      this.changeToLogin()
     }
     catch (error: any) {
       if (error instanceof HttpErrorResponse) {
-        //Solo me interesa HttpErrorResponde
         console.log(error.error["status"])
         console.log(error.error["error"])
-        console.log(error.error["message"])
+        alert(error.error["message"])
       }
     }
   }
@@ -124,13 +124,15 @@ export type LoginRequest = {
 }
 
 export type NewAccountRequest = {
-  email:string
   username:string
   password:string
   name:string
+  email:string
 }
 
 export type PasswordRecoveryRequest = {
   email:string,
   username:string
 }
+
+
