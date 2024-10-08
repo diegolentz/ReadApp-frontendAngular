@@ -115,6 +115,26 @@ enum Language {
     JAPONES,
 }
 
+
+//Prueba para info de usuario
+
+export class UserInformacion{
+    constructor(
+    public id: number,
+    public nombre: string | null = null,
+    public apellido: string | null = null, 
+    public alias: string | null = null,
+    public palabrasPorMinutos: number | null = null,
+    public fechaNacimiento:Date | null = null,
+    public email: string | null = null,
+    public perfil: Array<string> | null = null,
+    public tipoDeLector: string | null = null)
+    {
+
+    }
+}
+
+
 export class UserProfileFriend implements DomainObject {
     constructor(
         public id: number = -1,
@@ -216,3 +236,4 @@ export type UserProfileFriendPivot = {
 export type UserFriendJSON = CommonJSON & UserFriendPivot;
 
 export type UserProfileFriendJSON = CommonJSON & UserProfileFriendPivot;
+

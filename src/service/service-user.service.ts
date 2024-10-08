@@ -1,10 +1,10 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -49,6 +49,16 @@ export class ServiceUser {
     const loginResponse = await (lastValueFrom(loginResponse$))
     return loginResponse
   }
+
+
+  async actualizarInfoUsuario(infoNueva:UserInformacion){
+    await lastValueFrom(this.httpClient.put<UserInformacion>(
+      REST_SERVER_URL + '/updateInfoUsuario',
+      infoNueva
+    ))
+    console.log(infoNueva)
+  }
+  
 
   async getUserFriendsByID(id: number): Promise<UserProfileFriend> {
     const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())

@@ -2,10 +2,12 @@ import { Component, HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
+import { UserInformacion } from '../../../domain/tmpUser';
+import { DateValidator, MinMaxValidator } from './validators';
 
 
 
@@ -24,7 +26,7 @@ export class PerfilInfoComponent {
   calculadorForm: FormGroup;
   private chPermitidosNomb = '[a-zA-Z]*$';
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
-  esEditor:boolean = false;
+  esEditor: boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -34,8 +36,8 @@ export class PerfilInfoComponent {
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
-  userLectura : Array<string> = []
-  userBusqueda : Array<string> = []
+  userLectura: Array<string> = []
+  userBusqueda: Array<string> = []
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
@@ -55,8 +57,8 @@ export class PerfilInfoComponent {
 
   }
 
-  puedeEditar(){
-    this.esEditor = false
+  puedeEditar() {
+    this.esEditor = true
   }
 
   errorMessage(form: FormGroup, campo: string, validator: string) {
@@ -78,23 +80,22 @@ export class PerfilInfoComponent {
     this.calculadorForm.reset()
   }
 
-  estaEn(valor:string, lista:Array<string>){
+  estaEn(valor: string, lista: Array<string>) {
     return lista.includes(valor)
   }
 
-  modificarBusqueda(valor:string, lista:Array<string>){
-    if (this.estaEn(valor,lista)){
+  modificarBusqueda(valor: string, lista: Array<string>) {
+    if (this.estaEn(valor, lista)) {
       const indice = lista.indexOf(valor)
-      delete lista[indice]
+      lista.splice(indice, 1)
     } else {
       lista.push(valor)
     }
   }
 
-  modificarLectura(valor:string, lista:Array<string>){
+  modificarLectura(valor: string, lista: Array<string>) {
     lista.pop()
     lista.push(valor)
-    console.log(lista)
   }
 
   async ngOnInit() {
@@ -115,6 +116,33 @@ export class PerfilInfoComponent {
 
   }
 
+  async guardar() {
+    if (this.perfilForm.valid) {
+      await this.UserService.actualizarInfoUsuario(new UserInformacion(
+        1,
+        this.getValue("nombre"),
+        this.getValue("apellido"),
+        this.getValue("username"),
+        null,
+        this.getValue("fecha de nacimiento"),
+        this.getValue("email"),
+        this.userBusqueda,
+        this.userLectura[0]
+      ))
+    }
+    else {
+      alert("El formulario tiene campos inválidos")
+    }
+
+  }
+
+  getValue(campo: string) {
+    const valor = this.perfilForm.get(campo)
+    if (valor?.dirty) {
+      return valor.value
+    }
+    return null
+  }
 
 }
 
@@ -125,38 +153,5 @@ class MostrarCalculador {
     this.mostrar = !this.mostrar
   }
 }
-
-export class DateValidator {
-
-  static LessThanToday(control: FormControl): ValidationErrors | null {
-    let hoy: Date = new Date();
-
-    if (new Date(control.value) > hoy)
-      return { "LessThanToday": true };
-
-    return null;
-  }
-}
-
-export class MinMaxValidator {
-
-  static LessThanMin(): any {
-    return (group: FormGroup) => {
-      const minControl = group.get('numero min')
-      const maxControl = group.get('numero max')
-
-      let min: number = minControl?.value
-      let max: number = maxControl?.value
-
-      if (min > max || min < 0) {
-        maxControl?.setErrors({ "LessThanMin": true });
-      }
-      else {
-        maxControl?.setErrors(null);
-      }
-    }
-  }
-}
-
 
 
