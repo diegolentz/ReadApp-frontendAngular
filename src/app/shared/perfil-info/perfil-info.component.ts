@@ -6,6 +6,7 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
+import { UserInformacion } from '../../../domain/tmpUser';
 
 
 
@@ -24,7 +25,7 @@ export class PerfilInfoComponent {
   calculadorForm: FormGroup;
   private chPermitidosNomb = '[a-zA-Z]*$';
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
-  esEditor:boolean = false;
+  esEditor: boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -34,8 +35,8 @@ export class PerfilInfoComponent {
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
-  userLectura : Array<string> = []
-  userBusqueda : Array<string> = []
+  userLectura: Array<string> = []
+  userBusqueda: Array<string> = []
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser) {
     this.perfilForm = this.fb.group({
@@ -55,8 +56,8 @@ export class PerfilInfoComponent {
 
   }
 
-  puedeEditar(){
-    this.esEditor = false
+  puedeEditar() {
+    this.esEditor = true
   }
 
   errorMessage(form: FormGroup, campo: string, validator: string) {
@@ -78,23 +79,22 @@ export class PerfilInfoComponent {
     this.calculadorForm.reset()
   }
 
-  estaEn(valor:string, lista:Array<string>){
+  estaEn(valor: string, lista: Array<string>) {
     return lista.includes(valor)
   }
 
-  modificarBusqueda(valor:string, lista:Array<string>){
-    if (this.estaEn(valor,lista)){
+  modificarBusqueda(valor: string, lista: Array<string>) {
+    if (this.estaEn(valor, lista)) {
       const indice = lista.indexOf(valor)
-      delete lista[indice]
+      lista.splice(indice,1)
     } else {
       lista.push(valor)
     }
   }
 
-  modificarLectura(valor:string, lista:Array<string>){
+  modificarLectura(valor: string, lista: Array<string>) {
     lista.pop()
     lista.push(valor)
-    console.log(lista)
   }
 
   async ngOnInit() {
@@ -115,6 +115,25 @@ export class PerfilInfoComponent {
 
   }
 
+  async guardar() {
+    if (this.perfilForm.valid) {
+      await this.UserService.actualizarInfoUsuario(new UserInformacion(
+        1,
+        this.perfilForm.get("nombre")?.value,
+        this.perfilForm.get("apellido")?.value,
+        this.perfilForm.get("username")?.value,
+        null,
+        this.perfilForm.get("fecha de nacimiento")?.value,
+        this.perfilForm.get("email")?.value,
+        this.userBusqueda,
+        this.userLectura[0]
+      ))
+    }
+    else {
+      alert("El formulario tiene campos inválidos")
+    }
+
+  }
 
 }
 

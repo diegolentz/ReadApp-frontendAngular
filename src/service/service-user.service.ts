@@ -1,10 +1,9 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserInformacion, UserProfile, UserProfileJSON } from '../domain/tmpUser';
 import { LoginRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -59,6 +58,13 @@ export class ServiceUser {
     const loginResponse$ = this.httpClient.post<LoginResponse>(REST_SERVER_URL + '/login', loginRequest)
     const loginResponse = await (lastValueFrom(loginResponse$))
     return loginResponse
+  }
+
+  async actualizarInfoUsuario(infoNueva:UserInformacion){
+    await lastValueFrom(this.httpClient.put<UserInformacion>(
+      REST_SERVER_URL + '/updateInfoUsuario',
+      infoNueva
+    ))
   }
   
 }
