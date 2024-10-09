@@ -24,7 +24,7 @@ export class BookService {
   }
   // si es true = leidos, si es false = a leer
   async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
-    const userId = Number(localStorage.getItem('id'));
+    const userId = 1;
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
       params: { idUser: userId, estado: booleano }
     });
@@ -34,7 +34,7 @@ export class BookService {
   /* libros que se pueden agregar en a leer
    todos los libros - los que tiene leidos - los que ya tiene en a leer */
   async obtenerParaLeer(): Promise<Book[]> {
-    const userId = Number(localStorage.getItem('id'));
+    const userId = 1;
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
       params: { idUser: userId }
     });
