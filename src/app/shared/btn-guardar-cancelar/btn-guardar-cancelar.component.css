@@ -11,6 +11,7 @@
 
 .btn-cancelar {
     height: 5rem;
+    width: 7rem;
     padding: 0 1.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
@@ -29,6 +30,7 @@
 
 .btn-guardar {
     height: 5rem;
+    width: 7rem;
     padding: 0 1.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
