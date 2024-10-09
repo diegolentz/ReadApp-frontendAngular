@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { LibroComponent } from '../libro/libro.component';
 import { ContainerBooksComponent } from "../shared/layouts/books/books.component";
 import { BookService } from '../../service/book.service';
@@ -6,6 +6,7 @@ import { Book } from '../../domain/book';
 import { NgFor } from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { UserBasic } from '../../domain/tmpUser';
 
 @Component({
   selector: 'app-profile-books-readed',
@@ -20,6 +21,7 @@ export class ProfileBooksReadedComponent implements OnInit {
 
   books: Book[] = [];
   librosAgregados: Number[] = [];
+  @Input() user!: UserBasic;
 
   async ngOnInit(): Promise<void> {
     this.books = await this.bookService.obtenerLibrosPorEstado(true);

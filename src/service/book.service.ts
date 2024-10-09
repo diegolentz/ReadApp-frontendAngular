@@ -31,6 +31,13 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
+  async agregarLibro(idLibro: number[], estado: boolean): Promise<void> {
+    const idUser = 1;
+    await lastValueFrom(this.httpClient.post(REST_SERVER_URL + '/agregarLibroEstado',
+      { idUser, estado, idLibro }
+    ));
+  }
+
   /* libros que se pueden agregar en a leer
    todos los libros - los que tiene leidos - los que ya tiene en a leer */
   async obtenerParaLeer(): Promise<Book[]> {

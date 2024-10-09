@@ -19,9 +19,10 @@ export class LibrosAgregarComponent implements OnInit {
   constructor(private route: ActivatedRoute, public bookService: BookService) { }
 
   tipoContenido!: string;
+  estado!: boolean;
 
   books!: Book[];
-  librosAgregados: Number[] = [];
+  librosAgregados: number[] = [];
 
   async ngOnInit(): Promise<void> {
     this.queRenderizo();
@@ -32,13 +33,14 @@ export class LibrosAgregarComponent implements OnInit {
   queRenderizo() {
     this.route.params.subscribe(params => {
       this.tipoContenido = params['tipo'];
+      this.estado = (this.tipoContenido === 'books-readed'); //para manejar a quien se lo agrego
     });
   }
 
   async mostrarLibros() {
-    this.books = (this.tipoContenido === 'books-to-read')
+    this.books = (this.tipoContenido == 'books-to-read')
       ? await this.bookService.obtenerParaLeer()
-      : await this.bookService.obtenerLibrosPorEstado(false);
+      : await this.bookService.obtenerLibrosPorEstado(this.estado);
   }
 
   sacalodelaVista(libro: string) {
@@ -47,5 +49,8 @@ export class LibrosAgregarComponent implements OnInit {
     console.log(this.librosAgregados)
     this.books = this.books.filter(book => book.id !== id);
   }
-
+  async agregarLibros() {
+    await this.bookService.agregarLibro(this.librosAgregados, this.estado);
+    window.history.back();
+  }
 }
