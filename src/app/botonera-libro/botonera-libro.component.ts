@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule, NgIf } from '@angular/common';
 import { Book } from '../../domain/book';
@@ -15,6 +15,7 @@ export class BotoneraLibroComponent {
   }
 
   @Input() libro!: Book
+  @Output() enviarLibro = new EventEmitter<Book>();
 
   ocultarBorrar(): boolean {
 
@@ -29,7 +30,8 @@ export class BotoneraLibroComponent {
     return excludedRoutes.includes(this.router.url);
   }
 
-  agregar(libro: Book) {
-    this.bookService.quitarVista(libro);
+  agregar() {
+    this.enviarLibro.emit(this.libro)// deberia
+    // console.log(this.libro)
   }
 }

@@ -1,15 +1,41 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { BotoneraLibroComponent } from '../botonera-libro/botonera-libro.component';
 import { Book } from '../../domain/book';
+import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-libro',
   standalone: true,
-  imports: [BotoneraLibroComponent],
+  imports: [BotoneraLibroComponent, NgIf,],
   templateUrl: './libro.component.html',
   styleUrl: './libro.component.css'
 })
 
 export class LibroComponent {
-  @Input() book!:Book;
-  
+  @Input() book!: Book;
+  @Output() enviarLibro = new EventEmitter<string>();
+
+
+  constructor(private router: Router) {
+  }
+
+
+  ocultarBorrar(): boolean {
+
+    // hago un map con las rutas / valor y comparo con el parametro que recibo
+    const excludedRoutes = ['/search-books', '/my-profile/add-books/books-to-read', '/my-profile/add-books/books-readed'];
+    return !excludedRoutes.includes(this.router.url);
+  }
+
+  ocultarAgregar(): boolean {
+    // hago un map con las rutas / valor y comparo con el parametro que recibo
+    const excludedRoutes = ['/my-profile/add-books/books-readed', '/my-profile/add-books/books-to-read'];
+    return excludedRoutes.includes(this.router.url);
+  }
+
+  agregar() {
+    this.enviarLibro.emit(this.book.id.toString())// deberia andar
+    // console.log(this.libro)
+  }
+
 }
