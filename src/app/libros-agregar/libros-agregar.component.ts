@@ -38,7 +38,7 @@ export class LibrosAgregarComponent implements OnInit {
   async mostrarLibros() {
     this.books = (this.tipoContenido === 'books-to-read')
       ? await this.bookService.obtenerParaLeer()
-      : await this.bookService.obtenerALeer();
+      : await this.bookService.obtenerLibrosPorEstado(false);
   }
 
   sacalodelaVista(libro: string) {

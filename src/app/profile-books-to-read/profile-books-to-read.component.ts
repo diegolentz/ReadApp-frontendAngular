@@ -21,7 +21,7 @@ export class ProfileBooksToReadComponent implements OnInit {
   librosAgregados: Number[] = [];
 
   async ngOnInit(): Promise<void> {
-    this.books = await this.bookService.obtenerALeer();
+    this.books = await this.bookService.obtenerLibrosPorEstado(false);
   }
 
   sacalodelaVista(libro: string) {

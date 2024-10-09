@@ -8,8 +8,7 @@ import { lastValueFrom } from 'rxjs';
   providedIn: 'root'
 })
 export class BookService {
-  filtro: string = '';
-  renderizar: string = '';
+
 
   libros!: Book;
 
@@ -23,31 +22,19 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-
-  async obtenerALeer(): Promise<Book[]> {
-    // const userId = 1;//deberia usar localStorage
+  // si es true = leidos, si es false = a leer
+  async obtenerLibrosPorEstado(leidos: boolean): Promise<Book[]> {
     const userId = Number(localStorage.getItem('id'));
-
-    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosALeer', {
+    const endpoint = leidos ? '/librosLeidos' : '/librosALeer';
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + endpoint, {
       params: { idUser: userId }
-
-    });
-    const bookJSON = await lastValueFrom(libros$);
-    console.log(userId);
-    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-  }
-
-  async obtenerLeidos(): Promise<Book[]> {
-    // const userId = 1;//deberia usar localStorage
-    const userId = Number(localStorage.getItem('id'));
-    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosLeidos', {
-      params: { idUser: userId } //
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
+  /* libros que se pueden agregar en a leer
+   todos los libros - los que tiene leidos - los que ya tiene en a leer */
   async obtenerParaLeer(): Promise<Book[]> {
-    // const userId = 1;//deberia usar localStorage
     const userId = Number(localStorage.getItem('id'));
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
       params: { idUser: userId }
@@ -56,16 +43,5 @@ export class BookService {
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
 
-  // aplicarFiltro(filtro: string) {
-  //   this.filtro = filtro;
-  //   //filtro cambiado emite el cambio en filtro
-  //   this.filtroCambiado.emit(this.filtro);
-  //}
-  quitarVista(book: Book) {
-    this.libros = book;
-    this.libroCambiado.emit(this.libros);
-
-    // console.log(this.libros);
-  }
 
 }
