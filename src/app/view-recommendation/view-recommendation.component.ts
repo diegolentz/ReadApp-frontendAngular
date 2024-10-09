@@ -26,7 +26,7 @@ export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
   recomendacion!:Recommendation 
-
+   ban :boolean = true
   async ngOnInit() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
@@ -42,13 +42,13 @@ export class ViewRecommendationComponent implements OnInit{
     await this.recommendationService.actualizarRecomendacion(this.recomendacion)
     await window.location.reload()
   }
-
+  
   cancelar() {
-      window.location.reload()
+      this.goTo('/home')
   }
 
   noPuedeEditar(){
-    return true  
+    return false 
   }
 
   goTo(option:string){

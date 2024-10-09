@@ -9,6 +9,7 @@ export type RecommendationJSON = {
     contenido: string,
     publica: boolean,
     valoraciones: Array<ValorationJSON>,
+    valoracionTotal: number
     id: number
 }
 
@@ -28,24 +29,13 @@ export class Recommendation {
         public description: string = '',
         public _public: boolean = true,
         public valorations: Array<Valoration> = [],
+        public valoracionTotal: number = 0,
         public id: number = 0
     ) { }
 
     get cantidadLibros() {
         return this.recommendedBooks.length
     }
-    get score(){
-        return this.substractScoreFromValorations() 
-    }
-    
-    private substractScoreFromValorations(){
-        let score = 0
-        this.valorations.forEach(valoration => {
-            score += valoration.valor
-        });
-        return this.valorations.length > 0 ? score / this.valorations.length : 0; 
-    }
-    
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
         
@@ -56,6 +46,7 @@ export class Recommendation {
             recommendationJSON.contenido,
             recommendationJSON.publica,
             recommendationJSON.valoraciones.map(it => Valoration.fromJson(it) ),
+            recommendationJSON.valoracionTotal,
             recommendationJSON.id
             )
     }
@@ -68,6 +59,7 @@ export class Recommendation {
             contenido: this.description,
             publica: this._public,
             valoraciones: this.valorations.map(it=> it.toJSON()),
+            valoracionTotal: this.valoracionTotal,
             id:this.id,
         }
     }
