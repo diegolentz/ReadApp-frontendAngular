@@ -23,11 +23,10 @@ export class BookService {
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
   // si es true = leidos, si es false = a leer
-  async obtenerLibrosPorEstado(leidos: boolean): Promise<Book[]> {
+  async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
     const userId = Number(localStorage.getItem('id'));
-    const endpoint = leidos ? '/librosLeidos' : '/librosALeer';
-    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + endpoint, {
-      params: { idUser: userId }
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
+      params: { idUser: userId, estado: booleano }
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
