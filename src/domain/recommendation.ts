@@ -36,18 +36,6 @@ export class Recommendation {
     get cantidadLibros() {
         return this.recommendedBooks.length
     }
-    // get score(){
-    //     return this.substractScoreFromValorations() 
-    // }
-    
-    // private substractScoreFromValorations(){
-    //     let score = 0
-    //     this.valorations.forEach(valoration => {
-    //         score += valoration.valor
-    //     });
-    //     return this.valorations.length > 0 ? score / this.valorations.length : 0; 
-    // }
-    
 
     static fromJson(recommendationJSON: RecommendationJSON): Recommendation {
         
