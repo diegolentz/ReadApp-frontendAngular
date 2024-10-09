@@ -19,23 +19,17 @@ export class ProfileBooksReadedComponent implements OnInit {
   constructor(public bookService: BookService) { }
 
   books: Book[] = [];
-  librosAgregados: Book[] = [];
+  librosAgregados: Number[] = [];
 
   async ngOnInit(): Promise<void> {
     this.books = await this.bookService.obtenerLeidos();
-    // await this.obtenerLibros();
   }
 
-  // async obtenerLibros() {
-  //   this.bookService.libroCambiado.subscribe(
-  //     (nuevoLibro: Book) => {
-  //       this.librosAgregados.push(nuevoLibro);
-  //       this.books = this.books.filter(book => book.id !== nuevoLibro.id);
-  //     }
-  //   );
-  // }
 
   sacalodelaVista(libro: string) {
-    console.log(Number(libro))
+    var id = Number(libro)
+    this.librosAgregados.push(id)
+    console.log(this.librosAgregados)
+    this.books = this.books.filter(book => book.id !== id);
   }
 }
