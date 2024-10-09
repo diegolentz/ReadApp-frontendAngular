@@ -19,8 +19,10 @@ export class BtnGuardarCancelarComponent {
     this.cancelar.emit();
   }
 
-verificar(): Boolean {
-  return true;
-}
+  verificar(): Boolean {
+    return true;
+  }
 
 }
+
+
