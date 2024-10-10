@@ -46,7 +46,7 @@ export class UserBasic implements DomainObject {
 export type UserProfilePivot = {
     fechaNacimiento: Date,
     email: string,
-    perfil: Array<string>,
+    perfil: Array<PerfilDeLectura>,
     tipoDeLector: string,
     amigos: Array<any>,
     librosLeidos: Array<any>,
@@ -67,7 +67,7 @@ export class UserProfile implements DomainObject {
         public palabrasPorMinutos: number = -1,
         public fechaNacimiento: Date = new Date(),
         public email: string = "",
-        public perfil: Array<string> = [""],
+        public perfil: Array<PerfilDeLectura> = [new PerfilDeLectura("")],
         public tipoDeLector: string = "",
         public amigos: any = "",
         public librosLeidos: any = "",
@@ -99,6 +99,14 @@ export class UserProfile implements DomainObject {
         }
     }
 
+}
+
+export class PerfilDeLectura{
+    constructor(
+        public perfil:string,
+        public rangoMin?:number,
+        public rangoMax?:number
+    ){}
 }
 enum Language {
     INGLES,

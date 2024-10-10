@@ -6,8 +6,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
-import { UserInformacion } from '../../../domain/tmpUser';
+import { UserInformacion, UserProfile, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
+import e from 'express';
 
 
 
@@ -26,7 +27,6 @@ export class PerfilInfoComponent {
   calculadorForm: FormGroup;
   private chPermitidosNomb = '[a-zA-Z]*$';
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
-  esEditor: boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -56,11 +56,6 @@ export class PerfilInfoComponent {
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
 
   }
-
-  puedeEditar() {
-    this.esEditor = true
-  }
-
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
     const error = campoForm?.errors
@@ -99,8 +94,10 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    let userData = await this.UserService.getUserProfileByID(1)
-    console.log(userData)
+    /* let userId = await this.UserService.getLoggedUser()
+    let userData = await this.UserService.getUserProfileByID(userId) */
+
+    let userData = await this.UserService.getUserProfileByID(2)
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
@@ -108,12 +105,12 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
-
+    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
     this.userLectura.push(userData.tipoDeLector)
-    this.userBusqueda = userData.perfil
+  }
 
-    this.puedeEditar()
-
+  obtenerPerfiles(data:Array<PerfilDeLectura>){
+    return data.map(perfil => perfil.perfil)
   }
 
   async guardar() {
