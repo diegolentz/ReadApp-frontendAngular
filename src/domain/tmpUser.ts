@@ -101,12 +101,12 @@ export class UserProfile implements DomainObject {
 
 }
 
-export class PerfilDeLectura{
+export class PerfilDeLectura {
     constructor(
-        public perfil:string,
-        public rangoMin?:number,
-        public rangoMax?:number
-    ){}
+        public tipoPerfil: string,
+        public rangoMin?: number,
+        public rangoMax?: number
+    ) { }
 }
 enum Language {
     INGLES,
@@ -126,18 +126,17 @@ enum Language {
 
 //Prueba para info de usuario
 
-export class UserInformacion{
+export class UserInformacion {
     constructor(
-    public id: number,
-    public nombre: string | null = null,
-    public apellido: string | null = null, 
-    public alias: string | null = null,
-    public palabrasPorMinutos: number | null = null,
-    public fechaNacimiento:Date | null = null,
-    public email: string | null = null,
-    public perfil: Array<string> | null = null,
-    public tipoDeLector: string | null = null)
-    {
+        public id: number,
+        public nombre: string | null = null,
+        public apellido: string | null = null,
+        public alias: string | null = null,
+        public palabrasPorMinutos: number | null = null,
+        public fechaNacimiento: Date | null = null,
+        public email: string | null = null,
+        public perfil: Array<string> | null = null,
+        public tipoDeLector: string | null = null) {
 
     }
 }

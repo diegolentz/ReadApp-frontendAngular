@@ -101,7 +101,7 @@ export class PerfilInfoComponent {
     /* let userId = await this.UserService.getLoggedUser()
     let userData = await this.UserService.getUserProfileByID(userId) */
 
-    let userData = await this.UserService.getUserProfileByID(1)
+    let userData = await this.UserService.getUserProfileByID(2)
     this.userBusqueda = this.obtenerPerfiles(userData.perfil)
     this.userLectura.push(userData.tipoDeLector)
     this.perfilForm.patchValue({
@@ -120,7 +120,7 @@ export class PerfilInfoComponent {
   }
 
   obtenerPerfiles(data: Array<PerfilDeLectura>) {
-    return data.map(perfil => perfil.perfil)
+    return data.map(perfil => perfil.tipoPerfil)
   }
 
   obtenerRangoMin(listaPerfiles: Array<PerfilDeLectura>) {
