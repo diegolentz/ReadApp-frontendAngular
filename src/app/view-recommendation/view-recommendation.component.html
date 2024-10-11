@@ -1,12 +1,12 @@
 <main class="contenedor_edicion_recomendacion">
     
-    <div *ngIf="noPuedeEditar()" class="contenedorTitulo">
+    <div *ngIf="!puedeEditar" class="contenedorTitulo">
         <h1>{{recomendacion.title}}</h1>
         <img *ngIf="recomendacion._public" src="svg/privada.svg" alt="" >
         <img *ngIf="!recomendacion._public" src="svg/publica.svg" alt="" >
     </div>
     
-    <div *ngIf="!noPuedeEditar()" class="contenedorTitulo">
+    <div *ngIf="puedeEditar" class="contenedorTitulo">
         <input class="input-titulo" type="text" value={{recomendacion.title}} [(ngModel)]="recomendacion.title" placeholder="  Titulo de la recomendacion"/>
         <label class ="contenedorTitulo__label">
           <input type="checkbox" [(ngModel)]="recomendacion._public">
@@ -18,10 +18,10 @@
         @for (book of recomendacion.recommendedBooks; track book){
             <app-libro [book]="book"></app-libro>
             }
-        <app-boton-agregar *ngIf="!noPuedeEditar()"[tipo]="'books-readed'"></app-boton-agregar>
+        <app-boton-agregar *ngIf="puedeEditar"[tipo]="'books-readed'"></app-boton-agregar>
     </app-container-books>
 
-    <div  *ngIf="noPuedeEditar()" class="resenia">
+    <div  *ngIf="!puedeEditar" class="resenia">
         <h2>Reseña</h2>
         <p class="descripcion">
             {{recomendacion.description}}
@@ -29,7 +29,7 @@
         <hr>
     </div>
     
-    <div *ngIf="!noPuedeEditar()" class="resenia">
+    <div *ngIf="puedeEditar" class="resenia">
         <h2>Reseña</h2>
         <textarea class="descripcion" type="text"
             [(ngModel)]="recomendacion.description"  
@@ -40,15 +40,16 @@
 
     <app-valoracion 
         [valoraciones]="recomendacion.valorations"
-        [score]="recomendacion.valoracionTotal">
+        [score]="recomendacion.valoracionTotal"
+        [puedeValorar]="!puedeEditar">
     </app-valoracion>
 
     <app-btn-guardar-cancelar 
-        *ngIf="!noPuedeEditar()"
+        *ngIf="puedeEditar"
         (guardar)="editarRecomendacion()"
         (cancelar)="cancelar()">
     </app-btn-guardar-cancelar>
 
-    <app-volver-atras *ngIf="noPuedeEditar()" ></app-volver-atras>
+    <app-volver-atras *ngIf="!puedeEditar" ></app-volver-atras>
 
 </main>
