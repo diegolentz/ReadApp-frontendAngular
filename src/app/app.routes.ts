@@ -27,7 +27,11 @@ export const routes: Routes = [
         component: HomeComponent,
     },
     {
-        path: 'view-recommendation/:id',
+        path: 'view-recommendation/edit/:id', // Ruta para editar
+        component: ViewRecommendationComponent,
+    },
+    {
+        path: 'view-recommendation/detalle/:id', // Ruta para ver detalles
         component: ViewRecommendationComponent,
     },
     {

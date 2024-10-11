@@ -26,9 +26,11 @@ export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
   recomendacion:Recommendation =new Recommendation()
-  ban :boolean = false
+  puedeEditar !:boolean 
 
   async ngOnInit() {
+    const isEdit = this.route.snapshot.url[0].path === 'edit'; // Verifica si es la ruta de edición
+    this.puedeEditar = isEdit;
     this.traerRecomendacion()
   }
   
@@ -53,7 +55,7 @@ export class ViewRecommendationComponent implements OnInit{
   }
 
   noPuedeEditar(){
-    return this.ban 
+    return this.puedeEditar 
   }
 
   goTo(option:string){

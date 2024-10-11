@@ -5,7 +5,7 @@
     </h2>
 
     <div class="actions">
-        <a (click)="goTo('view-recommendation')">
+        <a [routerLink]="['/view-recommendation/edit/',recomendacion.id]" > 
             <img src="svg/edit.svg" alt="">
         </a>
 
@@ -47,5 +47,5 @@
         </div>
     </div>
     
-    <a class="btn__verMas " [routerLink]="['/view-recommendation',recomendacion.id]" appButtonHoverPressed>Ver Mas>></a>
+    <a class="btn__verMas " [routerLink]="['/view-recommendation/detalle/',recomendacion.id]" appButtonHoverPressed>Ver Mas>></a>
 </article>
