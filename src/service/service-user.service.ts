@@ -25,7 +25,7 @@ export class ServiceUser {
   }
 
   async getLoggedUser(): Promise<number> {
-    return +(localStorage.getItem('loggedUser')!)
+    return +(localStorage.getItem('id')!)
   }
 
 

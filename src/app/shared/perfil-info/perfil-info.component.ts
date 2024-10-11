@@ -98,10 +98,11 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    /* let userId = await this.UserService.getLoggedUser()
-    let userData = await this.UserService.getUserProfileByID(userId) */
+    let userId = await this.UserService.getLoggedUser()
+    console.log(userId)
+    let userData = await this.UserService.getUserProfileByID(userId)
 
-    let userData = await this.UserService.getUserProfileByID(2)
+    /* let userData = await this.UserService.getUserProfileByID(2) */
     this.userBusqueda = this.obtenerPerfiles(userData.perfil)
     this.userLectura.push(userData.tipoDeLector)
     this.perfilForm.patchValue({
