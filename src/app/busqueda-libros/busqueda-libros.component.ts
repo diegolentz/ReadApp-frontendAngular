@@ -27,12 +27,12 @@ export class BusquedaLibrosComponent {
 
   async addFilter(newFilter: string) {
     this.filtro = newFilter
-    this.books = await this.bookService.obtenerLibros()
-    this.books = this.filtro ?
-      (this.books.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
-        this.filtro.replace(/\s+/g, '').toLowerCase()) ||
-        book.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
-      (this.books);
+    this.books = await this.bookService.obtenerLibrosFiltrados(this.filtro)
+    // this.books = this.filtro ?
+    //   (this.books.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
+    //     this.filtro.replace(/\s+/g, '').toLowerCase()) ||
+    //     book.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
+    //   (this.books);
   }
 }
 
