@@ -135,7 +135,7 @@ export class UserInformacion {
         public palabrasPorMinutos: number | null = null,
         public fechaNacimiento: Date | null = null,
         public email: string | null = null,
-        public perfil: Array<string> | null = null,
+        public perfil: Array<PerfilDeLectura> | null = null,
         public tipoDeLector: string | null = null) {
 
     }

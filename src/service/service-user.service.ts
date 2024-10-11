@@ -52,6 +52,7 @@ export class ServiceUser {
 
 
   async actualizarInfoUsuario(infoNueva:UserInformacion){
+    console.log(infoNueva)
     await lastValueFrom(this.httpClient.put<UserInformacion>(
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva

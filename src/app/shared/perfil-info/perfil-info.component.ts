@@ -131,17 +131,26 @@ export class PerfilInfoComponent {
     return listaPerfiles.filter(perfil => perfil.rangoMin != undefined)[0]?.rangoMax
   }
 
+  toPerfilDeLectura(perfiles: Array<string>): Array<PerfilDeLectura> {
+    return perfiles.map(perfil => {
+      if (perfil == 'Calculador') {
+        return new PerfilDeLectura(perfil, this.getValueForm('numero min', this.calculadorForm), this.getValueForm('numero max', this.calculadorForm))
+      }
+      return new PerfilDeLectura(perfil)
+    })
+  }
+
   async guardar() {
     if (this.perfilForm.valid) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
         1,
-        this.getValue("nombre"),
-        this.getValue("apellido"),
-        this.getValue("username"),
+        this.getValueForm("nombre", this.perfilForm),
+        this.getValueForm("apellido", this.perfilForm),
+        this.getValueForm("username", this.perfilForm),
         null,
-        this.getValue("fecha de nacimiento"),
-        this.getValue("email"),
-        this.userBusqueda,
+        this.getValueForm("fecha de nacimiento", this.perfilForm),
+        this.getValueForm("email", this.perfilForm),
+        this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
       ))
     }
@@ -151,8 +160,8 @@ export class PerfilInfoComponent {
 
   }
 
-  getValue(campo: string) {
-    const valor = this.perfilForm.get(campo)
+  getValueForm(campo: string, form: FormGroup) {
+    const valor = form.get(campo)
     if (valor?.dirty) {
       return valor.value
     }

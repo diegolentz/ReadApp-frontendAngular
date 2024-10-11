@@ -64,7 +64,7 @@
             @for (criterio of criteriosBusqueda; track $index) {
                 <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)"></app-input-box>
             }
-            <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event)" [isChecked]="estaEn('Calculador',userBusqueda)"></app-input-box>
+            <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event); modificarBusqueda('Calculador',userBusqueda)" [isChecked]="estaEn('Calculador',userBusqueda)"></app-input-box>
             <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
                 <div class= "campo input__label--effect">
                     <input type="number" formControlName="numero min">
