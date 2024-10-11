@@ -143,7 +143,7 @@ export class PerfilInfoComponent {
   async guardar() {
     if (this.perfilForm.valid) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        1,
+        2,
         this.getValueForm("nombre", this.perfilForm),
         this.getValueForm("apellido", this.perfilForm),
         this.getValueForm("username", this.perfilForm),
