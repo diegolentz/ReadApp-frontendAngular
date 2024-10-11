@@ -1,7 +1,7 @@
 .amigo{
     display: grid;
     padding: 0.5rem;
-    gap: 1rem;
+    gap: 0.5rem;
     grid-template-columns: 0.25fr 1fr 0.25fr;
     border-radius:0.7rem;
     background-color: var(--color-hover-amigos);
@@ -23,7 +23,8 @@
         grid-row: 1/3;
         grid-column: -1/-2;
         cursor: pointer;
-        
+        align-self: center;
+        justify-self: center;
     }
     & .amigo__nombre, .amigo__identificador{
         cursor: pointer;
