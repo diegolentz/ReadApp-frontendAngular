@@ -29,8 +29,9 @@ export class ViewRecommendationComponent implements OnInit{
   puedeEditar !:boolean 
 
   async ngOnInit() {
-    const isEdit = this.route.snapshot.url[0].path === 'edit'; // Verifica si es la ruta de edición
+    const isEdit = this.route.snapshot.url[1].path === 'edit'; // Verifica si es la ruta de edición
     this.puedeEditar = isEdit;
+    console.log(this.puedeEditar)
     this.traerRecomendacion()
   }
   
