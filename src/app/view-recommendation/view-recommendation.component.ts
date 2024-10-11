@@ -25,9 +25,14 @@ import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 export class ViewRecommendationComponent implements OnInit{
   constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute) {}
 
-  recomendacion!:Recommendation 
-   ban :boolean = true
+  recomendacion:Recommendation =new Recommendation()
+  ban :boolean = false
+  
   async ngOnInit() {
+    this.traerRecomendacion()
+  }
+  
+  traerRecomendacion(){
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
       try {

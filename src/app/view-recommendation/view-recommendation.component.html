@@ -18,7 +18,7 @@
         @for (book of recomendacion.recommendedBooks; track book){
             <app-libro [book]="book"></app-libro>
             }
-      <app-boton-agregar *ngIf="!noPuedeEditar()"[tipo]="'books-readed'"></app-boton-agregar>
+        <app-boton-agregar *ngIf="!noPuedeEditar()"[tipo]="'books-readed'"></app-boton-agregar>
     </app-container-books>
 
     <div  *ngIf="noPuedeEditar()" class="resenia">
