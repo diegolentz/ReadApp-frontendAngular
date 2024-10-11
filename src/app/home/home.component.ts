@@ -28,12 +28,12 @@ export class HomeComponent implements OnInit {
 
   async addFilter(newFilter: string) {
     this.filtro = newFilter
-    this.recommendations = await this.recommendationService.getRecommendations()
-    this.recommendations = this.filtro ?
-      (this.recommendations.filter((recommendation) => recommendation.title.replace(/\s+/g, '').toLowerCase().includes(
-        this.filtro.replace(/\s+/g, '').toLowerCase()) ||
-        recommendation.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
-      (this.recommendations);
+    this.recommendations = await this.recommendationService.getRecommendationsFilter(this.filtro)
+    // this.recommendations = this.filtro ?
+    //   (this.recommendations.filter((recommendation) => recommendation.title.replace(/\s+/g, '').toLowerCase().includes(
+    //     this.filtro.replace(/\s+/g, '').toLowerCase()) ||
+    //     recommendation.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
+    //   (this.recommendations);
   }
 
 }
