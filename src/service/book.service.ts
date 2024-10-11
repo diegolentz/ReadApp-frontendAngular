@@ -22,6 +22,14 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
+
+  async obtenerLibrosFiltrados(filtro: string): Promise<Book[]> {
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosSearch/filter', {
+      params: { filtro: filtro }
+    });
+    const bookJSON = await lastValueFrom(libros$);
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+  }
   // si es true = leidos, si es false = a leer
   async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
     const userId = 1;
