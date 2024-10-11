@@ -76,7 +76,11 @@ export class PerfilInfoComponent {
   }
 
   estaEn(valor: string, lista: Array<string>) {
-    return lista.includes(valor)
+    const incluye = lista.includes(valor)
+    if (valor == 'Calculador' && incluye) {
+      this.mostrarNuevosInputs = true
+    }
+    return incluye
   }
 
   modificarBusqueda(valor: string, lista: Array<string>) {
@@ -97,7 +101,9 @@ export class PerfilInfoComponent {
     /* let userId = await this.UserService.getLoggedUser()
     let userData = await this.UserService.getUserProfileByID(userId) */
 
-    let userData = await this.UserService.getUserProfileByID(2)
+    let userData = await this.UserService.getUserProfileByID(1)
+    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
+    this.userLectura.push(userData.tipoDeLector)
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
@@ -105,12 +111,24 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
-    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
-    this.userLectura.push(userData.tipoDeLector)
+
+    this.calculadorForm.patchValue({
+      'numero min': this.obtenerRangoMin(userData.perfil),
+      'numero max': this.obtenerRangoMax(userData.perfil)
+    })
+
   }
 
-  obtenerPerfiles(data:Array<PerfilDeLectura>){
+  obtenerPerfiles(data: Array<PerfilDeLectura>) {
     return data.map(perfil => perfil.perfil)
+  }
+
+  obtenerRangoMin(listaPerfiles: Array<PerfilDeLectura>) {
+    return listaPerfiles.filter(perfil => perfil.rangoMin != undefined)[0]?.rangoMin
+  }
+
+  obtenerRangoMax(listaPerfiles: Array<PerfilDeLectura>) {
+    return listaPerfiles.filter(perfil => perfil.rangoMin != undefined)[0]?.rangoMax
   }
 
   async guardar() {
