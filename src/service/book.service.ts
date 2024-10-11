@@ -33,7 +33,7 @@ export class BookService {
   }
   async agregarLibro(idLibro: number[], estado: boolean): Promise<void> {
     const idUser = 1;
-    await lastValueFrom(this.httpClient.post(REST_SERVER_URL + '/agregarLibroEstado',
+    await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
       { idUser, estado, idLibro }
     ));
   }
