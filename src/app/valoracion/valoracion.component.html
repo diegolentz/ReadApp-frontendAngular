@@ -5,13 +5,11 @@
       <img class="estrella-dorada" src="svg/recommendationScore.svg">
       <h3>{{score}}/5</h3>
     </div>
-    <section class="valoraciones__individuales">
-      
+    <section class="valoraciones__individuales">  
       @for (valoracion of valoraciones; track valoracion){
         <app-valoracion-individual [valoracion]="valoracion"></app-valoracion-individual>
         }
-      
-      <app-boton-agregar ></app-boton-agregar>
+      <app-boton-agregar *ngIf="puedeValorar"></app-boton-agregar>
 
     </section>
   </div>

@@ -40,7 +40,8 @@
 
     <app-valoracion 
         [valoraciones]="recomendacion.valorations"
-        [score]="recomendacion.valoracionTotal">
+        [score]="recomendacion.valoracionTotal"
+        [puedeValorar]="!puedeEditar">
     </app-valoracion>
 
     <app-btn-guardar-cancelar 
