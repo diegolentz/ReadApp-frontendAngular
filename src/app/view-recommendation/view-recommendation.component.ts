@@ -27,7 +27,7 @@ export class ViewRecommendationComponent implements OnInit{
 
   recomendacion:Recommendation =new Recommendation()
   ban :boolean = false
-  
+
   async ngOnInit() {
     this.traerRecomendacion()
   }
@@ -53,7 +53,7 @@ export class ViewRecommendationComponent implements OnInit{
   }
 
   noPuedeEditar(){
-    return false 
+    return this.ban 
   }
 
   goTo(option:string){
