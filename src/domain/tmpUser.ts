@@ -46,7 +46,7 @@ export class UserBasic implements DomainObject {
 export type UserProfilePivot = {
     fechaNacimiento: Date,
     email: string,
-    perfil: Array<string>,
+    perfil: Array<PerfilDeLectura>,
     tipoDeLector: string,
     amigos: Array<any>,
     librosLeidos: Array<any>,
@@ -67,7 +67,7 @@ export class UserProfile implements DomainObject {
         public palabrasPorMinutos: number = -1,
         public fechaNacimiento: Date = new Date(),
         public email: string = "",
-        public perfil: Array<string> = [""],
+        public perfil: Array<PerfilDeLectura> = [new PerfilDeLectura("")],
         public tipoDeLector: string = "",
         public amigos: any = "",
         public librosLeidos: any = "",
@@ -100,6 +100,14 @@ export class UserProfile implements DomainObject {
     }
 
 }
+
+export class PerfilDeLectura {
+    constructor(
+        public tipoPerfil: string,
+        public rangoMin?: number,
+        public rangoMax?: number
+    ) { }
+}
 enum Language {
     INGLES,
     ESPANIOL,
@@ -118,18 +126,17 @@ enum Language {
 
 //Prueba para info de usuario
 
-export class UserInformacion{
+export class UserInformacion {
     constructor(
-    public id: number,
-    public nombre: string | null = null,
-    public apellido: string | null = null, 
-    public alias: string | null = null,
-    public palabrasPorMinutos: number | null = null,
-    public fechaNacimiento:Date | null = null,
-    public email: string | null = null,
-    public perfil: Array<string> | null = null,
-    public tipoDeLector: string | null = null)
-    {
+        public id: number,
+        public nombre: string | null = null,
+        public apellido: string | null = null,
+        public alias: string | null = null,
+        public palabrasPorMinutos: number | null = null,
+        public fechaNacimiento: Date | null = null,
+        public email: string | null = null,
+        public perfil: Array<PerfilDeLectura> | null = null,
+        public tipoDeLector: string | null = null) {
 
     }
 }

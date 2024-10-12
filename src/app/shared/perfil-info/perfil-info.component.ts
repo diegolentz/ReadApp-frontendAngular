@@ -6,8 +6,9 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
-import { UserInformacion } from '../../../domain/tmpUser';
+import { UserInformacion, UserProfile, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
+import e from 'express';
 
 
 
@@ -26,7 +27,6 @@ export class PerfilInfoComponent {
   calculadorForm: FormGroup;
   private chPermitidosNomb = '[a-zA-Z]*$';
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
-  esEditor: boolean = false;
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
   mostrarCalculador = new MostrarCalculador();
@@ -56,11 +56,6 @@ export class PerfilInfoComponent {
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
 
   }
-
-  puedeEditar() {
-    this.esEditor = true
-  }
-
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
     const error = campoForm?.errors
@@ -81,7 +76,11 @@ export class PerfilInfoComponent {
   }
 
   estaEn(valor: string, lista: Array<string>) {
-    return lista.includes(valor)
+    const incluye = lista.includes(valor)
+    if (valor == 'Calculador' && incluye) {
+      this.mostrarNuevosInputs = true
+    }
+    return incluye
   }
 
   modificarBusqueda(valor: string, lista: Array<string>) {
@@ -99,8 +98,13 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    let userData = await this.UserService.getUserProfileByID(1)
-    console.log(userData)
+    let userId = await this.UserService.getLoggedUser()
+    console.log(userId)
+    let userData = await this.UserService.getUserProfileByID(userId)
+
+    /* let userData = await this.UserService.getUserProfileByID(2) */
+    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
+    this.userLectura.push(userData.tipoDeLector)
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
@@ -109,24 +113,45 @@ export class PerfilInfoComponent {
       'email': userData.email
     })
 
-    this.userLectura.push(userData.tipoDeLector)
-    this.userBusqueda = userData.perfil
+    this.calculadorForm.patchValue({
+      'numero min': this.obtenerRangoMin(userData.perfil),
+      'numero max': this.obtenerRangoMax(userData.perfil)
+    })
 
-    this.puedeEditar()
+  }
 
+  obtenerPerfiles(data: Array<PerfilDeLectura>) {
+    return data.map(perfil => perfil.tipoPerfil)
+  }
+
+  obtenerRangoMin(listaPerfiles: Array<PerfilDeLectura>) {
+    return listaPerfiles.filter(perfil => perfil.rangoMin != undefined)[0]?.rangoMin
+  }
+
+  obtenerRangoMax(listaPerfiles: Array<PerfilDeLectura>) {
+    return listaPerfiles.filter(perfil => perfil.rangoMin != undefined)[0]?.rangoMax
+  }
+
+  toPerfilDeLectura(perfiles: Array<string>): Array<PerfilDeLectura> {
+    return perfiles.map(perfil => {
+      if (perfil == 'Calculador') {
+        return new PerfilDeLectura(perfil, this.getValueForm('numero min', this.calculadorForm), this.getValueForm('numero max', this.calculadorForm))
+      }
+      return new PerfilDeLectura(perfil)
+    })
   }
 
   async guardar() {
     if (this.perfilForm.valid) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        1,
-        this.getValue("nombre"),
-        this.getValue("apellido"),
-        this.getValue("username"),
+        2,
+        this.getValueForm("nombre", this.perfilForm),
+        this.getValueForm("apellido", this.perfilForm),
+        this.getValueForm("username", this.perfilForm),
         null,
-        this.getValue("fecha de nacimiento"),
-        this.getValue("email"),
-        this.userBusqueda,
+        this.getValueForm("fecha de nacimiento", this.perfilForm),
+        this.getValueForm("email", this.perfilForm),
+        this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
       ))
     }
@@ -136,8 +161,8 @@ export class PerfilInfoComponent {
 
   }
 
-  getValue(campo: string) {
-    const valor = this.perfilForm.get(campo)
+  getValueForm(campo: string, form: FormGroup) {
+    const valor = form.get(campo)
     if (valor?.dirty) {
       return valor.value
     }

@@ -14,7 +14,6 @@ export class InputBoxComponent {
   @Input() label:string = '';
   @Input() name:string = '';
   @Input() isChecked:boolean = false;
-  @Input() deshablitado:boolean = true;
 }
 
 

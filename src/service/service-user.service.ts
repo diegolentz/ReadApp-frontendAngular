@@ -25,7 +25,7 @@ export class ServiceUser {
   }
 
   async getLoggedUser(): Promise<number> {
-    return +(localStorage.getItem('loggedUser')!)
+    return +(localStorage.getItem('id')!)
   }
 
 
@@ -56,7 +56,6 @@ export class ServiceUser {
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
-    console.log(infoNueva)
   }
   
 
