@@ -4,7 +4,7 @@
     <ng-container *ngFor="let book of books">
         <app-libro [book]="book" (enviarLibro)="sacalodelaVista($event)"  ></app-libro>
       </ng-container>
-      <app-boton-agregar [tipo]="'books-readed'"></app-boton-agregar>
+      <app-boton-agregar [view]= "'my-profile/add-books'" [tipo]="'books-readed'"></app-boton-agregar>
 </app-container-books>
 <!-- 
 <app-btn-guardar-cancelar 
