@@ -73,10 +73,10 @@ export class ServiceUser {
   }
 }
 
-type LoginResponse = {
+export type LoginResponse = {
   userID: number
 }
 
-type NewAccountResponse = {
+export type NewAccountResponse = {
   message:string
 }

@@ -1,14 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BotonAgregarComponent } from './boton-agregar.component';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 describe('BotonAgregarComponent', () => {
   let component: BotonAgregarComponent;
   let fixture: ComponentFixture<BotonAgregarComponent>;
-
+  let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>
+  let httpClientSpy: jasmine.SpyObj<HttpClient>
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BotonAgregarComponent]
+      imports: [BotonAgregarComponent],
+      providers: [
+        {provide: ActivatedRoute, useValue: activatedRouteSpy},
+        {provide: HttpClient, useValue: httpClientSpy}
+      ]
     })
     .compileComponents();
 

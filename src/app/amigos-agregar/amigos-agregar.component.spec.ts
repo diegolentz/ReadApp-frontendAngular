@@ -1,22 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AmigosComponent } from './amigos.component';
+import { AmigosAgregarComponent } from './amigos-agregar.component';
 
-describe('AmigosComponent', () => {
-  let component: AmigosComponent;
-  let fixture: ComponentFixture<AmigosComponent>;
+describe('AmigosAgregarComponent', () => {
+  let component: AmigosAgregarComponent;
+  let fixture: ComponentFixture<AmigosAgregarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AmigosComponent]
+      imports: [AmigosAgregarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AmigosComponent);
+    fixture = TestBed.createComponent(AmigosAgregarComponent);
     component = fixture.componentInstance;
-
-    /* component.userFriend = new User() */
-
     fixture.detectChanges();
   });
 

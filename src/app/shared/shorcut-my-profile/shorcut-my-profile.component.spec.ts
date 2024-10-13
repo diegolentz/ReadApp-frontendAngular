@@ -15,7 +15,9 @@ describe('ShorcutMyProfileComponent', () => {
 
     fixture = TestBed.createComponent(ShorcutMyProfileComponent);
     component = fixture.componentInstance;
+
     /* component.user = new User() */
+
     fixture.detectChanges();
   });
 
