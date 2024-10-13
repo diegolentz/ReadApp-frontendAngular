@@ -41,6 +41,11 @@
                 <label>email</label>
                 <app-form-error *ngIf="(errorMessage(perfilForm, 'email', 'email'))" [errorMessage]="errorMessage(perfilForm, 'email', 'email')"></app-form-error>
             </div>
+
+            <div class= "campo input__label--effect">
+                <input type="number"  placeholder="Tiempo de lectura promedio" readonly value="{{tiempoDeLectura}}">
+                <label>TIEMPO DE LECTURA PROMEDIO</label>
+            </div>
             
         </form>
     </div>
