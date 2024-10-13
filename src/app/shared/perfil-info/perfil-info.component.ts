@@ -6,9 +6,8 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
-import { UserInformacion, UserProfile, PerfilDeLectura } from '../../../domain/tmpUser';
+import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
-import e from 'express';
 
 
 
@@ -29,9 +28,7 @@ export class PerfilInfoComponent {
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
-  mostrarCalculador = new MostrarCalculador();
-  mostrarNuevosInputs: boolean = false;
-
+  mostrarBoton: boolean = false
   boton = new BtnGuardarCancelarComponent()
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
@@ -69,10 +66,11 @@ export class PerfilInfoComponent {
     return undefined
   }
 
-  mostrar(event: any) {
-    this.mostrarNuevosInputs = event.target.checked;
+  mostrar() {
+    this.mostrarBoton = !this.mostrarBoton
     this.resetCalculador() // Actualiza según si el checkbox está marcado o no
   }
+
   resetCalculador() {
     this.calculadorForm.reset()
   }
@@ -80,7 +78,7 @@ export class PerfilInfoComponent {
   estaEn(valor: string, lista: Array<string>) {
     const incluye = lista.includes(valor)
     if (valor == 'Calculador' && incluye) {
-      this.mostrarNuevosInputs = true
+      this.mostrarBoton = true
     }
     return incluye
   }
@@ -145,7 +143,7 @@ export class PerfilInfoComponent {
   }
 
   async guardar() {
-    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarNuevosInputs)) {
+    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
         2,
         this.getValueForm("nombre", this.perfilForm),
@@ -175,11 +173,9 @@ export class PerfilInfoComponent {
 }
 
 class MostrarCalculador {
-  mostrar: boolean = false
+  
 
-  show() {
-    this.mostrar = !this.mostrar
-  }
+  
 }
 
 

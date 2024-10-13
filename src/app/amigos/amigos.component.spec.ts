@@ -15,7 +15,7 @@ describe('AmigosComponent', () => {
 
     fixture = TestBed.createComponent(AmigosComponent);
     component = fixture.componentInstance;
-    component.userFriend = new User()
+    /* component.userFriend = new User() */
     fixture.detectChanges();
   });
 

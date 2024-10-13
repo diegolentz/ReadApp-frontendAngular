@@ -7,9 +7,9 @@
 
         <form class="formulario-general" [formGroup]="perfilForm">
             <div class= "campo input__label--effect">
-                <input type="text" formControlName="nombre" placeholder="nombre">
+                <input type="text" formControlName="nombre" placeholder="nombre" data-testid="test-form">
                 <label>nombre</label>
-                <app-form-error *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'nombre', 'pattern')" ></app-form-error>
+                <app-form-error *ngIf="(errorMessage(perfilForm, 'nombre', 'pattern'))" [errorMessage]="errorMessage(perfilForm, 'nombre', 'pattern')" data-testid="test-error"></app-form-error>
             </div>
             
             
@@ -69,8 +69,8 @@
             @for (criterio of criteriosBusqueda; track $index) {
                 <app-input-box inputType="checkbox" [label]="criterio" [isChecked]="estaEn(criterio,userBusqueda)" (change)="modificarBusqueda(criterio,userBusqueda)"></app-input-box>
             }
-            <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar($event); modificarBusqueda('Calculador',userBusqueda)" [isChecked]="estaEn('Calculador',userBusqueda)"></app-input-box>
-            <div class="nuevosInputs" *ngIf="mostrarNuevosInputs">
+            <app-input-box inputType="checkbox" label="Calculador" (change)="mostrar(); modificarBusqueda('Calculador',userBusqueda)" [isChecked]="estaEn('Calculador',userBusqueda)" data-testid="checkboc-calculador"></app-input-box>
+            <div class="nuevosInputs" *ngIf="mostrarBoton" data-testid="form-min-max">
                 <div class= "campo input__label--effect">
                     <input type="number" formControlName="numero min">
                     <label>MIN</label>
