@@ -6,4 +6,6 @@
       </ng-container>
       <app-boton-agregar [view]= "'my-profile/add-books'" [tipo]="'books-to-read'"></app-boton-agregar>
 </app-container-books>
-<app-btn-guardar-cancelar></app-btn-guardar-cancelar >
+<app-btn-guardar-cancelar
+(guardar)="eliminarLibros()"></app-btn-guardar-cancelar>
+

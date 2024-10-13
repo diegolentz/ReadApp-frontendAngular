@@ -20,7 +20,7 @@ export class ProfileBooksReadedComponent implements OnInit {
   constructor(public bookService: BookService) { }
 
   books: Book[] = [];
-  librosAgregados: Number[] = [];
+  librosAgregados: number[] = [];
   @Input() user!: UserBasic;
 
   async ngOnInit(): Promise<void> {
@@ -32,5 +32,10 @@ export class ProfileBooksReadedComponent implements OnInit {
     this.librosAgregados.push(id)
     console.log(this.librosAgregados)
     this.books = this.books.filter(book => book.id !== id);
+  }
+
+  async eliminarLibros() {
+    await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
+    window.history.back();
   }
 }
