@@ -56,6 +56,11 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-
+  async eliminarLibro(idLibro: number[], estado: boolean): Promise<void> {
+    const idUser = 1;
+    await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
+      body: { idUser, estado, idLibro }
+    }));
+  }
 
 }

@@ -18,7 +18,7 @@ export class ProfileBooksToReadComponent implements OnInit {
   constructor(public bookService: BookService) { }
 
   books: Book[] = [];
-  librosAgregados: Number[] = [];
+  librosAgregados: number[] = [];
 
   async ngOnInit(): Promise<void> {
     this.books = await this.bookService.obtenerLibrosPorEstado(false);
@@ -29,5 +29,10 @@ export class ProfileBooksToReadComponent implements OnInit {
     this.librosAgregados.push(id)
     console.log(this.librosAgregados)
     this.books = this.books.filter(book => book.id !== id);
+  }
+
+  async eliminarLibros() {
+    await this.bookService.eliminarLibro(this.librosAgregados, false); // true = leidos
+    window.history.back();
   }
 }
