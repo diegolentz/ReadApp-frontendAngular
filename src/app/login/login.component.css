@@ -62,7 +62,7 @@ main {
 .form__inputs{
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: var(--space-md);
 }
 /* Campo del formulario */
 .campo {
@@ -131,17 +131,6 @@ input:focus {
     fill: var(--color-cancel);
 }
 
-/* Ojo en el campo de contraseña */
-.eye {
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    cursor: pointer;
-}
-
-.eye svg {
-    fill: var(--color-cancel);
-}
 
 /* Botón de inicio de sesión */
 .btn{
@@ -167,12 +156,20 @@ input:focus {
     background-color: var(--color-cancel);
 }
 
+.btn__back {
+    background-color: darkgoldenrod;
+}
+
 .btn__signIn:hover,
 .btn__createAccount:hover,
-.btn__passwordRecovery:hover {
+.btn__passwordRecovery:hover,
+.btn__back:hover {
     filter: brightness(140%);
     opacity: 0.8;
     color: black;
     font-weight: bold;
 }
 
+.input__required{
+    color: red;
+}

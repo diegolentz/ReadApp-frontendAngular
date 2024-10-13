@@ -4,38 +4,40 @@ import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 import { ServiceUser } from '../../service/service-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, NgFor],
+  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent{
-  constructor(private router: Router, private serviceUser: ServiceUser) { }
+
+  formRestrictions = FORM_RECTRICTIONS
+  constructor(
+    private router: Router,
+    private serviceUser: ServiceUser,
+    private fb:FormBuilder
+  ){
+    this.loginForm = this.fb.group({
+      'username': ['', [Validators.required, Validators.maxLength(this.formRestrictions.USERNAME_MAX)]],
+      'password': ['', [Validators.required, , Validators.maxLength(this.formRestrictions.PASSWORD_MAX)]],
+    })
+    this.newAccountForm = this.fb.group({
+      'email': ['', [Validators.required]],
+      'username': ['', [Validators.required, Validators.maxLength(this.formRestrictions.USERNAME_MAX)]],
+      'password': ['', [Validators.required, Validators.maxLength(this.formRestrictions.PASSWORD_MAX)]],
+      'name': ['', [Validators.required]]
+    })
+  }
 
   formType:FormType = FormType.LOG_IN
-
-  loginRequest :LoginRequest = {
-    username: '',
-    password: ''
-  };
-
-  newAccountRequest :NewAccountRequest = {
-    username: '',
-    password: '',
-    email: '',
-    name: ''
-  };
-
-  passwordRecoveryRequest :PasswordRecoveryRequest = {
-    email: '',
-    username: ''
-  };
+  loginForm!:FormGroup
+  newAccountForm!:FormGroup
 
   id!: number;
 
@@ -44,27 +46,26 @@ export class LoginComponent{
   }
 
   async tryLogin() {
+    const request = this.buildLoginRequest()
     try {
-      const response = await this.serviceUser.login(this.loginRequest)
+      const response = await this.serviceUser.login(request)
       this.id = response.userID
       localStorage.setItem('id', this.id.toString());
-      console.log(`Valor de local storage ${localStorage.getItem('id')}`)
       this.goTo('home')
     }
     catch (error: any) {
       if (error instanceof HttpErrorResponse) {
-        //Solo me interesa HttpErrorResponde
         console.log(error.error["status"])
         console.log(error.error["error"])
-        console.log(error.error["message"])
         alert(error.error["message"])
       }
     }
   }
 
   async tryCreateAccount() {
+    const request = this.buildNewAccountRequest()
     try {
-      const response = await this.serviceUser.newAccount(this.newAccountRequest)
+      const response = await this.serviceUser.newAccount(request)
       alert(response.message)
       this.changeToLogin()
     }
@@ -91,6 +92,7 @@ export class LoginComponent{
       }
     }
   }
+
   changeToLogin(){
     this.formType = FormType.LOG_IN
   }
@@ -109,10 +111,44 @@ export class LoginComponent{
   showPasswordRecovery() {
     return this.formType == FormType.PASSWORD_RECOVERY
   }
+  buildLoginRequest():LoginRequest{
+    return {
+      username:this.getFormValue("username", this.loginForm),
+      password:this.getFormValue("password", this.loginForm)
+    }
+  }
+  buildNewAccountRequest():NewAccountRequest{
+    return {
+      email:this.getFormValue("email", this.newAccountForm),
+      username:this.getFormValue("username", this.newAccountForm),
+      password:this.getFormValue("password", this.newAccountForm),
+      name:this.getFormValue("name", this.newAccountForm)
+    }
+  }
+  buildPasswordRecovery():NewAccountRequest{
+    return {
+      email:this.getFormValue("email", this.newAccountForm),
+      username:this.getFormValue("username", this.newAccountForm),
+      password:this.getFormValue("password", this.newAccountForm),
+      name:this.getFormValue("name", this.newAccountForm)
+    }
+  }
+  getFormValue(label:string, form:FormGroup){
+    return form.get(label)?.value
+  }
 
+  warning(label:string){
+    return this.formInvalid(label) && this.formTouchedDirty(label)
+  }
+  formInvalid(label:string):boolean{
+    return this.loginForm.controls[label].invalid
+  }
+  formTouchedDirty(label:string):boolean{
+    return (this.loginForm.controls[label].touched || this.loginForm.controls[label].dirty)
+  }
 }
 
-enum FormType{
+export enum FormType{
   LOG_IN,
   NEW_ACCOUNT,
   PASSWORD_RECOVERY
@@ -136,3 +172,7 @@ export type PasswordRecoveryRequest = {
 }
 
 
+enum FORM_RECTRICTIONS{
+  USERNAME_MAX = 8,
+  PASSWORD_MAX = 16
+}

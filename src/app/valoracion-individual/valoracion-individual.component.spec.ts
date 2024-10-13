@@ -15,7 +15,6 @@ describe('ValoracionIndividualComponent', () => {
 
     fixture = TestBed.createComponent(ValoracionIndividualComponent);
     component = fixture.componentInstance;
-    component.valoracion = new Valoration()
     fixture.detectChanges();
   });
 
