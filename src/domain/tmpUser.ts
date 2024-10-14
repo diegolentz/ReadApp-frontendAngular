@@ -137,8 +137,7 @@ export class UserInformacion {
         public fechaNacimiento: Date | null = null,
         public email: string | null = null,
         public perfil: Array<PerfilDeLectura> | null = null,
-        public tipoDeLector: string | null = null)
-         {
+        public tipoDeLector: string | null = null) {
 
     }
 }
@@ -147,10 +146,6 @@ export class UserInformacion {
 export class UserProfileFriend implements DomainObject {
     constructor(
         public id: number = -1,
-        public fotoPath: string = "",
-        public nombre: string = "",
-        public apellido: string = "",
-        public alias: string = "",
         public amigos: Array<UserFriend> = [],
     ) { }
 
@@ -158,10 +153,6 @@ export class UserProfileFriend implements DomainObject {
 
         return new UserProfileFriend(
             userProfileFriendJSON.id,
-            userProfileFriendJSON.fotoPath,
-            userProfileFriendJSON.nombre,
-            userProfileFriendJSON.apellido,
-            userProfileFriendJSON.alias,
             userProfileFriendJSON.amigos.map((friendJSON) => {
                 return UserFriend.prototype.fromJSON(friendJSON)
             })
@@ -195,8 +186,7 @@ export class UserFriend implements DomainObject {
     constructor(
         public id: number = -1,
         public fotoPath: string = "",
-        public nombre: string = "",
-        public apellido: string = "",
+        public nombreCompleto: string = "",
         public alias: string = "",
     ) { }
 
@@ -229,16 +219,11 @@ export class UserFriend implements DomainObject {
 
 export type UserFriendPivot = {
     fotoPath: string,
-    nombre: string,
-    apellido: string,
+    nombreCompleto: string,
     alias: string,
 }
 
 export type UserProfileFriendPivot = {
-    fotoPath: string,
-    nombre: string,
-    apellido: string,
-    alias: string,
     amigos: Array<UserFriendJSON>
 }
 

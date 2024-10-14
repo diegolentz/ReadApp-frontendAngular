@@ -6,7 +6,7 @@ import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.com
 import { ServiceUser } from '../../service/service-user.service';
 import { User } from '../../domain/user';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
-import { UserProfileFriend } from '../../domain/tmpUser';
+import { UserFriend, UserProfileFriend } from '../../domain/tmpUser';
 
 @Component({
   selector: 'app-profile-friends',
@@ -17,7 +17,7 @@ import { UserProfileFriend } from '../../domain/tmpUser';
 })
 export class ProfileFriendsComponent implements OnInit {
 
-  friends!: UserProfileFriend;
+  friends!: UserFriend[];
 
   constructor(private userService: ServiceUser) { }
 

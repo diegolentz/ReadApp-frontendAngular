@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -51,19 +51,30 @@ export class ServiceUser {
   }
 
 
-  async actualizarInfoUsuario(infoNueva:UserInformacion){
+  async actualizarInfoUsuario(infoNueva: UserInformacion) {
     await lastValueFrom(this.httpClient.put<UserInformacion>(
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
   }
-  
 
-  async getUserFriendsByID(id: number): Promise<UserProfileFriend> {
-    const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())
+
+  async getUserFriendsByID(id: number): Promise<UserFriend[]> {
+    const user$ = this.httpClient.get<UserFriendJSON[]>(REST_SERVER_URL + '/user/friends/' + id.toString())
     const user = await (lastValueFrom(user$))
-    const userProfileFriend = UserProfileFriend.prototype.fromJSON(user)
-    return userProfileFriend
+    const userFriend: UserFriend[] = user.map((it: UserFriendJSON) => UserFriend.prototype.fromJSON(it))
+    return userFriend
+    // const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())
+    // const user = await (lastValueFrom(user$))
+    // const userProfileFriend = UserProfileFriend.prototype.fromJSON(user)
+    // return userProfileFriend
+  }
+
+  async getUserNotFriendsByID(id: number): Promise<UserFriend[]> {
+    const user$ = this.httpClient.get<UserFriendJSON[]>(REST_SERVER_URL + '/user/new-friends/' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userFriend: UserFriend[] = user.map((it: UserFriendJSON) => UserFriend.prototype.fromJSON(it))
+    return userFriend
   }
 
   async newAccount(newAccountRequest: NewAccountRequest): Promise<NewAccountResponse> {
@@ -78,5 +89,5 @@ export type LoginResponse = {
 }
 
 export type NewAccountResponse = {
-  message:string
+  message: string
 }

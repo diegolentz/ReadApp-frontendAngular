@@ -1,9 +1,9 @@
 <h2>Friends</h2>
 
 <app-container-friends>
-    @for (friend of friends.amigos; track friend){
+    @for (friend of friends; track friend){
         <app-amigos [userFriend]="friend"></app-amigos>
     }
-    <app-boton-agregar></app-boton-agregar>
+    <app-boton-agregar [view]="'my-profile'" [tipo]="'new-friends'"></app-boton-agregar>
 </app-container-friends>
 <app-btn-guardar-cancelar></app-btn-guardar-cancelar >

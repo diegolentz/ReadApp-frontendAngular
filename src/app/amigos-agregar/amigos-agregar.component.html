@@ -1,1 +1,9 @@
-<p>amigos-agregar works!</p>
+<h2>Friends</h2>
+
+<app-container-friends>
+    @for (friend of friends; track friend){
+        <app-amigos [userFriend]="friend"></app-amigos>
+    }
+</app-container-friends>
+<app-btn-guardar-cancelar></app-btn-guardar-cancelar >
+
