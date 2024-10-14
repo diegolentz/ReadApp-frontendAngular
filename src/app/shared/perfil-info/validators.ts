@@ -11,7 +11,7 @@ export class MinMaxValidator {
             let min: number = minControl?.value;
             let max: number = maxControl?.value;
 
-            if (min > max || min < 0) {
+            if (min > max || min <= 0) {
                 maxControl?.setErrors({ "LessThanMin": true });
             }
             else {
