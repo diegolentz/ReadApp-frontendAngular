@@ -6,10 +6,12 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { BtnGuardarCancelarComponent } from '../btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { ServiceUser } from '../../../service/service-user.service';
 import { FormErrorComponent } from "../../perfil-info/form-error/form-error.component";
-import { UserInformacion, UserProfile, PerfilDeLectura } from '../../../domain/tmpUser';
+import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
+
 import e from 'express';
 import { ToastrService } from 'ngx-toastr';
+
 
 
 
@@ -30,15 +32,14 @@ export class PerfilInfoComponent {
   private chPermitidosUser = '^[a-zA-Z0-9]*$';
 
   /* Hacer aparecer botones de min y max cuando se presiona Calculador */
-  mostrarCalculador = new MostrarCalculador();
-  mostrarNuevosInputs: boolean = false;
-
+  mostrarBoton: boolean = false
   boton = new BtnGuardarCancelarComponent()
 
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
   userBusqueda: Array<string> = []
+  tiempoDeLectura: number = 0
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService) {
     this.perfilForm = this.fb.group({
@@ -50,11 +51,12 @@ export class PerfilInfoComponent {
     })
 
     this.calculadorForm = this.fb.group({
-      'numero min': [0],
-      'numero max': [0]
+      'numero min': [],
+      'numero max': []
     })
 
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
+    
 
   }
   errorMessage(form: FormGroup, campo: string, validator: string) {
@@ -64,14 +66,15 @@ export class PerfilInfoComponent {
     if (validator == 'pattern' && error) return 'el campo contiene carácteres no permitidos'
     if (validator == 'email' && error) return 'dominio del correo incorrecto'
     if (validator == 'date validator' && error) return 'ingrese una fecha menor a hoy'
-    if (validator == 'minmax' && error) return 'el valor minimo no puede superar a l máximo o ser negativo'
+    if (validator == 'minmax' && error) return 'el valor minimo no puede superar al máximo o ser menos que 0'
     return undefined
   }
 
-  mostrar(event: any) {
-    this.mostrarNuevosInputs = event.target.checked;
+  mostrar() {
+    this.mostrarBoton = !this.mostrarBoton
     this.resetCalculador() // Actualiza según si el checkbox está marcado o no
   }
+
   resetCalculador() {
     this.calculadorForm.reset()
   }
@@ -79,13 +82,13 @@ export class PerfilInfoComponent {
   estaEn(valor: string, lista: Array<string>) {
     const incluye = lista.includes(valor)
     if (valor == 'Calculador' && incluye) {
-      this.mostrarNuevosInputs = true
+      this.mostrarBoton = true
     }
     return incluye
   }
 
   modificarBusqueda(valor: string, lista: Array<string>) {
-    if (this.estaEn(valor, lista)) {
+    if (lista.includes(valor)) {
       const indice = lista.indexOf(valor)
       lista.splice(indice, 1)
     } else {
@@ -106,6 +109,7 @@ export class PerfilInfoComponent {
     /* let userData = await this.UserService.getUserProfileByID(2) */
     this.userBusqueda = this.obtenerPerfiles(userData.perfil)
     this.userLectura.push(userData.tipoDeLector)
+    this.tiempoDeLectura = userData.tiempoLecturaPromedio
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
@@ -143,7 +147,7 @@ export class PerfilInfoComponent {
   }
 
   async guardar() {
-    if (this.perfilForm.valid) {
+    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
         2,
         this.getValueForm("nombre", this.perfilForm),
@@ -173,11 +177,9 @@ export class PerfilInfoComponent {
 }
 
 class MostrarCalculador {
-  mostrar: boolean = false
+  
 
-  show() {
-    this.mostrar = !this.mostrar
-  }
+  
 }
 
 

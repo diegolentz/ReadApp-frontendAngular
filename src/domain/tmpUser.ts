@@ -73,6 +73,7 @@ export class UserProfile implements DomainObject {
         public librosLeidos: any = "",
         public librosALeer: any = "",
         public recomendacionesAValorar: any = "",
+        public tiempoLecturaPromedio: number = 0
     ) { }
 
     public fromJSON(userJSON: UserProfileJSON): UserProfile {
@@ -136,7 +137,8 @@ export class UserInformacion {
         public fechaNacimiento: Date | null = null,
         public email: string | null = null,
         public perfil: Array<PerfilDeLectura> | null = null,
-        public tipoDeLector: string | null = null) {
+        public tipoDeLector: string | null = null)
+         {
 
     }
 }
