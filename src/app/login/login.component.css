@@ -145,11 +145,11 @@ input:focus {
 }
 
 .btn__signIn {
-    background-color: var(--color-celeste-oscuro);
+    background-color: var(--color-save);
 }
 
 .btn__createAccount {
-    background-color: var(--color-save);
+    background-color: var(--color-celeste-oscuro);
 }
 
 .btn__passwordRecovery {
@@ -160,7 +160,7 @@ input:focus {
     background-color: darkgoldenrod;
 }
 
-.btn__signIn:hover,
+.btn__signIn.btn__valid:hover,
 .btn__createAccount:hover,
 .btn__passwordRecovery:hover,
 .btn__back:hover {
@@ -173,3 +173,12 @@ input:focus {
 .input__required{
     color: red;
 }
+.btn__valid{
+    filter: brightness(100%);
+    opacity: 1;
+}
+.btn__invalid{
+    filter: brightness(80%);
+    opacity: 0.5;
+}
+
