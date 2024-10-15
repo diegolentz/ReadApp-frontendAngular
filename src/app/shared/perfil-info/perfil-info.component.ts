@@ -9,8 +9,8 @@ import { FormErrorComponent } from "../../perfil-info/form-error/form-error.comp
 import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
 
-import e from 'express';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -35,13 +35,17 @@ export class PerfilInfoComponent {
   mostrarBoton: boolean = false
   boton = new BtnGuardarCancelarComponent()
 
+
+  /* Variables del Usuario */
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
   userBusqueda: Array<string> = []
   tiempoDeLectura: number = 0
 
-  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router:Router) {
+
+    /* Armado de los formgroups con sus validators */
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
       'apellido': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -49,16 +53,15 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': ['', [Validators.required, DateValidator.LessThanToday]],
       'email': ['', [Validators.required, Validators.email]]
     })
-
     this.calculadorForm = this.fb.group({
       'numero min': [],
       'numero max': []
     })
-
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
     
-
   }
+
+  /* Mensajes de error cuando falla el validator */
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
     const error = campoForm?.errors
@@ -146,6 +149,14 @@ export class PerfilInfoComponent {
     })
   }
 
+  getValueForm(campo: string, form: FormGroup) {
+    const valor = form.get(campo)
+    if (valor?.dirty) {
+      return valor.value
+    }
+    return null
+  }
+
   async guardar() {
     if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
@@ -158,7 +169,7 @@ export class PerfilInfoComponent {
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
-      )).then(() => this.toastr.success("Información actualizada correctamente"))
+      )).then(() => this.toastr.success("Información actualizada correctamente")).then(() => location.reload())
     }
     else {
       this.toastr.error('Algunos campos del formulario son inválidos', 'ERROR')
@@ -166,20 +177,12 @@ export class PerfilInfoComponent {
 
   }
 
-  getValueForm(campo: string, form: FormGroup) {
-    const valor = form.get(campo)
-    if (valor?.dirty) {
-      return valor.value
-    }
-    return null
+  cancelar(){
+    location.reload()
   }
 
-}
+ 
 
-class MostrarCalculador {
-  
-
-  
 }
 
 

@@ -2,7 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PerfilInfoComponent } from './perfil-info.component';
 import { HttpClient } from '@angular/common/http';
-import { app } from '../../../../server';
+import { ToastrModule } from 'ngx-toastr';
+
 
 describe('PerfilInfoComponent', () => {
   let component: PerfilInfoComponent;
@@ -10,7 +11,7 @@ describe('PerfilInfoComponent', () => {
   let httpClientSpy: jasmine.SpyObj<HttpClient>
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PerfilInfoComponent],
+      imports: [PerfilInfoComponent, ToastrModule.forRoot()], //Se agrega ToastrModule.forRoot() para que los tests no rompan
       providers: [
         {provide: HttpClient, useValue: httpClientSpy},
       ]
