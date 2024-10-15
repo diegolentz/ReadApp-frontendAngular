@@ -1,12 +1,9 @@
 article{
     max-width: 38rem;
-    height: auto;
+    height: 20rem;
     border-radius: var(--borde-default);
     display: grid;
-
     gap: var(--space-xs);
-    
-    /* margin: 3rem; */
     padding: var(--space-md);
     
     &:hover{
@@ -15,7 +12,7 @@ article{
 }
 .libro__acciones{
     grid-area: acciones;
-    height: 100%;
+    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -36,8 +33,7 @@ article{
     grid-template-areas:
     "portada descripcion acciones";
     grid-template-columns: 0.1fr 1.5fr 0.1fr;
-    height: 100%;
-    
+    height: auto;
     background: linear-gradient(to bottom, var(--color-card-libro), var(--color-card-libro-gradiente));
     transition: 0.25s;
 }
@@ -48,8 +44,6 @@ article{
     grid-area: portada;
     border-radius: 1rem;
     margin: auto;
-
-    
 }
 
 .libro__contenido{

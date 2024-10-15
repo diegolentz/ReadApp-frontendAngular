@@ -4,7 +4,7 @@ import { ContainerBooksComponent } from '../shared/layouts/books/books.component
 import { CommonModule } from '@angular/common';
 import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 
@@ -16,7 +16,7 @@ import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-
   styleUrl: './libros-agregar.component.css'
 })
 export class LibrosAgregarComponent implements OnInit {
-  constructor(private route: ActivatedRoute, public bookService: BookService) { }
+  constructor(private route: ActivatedRoute, public bookService: BookService, public router: Router) { }
 
   tipoContenido!: string;
   estado!: boolean;
@@ -52,5 +52,8 @@ export class LibrosAgregarComponent implements OnInit {
   async agregarLibros() {
     await this.bookService.agregarLibro(this.librosAgregados, this.estado);
     window.history.back();
+  }
+  volverHome() {
+    this.router.navigate(['home']);
   }
 }
