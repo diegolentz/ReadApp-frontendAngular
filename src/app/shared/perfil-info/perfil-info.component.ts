@@ -35,6 +35,8 @@ export class PerfilInfoComponent {
   mostrarBoton: boolean = false
   boton = new BtnGuardarCancelarComponent()
 
+
+  /* Variables del Usuario */
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
@@ -42,6 +44,8 @@ export class PerfilInfoComponent {
   tiempoDeLectura: number = 0
 
   constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router:Router) {
+
+    /* Armado de los formgroups con sus validators */
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
       'apellido': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -49,15 +53,12 @@ export class PerfilInfoComponent {
       'fecha de nacimiento': ['', [Validators.required, DateValidator.LessThanToday]],
       'email': ['', [Validators.required, Validators.email]]
     })
-
     this.calculadorForm = this.fb.group({
       'numero min': [],
       'numero max': []
     })
-
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
     
-
   }
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
