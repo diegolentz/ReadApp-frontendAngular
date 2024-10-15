@@ -5,11 +5,12 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BookService } from '../../service/book.service';
 import { RecommendationService } from '../../service/recommendation.service';
+import { InputComponent } from "../input/input.component";
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [CheckNavComponent, CommonModule, FormsModule],
+  imports: [CheckNavComponent, CommonModule, FormsModule, InputComponent],
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })

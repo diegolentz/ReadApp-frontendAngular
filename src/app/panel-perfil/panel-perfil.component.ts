@@ -3,6 +3,7 @@ import { NgFor } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
 import { ServiceUser } from '../../service/service-user.service';
 import { UserAside, UserBasic } from '../../domain/tmpUser';
+import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-panel-perfil',
   standalone: true,
@@ -36,8 +37,23 @@ export class PanelPerfilComponent {
   }
 
   async getInfo() {
-    this.myInfo = await this.userService.getUserBasicByID(3);
+
+    try {
+      const usuarioLogueadoID = Number(localStorage.getItem('id'))
+      this.myInfo = await this.userService.getUserBasicByID(usuarioLogueadoID);
+    }
+    catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
+        //Solo me interesa HttpErrorResponde
+        console.log(error.error["timestamp"])
+        console.log(error.error["status"])
+        console.log(error.error["error"])
+        console.log(error.error["message"])
+        console.log(error.error["path"])
+      }
+    }
   }
+
 }
 
 export class Option {
