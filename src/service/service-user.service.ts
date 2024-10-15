@@ -4,7 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend, UserAside, UserAsideJSON } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
 
 @Injectable({
@@ -75,6 +75,13 @@ export class ServiceUser {
     const user = await (lastValueFrom(user$))
     const userFriend: UserFriend[] = user.map((it: UserFriendJSON) => UserFriend.prototype.fromJSON(it))
     return userFriend
+  }
+
+  async getUserAsideByID(id: number): Promise<UserAside> {
+    const user$ = this.httpClient.get<UserAsideJSON>(REST_SERVER_URL + '/user/profile' + id.toString())
+    const user = await (lastValueFrom(user$))
+    const userAside = UserAside.prototype.fromJSON(user)
+    return userAside
   }
 
   async newAccount(newAccountRequest: NewAccountRequest): Promise<NewAccountResponse> {
