@@ -1,11 +1,27 @@
 
-.opcionSeleccionada__libros{
+.librosContainer{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 32rem), 0.8fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 0.6fr));
     
-    gap:2rem;
-    margin: 1rem;
+    gap:1rem;
+    /* margin: 1rem; */
     overflow-y:auto;  /* permite scroll */
-    max-height: 60vh;  /* establece  naximo de altura */
+    height: 51vh;  /* establece  naximo de altura */
+    text-align: center;
 }
 
+
+
+.librosContainer::-webkit-scrollbar {
+    width: 0.8rem;
+    margin-left: 0.5rem;
+}
+
+.librosContainer::-webkit-scrollbar-track {
+    background-color: var(--color-fondo);
+}
+
+.librosContainer::-webkit-scrollbar-thumb {
+    background-color: var(--color-header);
+    border-radius: 2rem;
+}

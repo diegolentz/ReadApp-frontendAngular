@@ -7,6 +7,7 @@ import { NgFor } from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { UserBasic } from '../../domain/tmpUser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-books-readed',
@@ -17,7 +18,7 @@ import { UserBasic } from '../../domain/tmpUser';
 })
 export class ProfileBooksReadedComponent implements OnInit {
   @HostBinding('style.width') width: string = '100%';
-  constructor(public bookService: BookService) { }
+  constructor(public bookService: BookService, public route: Router) { }
 
   books: Book[] = [];
   librosAgregados: number[] = [];
@@ -37,5 +38,8 @@ export class ProfileBooksReadedComponent implements OnInit {
   async eliminarLibros() {
     await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
     window.history.back();
+  }
+  volverHome() {
+    this.route.navigate(['home']);
   }
 }
