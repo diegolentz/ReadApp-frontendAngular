@@ -10,6 +10,7 @@ import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
 
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 
@@ -40,7 +41,7 @@ export class PerfilInfoComponent {
   userBusqueda: Array<string> = []
   tiempoDeLectura: number = 0
 
-  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router:Router) {
     this.perfilForm = this.fb.group({
       'nombre': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
       'apellido': ['', [Validators.required, Validators.pattern(this.chPermitidosNomb)]],
@@ -157,12 +158,16 @@ export class PerfilInfoComponent {
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
-      )).then(() => this.toastr.success("Información actualizada correctamente"))
+      )).then(() => this.toastr.success("Información actualizada correctamente")).then(() => location.reload())
     }
     else {
       this.toastr.error('Algunos campos del formulario son inválidos', 'ERROR')
     }
 
+  }
+
+  cancelar(){
+    location.reload()
   }
 
   getValueForm(campo: string, form: FormGroup) {
@@ -173,12 +178,6 @@ export class PerfilInfoComponent {
     return null
   }
 
-}
-
-class MostrarCalculador {
-  
-
-  
 }
 
 
