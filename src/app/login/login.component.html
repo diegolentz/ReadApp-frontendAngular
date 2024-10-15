@@ -7,101 +7,42 @@
         <!-- ------------------------   -->
         <!-- Log in Form                -->
         <!-- ------------------------   -->
-        <form [formGroup]="loginForm" *ngIf="showFormLogin()" class="form__inputs">
+        <form [formGroup]="form" *ngIf="showFormLogin()" class="form__inputs">
 
             <div class="campo">
-                <input type="text" id="username" name="username" formControlName="username">
-                <label for="username">Username</label>
-                <div class="input__required" *ngIf="warning('username')">
-                    <span *ngIf="this.loginForm.controls['username'].errors?.['required']">* Required</span>
-                    <span *ngIf="this.loginForm.controls['username'].errors?.['maxlength']">* Max {{this.formRestrictions.USERNAME_MAX}} characters</span>
+                <input type="text" id={{formLabels.username}} name={{formLabels.username}} formControlName={{formLabels.username}}>
+                <label for={{formLabels.username}}>Username</label>
+                <div class="input__required" *ngIf="warning(formLabels.username)">
+                    <span *ngIf="this.form.controls[formLabels.username].errors?.['required']">* Required</span>
+                    <span *ngIf="this.form.controls[formLabels.username].errors?.['maxlength']">* Max {{this.formRestrictions.USERNAME_MAX}} characters</span>
                 </div>
             </div>
 
             <div class="campo">
-                <input type="password" id="password" name="password" formControlName="password">
-                <label for="password" >Password</label>
-                <div class="input__required" *ngIf="warning('password')">
-                    <span *ngIf="this.loginForm.controls['password'].errors?.['required']">* Required</span>
-                    <span *ngIf="this.loginForm.controls['password'].errors?.['maxlength']">* Max {{this.formRestrictions.PASSWORD_MAX}} characters</span>
+                <input type="password" id={{formLabels.password}}  name={{formLabels.password}} formControlName={{formLabels.password}} >
+                <label for={{formLabels.password}}  >Password</label>
+                <div class="input__required" *ngIf="warning(formLabels.password)">
+                    <span *ngIf="this.form.controls[formLabels.password].errors?.['required']">* Required</span>
+                    <span *ngIf="this.form.controls[formLabels.password].errors?.['maxlength']">* Max {{this.formRestrictions.PASSWORD_MAX}} characters</span>
                 </div>
             </div>
             <div class="actions">
-                <button class="btn btn__signIn" (click)="tryLogin()" [disabled]="!this.loginForm.valid" [attr.data-testid]="'login'">Login</button>
+                <button class="btn btn__signIn" (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'login'" [ngClass]="{'btn__valid': form.valid, 'btn__invalid': !form.valid}">Login</button>
                 <button class="btn btn__createAccount" (click)="changeToCreateAccount()">New account</button>
                 <button class="btn btn__passwordRecovery" (click)="changeToPasswordRecovery()">Password Recovery</button>
             </div>
-            
+        
         </form>
 
-        <!-- ------------------------   -->
-        <!-- New account               -->
-        <!-- ------------------------   -->
-        <form [formGroup]="newAccountForm" *ngIf="showFormCreateAccount()" class="form__inputs">
+        <app-new-account-form *ngIf="showFormCreateAccount()">
+        </app-new-account-form>
 
-            <div class="campo">
-                <input type="text" id="email" name="email" formControlName="email">
-                <label for="email">Email</label>
-                <!-- <div *ngIf="warning('email')">
-                    <span *ngIf="this.loginForm.controls['email'].errors?.['email']">* Required</span>
-                </div> -->
-            </div>
+        <app-password-recovery-form *ngIf="showFormPasswordRecovery()">
+        </app-password-recovery-form>
 
-            <div class="campo">
-                <input type="text" id="username" name="username" formControlName="username">
-                <label for="username">Username</label>
-                <!-- <div class="input__required" *ngIf="warning('username')">
-                    <span *ngIf="this.loginForm.controls['username'].errors?.['username']">* Required</span>
-                    <span *ngIf="this.loginForm.controls['username'].errors?.['username']">* Max {{this.formRestrictions.PASSWORD_MAX}} characters</span>
-                </div> -->
-            </div>
-
-            <div class="campo">
-                <input type="password" id="password" name="password" formControlName="password">
-                <label for="password">Password</label>
-                <!-- <div *ngIf="warning('password')">
-                    <span *ngIf="this.loginForm.controls['password'].errors?.['password']">* Required</span>
-                </div> -->
-            </div>
-
-            <div class="campo">
-                <input type="text" id="name" name="name" formControlName="name">
-                <label for="name">Name</label>
-                <!-- <div *ngIf="warning('name')">
-                    <span *ngIf="this.loginForm.controls['name'].errors?.['name']">* Required</span>
-                </div> -->
-            </div>
-            <div class="actions">
-                <button class="btn btn__signIn" (click)="tryCreateAccount()">Create account</button>
-                <button class="btn btn__back" (click)="changeToLogin()">Back to login</button>
-
-            </div>
-            
-            
-        </form>
-
-        <!-- ------------------------   -->
-        <!-- Password recovery          -->
-        <!-- ------------------------   -->
-        <form [formGroup]="loginForm" *ngIf="showPasswordRecovery()">
-            <div class="campo">
-                <input type="email" id="email" name="email" formControlName="email">
-                <label for="email">Email</label>
-                <div *ngIf="formInvalid('email') && formTouchedDirty('email')">
-                    <span>INVALIDO</span>
-                </div>
-            </div>
-            <div class="campo">
-                <input type="text" id="username" name="username" formControlName="username">
-                <label for="username">Username</label>
-                <div *ngIf="formInvalid('username') && formTouchedDirty('username')">
-                    <span>INVALIDO</span>
-                </div>
-            </div>
-            <button class="btn btn__signIn" (click)="tryLogin()">Recover password</button>
+        <div class="actions" *ngIf="!showFormLogin()">
             <button class="btn btn__createAccount" (click)="changeToLogin()">Back to login</button>
-        </form>
-
+        </div>
         
     </div>
 </main>

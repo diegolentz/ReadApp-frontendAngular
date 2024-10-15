@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { FRIENDS } from '../mock/mockUser';
+
 import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
-import { LoginRequest, NewAccountRequest } from '../app/login/login.component';
+import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
 
 @Injectable({
   providedIn: 'root'
@@ -77,10 +77,16 @@ export class ServiceUser {
     return userFriend
   }
 
-  async newAccount(newAccountRequest: NewAccountRequest): Promise<NewAccountResponse> {
-    const newAccountResponse$ = this.httpClient.post<NewAccountResponse>(REST_SERVER_URL + '/createAccount', newAccountRequest)
+  async newAccount(newAccountRequest: NewAccountRequest): Promise<MessageResponse> {
+    const newAccountResponse$ = this.httpClient.post<MessageResponse>(REST_SERVER_URL + '/createAccount', newAccountRequest)
     const newAccountResponse = await (lastValueFrom(newAccountResponse$))
     return newAccountResponse
+  }
+
+  async passwordRecovery(passwordRecoveryRequest: PasswordRecoveryRequest): Promise<MessageResponse> {
+    const response$ = this.httpClient.post<MessageResponse>(REST_SERVER_URL + '/passwordRecovery', passwordRecoveryRequest)
+    const response = await (lastValueFrom(response$))
+    return response
   }
 }
 
@@ -88,6 +94,6 @@ export type LoginResponse = {
   userID: number
 }
 
-export type NewAccountResponse = {
+export type MessageResponse = {
   message: string
 }
