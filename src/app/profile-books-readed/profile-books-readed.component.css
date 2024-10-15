@@ -6,7 +6,7 @@
     gap:1rem;
     /* margin: 1rem; */
     overflow-y:auto;  /* permite scroll */
-    max-height: 48vh;  /* establece  naximo de altura */
+    height: 51vh;  /* establece  naximo de altura */
     text-align: center;
 }
 
