@@ -9,7 +9,6 @@ import { FormErrorComponent } from "../../perfil-info/form-error/form-error.comp
 import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
 
-import e from 'express';
 import { ToastrService } from 'ngx-toastr';
 
 
