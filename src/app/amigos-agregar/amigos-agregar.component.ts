@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { ContainerFriendsComponent } from "../shared/layouts/friends/friends.component";
 import { AmigosComponent } from "../amigos/amigos.component";
 import { BtnGuardarCancelarComponent } from "../shared/btn-guardar-cancelar/btn-guardar-cancelar.component";
@@ -12,7 +12,7 @@ import { ServiceUser } from '../../service/service-user.service';
   templateUrl: './amigos-agregar.component.html',
   styleUrl: './amigos-agregar.component.css'
 })
-export class AmigosAgregarComponent {
+export class AmigosAgregarComponent implements OnInit {
 
   @HostBinding('style.width') width: string = '100%';
 

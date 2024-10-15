@@ -4,92 +4,55 @@ import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 import { ServiceUser } from '../../service/service-user.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgIf } from '@angular/common';
-
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgClass, NgIf } from '@angular/common';
+import { NewAccountFormComponent } from "../forms/new-account-form/new-account-form.component";
+import { LoginRequest } from '../../domain/types';
+import { CommonForm } from '../../domain/forms';
+import { ToastrService } from 'ngx-toastr';
+import { PasswordRecoveryFormComponent } from '../forms/password-recovery-form/password-recovery-form.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, ReactiveFormsModule],
+  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, ReactiveFormsModule, NewAccountFormComponent, NgClass, PasswordRecoveryFormComponent],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
-
+export class LoginComponent extends CommonForm{
+  override formLabels = {
+    username:'username',
+    password:'password',
+  }
   formRestrictions = FORM_RECTRICTIONS
   constructor(
-    private router: Router,
-    private serviceUser: ServiceUser,
-    private fb:FormBuilder
+    private rt:Router,
+    private service:ServiceUser,
+    private fb:FormBuilder,
+    private toast:ToastrService
   ){
-    this.loginForm = this.fb.group({
-      'username': ['', [Validators.required, Validators.maxLength(this.formRestrictions.USERNAME_MAX)]],
-      'password': ['', [Validators.required, , Validators.maxLength(this.formRestrictions.PASSWORD_MAX)]],
-    })
-    this.newAccountForm = this.fb.group({
-      'email': ['', [Validators.required]],
-      'username': ['', [Validators.required, Validators.maxLength(this.formRestrictions.USERNAME_MAX)]],
-      'password': ['', [Validators.required, Validators.maxLength(this.formRestrictions.PASSWORD_MAX)]],
-      'name': ['', [Validators.required]]
+    
+    super(rt,service,fb, toast);
+    this.form = this.fb.group({
+      [this.formLabels.username]: ['', [Validators.required, Validators.maxLength(this.formRestrictions.USERNAME_MAX)]],
+      [this.formLabels.password]: ['', [Validators.required, , Validators.maxLength(this.formRestrictions.PASSWORD_MAX)]],
     })
   }
 
   formType:FormType = FormType.LOG_IN
-  loginForm!:FormGroup
-  newAccountForm!:FormGroup
-
-  id!: number;
 
   goTo(option: string) {
-    this.router.navigate([option])
+    this.rt.navigate([option])
   }
 
-  async tryLogin() {
-    const request = this.buildLoginRequest()
+  override async request(){
     try {
-      const response = await this.serviceUser.login(request)
-      this.id = response.userID
-      localStorage.setItem('id', this.id.toString());
-      this.goTo('home')
+      const request = this.buildLoginRequest()
+      const response = await this.service.login(request)
+      this.logUser(response.userID)
     }
     catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        console.log(error.error["status"])
-        console.log(error.error["error"])
-        alert(error.error["message"])
-      }
-    }
-  }
-
-  async tryCreateAccount() {
-    const request = this.buildNewAccountRequest()
-    try {
-      const response = await this.serviceUser.newAccount(request)
-      alert(response.message)
-      this.changeToLogin()
-    }
-    catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        console.log(error.error["status"])
-        console.log(error.error["error"])
-        alert(error.error["message"])
-      }
-    }
-  }
-
-  async tryPasswordRecovery() {
-    try {
-      console.log("PASSWORD")
-      // const response = await this.serviceUser.login(this.loginRequest)
-
-    }
-    catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        console.log(error.error["status"])
-        console.log(error.error["error"])
-        console.log(error.error["message"])
-      }
+      this.httpErrorHandler(error)
     }
   }
 
@@ -108,44 +71,21 @@ export class LoginComponent{
   showFormCreateAccount() {
     return this.formType == FormType.NEW_ACCOUNT
   }
-  showPasswordRecovery() {
+  showFormPasswordRecovery() {
     return this.formType == FormType.PASSWORD_RECOVERY
   }
+
   buildLoginRequest():LoginRequest{
     return {
-      username:this.getFormValue("username", this.loginForm),
-      password:this.getFormValue("password", this.loginForm)
+      username:this.getFormValue(this.formLabels.username),
+      password:this.getFormValue(this.formLabels.password)
     }
   }
-  buildNewAccountRequest():NewAccountRequest{
-    return {
-      email:this.getFormValue("email", this.newAccountForm),
-      username:this.getFormValue("username", this.newAccountForm),
-      password:this.getFormValue("password", this.newAccountForm),
-      name:this.getFormValue("name", this.newAccountForm)
-    }
-  }
-  buildPasswordRecovery():NewAccountRequest{
-    return {
-      email:this.getFormValue("email", this.newAccountForm),
-      username:this.getFormValue("username", this.newAccountForm),
-      password:this.getFormValue("password", this.newAccountForm),
-      name:this.getFormValue("name", this.newAccountForm)
-    }
-  }
-  getFormValue(label:string, form:FormGroup){
-    return form.get(label)?.value
+  private logUser(userID:number){
+    localStorage.setItem('id', userID.toString());
+    this.goTo('home')
   }
 
-  warning(label:string){
-    return this.formInvalid(label) && this.formTouchedDirty(label)
-  }
-  formInvalid(label:string):boolean{
-    return this.loginForm.controls[label].invalid
-  }
-  formTouchedDirty(label:string):boolean{
-    return (this.loginForm.controls[label].touched || this.loginForm.controls[label].dirty)
-  }
 }
 
 export enum FormType{
@@ -153,24 +93,6 @@ export enum FormType{
   NEW_ACCOUNT,
   PASSWORD_RECOVERY
 }
-
-export type LoginRequest = {
-  username:string
-  password:string
-}
-
-export type NewAccountRequest = {
-  username:string
-  password:string
-  name:string
-  email:string
-}
-
-export type PasswordRecoveryRequest = {
-  email:string,
-  username:string
-}
-
 
 enum FORM_RECTRICTIONS{
   USERNAME_MAX = 8,
