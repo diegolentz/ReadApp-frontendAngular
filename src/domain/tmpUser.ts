@@ -231,3 +231,44 @@ export type UserFriendJSON = CommonJSON & UserFriendPivot;
 
 export type UserProfileFriendJSON = CommonJSON & UserProfileFriendPivot;
 
+export class UserAside implements DomainObject {
+    constructor(
+        public id: number = -1,
+        public fotoPath: string = "",
+        public nombreCompleto: string = "",
+    ) { }
+
+    public fromJSON(userAsideJSON: UserAsideJSON): UserAside {
+        return Object.assign(new UserAside(), userAsideJSON)
+    }
+
+    //ARREGLAR
+    public toJSON(user: UserProfile): UserProfileJSON {
+        return {
+            id: user.id,
+            fotoPath: user.fotoPath,
+            nombre: user.nombre,
+            apellido: user.apellido,
+            alias: user.alias,
+            lenguaje: user.lenguaje,
+            palabrasPorMinutos: user.palabrasPorMinutos,
+            fechaNacimiento: user.fechaNacimiento,
+            email: user.email,
+            perfil: user.perfil,
+            tipoDeLector: user.tipoDeLector,
+            amigos: user.amigos,
+            librosLeidos: user.librosLeidos,
+            librosALeer: user.librosALeer,
+            recomendacionesAValorar: user.recomendacionesAValorar
+        }
+    }
+
+}
+
+export type UserAsidePivot = {
+    fotoPath: string,
+    nombreCompleto: string,
+}
+
+export type UserAsideJSON = CommonJSON & UserAsidePivot;
+

@@ -1,6 +1,8 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { ActivatedRoute, RouterLink, Router } from '@angular/router';
+import { ServiceUser } from '../../service/service-user.service';
+import { UserAside, UserBasic } from '../../domain/tmpUser';
 @Component({
   selector: 'app-panel-perfil',
   standalone: true,
@@ -9,30 +11,41 @@ import { ActivatedRoute, RouterLink, Router } from '@angular/router';
   styleUrl: './panel-perfil.component.css'
 })
 export class PanelPerfilComponent {
-  constructor(private router:Router, private route:ActivatedRoute){}
-  
-  goTo(option:string){
-    this.router.navigate([option], {relativeTo:this.route})
-  }
-  opcionTitulos = ['Information', 'Friends', 'Books readed', 'Books to read','Recommendations to value']
-  svgs = ['information.svg',
-          'amigos.svg',
-          'librosLeidos.svg',
-          'librosALeer.svg',
-          'recomendacionesAValorar.svg']
-  colorDefault = ''
-  colorSvg = ['#208544','#203885','#822085','#33d2c8','ff0000']
-  path = ['information', 'friends', 'books-readed', 'books-to-read','recommendations-to-value']
 
-  options = this.opcionTitulos.map((titulo, i) => new Option( titulo,this.svgs[i],  this.colorDefault,this.colorSvg[i],this.path[i]));
+  myInfo!: UserBasic
+
+  constructor(private router: Router, private route: ActivatedRoute, private userService: ServiceUser) { }
+
+  goTo(option: string) {
+    this.router.navigate([option], { relativeTo: this.route })
+  }
+  opcionTitulos = ['Information', 'Friends', 'Books readed', 'Books to read', 'Recommendations to value']
+  svgs = ['information.svg',
+    'amigos.svg',
+    'librosLeidos.svg',
+    'librosALeer.svg',
+    'recomendacionesAValorar.svg']
+  colorDefault = ''
+  colorSvg = ['#208544', '#203885', '#822085', '#33d2c8', 'ff0000']
+  path = ['information', 'friends', 'books-readed', 'books-to-read', 'recommendations-to-value']
+
+  options = this.opcionTitulos.map((titulo, i) => new Option(titulo, this.svgs[i], this.colorDefault, this.colorSvg[i], this.path[i]));
+
+  async ngOnInit() {
+    await this.getInfo()
+  }
+
+  async getInfo() {
+    this.myInfo = await this.userService.getUserBasicByID(3);
+  }
 }
 
-export class Option{
+export class Option {
   constructor(
-    public label:string,
-    public iconPath:string,
-    public textColor:string,
-    public iconColor:string,
-    public path : string
-  ){}
+    public label: string,
+    public iconPath: string,
+    public textColor: string,
+    public iconColor: string,
+    public path: string
+  ) { }
 }

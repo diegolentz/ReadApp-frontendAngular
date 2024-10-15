@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-
+import { FRIENDS } from '../mock/mockUser';
 import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
 
