@@ -60,6 +60,8 @@ export class PerfilInfoComponent {
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
     
   }
+
+  /* Mensajes de error cuando falla el validator */
   errorMessage(form: FormGroup, campo: string, validator: string) {
     const campoForm = form.get(campo)
     const error = campoForm?.errors
@@ -147,6 +149,14 @@ export class PerfilInfoComponent {
     })
   }
 
+  getValueForm(campo: string, form: FormGroup) {
+    const valor = form.get(campo)
+    if (valor?.dirty) {
+      return valor.value
+    }
+    return null
+  }
+
   async guardar() {
     if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
@@ -171,13 +181,7 @@ export class PerfilInfoComponent {
     location.reload()
   }
 
-  getValueForm(campo: string, form: FormGroup) {
-    const valor = form.get(campo)
-    if (valor?.dirty) {
-      return valor.value
-    }
-    return null
-  }
+ 
 
 }
 
