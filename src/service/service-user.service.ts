@@ -5,17 +5,18 @@ import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
 import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceUser {
 
-  nombreUsuario!:string
-  username!:string
-  apellidoUsuario!:string
+  nombreUsuario!: string
+  username!: string
+  apellidoUsuario!: string
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   async getUsers(): Promise<User[]> {
     const users$ = this.httpClient.get<UserJSON[]>(REST_SERVER_URL + '/users')
@@ -55,12 +56,18 @@ export class ServiceUser {
   }
 
 
+
   async actualizarInfoUsuario(infoNueva: UserInformacion) {
-    await lastValueFrom(this.httpClient.put<UserInformacion>(
-      REST_SERVER_URL + '/updateInfoUsuario',
-      infoNueva
-    ))
-    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
+    try {
+      await lastValueFrom(this.httpClient.put<UserInformacion>(
+        REST_SERVER_URL + '/updateInfoUsuario',
+        infoNueva
+      ))
+      this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
+    } catch (error) {
+      this.toastr.error('Reintente más tarde', 'ERROR')
+    }
+
   }
 
 
@@ -94,14 +101,14 @@ export class ServiceUser {
     return response
   }
 
-  async actualizarNombreYAlias(nombre:string | null, username:string | null, apellido:string | null){
-    if(nombre != null){
+  async actualizarNombreYAlias(nombre: string | null, username: string | null, apellido: string | null) {
+    if (nombre != null) {
       this.nombreUsuario = nombre
     }
-    if(username != null){
+    if (username != null) {
       this.username = username
     }
-    if(apellido != null ){
+    if (apellido != null) {
       this.apellidoUsuario = apellido
     }
   }
