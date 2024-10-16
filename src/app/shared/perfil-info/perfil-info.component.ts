@@ -37,6 +37,7 @@ export class PerfilInfoComponent {
 
 
   /* Variables del Usuario */
+  private userId!:number
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
@@ -105,9 +106,9 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    let userId = await this.UserService.getLoggedUser()
-    console.log(userId)
-    let userData = await this.UserService.getUserProfileByID(userId)
+     this.userId = await this.UserService.getLoggedUser()
+    console.log(this.userId)
+    let userData = await this.UserService.getUserProfileByID(this.userId)
 
     /* let userData = await this.UserService.getUserProfileByID(2) */
     this.userBusqueda = this.obtenerPerfiles(userData.perfil)
@@ -160,11 +161,11 @@ export class PerfilInfoComponent {
   async guardar() {
     if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        2,
+        this.userId,
         this.getValueForm("nombre", this.perfilForm),
         this.getValueForm("apellido", this.perfilForm),
         this.getValueForm("username", this.perfilForm),
-        null,
+        1,
         this.getValueForm("fecha de nacimiento", this.perfilForm),
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),

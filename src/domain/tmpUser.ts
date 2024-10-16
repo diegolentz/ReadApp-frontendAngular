@@ -133,7 +133,7 @@ export class UserInformacion {
         public nombre: string | null = null,
         public apellido: string | null = null,
         public alias: string | null = null,
-        public palabrasPorMinutos: number | null = null,
+        public palabrasPorMinutos: number = 0,
         public fechaNacimiento: Date | null = null,
         public email: string | null = null,
         public perfil: Array<PerfilDeLectura> | null = null,
