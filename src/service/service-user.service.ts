@@ -3,16 +3,20 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceUser {
 
-  constructor(private httpClient: HttpClient) { }
+  nombreUsuario!: string
+  username!: string
+  apellidoUsuario!: string
+
+  constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   async getUsers(): Promise<User[]> {
     const users$ = this.httpClient.get<UserJSON[]>(REST_SERVER_URL + '/users')
@@ -33,6 +37,7 @@ export class ServiceUser {
     const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
     const user = await (lastValueFrom(user$))
     const userBasic = UserBasic.prototype.fromJSON(user)
+    this.actualizarNombreYAlias(userBasic.nombre, userBasic.username, userBasic.apellido)
     return userBasic
 
   }
@@ -51,11 +56,18 @@ export class ServiceUser {
   }
 
 
+
   async actualizarInfoUsuario(infoNueva: UserInformacion) {
-    await lastValueFrom(this.httpClient.put<UserInformacion>(
-      REST_SERVER_URL + '/updateInfoUsuario',
-      infoNueva
-    ))
+    try {
+      await lastValueFrom(this.httpClient.put<UserInformacion>(
+        REST_SERVER_URL + '/updateInfoUsuario',
+        infoNueva
+      ))
+      this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
+    } catch (error) {
+      this.toastr.error('Reintente más tarde', 'ERROR')
+    }
+
   }
 
 
@@ -87,6 +99,18 @@ export class ServiceUser {
     const response$ = this.httpClient.post<MessageResponse>(REST_SERVER_URL + '/passwordRecovery', passwordRecoveryRequest)
     const response = await (lastValueFrom(response$))
     return response
+  }
+
+  async actualizarNombreYAlias(nombre: string | null, username: string | null, apellido: string | null) {
+    if (nombre != null) {
+      this.nombreUsuario = nombre
+    }
+    if (username != null) {
+      this.username = username
+    }
+    if (apellido != null) {
+      this.apellidoUsuario = apellido
+    }
   }
 }
 

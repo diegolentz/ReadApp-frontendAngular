@@ -37,13 +37,14 @@ export class PerfilInfoComponent {
 
 
   /* Variables del Usuario */
+  private userId!: number
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
   userBusqueda: Array<string> = []
   tiempoDeLectura: number = 0
 
-  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router:Router) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router: Router) {
 
     /* Armado de los formgroups con sus validators */
     this.perfilForm = this.fb.group({
@@ -58,7 +59,7 @@ export class PerfilInfoComponent {
       'numero max': []
     })
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
-    
+
   }
 
   /* Mensajes de error cuando falla el validator */
@@ -105,9 +106,9 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    let userId = await this.UserService.getLoggedUser()
-    console.log(userId)
-    let userData = await this.UserService.getUserProfileByID(userId)
+    this.userId = await this.UserService.getLoggedUser()
+    console.log(this.userId)
+    let userData = await this.UserService.getUserProfileByID(this.userId)
 
     /* let userData = await this.UserService.getUserProfileByID(2) */
     this.userBusqueda = this.obtenerPerfiles(userData.perfil)
@@ -116,7 +117,7 @@ export class PerfilInfoComponent {
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
-      'username': userData.alias,
+      'username': userData.username,
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
@@ -160,16 +161,16 @@ export class PerfilInfoComponent {
   async guardar() {
     if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        2,
+        this.userId,
         this.getValueForm("nombre", this.perfilForm),
         this.getValueForm("apellido", this.perfilForm),
         this.getValueForm("username", this.perfilForm),
-        null,
+        1,
         this.getValueForm("fecha de nacimiento", this.perfilForm),
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
-      )).then(() => this.toastr.success("Información actualizada correctamente")).then(() => location.reload())
+      )).then(() => this.toastr.success("Información actualizada correctamente"))
     }
     else {
       this.toastr.error('Algunos campos del formulario son inválidos', 'ERROR')
@@ -177,11 +178,11 @@ export class PerfilInfoComponent {
 
   }
 
-  cancelar(){
-    location.reload()
+  cancelar() {
+    this.router.navigate(['/home'])
   }
 
- 
+
 
 }
 
