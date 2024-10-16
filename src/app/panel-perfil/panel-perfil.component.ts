@@ -15,7 +15,7 @@ export class PanelPerfilComponent {
 
   myInfo!: UserBasic
 
-  constructor(private router: Router, private route: ActivatedRoute, private userService: ServiceUser) { }
+  constructor(private router: Router, private route: ActivatedRoute, public userService: ServiceUser) { }
 
   goTo(option: string) {
     this.router.navigate([option], { relativeTo: this.route })

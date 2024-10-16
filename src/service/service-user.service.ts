@@ -11,8 +11,9 @@ import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../dom
 })
 export class ServiceUser {
 
-  nombreUsuario!:String
-  username!:String
+  nombreUsuario!:string
+  username!:string
+  apellidoUsuario!:string
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,7 +36,7 @@ export class ServiceUser {
     const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
     const user = await (lastValueFrom(user$))
     const userBasic = UserBasic.prototype.fromJSON(user)
-    this.actualizarNombreYAlias(userBasic.nombre, userBasic.username)
+    this.actualizarNombreYAlias(userBasic.nombre, userBasic.username, userBasic.apellido)
     return userBasic
 
   }
@@ -59,7 +60,7 @@ export class ServiceUser {
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
-    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username)
+    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
   }
 
 
@@ -93,15 +94,16 @@ export class ServiceUser {
     return response
   }
 
-  async actualizarNombreYAlias(nombre:string | null, username:string | null){
+  async actualizarNombreYAlias(nombre:string | null, username:string | null, apellido:string | null){
     if(nombre != null){
       this.nombreUsuario = nombre
     }
     if(username != null){
       this.username = username
     }
-
-    console.log(this.username)
+    if(apellido != null ){
+      this.apellidoUsuario = apellido
+    }
   }
 }
 
