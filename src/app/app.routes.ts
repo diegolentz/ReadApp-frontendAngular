@@ -50,8 +50,9 @@ export const routes: Routes = [
             { path: 'information', component: PerfilInfoComponent },
             { path: 'friends', component: ProfileFriendsComponent },
             { path: 'new-friends', component: AmigosAgregarComponent },
-            { path: 'books-readed', component: ProfileBooksReadedComponent },
-            { path: 'books-to-read', component: ProfileBooksToReadComponent },
+            { path: 'books/:tipo', component: ProfileBooksReadedComponent },
+
+            // { path: 'books-to-read', component: ProfileBooksToReadComponent },
             { path: 'add-books/:tipo', component: LibrosAgregarComponent },
             { path: 'recommendations-to-value', component: ProfileRecommendationsComponent },
             { path: '', redirectTo: 'information', pathMatch: 'full' },

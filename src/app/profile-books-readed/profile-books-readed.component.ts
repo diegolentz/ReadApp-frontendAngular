@@ -25,21 +25,21 @@ export class ProfileBooksReadedComponent implements OnInit {
   @Input() user!: UserBasic;
 
   async ngOnInit(): Promise<void> {
-    this.books = await this.bookService.obtenerLibrosPorEstado(true);
+    // this.books = await this.bookService.obtenerLibrosPorEstado(true);
   }
 
-  sacalodelaVista(libro: string) {
-    var id = Number(libro)
-    this.librosAgregados.push(id)
-    console.log(this.librosAgregados)
-    this.books = this.books.filter(book => book.id !== id);
-  }
+  // sacalodelaVista(libro: string) {
+  //   var id = Number(libro)
+  //   this.librosAgregados.push(id)
+  //   console.log(this.librosAgregados)
+  //   this.books = this.books.filter(book => book.id !== id);
+  // }
 
-  async eliminarLibros() {
-    await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
-    window.history.back();
-  }
-  volverHome() {
-    this.route.navigate(['home']);
-  }
+  // async eliminarLibros() {
+  //   await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
+  //   window.history.back();
+  // }
+  // volverHome() {
+  //   this.route.navigate(['home']);
+  // }
 }
