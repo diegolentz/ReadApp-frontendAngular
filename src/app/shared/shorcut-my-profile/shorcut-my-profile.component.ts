@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { BgColorDirective } from '../directives/bg-color.directive';
 import { HoverBoxshadowDirective } from '../directives/hover-boxshadow.directive';
 import { UserBasic } from '../../../domain/tmpUser';
+import { ServiceUser } from '../../../service/service-user.service';
 
 @Component({
   selector: 'app-shorcut-my-profile',
@@ -13,6 +14,8 @@ import { UserBasic } from '../../../domain/tmpUser';
   styleUrl: './shorcut-my-profile.component.css'
 })
 export class ShorcutMyProfileComponent implements OnInit{
+
+  constructor(public UserService: ServiceUser){}
 
   @Input() show!:boolean
   @Input() user!:UserBasic;

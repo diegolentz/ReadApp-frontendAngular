@@ -12,6 +12,9 @@ import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../dom
 })
 export class ServiceUser {
 
+  nombreUsuario!:String
+  aliasUsuario!:String
+
   constructor(private httpClient: HttpClient) { }
 
   async getUsers(): Promise<User[]> {
@@ -33,6 +36,7 @@ export class ServiceUser {
     const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
     const user = await (lastValueFrom(user$))
     const userBasic = UserBasic.prototype.fromJSON(user)
+    this.actualizarNombreYAlias(userBasic.nombre, userBasic.alias)
     return userBasic
 
   }
@@ -56,6 +60,7 @@ export class ServiceUser {
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
+    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.alias)
   }
 
 
@@ -87,6 +92,15 @@ export class ServiceUser {
     const response$ = this.httpClient.post<MessageResponse>(REST_SERVER_URL + '/passwordRecovery', passwordRecoveryRequest)
     const response = await (lastValueFrom(response$))
     return response
+  }
+
+  async actualizarNombreYAlias(nombre:string | null, alias:string | null){
+    if(nombre != null){
+      this.nombreUsuario = nombre
+    }
+    if(alias != null){
+      this.aliasUsuario = alias
+    }
   }
 }
 
