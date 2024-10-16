@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { FRIENDS } from '../mock/mockUser';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileFriend, UserProfileFriendJSON, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
 
 @Injectable({
@@ -13,7 +12,7 @@ import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../dom
 export class ServiceUser {
 
   nombreUsuario!:String
-  aliasUsuario!:String
+  username!:String
 
   constructor(private httpClient: HttpClient) { }
 
@@ -36,7 +35,7 @@ export class ServiceUser {
     const user$ = this.httpClient.get<UserBasicJSON>(REST_SERVER_URL + '/user/basic/' + id.toString())
     const user = await (lastValueFrom(user$))
     const userBasic = UserBasic.prototype.fromJSON(user)
-    this.actualizarNombreYAlias(userBasic.nombre, userBasic.alias)
+    this.actualizarNombreYAlias(userBasic.nombre, userBasic.username)
     return userBasic
 
   }
@@ -60,7 +59,7 @@ export class ServiceUser {
       REST_SERVER_URL + '/updateInfoUsuario',
       infoNueva
     ))
-    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.alias)
+    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username)
   }
 
 
@@ -94,13 +93,15 @@ export class ServiceUser {
     return response
   }
 
-  async actualizarNombreYAlias(nombre:string | null, alias:string | null){
+  async actualizarNombreYAlias(nombre:string | null, username:string | null){
     if(nombre != null){
       this.nombreUsuario = nombre
     }
-    if(alias != null){
-      this.aliasUsuario = alias
+    if(username != null){
+      this.username = username
     }
+
+    console.log(this.username)
   }
 }
 

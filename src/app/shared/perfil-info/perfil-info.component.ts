@@ -37,14 +37,14 @@ export class PerfilInfoComponent {
 
 
   /* Variables del Usuario */
-  private userId!:number
+  private userId!: number
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
   userBusqueda: Array<string> = []
   tiempoDeLectura: number = 0
 
-  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router:Router) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router: Router) {
 
     /* Armado de los formgroups con sus validators */
     this.perfilForm = this.fb.group({
@@ -59,7 +59,7 @@ export class PerfilInfoComponent {
       'numero max': []
     })
     this.calculadorForm.setValidators(MinMaxValidator.LessThanMin())
-    
+
   }
 
   /* Mensajes de error cuando falla el validator */
@@ -106,7 +106,7 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-     this.userId = await this.UserService.getLoggedUser()
+    this.userId = await this.UserService.getLoggedUser()
     console.log(this.userId)
     let userData = await this.UserService.getUserProfileByID(this.userId)
 
@@ -117,7 +117,7 @@ export class PerfilInfoComponent {
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
-      'username': userData.alias,
+      'username': userData.username,
       'fecha de nacimiento': userData.fechaNacimiento,
       'email': userData.email
     })
@@ -178,11 +178,11 @@ export class PerfilInfoComponent {
 
   }
 
-  cancelar(){
+  cancelar() {
     location.reload()
   }
 
- 
+
 
 }
 
