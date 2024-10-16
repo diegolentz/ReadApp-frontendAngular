@@ -179,7 +179,7 @@ export class PerfilInfoComponent {
   }
 
   cancelar() {
-    location.reload()
+    this.router.navigate(['/home'])
   }
 
 
