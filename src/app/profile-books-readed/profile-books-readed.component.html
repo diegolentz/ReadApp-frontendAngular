@@ -3,6 +3,6 @@
   <ng-container *ngFor="let book of books">
     <app-libro [book]="book" (enviarLibro)="sacalodelaVista($event)"></app-libro>
   </ng-container>
-  <app-boton-agregar [view]="'my-profile/add-books'" [tipo]="'books-readed'"></app-boton-agregar>
+  <app-boton-agregar [view]="'my-profile/add-books'" [tipo]="tipoContenido"></app-boton-agregar>
 </div>
 <app-btn-guardar-cancelar (guardar)="eliminarLibros()" (cancelar)="volverHome()"></app-btn-guardar-cancelar>
