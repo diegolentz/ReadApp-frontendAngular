@@ -25,6 +25,7 @@ export class LibrosAgregarComponent implements OnInit {
   librosAgregados: number[] = [];
 
   async ngOnInit(): Promise<void> {
+
     this.queRenderizo();
     await this.mostrarLibros();
   }
