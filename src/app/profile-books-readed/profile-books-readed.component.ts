@@ -7,7 +7,7 @@ import { NgFor } from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { UserBasic } from '../../domain/tmpUser';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile-books-readed',
@@ -18,28 +18,44 @@ import { Router } from '@angular/router';
 })
 export class ProfileBooksReadedComponent implements OnInit {
   @HostBinding('style.width') width: string = '100%';
-  constructor(public bookService: BookService, public route: Router) { }
+  constructor(public bookService: BookService, public route: Router, private router: ActivatedRoute) { }
 
   books: Book[] = [];
   librosAgregados: number[] = [];
+  tipoContenido!: string;
+  estado!: boolean;
+
   @Input() user!: UserBasic;
 
   async ngOnInit(): Promise<void> {
-    // this.books = await this.bookService.obtenerLibrosPorEstado(true);
+    this.queRenderizo();
+    await this.mostrarLibros();
+    console.log("tipo ", this.tipoContenido)
+  }
+  async mostrarLibros() {
+    this.books = (this.tipoContenido === 'readed')
+      ? await this.bookService.obtenerLibrosPorEstado(true)
+      : await this.bookService.obtenerLibrosPorEstado(false);
   }
 
-  // sacalodelaVista(libro: string) {
-  //   var id = Number(libro)
-  //   this.librosAgregados.push(id)
-  //   console.log(this.librosAgregados)
-  //   this.books = this.books.filter(book => book.id !== id);
-  // }
+  queRenderizo() {
+    this.router.params.subscribe(params => {
+      this.tipoContenido = params['tipo'];
+      this.mostrarLibros(); // llamo a la funcion para que me muestre los libros segun el tipo de contenido
+    });
+  }
+  sacalodelaVista(libro: string) {
+    var id = Number(libro)
+    this.librosAgregados.push(id)
+    console.log(this.librosAgregados)
+    this.books = this.books.filter(book => book.id !== id);
+  }
 
-  // async eliminarLibros() {
-  //   await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
-  //   window.history.back();
-  // }
-  // volverHome() {
-  //   this.route.navigate(['home']);
-  // }
+  async eliminarLibros() {
+    await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
+    this.mostrarLibros();
+  }
+  volverHome() {
+    this.route.navigate(['home']);
+  }
 }

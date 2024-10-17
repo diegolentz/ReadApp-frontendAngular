@@ -18,11 +18,6 @@ export class PanelPerfilComponent {
   constructor(private router: Router, private route: ActivatedRoute, public userService: ServiceUser) { }
 
   goTo(option: Option) {
-    console.log("el patch es", option.path)
-    if (option.label === 'Books readed') {
-      this.router.navigate([option.path, 'readed'], { relativeTo: this.route, queryParams: { id: this.myInfo.id } });
-      return;
-    }
     this.router.navigate([option.path], { relativeTo: this.route });
   }
 
@@ -34,7 +29,7 @@ export class PanelPerfilComponent {
     'recomendacionesAValorar.svg']
   colorDefault = ''
   colorSvg = ['#208544', '#203885', '#822085', '#33d2c8', 'ff0000']
-  path = ['information', 'friends', 'books', 'books', 'recommendations-to-value']
+  path = ['information', 'friends', 'books/readed', 'books/to-read', 'recommendations-to-value']
 
   options = this.opcionTitulos.map((titulo, i) => new Option(titulo, this.svgs[i], this.colorDefault, this.colorSvg[i], this.path[i]));
 
