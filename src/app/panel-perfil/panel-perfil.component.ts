@@ -13,9 +13,10 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class PanelPerfilComponent {
 
-  myInfo!: UserBasic
-
+  // myInfo !: UserBasic se usaba el service en el html para mostrar la info del usuario
+  myInfo: UserBasic = new UserBasic(0, "", "", "", "", "", 0, "") // inicializo vacio para que no tire error en la vista
   constructor(private router: Router, private route: ActivatedRoute, public userService: ServiceUser) { }
+
 
   goTo(option: Option) {
     this.router.navigate([option.path], { relativeTo: this.route });
