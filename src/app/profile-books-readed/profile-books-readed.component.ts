@@ -33,7 +33,8 @@ export class ProfileBooksReadedComponent implements OnInit {
     console.log("tipo ", this.tipoContenido)
   }
   async mostrarLibros() {
-    this.books = (this.tipoContenido === 'readed')
+    this.estado = this.tipoContenido === 'readed';
+    this.books = this.estado
       ? await this.bookService.obtenerLibrosPorEstado(true)
       : await this.bookService.obtenerLibrosPorEstado(false);
   }
@@ -52,7 +53,7 @@ export class ProfileBooksReadedComponent implements OnInit {
   }
 
   async eliminarLibros() {
-    await this.bookService.eliminarLibro(this.librosAgregados, true); // true = leidos
+    await this.bookService.eliminarLibro(this.librosAgregados, this.estado); // true = leidos
     this.mostrarLibros();
   }
   volverHome() {
