@@ -16,7 +16,7 @@
  
     <app-container-books>
         @for (book of recomendacion.recommendedBooks; track book){
-            <app-libro [book]="book"></app-libro>
+            <app-libro [book]="book" (enviarLibro)="sacalodelaVista($event)"></app-libro>
             }
         <app-boton-agregar *ngIf="puedeEditar"[tipo]="'books-readed'"></app-boton-agregar>
     </app-container-books>

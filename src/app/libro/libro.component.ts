@@ -19,23 +19,31 @@ export class LibroComponent {
   constructor(private router: Router) {
   }
 
-
   ocultarBorrar(): boolean {
+    const excludedRoutes = [
+      '/search-books',
+      '/my-profile/add-books/to-read',
+      '/my-profile/add-books/readed',
+      '/view-recommendation/detalle'
+    ];
 
-    // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/search-books', '/my-profile/add-books/to-read', '/my-profile/add-books/readed'];
-    return !excludedRoutes.includes(this.router.url);
+    const rutaBase = this.router.url.split('?')[0].replace(/\/\d+$/, ''); // remuevo params del path
+
+    return !excludedRoutes.includes(rutaBase);
   }
 
   ocultarAgregar(): boolean {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/my-profile/add-books/readed', '/my-profile/add-books/to-read'];
+    const excludedRoutes = [
+      '/my-profile/add-books/readed',
+      '/my-profile/add-books/to-read'];
+
     return excludedRoutes.includes(this.router.url);
   }
 
   agregar() {
     this.enviarLibro.emit(this.book.id.toString())// deberia andar
-    // console.log(this.libro)
+    console.log(this.book.id)
   }
 
 }
