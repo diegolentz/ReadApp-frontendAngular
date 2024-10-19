@@ -12,7 +12,6 @@ article{
 }
 .libro__acciones{
     grid-area: acciones;
-    /* height: 100%; */
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -40,7 +39,8 @@ article{
 
 .libro__portada{
     width: 10rem;
-    height: 85%;
+    height: 18rem;
+    max-height: 85%;
     grid-area: portada;
     border-radius: 1rem;
     margin: auto;

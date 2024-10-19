@@ -23,6 +23,7 @@ export class LibrosAgregarComponent implements OnInit {
 
   books!: Book[];
   librosAgregados: number[] = [];
+  id !: number;
 
   async ngOnInit(): Promise<void> {
 
@@ -39,9 +40,14 @@ export class LibrosAgregarComponent implements OnInit {
   }
 
   async mostrarLibros() {
-    this.books = (this.tipoContenido == 'to-read')
-      ? await this.bookService.obtenerParaLeer()
-      : await this.bookService.obtenerLibrosPorEstado(!this.estado);
+    try {
+      this.id = Number(localStorage.getItem('id'));
+      this.books = (this.tipoContenido == 'to-read')
+        ? await this.bookService.obtenerParaLeer(this.id)
+        : await this.bookService.obtenerLibrosPorEstado(this.id, !this.estado);
+    } catch (error: any) {
+      console.log(error);
+    }
   }
 
   sacalodelaVista(libro: string) {
@@ -51,7 +57,7 @@ export class LibrosAgregarComponent implements OnInit {
     this.books = this.books.filter(book => book.id !== id);
   }
   async agregarLibros() {
-    await this.bookService.agregarLibro(this.librosAgregados, this.estado);
+    await this.bookService.agregarLibro(this.id, this.librosAgregados, this.estado);
     window.history.back();
   }
   volverHome() {
