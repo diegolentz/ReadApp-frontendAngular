@@ -32,7 +32,6 @@ export class ProfileBooksReadedComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.queRenderizo();
     await this.mostrarLibros();
-    console.log("tipo ", this.tipoContenido)
   }
   async mostrarLibros() {
     try {
