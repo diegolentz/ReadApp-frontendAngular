@@ -10,7 +10,7 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        padding: 2rem;
+        padding: 1rem;
         border: 1px solid rgb(168, 167, 167);
         gap:2rem;
         border-radius: 2rem;
