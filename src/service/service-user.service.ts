@@ -101,7 +101,7 @@ export class ServiceUser {
     return response
   }
 
-  async actualizarNombreYAlias(nombre: string | null, username: string | null, apellido: string | null) {
+  async actualizarNombreYAlias(nombre?: string, username?: string, apellido?: string) {
     if (nombre != null) {
       this.nombreUsuario = nombre
     }

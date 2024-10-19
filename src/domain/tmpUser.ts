@@ -131,14 +131,14 @@ enum Language {
 export class UserInformacion {
     constructor(
         public id: number,
-        public nombre: string | null = null,
-        public apellido: string | null = null,
-        public username: string | null = null,
-        public palabrasPorMinutos: number = 0,
-        public fechaNacimiento: Date | null = null,
-        public email: string | null = null,
-        public perfil: Array<PerfilDeLectura> | null = null,
-        public tipoDeLector: string | null = null) {
+        public nombre?: string,
+        public apellido?: string,
+        public username?: string,
+        public palabrasPorMinutos?: number,
+        public fechaNacimiento?: Date,
+        public email?: string,
+        public perfil?: Array<PerfilDeLectura>,
+        public tipoDeLector?: string) {
 
     }
 }
