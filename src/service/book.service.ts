@@ -30,17 +30,17 @@ export class BookService {
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
+
   // si es true = leidos, si es false = a leer
-  async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
-    const userId = 1;
+  async obtenerLibrosPorEstado(userId: number, booleano: boolean): Promise<Book[]> {
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
       params: { idUser: userId, estado: booleano }
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-  async agregarLibro(idLibro: number[], estado: boolean): Promise<void> {
-    const idUser = 1;
+
+  async agregarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
     await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
       { idUser, estado, idLibro }
     ));
@@ -48,19 +48,17 @@ export class BookService {
 
   /* libros que se pueden agregar en a leer
    todos los libros - los que tiene leidos - los que ya tiene en a leer */
-  async obtenerParaLeer(): Promise<Book[]> {
-    const userId = 1;
+  async obtenerParaLeer(idUser: number): Promise<Book[]> {
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
-      params: { idUser: userId }
+      params: { idUser: idUser }
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
-  async eliminarLibro(idLibro: number[], estado: boolean): Promise<void> {
-    const idUser = 1;
+
+  async eliminarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
     await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
       body: { idUser, estado, idLibro }
     }));
   }
-
 }

@@ -17,13 +17,14 @@ import { Router } from '@angular/router';
 export class ProfileBooksToReadComponent implements OnInit {
   @HostBinding('style.width') width: string = '100%';
   constructor(public bookService: BookService, public route: Router) { }
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
 
   books: Book[] = [];
   librosAgregados: number[] = [];
 
-  async ngOnInit(): Promise<void> {
-    this.books = await this.bookService.obtenerLibrosPorEstado(false);
-  }
+
 
   sacalodelaVista(libro: string) {
     var id = Number(libro)
@@ -33,7 +34,7 @@ export class ProfileBooksToReadComponent implements OnInit {
   }
 
   async eliminarLibros() {
-    await this.bookService.eliminarLibro(this.librosAgregados, false); // true = leidos
+    // await this.bookService.eliminarLibro(this.librosAgregados, false); // true = leidos
     window.history.back();
   }
   volverHome() {
