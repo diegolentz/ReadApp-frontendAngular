@@ -1,8 +1,1 @@
 <h2>Books to read</h2>
-<div class="librosContainer">
-  <ng-container *ngFor="let book of books">
-    <app-libro [book]="book" (enviarLibro)="sacalodelaVista($event)"></app-libro>
-  </ng-container>
-  <app-boton-agregar [view]="'my-profile/add-books'" [tipo]="'books-to-read'"></app-boton-agregar>
-</div>
-<app-btn-guardar-cancelar (guardar)="eliminarLibros()" (cancelar)="volverHome()"></app-btn-guardar-cancelar>

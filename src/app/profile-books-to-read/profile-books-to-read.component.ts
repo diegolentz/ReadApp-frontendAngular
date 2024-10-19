@@ -21,23 +21,4 @@ export class ProfileBooksToReadComponent implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  books: Book[] = [];
-  librosAgregados: number[] = [];
-
-
-
-  sacalodelaVista(libro: string) {
-    var id = Number(libro)
-    this.librosAgregados.push(id)
-    console.log(this.librosAgregados)
-    this.books = this.books.filter(book => book.id !== id);
-  }
-
-  async eliminarLibros() {
-    // await this.bookService.eliminarLibro(this.librosAgregados, false); // true = leidos
-    window.history.back();
-  }
-  volverHome() {
-    this.route.navigate(['home']);
-  }
 }
