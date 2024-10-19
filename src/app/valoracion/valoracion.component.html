@@ -1,17 +1,40 @@
 <div class="valoraciones">
+
     <div class="puntuacion">
       <h2>Valoraciones</h2>
       
       <img class="estrella-dorada" src="svg/recommendationScore.svg">
       <h3>{{score}}/5</h3>
     </div>
+
     <section class="valoraciones__individuales">  
       @for (valoracion of valoraciones; track valoracion){
         <app-valoracion-individual [valoracion]="valoracion"></app-valoracion-individual>
         }
-      <app-boton-agregar *ngIf="puedeValorar"></app-boton-agregar>
-
+        <button *ngIf="agregaValoracion" class="agregar hover-click" (click)="agregaValoracion()">
+          <h2>+</h2>
+      </button>
     </section>
+    
+    <div class="nuevaValoracion" *ngIf="agregarValoracion">
+      <div class="contenedor">
+        <h2>Valorar Recomendacion</h2>
+        
+        <input type="number" class="starRating" [(ngModel)]="nuevaValoracion.valor">
+
+      </div>
+
+      <textarea class="descripcion" type="text"
+          [(ngModel)]="nuevaValoracion.comentario">
+      </textarea>
+
+      <div class="botones">
+        <button (click)="cancelar()" class="cancelar">Cancelar</button>
+        <button class="valorar">Valorar</button>
+      </div>
+
+    </div>
+
   </div>
 
  

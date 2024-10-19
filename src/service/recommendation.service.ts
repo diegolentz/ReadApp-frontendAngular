@@ -3,6 +3,7 @@ import { Recommendation, RecommendationJSON } from '../domain/recommendation';
 import { HttpClient } from '@angular/common/http';
 import { REST_SERVER_URL } from './configuration';
 import { lastValueFrom } from 'rxjs';
+import { Valoration, ValorationJSON } from '../domain/valoration';
 
 
 @Injectable({
@@ -39,6 +40,14 @@ export class RecommendationService {
       recomendacion.toEditarJSON()
     ))
     return recomendacionNueva
+  }
+
+  async agregarValoracion(valoracion: Valoration,idRecommendation:number) {
+    const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
+      REST_SERVER_URL + `/recommendations/${idRecommendation}`,
+      valoracion.toJSON()
+    ))
+    return valoracionNueva
   }
 
 }
