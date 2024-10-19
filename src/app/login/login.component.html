@@ -27,9 +27,22 @@
                 </div>
             </div>
             <div class="actions">
-                <button class="btn btn__signIn" (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'login'" [ngClass]="{'btn__valid': form.valid, 'btn__invalid': !form.valid}">Login</button>
-                <button class="btn btn__createAccount" (click)="changeToCreateAccount()">New account</button>
-                <button class="btn btn__passwordRecovery" (click)="changeToPasswordRecovery()">Password Recovery</button>
+
+                <button (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'login'" [ngClass]="{'valid': form.valid, 'invalid': !form.valid}" [appBgColor]="'--color-complementary-3-bright'" [colorByVariableName]=true>
+                    <img src="svg/sign-in.svg" alt="">
+                    <p>Login</p>
+                </button>
+
+                <button class="valid" (click)="changeToCreateAccount()" [appBgColor]="'--color-complementary-1-bright'" [colorByVariableName]=true>
+                    <img src="svg/user-circle.svg" alt="">
+                    <p>New account</p>
+                </button>
+
+                <button class="valid" (click)="changeToPasswordRecovery()" [appBgColor]="'--color-complementary-2-bright'" [colorByVariableName]=true>
+                    <img src="svg/key.svg" alt="">
+                    <p>Password Recovery</p>
+                </button>
+              
             </div>
         
         </form>
@@ -40,9 +53,11 @@
         <app-password-recovery-form *ngIf="showFormPasswordRecovery()">
         </app-password-recovery-form>
 
-        <div class="actions" *ngIf="!showFormLogin()">
-            <button class="btn btn__createAccount" (click)="changeToLogin()">Back to login</button>
-        </div>
+        <button class="valid" (click)="changeToLogin()" [appBgColor]="'--color-complementary-2-bright'" [colorByVariableName]=true *ngIf="!showFormLogin()">
+            <img src="svg/key-return.svg" alt="" role="img">
+            <p>Back to login</p>
+        </button>
+
         
     </div>
 </main>

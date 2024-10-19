@@ -61,43 +61,58 @@ input:focus {
     filter: brightness(110%);
 }
 
-.btn{
-    height: 4.5rem;
-    padding: 0 1.5rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    border: none;
-    color: white;
-    font-size: var(--text-md);
-    transition: filter 0.25s, opacity 0.25s, color 0.25s;
-}
-
-.btn__signIn {
-    background-color: var(--color-save);
-}
-
-
-.btn__signIn.btn__valid:hover {
-    filter: brightness(140%);
-    opacity: 0.8;
-    color: black;
-    font-weight: bold;
-}
-.actions{
+.actions {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
 }
 
-.input__required{
+.input__required {
     color: red;
 }
 
-.btn__valid{
-    filter: brightness(100%);
-    opacity: 1;
+
+button {
+    height: 4.5rem;
+    padding: 0 1.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: none;
+    background: none;
+    transition: filter 0.25s, opacity 0.25s, color 0.25s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+
+    & img {
+        min-width: 2rem;
+        max-width: 3rem;
+        filter: invert();
+    }
+
+    & p {
+        font-size: var(--text-md);
+        color: white;
+    }
 }
-.btn__invalid{
+
+button.valid:hover{
+    filter: brightness(120%);
+    opacity: 0.8;
+
+    & p{
+        filter: invert();
+        font-weight: bold;
+    }
+
+    & img{
+        filter: none;
+    }
+}
+
+button.invalid {
     filter: brightness(80%);
     opacity: 0.5;
 }

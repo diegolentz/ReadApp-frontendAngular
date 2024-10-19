@@ -28,7 +28,7 @@ describe('NewAccountFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('No admite campos vacios', () => {
+  it('Form invalido - No admite campos vacios', () => {
     component.form.setValue({
       [component.formLabels.email]: "", 
       [component.formLabels.username]: "", 
@@ -40,7 +40,7 @@ describe('NewAccountFormComponent', () => {
     
   });
   
-  it('Input email no valido. Formato email', () => {
+  it('Form invalido - Formato email incorrecto', () => {
     component.form.setValue({
       [component.formLabels.email]: "adrian",
       [component.formLabels.username]: "adrian", 
@@ -51,7 +51,7 @@ describe('NewAccountFormComponent', () => {
     expect(component.form.controls[component.formLabels.email].valid).toEqual(false);
   });
 
-  it('Input username no valido. Exceso de caracteres', () => {
+  it('Form invalido - No admite campos excedidos', () => {
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian", 
       [component.formLabels.username]: "123456789", //8 CARACTERES MAXIMO
@@ -66,7 +66,7 @@ describe('NewAccountFormComponent', () => {
     expect(component.form.controls[component.formLabels.username].valid).toEqual(false);
   });
 
-  it('Campos NO vacios y validos', () => {
+  it('Form valido - Campos permitidos', () => {
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian", 
       [component.formLabels.username]: "adrian", 
@@ -79,23 +79,21 @@ describe('NewAccountFormComponent', () => {
 
 
   it('Correcta envio de datos al backend', () => {
-    //OJO CON TOCAR ESTO Y EL SPY USER
-    //SETEO VALORES
+
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian",
       [component.formLabels.username]: "adrian",
       [component.formLabels.password]: "adrian",
       [component.formLabels.name]: "adrian",
     });
-    //DETECTO CAMBIOS
+
     fixture.detectChanges()
-    //OBTENGO EL BOTON Y LE APLICO CLICK Y Y SE APLICA EL POST
+
     getByTestId('createAccount').click()
 
-    //OBTENGO EL VALOR ENVIADO DEL SPY
+
     const userLoginData = httpClientSpy.post.calls.mostRecent().args[1]
 
-    //ESPERO QUE LO RECIBIDO COINCIDA CON LO ENVIADO
     expect(userLoginData[component.formLabels.email]).toEqual("adrian@adrian");
     expect(userLoginData[component.formLabels.username]).toEqual("adrian");
     expect(userLoginData[component.formLabels.password]).toEqual("adrian");
