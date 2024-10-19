@@ -13,13 +13,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class PanelPerfilComponent {
 
-  myInfo!: UserBasic
-
+  myInfo: UserBasic = new UserBasic(0, "", "", "", "", "", 0, "") // inicializo vacio para que no tire error en la vista
   constructor(private router: Router, private route: ActivatedRoute, public userService: ServiceUser) { }
 
-  goTo(option: string) {
-    this.router.navigate([option], { relativeTo: this.route })
+
+  goTo(option: Option) {
+    this.router.navigate([option.path], { relativeTo: this.route });
   }
+
   opcionTitulos = ['Information', 'Friends', 'Books readed', 'Books to read', 'Recommendations to value']
   svgs = ['information.svg',
     'amigos.svg',
@@ -28,7 +29,7 @@ export class PanelPerfilComponent {
     'recomendacionesAValorar.svg']
   colorDefault = ''
   colorSvg = ['#208544', '#203885', '#822085', '#33d2c8', 'ff0000']
-  path = ['information', 'friends', 'books-readed', 'books-to-read', 'recommendations-to-value']
+  path = ['information', 'friends', 'books/readed', 'books/to-read', 'recommendations-to-value']
 
   options = this.opcionTitulos.map((titulo, i) => new Option(titulo, this.svgs[i], this.colorDefault, this.colorSvg[i], this.path[i]));
 

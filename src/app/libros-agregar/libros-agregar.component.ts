@@ -25,6 +25,7 @@ export class LibrosAgregarComponent implements OnInit {
   librosAgregados: number[] = [];
 
   async ngOnInit(): Promise<void> {
+
     this.queRenderizo();
     await this.mostrarLibros();
   }
@@ -33,12 +34,12 @@ export class LibrosAgregarComponent implements OnInit {
   queRenderizo() {
     this.route.params.subscribe(params => {
       this.tipoContenido = params['tipo'];
-      this.estado = (this.tipoContenido === 'books-readed'); //para manejar a quien se lo agrego
+      this.estado = (this.tipoContenido === 'readed'); //para manejar a quien se lo agrego
     });
   }
 
   async mostrarLibros() {
-    this.books = (this.tipoContenido == 'books-to-read')
+    this.books = (this.tipoContenido == 'to-read')
       ? await this.bookService.obtenerParaLeer()
       : await this.bookService.obtenerLibrosPorEstado(!this.estado);
   }

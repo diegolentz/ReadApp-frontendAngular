@@ -23,13 +23,13 @@ export class LibroComponent {
   ocultarBorrar(): boolean {
 
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/search-books', '/my-profile/add-books/books-to-read', '/my-profile/add-books/books-readed'];
+    const excludedRoutes = ['/search-books', '/my-profile/add-books/to-read', '/my-profile/add-books/readed'];
     return !excludedRoutes.includes(this.router.url);
   }
 
   ocultarAgregar(): boolean {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
-    const excludedRoutes = ['/my-profile/add-books/books-readed', '/my-profile/add-books/books-to-read'];
+    const excludedRoutes = ['/my-profile/add-books/readed', '/my-profile/add-books/to-read'];
     return excludedRoutes.includes(this.router.url);
   }
 
