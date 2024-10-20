@@ -7,7 +7,6 @@ import { ProfileFriendsComponent } from './profile-friends/profile-friends.compo
 
 import { ProfileRecommendationsComponent } from './profile-recommendations/profile-recommendations.component';
 import { ProfileBooksReadedComponent } from './profile-books-readed/profile-books-readed.component';
-import { ProfileBooksToReadComponent } from './profile-books-to-read/profile-books-to-read.component';
 import { LoginComponent } from './login/login.component';
 import { ViewRecommendationComponent } from './view-recommendation/view-recommendation.component';
 import { LibrosAgregarComponent } from './libros-agregar/libros-agregar.component';
@@ -39,10 +38,6 @@ export const routes: Routes = [
         path: 'search-books',
         component: BusquedaLibrosComponent
     },
-    // {
-    //     path: 'add-Books/:tipo',
-    //     component: LibrosAgregarComponent,
-    // },
     {
         path: 'my-profile',
         component: MiPerfilComponent,
