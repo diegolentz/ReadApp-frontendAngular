@@ -49,7 +49,8 @@
     <app-valoracion 
         [valoraciones]="recomendacion.valorations"
         [score]="recomendacion.valoracionTotal"
-        [puedeValorar]="!puedeEditar">
+        [puedeValorar]="!puedeEditar"
+        [id]="recomendacion.id">
     </app-valoracion>
 
     <app-btn-guardar-cancelar 
