@@ -32,6 +32,8 @@
 
     border-radius: 0 0 1rem 1rem;
 
+    z-index: 1;
+
     & img {
         width: var(--space-xl);
         height: var(--space-xl);
