@@ -7,9 +7,12 @@
   </div>
 
   <section class="valoraciones__individuales">  
-    @for (valoracion of valoraciones; track valoracion){
-      <app-valoracion-individual [valoracion]="valoracion"></app-valoracion-individual>
-      }
+    <div>
+      @for (valoracion of valoraciones; track valoracion){
+        <app-valoracion-individual [valoracion]="valoracion"></app-valoracion-individual>
+        }
+    </div>
+      
       <button *ngIf="puedeValorar" class="agregar" (click)="agregaValoracion()">
         <h2>Valorar</h2>
       </button>
