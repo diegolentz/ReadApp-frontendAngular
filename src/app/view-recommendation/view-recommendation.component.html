@@ -14,12 +14,20 @@
         </label>
     </div>
  
+    <h2>Puedes quitar libros de la recomendacion!</h2>
     <app-container-books>
         @for (book of recomendacion.recommendedBooks; track book){
-            <app-libro [book]="book" (enviarLibro)="sacalodelaVista($event)"></app-libro>
-            }
-        <app-boton-agregar *ngIf="puedeEditar"[tipo]="'books-readed'"></app-boton-agregar>
+            <app-libro [book]="book" (enviarLibro)="sacarLibro($event)"></app-libro>
+        }
     </app-container-books>
+    
+    <h2>Puedes agregar libros de la recomendacion!</h2>
+    <app-container-books>
+        @for (book of librosQuePuedoAgregar; track book){
+            <app-libro [book]="book" (enviarLibro)="agregarLibro($event)"></app-libro>
+            }
+    </app-container-books>
+
 
     <div  *ngIf="!puedeEditar" class="resenia">
         <h2>Reseña</h2>
