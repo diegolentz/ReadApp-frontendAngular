@@ -28,7 +28,7 @@ describe('PasswordRecoveryFormComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('No admite campos vacios', () => {
+  it('Form invalido - No admite campos vacios', () => {
     component.form.setValue({
       [component.formLabels.email]: "", 
       [component.formLabels.username]: "", 
@@ -38,7 +38,7 @@ describe('PasswordRecoveryFormComponent', () => {
     expect(component.form.valid).toEqual(false);
   });
 
-  it('No admite campos excedidos', () => {
+  it('Form invalido - No admite campos excedidos', () => {
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian", 
       [component.formLabels.username]: "12345678912345678", 
@@ -54,7 +54,7 @@ describe('PasswordRecoveryFormComponent', () => {
     expect(component.form.valid).toEqual(false);
   });
 
-  it('Campos permitidos', () => {
+  it('Form valido - Campos permitidos', () => {
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian",
       [component.formLabels.username]: "adrian",
@@ -64,23 +64,20 @@ describe('PasswordRecoveryFormComponent', () => {
     expect(component.form.valid).toEqual(true);
   });
 
-  it('Cuando el usuario de loguea, obtengo un ID', () => {
-    //OJO CON TOCAR ESTO Y EL SPY USER
-    //SETEO VALORES
+  it('Apreto el boton de Crear cuenta, recibo correctamente los datos', () => {
+
     component.form.setValue({
       [component.formLabels.email]: "adrian@adrian",
       [component.formLabels.username]: "adrian",
       [component.formLabels.newPassword]: "adrian",
     });
-    //DETECTO CAMBIOS
+
     fixture.detectChanges()
-    //OBTENGO EL BOTON Y LE APLICO CLICK Y Y SE APLICA EL POST
+
     getByTestId('passwordRecovery').click()
 
-    //OBTENGO EL VALOR ENVIADO DEL SPY
     const userLoginData = httpClientSpy.post.calls.mostRecent().args[1]
 
-    //ESPERO QUE LO RECIBIDO COINCIDA CON LO ENVIADO
     expect(userLoginData[component.formLabels.email]).toEqual("adrian@adrian");
     expect(userLoginData[component.formLabels.username]).toEqual("adrian");
     expect(userLoginData[component.formLabels.newPassword]).toEqual("adrian");

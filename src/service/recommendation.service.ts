@@ -1,8 +1,9 @@
 import { Injectable, Input, EventEmitter } from '@angular/core';
-import { Recommendation, RecommendationJSON } from '../domain/recommendation';
+import { Recommendation, RecommendationCard, RecommendationCardJSON, RecommendationJSON } from '../domain/recommendation';
 import { HttpClient } from '@angular/common/http';
 import { REST_SERVER_URL } from './configuration';
 import { lastValueFrom } from 'rxjs';
+import { Valoration, ValorationJSON } from '../domain/valoration';
 
 
 @Injectable({
@@ -40,6 +41,28 @@ export class RecommendationService {
     ))
     return recomendacionNueva
   }
+
+  // si es true = home, si es false = private
+  async getUserRecommendations(estado: boolean): Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + '/recommendationsLoggedUser', {
+      params: { privada: estado }
+    });
+    const recommendationsJSON = await lastValueFrom(recommendations$);
+    return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+  }
+  async getAllRecommendations(): Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + '/recommendations');
+    const recommendationsJSON = await lastValueFrom(recommendations$);
+    return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+  }
+  async agregarValoracion(valoracion: Valoration,idRecommendation:number) {
+    const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
+      REST_SERVER_URL + `/recommendations/${idRecommendation}`,
+      valoracion.toJSON()
+    ))
+    return valoracionNueva
+  }
+
 
 }
 

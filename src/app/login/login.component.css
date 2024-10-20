@@ -50,20 +50,18 @@ main {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
 }
 
-.form{
-    display: flex;
-    flex-direction: column;
-}
-.form__inputs{
+.form__inputs {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
 }
+
 /* Campo del formulario */
 .campo {
     display: flex;
@@ -112,8 +110,8 @@ input:focus {
 }
 
 /* Estilos dinámicos al enfocar o si el input es válido */
-.campo input:focus ~ label,
-.campo input:valid ~ label {
+.campo input:focus~label,
+.campo input:valid~label {
     transform: translateY(-2rem);
     font-size: 1em;
     background-color: var(--color-searchbar);
@@ -122,63 +120,58 @@ input:focus {
     filter: brightness(110%);
 }
 
-.actions{
+.actions {
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
 }
-.aclaracion svg {
-    fill: var(--color-cancel);
+
+.input__required {
+    color: red;
 }
 
 
-/* Botón de inicio de sesión */
-.btn{
+button {
     height: 4.5rem;
     padding: 0 1.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     border: none;
-    color: white;
-    font-size: var(--text-md);
+    background: none;
     transition: filter 0.25s, opacity 0.25s, color 0.25s;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-sm);
+
+    & img {
+        min-width: 2rem;
+        max-width: 3rem;
+        filter: invert();
+    }
+
+    & p {
+        font-size: var(--text-md);
+        color: white;
+    }
 }
 
-.btn__signIn {
-    background-color: var(--color-save);
-}
-
-.btn__createAccount {
-    background-color: var(--color-celeste-oscuro);
-}
-
-.btn__passwordRecovery {
-    background-color: var(--color-cancel);
-}
-
-.btn__back {
-    background-color: darkgoldenrod;
-}
-
-.btn__signIn.btn__valid:hover,
-.btn__createAccount:hover,
-.btn__passwordRecovery:hover,
-.btn__back:hover {
-    filter: brightness(140%);
+button.valid:hover{
+    filter: brightness(120%);
     opacity: 0.8;
-    color: black;
-    font-weight: bold;
+
+    & p{
+        filter: invert();
+        font-weight: bold;
+    }
+
+    & img{
+        filter: none;
+    }
 }
 
-.input__required{
-    color: red;
-}
-.btn__valid{
-    filter: brightness(100%);
-    opacity: 1;
-}
-.btn__invalid{
+button.invalid {
     filter: brightness(80%);
     opacity: 0.5;
 }
-

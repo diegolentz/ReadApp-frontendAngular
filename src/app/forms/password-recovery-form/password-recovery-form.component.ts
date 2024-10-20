@@ -6,11 +6,12 @@ import { ToastrService } from 'ngx-toastr';
 import { PasswordRecoveryRequest } from '../../../domain/types';
 import { ServiceUser } from '../../../service/service-user.service';
 import { NgIf, NgFor, NgClass } from '@angular/common';
+import { BgColorDirective } from '../../shared/directives/bg-color.directive';
 
 @Component({
   selector: 'app-password-recovery-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, FormsModule, NgFor, NgClass],
+  imports: [ReactiveFormsModule, NgIf, FormsModule, NgFor, NgClass, BgColorDirective],
   templateUrl: './password-recovery-form.component.html',
   styleUrl: './password-recovery-form.component.css'
 })

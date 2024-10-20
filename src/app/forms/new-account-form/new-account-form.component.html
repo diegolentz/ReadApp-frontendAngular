@@ -5,7 +5,7 @@
         <label for={{formLabels.email}}>Email</label>
         <div class="input__required" *ngIf="warning(formLabels.email)">
             <span *ngIf="this.form.controls[formLabels.email].errors?.['required']">* Required</span>
-            <span *ngIf="this.form.controls[formLabels.email].errors?.['email']">email&commat;domain</span>
+            <span *ngIf="this.form.controls[formLabels.email].errors?.['email']">email&commat;hotmail, email&commat;gmail ...</span>
         </div>
     </div>
 
@@ -36,7 +36,10 @@
         </div>
     </div>
     <div class="actions">
-        <button class="btn btn__signIn" (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'createAccount'" [ngClass]="{'btn__valid': form.valid, 'btn__invalid': !form.valid}">Create account</button>
+        <button (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'login'" [ngClass]="{'valid': form.valid, 'invalid': !form.valid}" [appBgColor]="'--color-complementary-3-bright'" [colorByVariableName]=true>
+            <img src="svg/sign-in.svg" alt="">
+            <p>Create account</p>
+        </button>
     </div>
     
 </form>

@@ -7,6 +7,7 @@
     width: 100%;
     height: auto;
     background-color: var(--color-fondo);
+    margin-top: 2rem;
 }
 
 .btn-cancelar {

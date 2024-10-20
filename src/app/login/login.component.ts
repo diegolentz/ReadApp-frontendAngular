@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { EncabezadoComponent } from '../shared/encabezado/encabezado.component';
 import { InputComponent } from '../input/input.component';
 import { ServiceUser } from '../../service/service-user.service';
-import { HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass, NgIf } from '@angular/common';
 import { NewAccountFormComponent } from "../forms/new-account-form/new-account-form.component";
@@ -12,10 +11,11 @@ import { CommonForm } from '../../domain/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PasswordRecoveryFormComponent } from '../forms/password-recovery-form/password-recovery-form.component';
 
+import { BgColorDirective } from '../shared/directives/bg-color.directive';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, ReactiveFormsModule, NewAccountFormComponent, NgClass, PasswordRecoveryFormComponent],
+  imports: [EncabezadoComponent, InputComponent, FormsModule, NgIf, ReactiveFormsModule, NewAccountFormComponent, NgClass, PasswordRecoveryFormComponent, BgColorDirective],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
@@ -24,6 +24,7 @@ export class LoginComponent extends CommonForm{
     username:'username',
     password:'password',
   }
+
   formRestrictions = FORM_RECTRICTIONS
   constructor(
     private rt:Router,
@@ -83,10 +84,19 @@ export class LoginComponent extends CommonForm{
   }
   private logUser(userID:number){
     localStorage.setItem('id', userID.toString());
-    this.goTo('home')
+    this.goTo('home/home')
   }
 
+  buttonsColor(){
+    return {
+      request:'green',
+      newAccount:'blue',
+      passwordRecovery:'red'
+    }
+  }
 }
+
+
 
 export enum FormType{
   LOG_IN,

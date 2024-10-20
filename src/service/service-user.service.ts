@@ -15,7 +15,7 @@ export class ServiceUser {
   nombreUsuario!: string
   username!: string
   apellidoUsuario!: string
-
+  loggedUserId!:number
   constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   async getUsers(): Promise<User[]> {
@@ -52,6 +52,7 @@ export class ServiceUser {
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {
     const loginResponse$ = this.httpClient.post<LoginResponse>(REST_SERVER_URL + '/login', loginRequest)
     const loginResponse = await (lastValueFrom(loginResponse$))
+    this.loggedUserId = loginResponse.userID
     return loginResponse
   }
 

@@ -6,11 +6,12 @@ import { ServiceUser } from '../../../service/service-user.service';
 import { CommonForm } from '../../../domain/forms';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
+import { BgColorDirective } from '../../shared/directives/bg-color.directive';
 
 @Component({
   selector: 'app-new-account-form',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, FormsModule, NgFor, NgClass],
+  imports: [ReactiveFormsModule, NgIf, FormsModule, NgFor, NgClass, BgColorDirective],
   templateUrl: './new-account-form.component.html',
   styleUrl: './new-account-form.component.css'
 })

@@ -8,6 +8,7 @@ import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.com
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { UserBasic } from '../../domain/tmpUser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile-books-readed',
@@ -24,19 +25,32 @@ export class ProfileBooksReadedComponent implements OnInit {
   librosAgregados: number[] = [];
   tipoContenido!: string;
   estado!: boolean;
+  id !: number;
 
   @Input() user!: UserBasic;
 
   async ngOnInit(): Promise<void> {
     this.queRenderizo();
     await this.mostrarLibros();
-    console.log("tipo ", this.tipoContenido)
   }
   async mostrarLibros() {
-    this.estado = this.tipoContenido === 'readed';
-    this.books = this.estado
-      ? await this.bookService.obtenerLibrosPorEstado(true)
-      : await this.bookService.obtenerLibrosPorEstado(false);
+    try {
+      this.id = Number(localStorage.getItem('id'));
+
+      this.estado = this.tipoContenido === 'readed';
+      this.books = this.estado
+        ? await this.bookService.obtenerLibrosPorEstado(this.id, true)
+        : await this.bookService.obtenerLibrosPorEstado(this.id, false);
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
+        //Solo me interesa HttpErrorResponde
+        console.log(error.error["timestamp"])
+        console.log(error.error["status"])
+        console.log(error.error["error"])
+        console.log(error.error["message"])
+        console.log(error.error["path"])
+      }
+    }
   }
 
   queRenderizo() {
@@ -53,7 +67,7 @@ export class ProfileBooksReadedComponent implements OnInit {
   }
 
   async eliminarLibros() {
-    await this.bookService.eliminarLibro(this.librosAgregados, this.estado); // true = leidos
+    await this.bookService.eliminarLibro(this.id, this.librosAgregados, this.estado); // true = leidos
     this.mostrarLibros();
   }
   volverHome() {

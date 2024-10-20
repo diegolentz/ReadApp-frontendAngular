@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('No admite campos vacios', () => {
+  it('Form invalido - No admite campos vacios', () => {
     component.form.setValue({
       [component.formLabels.username]: "", 
       [component.formLabels.password]: "", 
@@ -40,7 +40,7 @@ describe('LoginComponent', () => {
     expect(component.form.valid).toEqual(false);
   });
 
-  it('No admite campos excedidos', () => {
+  it('Form invalido - No admite campos excedidos', () => {
     component.form.setValue({
       [component.formLabels.username]: "123456789", //lenght 8 max
       [component.formLabels.password]: "12345678912345678", //lenght 16 max
@@ -49,7 +49,7 @@ describe('LoginComponent', () => {
     expect(component.form.valid).toEqual(false);
   });
 
-  it('Campos permitidos', () => {
+  it('Form valido - Campos permitidos', () => {
     component.form.setValue({
       [component.formLabels.username]: "adrian",
       [component.formLabels.password]: "adrian",
@@ -58,22 +58,19 @@ describe('LoginComponent', () => {
     expect(component.form.valid).toEqual(true);
   });
 
-  it('Cuando el usuario de loguea, obtengo un ID', () => {
-    //OJO CON TOCAR ESTO Y EL SPY USER
-    //SETEO VALORES
+  it('Apreto el boton de Log in, recibo correctamente los datos', () => {
+
     component.form.setValue({
       [component.formLabels.username]: "adrian",
       [component.formLabels.password]: "adrian",
     });
-    //DETECTO CAMBIOS
+
     fixture.detectChanges()
-    //OBTENGO EL BOTON Y LE APLICO CLICK Y Y SE APLICA EL POST
+
     getByTestId('login').click()
 
-    //OBTENGO EL VALOR ENVIADO DEL SPY
     const userLoginData = httpClientSpy.post.calls.mostRecent().args[1]
 
-    //ESPERO QUE LO RECIBIDO COINCIDA CON LO ENVIADO
     expect(userLoginData[component.formLabels.username]).toEqual("adrian");
     expect(userLoginData[component.formLabels.password]).toEqual("adrian");
   })

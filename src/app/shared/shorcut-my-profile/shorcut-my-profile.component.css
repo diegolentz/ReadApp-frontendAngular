@@ -13,6 +13,7 @@
         height: var(--space-xl);
         /* Para dejar color en blanco */
         filter: invert(100%);
+        margin-right: var(--space-md);
 
     }
 }
