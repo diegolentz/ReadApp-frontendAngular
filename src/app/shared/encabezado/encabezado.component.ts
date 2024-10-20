@@ -1,6 +1,7 @@
 import { Component} from '@angular/core';
 import { NgStyle } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-encabezado',
   standalone: true,
@@ -9,4 +10,10 @@ import { RouterLink } from '@angular/router';
   styleUrl: './encabezado.component.css',
 })
 export class EncabezadoComponent {
+  constructor(private rt:Router){
+
+  }
+  goTo(option: string) {
+    this.rt.navigate([option])
+  }
 }

@@ -84,7 +84,7 @@ export class LoginComponent extends CommonForm{
   }
   private logUser(userID:number){
     localStorage.setItem('id', userID.toString());
-    this.goTo('home')
+    this.goTo('home/home')
   }
 
   buttonsColor(){

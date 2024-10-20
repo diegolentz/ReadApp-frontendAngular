@@ -18,12 +18,7 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: 'home',
-        component: HomeComponent,
-    },
-    {
-        //ACOMODAR EL COMPONENT EN ESTA RUTA
-        path: 'my-recommendations',
+        path: 'home/:myRecommendations', //myRecommendations:boolean
         component: HomeComponent,
     },
     {

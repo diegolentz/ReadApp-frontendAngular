@@ -21,6 +21,17 @@ export type RecommendationEditJSON = {
     id:number
 }
 
+export type RecommendationCardJSON = {
+    id:number,
+    title: string,
+    isEditable: boolean,
+    isDeletable: boolean,
+    isPublic: boolean,
+    content: string,
+    bookTitles: Array<string>,
+    popularity: number,
+    aproxTime: number
+}
 export class Recommendation {
     constructor(
         public author: string = "",
@@ -84,3 +95,40 @@ export type RecommendationDetalleJSON = {
     id: number
 }
 
+
+export class RecommendationCard {
+    constructor(
+        public id:number = -1,
+        public title: string = "Title",
+        public editable: boolean = true,
+        public deletable: boolean = true,
+        public _public: boolean = true,
+        public content: string = "Content",
+        public bookTitles: Array<string> = [""],
+        public popularity: number = 0,
+        public aproxTime: number = 0
+    ) { }
+
+    get cantidadLibros() {
+        return this.bookTitles.length
+    }
+
+    static fromJson(recommendationJSON: RecommendationCardJSON): RecommendationCard {
+        return Object.assign(new RecommendationCard(), recommendationJSON);
+    }
+
+    toJSON(): RecommendationCardJSON {
+        return {
+            id: this.id,
+            title: this.title,
+            isEditable: this.editable,
+            isDeletable: this.deletable,
+            isPublic: this._public,
+            content: this.content,
+            bookTitles: this.bookTitles,
+            popularity: this.popularity,
+            aproxTime: this.aproxTime
+        }
+    }
+
+}
