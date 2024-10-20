@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BgColorDirective } from '../directives/bg-color.directive';
 import { HoverBoxshadowDirective } from '../directives/hover-boxshadow.directive';
 import { UserBasic } from '../../../domain/tmpUser';
@@ -15,7 +15,7 @@ import { ServiceUser } from '../../../service/service-user.service';
 })
 export class ShorcutMyProfileComponent implements OnInit{
 
-  constructor(public UserService: ServiceUser){}
+  constructor(public UserService: ServiceUser, private rt:Router){}
 
   @Input() show!:boolean
   @Input() user!:UserBasic;
@@ -30,10 +30,13 @@ export class ShorcutMyProfileComponent implements OnInit{
     this.displayShorcut = !this.displayShorcut
   }
 
+  goTo(option: string) {
+    this.rt.navigate([option])
+  }
   colorDefault = 'white'
   options = [
     new Option('My profile', 'profile.svg', this.colorDefault, this.colorDefault, 'my-profile'),
-    new Option('My recommendations', 'recomendation.svg', this.colorDefault, this.colorDefault, 'my-recommendations'),
+    new Option('My recommendations', 'recomendation.svg', this.colorDefault, this.colorDefault, 'home/myRecommendations'),
     new Option('Search books', 'book.svg', this.colorDefault, this.colorDefault, 'search-books'),
     new Option('Log out', 'log-out.svg', this.colorDefault, this.colorDefault, 'log-out')
     
