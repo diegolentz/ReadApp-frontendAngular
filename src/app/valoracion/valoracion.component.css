@@ -11,11 +11,6 @@
     margin: 1rem;
 }
 
-/* .estrella-dorada {
-    width: 3rem;
-    height: auto;
-} */
-
 .valoraciones__individuales {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
@@ -38,7 +33,6 @@
     margin: 2rem 0 1.5rem;
   }
 
-
 .contenedor {
     display: flex;
     flex-wrap: wrap; 
@@ -53,49 +47,6 @@
     margin: 1rem;
 }
 
-.botones{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-    gap: 1rem;
-    justify-items: center; 
-    align-items: center;
-}
-.valorar {
-    font-weight: bold;
-    color: white;
-    width: 100%;
-    max-width: 300px; 
-    background-color: rgb(120, 178, 104);
-    color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 24px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    transition-duration: 0.4s;
-    margin-top: 1rem; 
-}
-
-.cancelar {
-    font-weight: bold;
-    color: white;
-    width: 100%;
-    max-width: 300px; 
-    background-color: var(--color-cancel);
-    color: black;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 24px;
-    cursor: pointer;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    transition-duration: 0.4s;
-    margin-top: 1rem; 
-}
-
 .agregar {
     background-color: var(--color-header);
     color: white;
@@ -107,7 +58,7 @@
     border-radius: 50%;
     margin: 0 0 2rem;
 }
-    
+
 .estrellas {
     width: 3rem;
     height: auto;
