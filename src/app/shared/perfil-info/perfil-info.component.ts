@@ -155,7 +155,7 @@ export class PerfilInfoComponent {
     if (valor?.dirty) {
       return valor.value
     }
-    return null
+    return undefined
   }
 
   async guardar() {
