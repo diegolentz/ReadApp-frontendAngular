@@ -93,7 +93,7 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   cancelar() {
-    this.goTo('/home')
+    this.goTo('/home/home')
   }
 
   goTo(option: string) {

@@ -1,9 +1,10 @@
 import { Injectable, Input, EventEmitter } from '@angular/core';
 import { Recommendation, RecommendationCard, RecommendationCardJSON, RecommendationJSON } from '../domain/recommendation';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { REST_SERVER_URL } from './configuration';
 import { lastValueFrom } from 'rxjs';
 import { Valoration, ValorationJSON } from '../domain/valoration';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { Valoration, ValorationJSON } from '../domain/valoration';
 export class RecommendationService {
   @Input() filtro: string = "";
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private toast:ToastrService) { }
 
   async getRecommendations(): Promise<Recommendation[]> {
     const recommendations$ = this.httpClient.get<RecommendationJSON[]>(REST_SERVER_URL + '/recommendations')
@@ -56,11 +57,21 @@ export class RecommendationService {
     return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
   }
   async agregarValoracion(valoracion: Valoration,idRecommendation:number) {
-    const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
-      REST_SERVER_URL + `/recommendations/${idRecommendation}`,
-      valoracion.toJSON()
-    ))
-    return valoracionNueva
+    try{
+      const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
+        REST_SERVER_URL + `/recommendations/${idRecommendation}`,
+        valoracion.toJSON()
+      ))
+      this.toast.success("Se agregó correctamente la valoración");
+      return valoracionNueva
+    } catch(error:any){
+      if(error instanceof HttpErrorResponse){
+        this.toast.warning(`${error.error['message']}`)
+        return error
+      }
+      this.toast.error(`error externo`)
+      return error
+    }
   }
 
 
