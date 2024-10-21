@@ -20,25 +20,27 @@ export class ProfileFriendsComponent implements OnInit {
 
   friends!: UserFriend[];
   agregoAmigos!: boolean;
-  mensaje: UpdateFriendsMessage = new UpdateFriendsMessage("3", [], false);
-
+  id!: number;
+  mensaje!: UpdateFriendsMessage;
+  
   constructor(private userService: ServiceUser, public route: Router, private router: ActivatedRoute) { }
 
   async ngOnInit() {
+    this.id = await this.userService.getLoggedUser()
+    this.mensaje = new UpdateFriendsMessage("3")
+    console.log(this.mensaje.id)
     await this.getFriend()
-    console.log(this.friends)
   }
 
   @HostBinding('style.width') width: string = '100%';
 
   async getFriend() {
     try {
-      const usuarioLogueadoID = Number(localStorage.getItem('id'))
       //this.agregoAmigos = this.tipo === 'new-friends';
-      console.log(this.agregoAmigos)
+      // console.log(this.agregoAmigos)
       this.friends = !this.agregarAmigosNuevos()
-        ? await this.userService.getUserNotFriendsByID(usuarioLogueadoID)
-        : await this.userService.getUserFriendsByID(usuarioLogueadoID);
+        ? await this.userService.getUserNotFriendsByID(this.id)
+        : await this.userService.getUserFriendsByID(this.id);
     }
     catch (error: any) {
       if (error instanceof HttpErrorResponse) {
@@ -54,13 +56,12 @@ export class ProfileFriendsComponent implements OnInit {
 
   ocultar(amigo: string) {
     this.mensaje.amigosAModificar.push(amigo)
-    console.log(this.mensaje.amigosAModificar)
+    // console.log(this.mensaje.amigosAModificar)
     this.friends = this.friends.filter(friend => friend.id !== Number(amigo));
   }
 
   async actualizarAmigos() {
     this.mensaje.agregarAmigos = !this.agregarAmigosNuevos()
-    this.mensaje.id = String(localStorage.getItem('id'))
     //await this.userService.actualizarAmigos(this.amigosAModificar, usuarioLogueadoID, agregarAmigos);
     await this.userService.actualizarAmigos(this.mensaje);
   }
