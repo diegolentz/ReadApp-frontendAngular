@@ -43,9 +43,12 @@ export class BookService {
       }
       return libros;
     } catch (error) {
-      this.httpErrorHandler(error)
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.error('Error intente nuevamente mas tarde');
+      }
+      return [];
+
     }
-    return [];
   }
 
   async obtenerLibrosPorEstado(userId: number, booleano: boolean): Promise<Book[]> {
@@ -55,9 +58,9 @@ export class BookService {
       });
       const bookJSON = await lastValueFrom(libros$);
       return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-    } catch (error) {
-      console.error('Error fetching books by state:', error);
-      throw error;
+    } catch (error: any) {
+      this.httpErrorHandler(error);
+      return [];
     }
   }
 
@@ -66,9 +69,8 @@ export class BookService {
       await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
         { idUser, estado, idLibro }
       ));
-    } catch (error) {
-      console.error('Error adding book:', error);
-      throw error;
+    } catch (error: any) {
+      this.httpErrorHandler(error);
     }
   }
 
@@ -79,9 +81,9 @@ export class BookService {
       });
       const bookJSON = await lastValueFrom(libros$);
       return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-    } catch (error) {
-      console.error('Error fetching books to read:', error);
-      throw error;
+    } catch (error: any) {
+      this.httpErrorHandler(error);
+      return [];
     }
   }
 
@@ -90,12 +92,10 @@ export class BookService {
       await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
         body: { idUser, estado, idLibro }
       }));
-    } catch (error) {
-      console.error('Error deleting book:', error);
-      throw error;
+    } catch (error: any) {
+      this.httpErrorHandler(error);
     }
   }
-
 
   httpErrorHandler(error: HttpErrorResponse) {
     if (error.error['status'] == null) {

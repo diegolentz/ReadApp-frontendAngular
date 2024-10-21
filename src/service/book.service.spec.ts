@@ -74,7 +74,21 @@ describe('BookService', () => {
     expect(req.request.method).toEqual('GET');
   });
 
-  it('agregar libros segun estado (leido / no leido)', async () => {
+  it('filtrar libros: lista vacia', async () => {
+    const filtro = 'no-existe';  // Un filtro que no coincida con ningún libro
+
+    service.obtenerLibrosFiltrados(filtro).then(books => {
+      expect(books).toEqual([]);  // Esperamos que devuelva una lista vacía
+    });
+
+    const req = httpTestingController.expectOne(`${REST_SERVER_URL}/librosSearch/filter?filtro=no-existe`);
+    expect(req.request.method).toEqual('GET');
+    req.flush([]);  // Simula una respuesta vacía desde el backend
+  });
+
+
+
+  it('obtener libros segun estado (leido / no leido)', async () => {
     const idUser = 1;
     const estado = true;
 
