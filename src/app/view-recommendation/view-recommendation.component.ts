@@ -55,13 +55,8 @@ export class ViewRecommendationComponent implements OnInit {
   traerRecomendacion() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
-      try {
-        this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
-        // console.log(this.recomendacion.recommendedBooks.length)
-      } catch (error) {
-        console.error('Error al obtener la recomendación:', error);
-      }
-    });
+      this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+      });
   }
 
   sacarLibro(libro: string) {
@@ -70,8 +65,6 @@ export class ViewRecommendationComponent implements OnInit {
     // Encuentra el índice del libro a eliminar en el array
     const index = this.recomendacion.recommendedBooks.findIndex((libro: Book) => libro.id == id);
     this.recomendacion.recommendedBooks.splice(index, 1);
-    // console.log(this.recomendacion.recommendedBooks.length)
-
   }
   agregarLibro(libro: string) {
     var id = Number(libro);
@@ -84,7 +77,6 @@ export class ViewRecommendationComponent implements OnInit {
       console.error('Libro no encontrado para agregar:', id);
     }
   }
-
 
   async editarRecomendacion() {
     await this.recommendationService.actualizarRecomendacion(this.recomendacion)

@@ -5,6 +5,7 @@ import { REST_SERVER_URL } from './configuration';
 import { lastValueFrom } from 'rxjs';
 import { Valoration, ValorationJSON } from '../domain/valoration';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 export class RecommendationService {
   @Input() filtro: string = "";
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
-  constructor(private httpClient: HttpClient, private toast:ToastrService) { }
+  constructor(private httpClient: HttpClient, private toast:ToastrService,private router: Router) { }
 
   async getRecommendations(): Promise<Recommendation[]> {
     const recommendations$ = this.httpClient.get<RecommendationJSON[]>(REST_SERVER_URL + '/recommendations')
@@ -30,9 +31,18 @@ export class RecommendationService {
   }
 
   async getRecommendationById(id: number): Promise<Recommendation> {
-    const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
-    const recommendationJSON = await lastValueFrom(recommendation$)
-    return Recommendation.fromJson(recommendationJSON)
+    try {
+      const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
+      const recommendationJSON = await lastValueFrom(recommendation$)
+      return Recommendation.fromJson(recommendationJSON)
+    } catch(error:any){
+      if(error instanceof HttpErrorResponse){
+        this.toast.warning(`${error.error['message']}`)
+        this.router.navigate(['/home/home'])
+      }
+      return error
+    }
+    
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {

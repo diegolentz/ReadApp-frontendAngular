@@ -47,9 +47,9 @@ export class ValoracionComponent implements OnInit {
     await this.recommendationService.agregarValoracion(this.nuevaValoracion, this.id);
     await this.cancelar();
   
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 1000);
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   validacion = (): boolean => !this.nuevaValoracion.comentario.trim() || this.rating === 0
