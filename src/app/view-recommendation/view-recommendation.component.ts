@@ -84,7 +84,6 @@ export class ViewRecommendationComponent implements OnInit {
       this.toast.warning('complete los campos vacios')
       return
     }
-
     await this.recommendationService.actualizarRecomendacion(this.recomendacion)
     this.traerRecomendacion()
     this.librosLeidos()

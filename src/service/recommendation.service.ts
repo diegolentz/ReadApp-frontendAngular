@@ -46,11 +46,20 @@ export class RecommendationService {
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {
-    const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
-      REST_SERVER_URL + `/recommendations`,
-      recomendacion.toEditarJSON()
-    ))
-    return recomendacionNueva
+    try {
+      const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
+        REST_SERVER_URL + `/recommendations`,
+        recomendacion.toEditarJSON()
+      ))
+      this.toast.success('Recomendacion editada con exito')
+      return recomendacionNueva   
+    } catch(error:any){
+      if(error instanceof HttpErrorResponse){
+        this.toast.warning(`${error.error['message']}`)
+        return error
+      }
+      return error
+    }
   }
 
   // si es true = home, si es false = private
