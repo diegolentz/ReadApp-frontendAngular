@@ -4,6 +4,7 @@ import { BookService } from '../../service/book.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Book } from '../../domain/book';
 import { BookJSON } from '../../domain/book';
+import { ToastrModule } from 'ngx-toastr';
 
 describe('BusquedaLibrosComponent', () => {
   let component: BusquedaLibrosComponent;
@@ -36,7 +37,7 @@ describe('BusquedaLibrosComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BusquedaLibrosComponent, HttpClientTestingModule],  // Importa el módulo de pruebas HTTP
+      imports: [BusquedaLibrosComponent, HttpClientTestingModule, ToastrModule.forRoot()],  // Importa el módulo de pruebas HTTP
       providers: [
         { provide: BookService, useValue: jasmine.createSpyObj('BookService', ['obtenerLibros', 'obtenerLibrosFiltrados']) }
       ]
@@ -73,10 +74,13 @@ describe('BusquedaLibrosComponent', () => {
   });
 
   it('debe retornar una lista vacía con un filtro que no tenga coincidencias', async () => {
-    // filtro que no devuelve resultados
-    const filteredBooks: Book[] = [];  // ningun libro encontrado
+    // Simula un filtro que no devuelve resultados
+    const filteredBooks: Book[] = [];  // Ningún libro encontrado
+
+    // Simula la respuesta del servicio `obtenerLibrosFiltrados`
     bookService.obtenerLibrosFiltrados.and.returnValue(Promise.resolve(filteredBooks));
 
+    // Aplica el filtro 'libro que no existe'
     await component.addFilter('libro que no existe');
 
     // Verifica que la lista de libros esté vacía

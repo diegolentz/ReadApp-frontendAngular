@@ -5,6 +5,7 @@ import { REST_SERVER_URL } from './configuration';
 import { lastValueFrom } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { CommonForm } from '../domain/forms';
+import { id } from 'date-fns/locale';
 
 @Injectable({
   providedIn: 'root'
@@ -42,12 +43,9 @@ export class BookService {
         this.toastr.info('No se encontraron coincidencias realice una nueva busqueda');
       }
       return libros;
-    } catch (error) {
-      if (error instanceof HttpErrorResponse) {
-        this.toastr.error('Error intente nuevamente mas tarde');
-      }
+    } catch (error: any) {
+      this.httpErrorHandler(error);
       return [];
-
     }
   }
 
@@ -69,6 +67,9 @@ export class BookService {
       await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
         { idUser, estado, idLibro }
       ));
+      if (idLibro.length > 0) {
+        this.toastr.success('Libro agregado con exito');
+      }
     } catch (error: any) {
       this.httpErrorHandler(error);
     }
@@ -92,6 +93,9 @@ export class BookService {
       await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
         body: { idUser, estado, idLibro }
       }));
+      if (idLibro.length > 0) {
+        this.toastr.success('Libro agregado con exito');
+      }
     } catch (error: any) {
       this.httpErrorHandler(error);
     }
