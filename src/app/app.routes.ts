@@ -49,7 +49,7 @@ export const routes: Routes = [
         children: [
             { path: 'information', component: PerfilInfoComponent },
             { path: 'friends', component: ProfileFriendsComponent },
-            { path: 'new-friends', component: AmigosAgregarComponent },
+            { path: 'new-friends', component: ProfileFriendsComponent },
             { path: 'books/:tipo', component: ProfileBooksReadedComponent },
 
             // { path: 'books-to-read', component: ProfileBooksToReadComponent },

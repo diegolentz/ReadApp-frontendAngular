@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../domain/user';
 import { UserFriend } from '../../domain/tmpUser';
 import { CommonModule } from '@angular/common';
@@ -12,7 +12,9 @@ import { Router } from '@angular/router';
 })
 
 export class AmigosComponent {
+
   @Input() userFriend!: UserFriend
+  @Output() enviarAmigo = new EventEmitter<string>();
 
   constructor(private router: Router) {
   }
@@ -28,6 +30,12 @@ export class AmigosComponent {
     // hago un map con las rutas / valor y comparo con el parametro que recibo
     const excludedRoutes = ['/my-profile/new-friends'];
     return excludedRoutes.includes(this.router.url);
+  }
+
+  aModificar() {
+    console.log("hola")
+    this.enviarAmigo.emit(this.userFriend.id.toString())// deberia andar
+    console.log("hola")
   }
 
 }

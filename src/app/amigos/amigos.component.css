@@ -20,27 +20,28 @@
     }
 
     & svg{
-        grid-row: 1/3;
-        grid-column: -1/-2;
         cursor: pointer;
         align-self: center;
         justify-self: center;
     }
-    & .amigo__nombre, .amigo__identificador{
-        cursor: pointer;
-    }
+    
     & .amigo__nombre{
         font-size: 1.5rem;
         font-weight: bold;
         align-content: end;
         width: fit-content;
     }
-}
 
-.hover-delete{
-    &:hover{
-        border-radius: 0.3rem;
-        background-color: var(--color-cancel);
+    & button{
+        background-color: var(--color-hover-amigos);
+        grid-row: 1/3;
+        grid-column: -1/-2;
+        width:fit-content;
+        border: none;
+        &:hover{
+            border-radius: 1rem;
+            background-color: var(--color-header);}
+    
     }
 }
 

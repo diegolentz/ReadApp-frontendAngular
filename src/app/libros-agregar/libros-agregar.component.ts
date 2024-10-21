@@ -26,11 +26,9 @@ export class LibrosAgregarComponent implements OnInit {
   id !: number;
 
   async ngOnInit(): Promise<void> {
-
     this.queRenderizo();
     await this.mostrarLibros();
   }
-
 
   queRenderizo() {
     this.route.params.subscribe(params => {
