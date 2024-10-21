@@ -117,7 +117,7 @@ export class ServiceUser {
     try {
       await lastValueFrom(this.httpClient.put<UpdateFriendsMessage>(
         REST_SERVER_URL + '/updateAmigos', mensaje
-      ))
+      )).then(() => this.toastr.success('Guardado exitosamente'))
     } catch (error) {
       this.toastr.error('Reintente más tarde', 'ERROR')
     }

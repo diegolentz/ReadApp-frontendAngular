@@ -33,9 +33,7 @@ export class AmigosComponent {
   }
 
   aModificar() {
-    console.log("hola")
-    this.enviarAmigo.emit(this.userFriend.id.toString())// deberia andar
-    console.log("hola")
+    this.enviarAmigo.emit(this.userFriend.id.toString())
   }
 
 }

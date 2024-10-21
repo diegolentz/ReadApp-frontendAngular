@@ -27,8 +27,7 @@ export class ProfileFriendsComponent implements OnInit {
 
   async ngOnInit() {
     this.id = await this.userService.getLoggedUser()
-    this.mensaje = new UpdateFriendsMessage("3")
-    console.log(this.mensaje.id)
+    this.mensaje = new UpdateFriendsMessage(this.id.toString())
     await this.getFriend()
   }
 
@@ -36,8 +35,6 @@ export class ProfileFriendsComponent implements OnInit {
 
   async getFriend() {
     try {
-      //this.agregoAmigos = this.tipo === 'new-friends';
-      // console.log(this.agregoAmigos)
       this.friends = !this.agregarAmigosNuevos()
         ? await this.userService.getUserNotFriendsByID(this.id)
         : await this.userService.getUserFriendsByID(this.id);
@@ -56,13 +53,11 @@ export class ProfileFriendsComponent implements OnInit {
 
   ocultar(amigo: string) {
     this.mensaje.amigosAModificar.push(amigo)
-    // console.log(this.mensaje.amigosAModificar)
     this.friends = this.friends.filter(friend => friend.id !== Number(amigo));
   }
 
   async actualizarAmigos() {
     this.mensaje.agregarAmigos = !this.agregarAmigosNuevos()
-    //await this.userService.actualizarAmigos(this.amigosAModificar, usuarioLogueadoID, agregarAmigos);
     await this.userService.actualizarAmigos(this.mensaje);
   }
 
