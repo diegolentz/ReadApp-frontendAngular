@@ -15,6 +15,7 @@ import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
 import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 import { BookService } from '../../service/book.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
@@ -23,7 +24,7 @@ import { BookService } from '../../service/book.service';
   styleUrls: ['./view-recommendation.component.css']
 })
 export class ViewRecommendationComponent implements OnInit {
-  constructor(private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
+  constructor(private toast:ToastrService,private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
 
   recomendacion: Recommendation = new Recommendation()
   puedeEditar !: boolean
@@ -79,10 +80,16 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   async editarRecomendacion() {
+    if(this.validacion()){
+      this.toast.warning('complete los campos vacios')
+      return
+    }
+
     await this.recommendationService.actualizarRecomendacion(this.recomendacion)
     this.traerRecomendacion()
     this.librosLeidos()
   }
+  validacion = () : boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim() 
 
   cancelar() {
     this.goTo('/home/home')
