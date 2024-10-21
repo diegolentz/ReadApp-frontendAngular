@@ -273,3 +273,10 @@ export type UserAsidePivot = {
 
 export type UserAsideJSON = CommonJSON & UserAsidePivot;
 
+export class UpdateFriendsMessage {
+    constructor(
+    public id: string,
+    public amigosAModificar: Array<string> = [],
+    public agregarAmigos: boolean = false) {}
+}
+
