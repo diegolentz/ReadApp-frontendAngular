@@ -18,7 +18,11 @@ export const routes: Routes = [
         component: LoginComponent,
     },
     {
-        path: 'home/:myRecommendations', //myRecommendations:boolean
+        path: 'home',
+        component: HomeComponent,
+    },
+    {
+        path: 'home/myRecommendations/:privates',
         component: HomeComponent,
     },
     {

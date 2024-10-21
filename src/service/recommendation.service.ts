@@ -6,6 +6,7 @@ import { lastValueFrom } from 'rxjs';
 import { Valoration, ValorationJSON } from '../domain/valoration';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MessageResponse } from './service-user.service';
 
 
 @Injectable({
@@ -14,7 +15,7 @@ import { Router } from '@angular/router';
 export class RecommendationService {
   @Input() filtro: string = "";
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
-  constructor(private httpClient: HttpClient, private toast:ToastrService,private router: Router) { }
+  constructor(private httpClient: HttpClient, private toast: ToastrService, private router: Router) { }
 
   async getRecommendations(): Promise<Recommendation[]> {
     const recommendations$ = this.httpClient.get<RecommendationJSON[]>(REST_SERVER_URL + '/recommendations')
@@ -35,14 +36,14 @@ export class RecommendationService {
       const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
       const recommendationJSON = await lastValueFrom(recommendation$)
       return Recommendation.fromJson(recommendationJSON)
-    } catch(error:any){
-      if(error instanceof HttpErrorResponse){
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
         this.toast.warning(`${error.error['message']}`)
         this.router.navigate(['/home/home'])
       }
       return error
     }
-    
+
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {
@@ -66,16 +67,16 @@ export class RecommendationService {
     const recommendationsJSON = await lastValueFrom(recommendations$);
     return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
   }
-  async agregarValoracion(valoracion: Valoration,idRecommendation:number) {
-    try{
+  async agregarValoracion(valoracion: Valoration, idRecommendation: number) {
+    try {
       const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
         REST_SERVER_URL + `/recommendations/${idRecommendation}`,
         valoracion.toJSON()
       ))
       this.toast.success("Se agregó correctamente la valoración");
       return valoracionNueva
-    } catch(error:any){
-      if(error instanceof HttpErrorResponse){
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
         this.toast.warning(`${error.error['message']}`)
         return error
       }
@@ -84,6 +85,31 @@ export class RecommendationService {
     }
   }
 
+  async eliminarRecomendacion(idRecommendation: number) {
+    try {
+      const response = await lastValueFrom(this.httpClient.delete<MessageResponse>(REST_SERVER_URL + `/recommendations/${idRecommendation}`))
+      this.toast.success(response.message);
+    } catch (error: any) {
+        this.errorHandler(error)
+    }
+  }
 
+  async errorHandler(error: any) {
+    if (error instanceof HttpErrorResponse) {
+      if (error.error['status'] == null) {
+        this.toast.error('Servidor caido :,(. Intente mas tarde')
+      }
+      if (error.error['status'] == 400) {
+        this.toast.warning(error.error['message'])
+      }
+
+      if (error.error['status'] == 404) {
+        this.toast.error(error.error['message'])
+      }
+    }
+    else{
+      this.toast.error('Error externo:,(. Intente mas tarde')
+    }
+  }
 }
 

@@ -36,7 +36,7 @@ export class ShorcutMyProfileComponent implements OnInit{
   colorDefault = 'white'
   options = [
     new Option('My profile', 'profile.svg', this.colorDefault, this.colorDefault, 'my-profile'),
-    new Option('My recommendations', 'recomendation.svg', this.colorDefault, this.colorDefault, 'home/myRecommendations'),
+    new Option('My recommendations', 'recomendation.svg', this.colorDefault, this.colorDefault, 'home/myRecommendations/false'),
     new Option('Search books', 'book.svg', this.colorDefault, this.colorDefault, 'search-books'),
     new Option('Log out', 'log-out.svg', this.colorDefault, this.colorDefault, 'log-out')
     

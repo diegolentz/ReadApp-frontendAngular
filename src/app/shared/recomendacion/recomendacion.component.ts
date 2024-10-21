@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ButtonHoverPressedDirective } from '../directives/button-hover-pressed.directive';
 import { RouterLink } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { RecommendationService } from '../../../service/recommendation.service';
 @Component({
   selector: 'app-recomendacion',
   standalone: true,
@@ -13,11 +14,22 @@ import { NgIf } from '@angular/common';
 })
 export class RecomendacionComponent {
   @Input() recomendacion!: RecommendationCard
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private service:RecommendationService
+  ){}
 
   goTo(option: string) {
     this.router.navigate([option])
   }
 
+  deleteRecommendation() {
+    console.log("ELIMINADA")
+    // await this.service.
+  }
 
+  addToValueLater() {
+    console.log("AGREGADA")
+    // await this.service.
+  }
 }

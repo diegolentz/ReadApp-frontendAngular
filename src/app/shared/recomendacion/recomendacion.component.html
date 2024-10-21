@@ -5,13 +5,18 @@
     </h2>
 
     <div class="actions">
+        @if (recomendacion._public) {
+            <a (click)="add()">
+                <img src="svg/agregarAValorar.svg" alt="">
+            </a>
+        }
         @if (recomendacion.editable) {
             <a [routerLink]="['/view-recommendation/edit/',recomendacion.id]"> 
                 <img src="svg/edit.svg" alt="">
             </a>
         }
         @if (recomendacion.deletable) {
-            <a>
+            <a (click)="deleteRecommendation()">
                 <img src="svg/delete.svg" alt="">
             </a>
         }
