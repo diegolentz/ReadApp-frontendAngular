@@ -14,20 +14,19 @@
 .valoraciones__individuales {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 1rem;
     div {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); 
         gap: 1rem;
-        place-items: center;
         width: 70%;
     }
 }
-
 .agregar {
     display: flex;
+    margin: auto;
     justify-content: center;
     align-items: center;
     background-color: var(--color-header);
@@ -38,6 +37,7 @@
     box-shadow: 1px 2px 4px rgb(24, 23, 23);
     border-radius: 10%;
 }
+
 
 .nuevaValoracion{
     margin: 5rem 0 0;

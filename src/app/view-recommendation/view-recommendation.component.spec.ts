@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewRecommendationComponent } from './view-recommendation.component';
 import { RecommendationService } from '../../service/recommendation.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { of } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BookService } from '../../service/book.service';
 import { Recommendation } from '../../domain/recommendation';
 import { Book, BookJSON } from '../../domain/book';
-import { HttpClientModule } from '@angular/common/http'; // Asegúrate de importar los módulos necesarios
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
@@ -22,7 +22,7 @@ describe('ViewRecommendationComponent', () => {
     'Test Author',
     [],
     'Test Recommendation',
-    'This is a test description.',
+    'Esto es una descripcion test',
     true,
     [],
     0,
@@ -49,8 +49,11 @@ describe('ViewRecommendationComponent', () => {
     const routerSpyMock = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule], // Importa módulos necesarios
-      declarations: [ViewRecommendationComponent],
+      imports: [
+        HttpClientModule,
+        ToastrModule.forRoot(),
+        ViewRecommendationComponent
+      ],
       providers: [
         { provide: RecommendationService, useValue: recommendationSpy },
         { provide: BookService, useValue: bookSpy },
@@ -60,7 +63,10 @@ describe('ViewRecommendationComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             params: of({ id: 1 }),
-            snapshot: { url: [{ path: 'edit' }] }
+            snapshot: {
+              url: [new UrlSegment('edit', {}), new UrlSegment('detalle', {})],
+              params: { id: 1 }
+            }
           }
         }
       ],
@@ -81,9 +87,24 @@ describe('ViewRecommendationComponent', () => {
     bookServiceSpy.obtenerLibrosPorEstado.and.returnValue(Promise.resolve([mockBook]));
   });
 
-  // it('debería crear el componente', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('debería crear el componente', () => {
+    expect(component).toBeTruthy();
+  });
 
-  
+  it('debería mostrar la reseña correctamente', async () => {
+    await component.ngOnInit();
+    expect(component.recomendacion.description).toBe('Esto es una descripcion test');
+    fixture.detectChanges();
+    const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
+    expect(descriptionElement.textContent).toContain('Esto es una descripcion test');
+  });
+
+  it('debería marcar la página como editable cuando la ruta es de edición', () => {
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.url = [new UrlSegment('detalle', {}), new UrlSegment('edit', {})];
+
+    component.esEditable();
+
+    expect(component.puedeEditar).toBeTrue();
+  });
 });
