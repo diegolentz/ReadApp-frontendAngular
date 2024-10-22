@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from '../../domain/user';
 import { UserFriend } from '../../domain/tmpUser';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';

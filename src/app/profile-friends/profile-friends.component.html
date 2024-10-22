@@ -4,6 +4,6 @@
     @for (friend of friends; track friend){
         <app-amigos [userFriend]="friend" (enviarAmigo)="ocultar($event)"></app-amigos>
     }
-    <app-boton-agregar *ngIf="agregarAmigosNuevos()" [view]="'my-profile'" [tipo]="'new-friends'"></app-boton-agregar>
+    <app-boton-agregar *ngIf="agregarAmigosNuevos()" [view]="'my-profile'" [tipo]="'new-friends'" data-testid="button-agregar"></app-boton-agregar>
 </app-container-friends>
 <app-btn-guardar-cancelar (guardar)="actualizarAmigos()" (cancelar)="volverHome()"></app-btn-guardar-cancelar >
