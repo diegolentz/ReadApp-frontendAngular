@@ -26,7 +26,7 @@ describe('RecommendationService', () => {
   };
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get','put']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'put']);
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     toastSpy = jasmine.createSpyObj('ToastrService', ['warning', 'success']);
 
@@ -57,10 +57,9 @@ describe('RecommendationService', () => {
       status: 404,
     });
 
-    httpClientSpy.get.and.returnValue(throwError(errorResponse));
+    httpClientSpy.get.and.returnValue(throwError(() => errorResponse));
 
-    const recommendation = await service.getRecommendationById(1);
-    // Aquí el valor de retorno no es el error, así que podemos manejarlo directamente.
+    await service.getRecommendationById(1);
     expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/home/home']);
   });
@@ -106,7 +105,7 @@ describe('RecommendationService', () => {
       1
     );
 
-    httpClientSpy.put.and.returnValue(throwError(errorResponse));
+    httpClientSpy.put.and.returnValue(throwError(() => errorResponse));
 
     await service.actualizarRecomendacion(updatedRecommendation);
 
