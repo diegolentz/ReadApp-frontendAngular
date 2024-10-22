@@ -63,9 +63,13 @@ describe('ViewRecommendationComponent', () => {
           provide: ActivatedRoute,
           useValue: {
             params: of({ id: 1 }),
-            snapshot: { url: [{ path: 'edit' }] }
+            snapshot: {
+              url: [ { path: 'edit' }], // Cambia según la prueba
+              params: { id: 1 }
+            }
           }
         }
+        
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
@@ -88,13 +92,13 @@ describe('ViewRecommendationComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  // it('debería mostrar la reseña correctamente', async () => {
-  //   await component.ngOnInit();
-  //   expect(component.recomendacion.description).toBe('This is a test description.');
-  //   fixture.detectChanges();
-  //   const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
-  //   expect(descriptionElement.textContent).toContain('This is a test description.');
-  // });
+  it('debería mostrar la reseña correctamente', async () => {
+    await component.ngOnInit();
+    expect(component.recomendacion.description).toBe('This is a test description.');
+    fixture.detectChanges();
+    const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
+    expect(descriptionElement.textContent).toContain('This is a test description.');
+  });
 
   
 });
