@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ViewRecommendationComponent } from './view-recommendation.component';
 import { RecommendationService } from '../../service/recommendation.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
 import { of } from 'rxjs';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BookService } from '../../service/book.service';
 import { Recommendation } from '../../domain/recommendation';
 import { Book, BookJSON } from '../../domain/book';
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
@@ -22,7 +22,7 @@ describe('ViewRecommendationComponent', () => {
     'Test Author',
     [],
     'Test Recommendation',
-    'This is a test description.',
+    'Esto es una descripcion test',
     true,
     [],
     0,
@@ -50,9 +50,9 @@ describe('ViewRecommendationComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [
-        HttpClientModule, // Agrega HttpClientModule
+        HttpClientModule,
         ToastrModule.forRoot(),
-        ViewRecommendationComponent // Importa el componente standalone aquí
+        ViewRecommendationComponent
       ],
       providers: [
         { provide: RecommendationService, useValue: recommendationSpy },
@@ -64,12 +64,11 @@ describe('ViewRecommendationComponent', () => {
           useValue: {
             params: of({ id: 1 }),
             snapshot: {
-              url: [ { path: 'edit' }], // Cambia según la prueba
+              url: [new UrlSegment('edit', {}), new UrlSegment('detalle', {})],
               params: { id: 1 }
             }
           }
         }
-        
       ],
       schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
@@ -94,11 +93,18 @@ describe('ViewRecommendationComponent', () => {
 
   it('debería mostrar la reseña correctamente', async () => {
     await component.ngOnInit();
-    expect(component.recomendacion.description).toBe('This is a test description.');
+    expect(component.recomendacion.description).toBe('Esto es una descripcion test');
     fixture.detectChanges();
     const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
-    expect(descriptionElement.textContent).toContain('This is a test description.');
+    expect(descriptionElement.textContent).toContain('Esto es una descripcion test');
   });
 
-  
+  it('debería marcar la página como editable cuando la ruta es de edición', () => {
+    const activatedRoute = TestBed.inject(ActivatedRoute);
+    activatedRoute.snapshot.url = [new UrlSegment('detalle', {}), new UrlSegment('edit', {})];
+
+    component.esEditable();
+
+    expect(component.puedeEditar).toBeTrue();
+  });
 });
