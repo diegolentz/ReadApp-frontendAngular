@@ -19,7 +19,7 @@ describe('RecomendacionComponent', () => {
 
     fixture = TestBed.createComponent(RecomendacionComponent);
     component = fixture.componentInstance;
-    component.recomendacion = new Recommendation()
+    //component.recomendacion = new Recommendation()
     fixture.detectChanges();
   });
 
