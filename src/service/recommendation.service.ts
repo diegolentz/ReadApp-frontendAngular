@@ -47,11 +47,20 @@ export class RecommendationService {
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {
-    const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
-      REST_SERVER_URL + `/recommendations`,
-      recomendacion.toEditarJSON()
-    ))
-    return recomendacionNueva
+    try {
+      const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
+        REST_SERVER_URL + `/recommendations`,
+        recomendacion.toEditarJSON()
+      ))
+      this.toast.success('Recomendacion editada con exito')
+      return recomendacionNueva   
+    } catch(error:any){
+      if(error instanceof HttpErrorResponse){
+        this.toast.warning(`${error.error['message']}`)
+        return error
+      }
+      return error
+    }
   }
 
   // si es true = home, si es false = private
@@ -85,15 +94,21 @@ export class RecommendationService {
     }
   }
 
-  async eliminarRecomendacion(idRecommendation: number) {
+  async deleteRecommendation(idRecommendation: number) {
     try {
-      const response = await lastValueFrom(this.httpClient.delete<MessageResponse>(REST_SERVER_URL + `/recommendations/${idRecommendation}`))
+      const response = await lastValueFrom(this.httpClient.delete<MessageResponse>(REST_SERVER_URL + `/delete/recommendation/${idRecommendation}`))
       this.toast.success(response.message);
     } catch (error: any) {
         this.errorHandler(error)
     }
   }
 
+  async getRecommendationsToValue():Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + `/recommendationsToValue`)
+    const recommendationJSON_LIST = await lastValueFrom(recommendations$);
+    return recommendationJSON_LIST.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+
+  }
   async errorHandler(error: any) {
     if (error instanceof HttpErrorResponse) {
       if (error.error['status'] == null) {

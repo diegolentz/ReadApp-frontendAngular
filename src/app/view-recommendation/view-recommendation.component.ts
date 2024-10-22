@@ -24,7 +24,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
   styleUrls: ['./view-recommendation.component.css']
 })
 export class ViewRecommendationComponent implements OnInit {
-  constructor(private toast:ToastrService,private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
+  constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
 
   recomendacion: Recommendation = new Recommendation()
   puedeEditar !: boolean
@@ -57,7 +57,7 @@ export class ViewRecommendationComponent implements OnInit {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id'];
       this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
-      });
+    });
   }
 
   sacarLibro(libro: string) {
@@ -80,16 +80,15 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   async editarRecomendacion() {
-    if(this.validacion()){
+    if (this.validacion()) {
       this.toast.warning('complete los campos vacios')
       return
     }
-
     await this.recommendationService.actualizarRecomendacion(this.recomendacion)
     this.traerRecomendacion()
     this.librosLeidos()
   }
-  validacion = () : boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim() 
+  validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
 
   cancelar() {
     this.goTo('/home/home')

@@ -13,7 +13,7 @@ import { RecommendationService } from '../../../service/recommendation.service';
   styleUrl: './recomendacion.component.css'
 })
 export class RecomendacionComponent {
-  @Input() recomendacion!: RecommendationCard
+  @Input() recomendacion: RecommendationCard = new RecommendationCard()
   constructor(
     private router: Router,
     private service:RecommendationService
@@ -23,9 +23,9 @@ export class RecomendacionComponent {
     this.router.navigate([option])
   }
 
-  deleteRecommendation() {
-    console.log("ELIMINADA")
-    // await this.service.
+  async deleteRecommendation() {
+    await this.service.deleteRecommendation(this.recomendacion.id)
+    window.location.reload()
   }
 
   addToValueLater() {

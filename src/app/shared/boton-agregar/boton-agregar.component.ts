@@ -15,13 +15,8 @@ export class BotonAgregarComponent {
   constructor(private route: ActivatedRoute, private router: Router, public bookService: BookService) { }
   @Input() tipo: string = '';
   @Input() view: string = '';
-
-  // link1: string = "my-profile/add-books";
-
-  agregarLibros() {
-    // Redirige y renderiza lo que se manda por params
+  
+  agregar() {
     this.router.navigate([this.view, this.tipo]);
-
-
   }
 }
