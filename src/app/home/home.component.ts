@@ -6,6 +6,7 @@ import { Recommendation, RecommendationCard } from '../../domain/recommendation'
 import { NavComponent } from '../nav/nav.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -15,10 +16,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   recommendations: RecommendationCard[] = [];
-  allRecomendations!: Recommendation[];
   filtro: string = ""
 
-  constructor(private recommendationService: RecommendationService, private activatedRt: ActivatedRoute, private rt: Router) { }
+  constructor(private recommendationService: RecommendationService, private activatedRt: ActivatedRoute, private rt: Router, private toast: ToastrService) { }
 
   async ngOnInit() {
     this.activatedRt.params.subscribe(async params => {
@@ -39,8 +39,15 @@ export class HomeComponent implements OnInit {
     }
   }
   async addFilter(newFilter: string) {
-    this.filtro = newFilter
-    this.allRecomendations = await this.recommendationService.getRecommendationsFilter(this.filtro)
+    try {
+      this.filtro = newFilter;
+      this.recommendations = await this.recommendationService.getRecommendationsFilter(this.filtro)
+      if(this.recommendations.length == 0){
+        this.toast.info('No se encontraron recomendaciones', 'Error');
+      }
+    } catch (error) {
+      this.toast.info('No se encontraron recomendaciones', 'Error');
+    }
   }
 
   async showAllRecommendations() {

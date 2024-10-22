@@ -23,12 +23,12 @@ export class RecommendationService {
     return recommendationsJSON.map((recommendationJSON) => Recommendation.fromJson(recommendationJSON))
   }
 
-  async getRecommendationsFilter(filtro: string): Promise<Recommendation[]> {
-    const recommendations$ = this.httpClient.get<RecommendationJSON[]>(REST_SERVER_URL + '/recommendations/filter', {
+  async getRecommendationsFilter(filtro: string): Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + '/recommendations/filter', {
       params: { filtro: filtro }
     })
     const recommendationsJSON = await lastValueFrom(recommendations$)
-    return recommendationsJSON.map((recommendationJSON) => Recommendation.fromJson(recommendationJSON))
+    return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON))
   }
 
   async getRecommendationById(id: number): Promise<Recommendation> {
