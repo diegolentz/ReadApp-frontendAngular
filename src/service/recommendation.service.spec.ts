@@ -26,7 +26,7 @@ describe('RecommendationService', () => {
   };
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get','put']);
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
     toastSpy = jasmine.createSpyObj('ToastrService', ['warning', 'success']);
 
@@ -63,5 +63,53 @@ describe('RecommendationService', () => {
     // Aquí el valor de retorno no es el error, así que podemos manejarlo directamente.
     expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
     expect(routerSpy.navigate).toHaveBeenCalledWith(['/home/home']);
+  });
+
+  it('debería actualizar una recomendación', async () => {
+    const updatedRecommendation = new Recommendation(
+      'Test Author',
+      [],
+      'Updated Recommendation',
+      'Updated Description',
+      true,
+      [],
+      0,
+      1
+    );
+
+    httpClientSpy.put.and.returnValue(of(mockRecommendation));
+
+    const result = await service.actualizarRecomendacion(updatedRecommendation);
+    
+    expect(result).toEqual(mockRecommendation);
+    expect(httpClientSpy.put).toHaveBeenCalledWith(
+      `${REST_SERVER_URL}/recommendations`,
+      updatedRecommendation.toEditarJSON()
+    );
+    expect(toastSpy.success).toHaveBeenCalledWith('Recomendacion editada con exito');
+  });
+
+  it('debería manejar errores al actualizar una recomendación', async () => {
+    const errorResponse = new HttpErrorResponse({
+      error: { message: 'Error de prueba' },
+      status: 400,
+    });
+
+    const updatedRecommendation = new Recommendation(
+      'Test Author',
+      [],
+      'Updated Recommendation',
+      'Updated Description',
+      true,
+      [],
+      0,
+      1
+    );
+
+    httpClientSpy.put.and.returnValue(throwError(errorResponse));
+
+    await service.actualizarRecomendacion(updatedRecommendation);
+
+    expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
   });
 });
