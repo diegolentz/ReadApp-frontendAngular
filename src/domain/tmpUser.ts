@@ -188,7 +188,7 @@ export class UserFriend implements DomainObject {
         public id: number = -1,
         public fotoPath: string = "",
         public nombreCompleto: string = "",
-        public alias: string = "",
+        public username: string = "",
     ) { }
 
     public fromJSON(userFriendJSON: UserFriendJSON): UserFriend {
@@ -221,7 +221,7 @@ export class UserFriend implements DomainObject {
 export type UserFriendPivot = {
     fotoPath: string,
     nombreCompleto: string,
-    alias: string,
+    username: string,
 }
 
 export type UserProfileFriendPivot = {
