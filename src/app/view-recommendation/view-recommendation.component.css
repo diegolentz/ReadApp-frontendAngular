@@ -26,7 +26,7 @@ h2{
 .resenia{
   width: 100%;
   font-size: 3rem;
-  margin:2rem 0 2rem;
+  margin:2rem 0 6rem;
 }
     
 .descripcion {
@@ -34,7 +34,7 @@ h2{
   height: 10rem;
   font-size: 1.8rem;
   text-align: start;
-  margin: 2rem 0 2rem;
+  margin: 2rem 0 10rem;
 }
 
 .contenedorTitulo{

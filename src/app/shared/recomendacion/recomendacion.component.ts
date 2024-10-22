@@ -12,7 +12,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './recomendacion.component.css'
 })
 export class RecomendacionComponent {
-  @Input() recomendacion!: RecommendationCard
+  @Input() recomendacion: RecommendationCard = new RecommendationCard()
   constructor(private router: Router){}
 
   goTo(option: string) {

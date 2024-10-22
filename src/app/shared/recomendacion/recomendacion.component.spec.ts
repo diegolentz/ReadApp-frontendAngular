@@ -17,11 +17,13 @@
 //     })
 //       .compileComponents();
 
-//     fixture = TestBed.createComponent(RecomendacionComponent);
-//     component = fixture.componentInstance;
-//     component.recomendacion = new Recommendation()
-//     fixture.detectChanges();
-//   });
+
+    fixture = TestBed.createComponent(RecomendacionComponent);
+    component = fixture.componentInstance;
+    //component.recomendacion = new Recommendation()
+    fixture.detectChanges();
+  });
+
 
 //   it('should create', () => {
 //     expect(component).toBeTruthy();
