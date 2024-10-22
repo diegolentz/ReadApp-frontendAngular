@@ -91,7 +91,7 @@ export class ViewRecommendationComponent implements OnInit {
   validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
 
   cancelar() {
-    this.goTo('/home/home')
+    this.goTo('/home')
   }
 
   goTo(option: string) {
