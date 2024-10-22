@@ -49,7 +49,7 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   esEditable() {
-    const isEdit = this.route.snapshot.url[1].path === 'edit';
+    const isEdit = this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit';
     this.puedeEditar = isEdit;
   }
 
