@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 
 export class LibroComponent {
   @Input() book!: Book;
+  @Input() puedeAgregar: boolean = false
   @Output() enviarLibro = new EventEmitter<string>();
 
 

@@ -24,7 +24,7 @@
     <h2 *ngIf="puedeEditar">Puedes agregar libros de la recomendacion!</h2>
     <app-container-books *ngIf="puedeEditar">
         @for (book of librosQuePuedoAgregar; track book){
-            <app-libro [book]="book" (enviarLibro)="agregarLibro($event)"></app-libro>
+            <app-libro [book]="book" [puedeAgregar]="puedeAgregar" (enviarLibro)="agregarLibro($event)"></app-libro>
             }
     </app-container-books>
 
