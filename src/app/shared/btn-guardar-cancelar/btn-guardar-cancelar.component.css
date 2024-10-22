@@ -14,12 +14,12 @@
     height: 5rem;
     width: 7rem;
     padding: 0 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 10rem;
     cursor: pointer;
-    border: 1px solid var(--color-cancel);
+    border: 1px solid var(--color-fondo);
     background-color: var(--color-fondo);
     font-size: var(--text-md);
-    filter: brightness(90%);
+    filter: brightness(70%);
     transition: background-color 0.3s ease, filter 0.3s ease, color 0.3s ease;
 
     &:hover {
@@ -33,7 +33,7 @@
     height: 5rem;
     width: 7rem;
     padding: 0 1.5rem;
-    border-radius: 0.5rem;
+    border-radius: 10rem;
     cursor: pointer;
     border: none;
     font-size: var(--text-md);

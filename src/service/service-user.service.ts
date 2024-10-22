@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { User, UserJSON } from '../domain/user';
 import { REST_SERVER_URL } from './configuration';
-import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend } from '../domain/tmpUser';
+import { UserBasic, UserBasicJSON, UserProfile, UserProfileJSON, UserInformacion, UserFriendJSON, UserFriend, UpdateFriendsMessage } from '../domain/tmpUser';
 import { LoginRequest, NewAccountRequest, PasswordRecoveryRequest } from '../domain/types';
 import { ToastrService } from 'ngx-toastr';
 
@@ -111,6 +111,16 @@ export class ServiceUser {
     }
     if (apellido != null) {
       this.apellidoUsuario = apellido
+    }
+  }
+
+  async actualizarAmigos(mensaje: UpdateFriendsMessage) {
+    try {
+      await lastValueFrom(this.httpClient.put<UpdateFriendsMessage>(
+        REST_SERVER_URL + '/updateAmigos', mensaje
+      )).then(() => this.toastr.success('Guardado exitosamente'))
+    } catch (error) {
+      this.toastr.error('Reintente más tarde', 'ERROR')
     }
   }
 }

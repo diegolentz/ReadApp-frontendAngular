@@ -7,6 +7,7 @@ import { NavComponent } from '../nav/nav.component';
 import { ContenedorSectionComponent } from '../contenedor-section/contenedor-section.component';
 import { LibroComponent } from '../libro/libro.component';
 import { ContainerBooksComponent } from '../shared/layouts/books/books.component';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-busqueda-libros',
@@ -19,21 +20,27 @@ export class BusquedaLibrosComponent {
   books: Book[] = [];
   filtro: string = ""
 
-  constructor(public bookService: BookService) { }
+  constructor(public bookService: BookService, public toastr: ToastrService) { }
 
   async ngOnInit() {
-    this.books = await this.bookService.obtenerLibros();
+    try {
+      this.books = await this.bookService.obtenerLibros();
+    } catch (error) {
+      console.error('Error al obtener los libros:', error);
+      this.toastr.error('No se pudo obtener la lista de libros', 'Error');
+    }
   }
 
   async addFilter(newFilter: string) {
-    this.filtro = newFilter
-    this.books = await this.bookService.obtenerLibrosFiltrados(this.filtro)
-    // this.books = this.filtro ?
-    //   (this.books.filter((book) => book.title.replace(/\s+/g, '').toLowerCase().includes(
-    //     this.filtro.replace(/\s+/g, '').toLowerCase()) ||
-    //     book.author.replace(/\s+/g, '').toLowerCase().includes(this.filtro.replace(/\s+/g, '').toLowerCase()))) :
-    //   (this.books);
+    try {
+      this.filtro = newFilter;
+      this.books = await this.bookService.obtenerLibrosFiltrados(this.filtro);
+    } catch (error) {
+      console.error('Error al aplicar el filtro:', error);
+      this.toastr.error('No se pudo aplicar el filtro', 'Error');
+    }
   }
+
 }
 
 

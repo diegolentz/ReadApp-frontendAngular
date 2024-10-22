@@ -43,7 +43,6 @@ export class ProfileBooksReadedComponent implements OnInit {
         : await this.bookService.obtenerLibrosPorEstado(this.id, false);
     } catch (error: any) {
       if (error instanceof HttpErrorResponse) {
-        //Solo me interesa HttpErrorResponde
         console.log(error.error["timestamp"])
         console.log(error.error["status"])
         console.log(error.error["error"])
