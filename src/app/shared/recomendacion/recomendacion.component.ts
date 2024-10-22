@@ -28,9 +28,9 @@ export class RecomendacionComponent {
     window.location.reload()
   }
 
-  addToValueLater() {
-    console.log("AGREGADA")
-    // await this.service.
+  async addToValueLater() {
+    await this.service.addToValueLater(this.recomendacion.id)
+    window.location.reload()
   }
 
   round(numberFloat:number){

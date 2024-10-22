@@ -17,3 +17,4 @@ export type PasswordRecoveryRequest = {
     username: string,
     newPassword:string
 }
+

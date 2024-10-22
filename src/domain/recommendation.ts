@@ -1,3 +1,4 @@
+import { RecommendationService } from "../service/recommendation.service"
 import { Book, BookJSON } from "./book"
 import { User } from "./user"
 import { Valoration, ValorationJSON } from "./valoration"
@@ -24,9 +25,10 @@ export type RecommendationEditJSON = {
 export type RecommendationCardJSON = {
     id:number,
     title: string,
-    isEditable: boolean,
-    isDeletable: boolean,
-    isPublic: boolean,
+    editable: boolean,
+    deletable: boolean,
+    public: boolean,
+    pending:boolean,
     content: string,
     bookTitles: Array<string>,
     popularity: number,
@@ -103,6 +105,7 @@ export class RecommendationCard {
         public editable: boolean = true,
         public deletable: boolean = true,
         public _public: boolean = true,
+        public pending:boolean = true,
         public content: string = "Content",
         public bookTitles: Array<string> = [""],
         public popularity: number = 0,
@@ -114,16 +117,28 @@ export class RecommendationCard {
     }
 
     static fromJson(recommendationJSON: RecommendationCardJSON): RecommendationCard {
-        return Object.assign(new RecommendationCard(), recommendationJSON);
+        return new RecommendationCard(
+            recommendationJSON.id,
+            recommendationJSON.title,
+            recommendationJSON.editable,
+            recommendationJSON.deletable,
+            recommendationJSON.public,
+            recommendationJSON.pending,
+            recommendationJSON.content,
+            recommendationJSON.bookTitles,
+            recommendationJSON.popularity,
+            recommendationJSON.aproxTime
+        );
     }
 
     toJSON(): RecommendationCardJSON {
         return {
             id: this.id,
             title: this.title,
-            isEditable: this.editable,
-            isDeletable: this.deletable,
-            isPublic: this._public,
+            editable: this.editable,
+            deletable: this.deletable,
+            public: this._public,
+            pending:this.pending,
             content: this.content,
             bookTitles: this.bookTitles,
             popularity: this.popularity,

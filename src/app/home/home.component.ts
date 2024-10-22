@@ -7,10 +7,11 @@ import { NavComponent } from '../nav/nav.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RecomendacionComponent, NavComponent],
+  imports: [RecomendacionComponent, NavComponent, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -52,6 +53,7 @@ export class HomeComponent implements OnInit {
 
   async showAllRecommendations() {
     this.recommendations = await this.recommendationService.getRecommendationsByProfile()
+    console.log(this.recommendations)
   }
 
   async showUserRecommendations(privates: boolean) {

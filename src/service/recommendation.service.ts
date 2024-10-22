@@ -133,5 +133,15 @@ export class RecommendationService {
     return recommendationJSON_LIST.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
 
   }
+
+  async addToValueLater(id:number):Promise<void> {
+    try {
+      const response = await lastValueFrom(this.httpClient.put<MessageResponse>(REST_SERVER_URL + `/addToValueLater/${id}`, {id}))
+      this.toast.success(response.message);
+    } catch (error: any) {
+        this.errorHandler(error)
+    }
+
+  }
 }
 
