@@ -7,6 +7,8 @@ import { Recommendation, RecommendationJSON } from '../domain/recommendation';
 import { REST_SERVER_URL } from './configuration';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ValorationJSON } from '../domain/valoration';
+import { Valoration } from '../domain/valoration';
 
 describe('RecommendationService', () => {
   let service: RecommendationService;
@@ -23,6 +25,13 @@ describe('RecommendationService', () => {
     valoraciones: [], // Puedes agregar valoraciones si es necesario
     valoracionTotal: 0,
     id: 1,
+  };
+  const mockValoration: ValorationJSON = {
+    author: 'Test User',
+    fotoPath: 'path/to/photo.jpg',
+    score: 5,
+    fecha: '2024-10-21',
+    comentario: 'Great recommendation!',
   };
 
   beforeEach(() => {
@@ -108,6 +117,50 @@ describe('RecommendationService', () => {
     httpClientSpy.put.and.returnValue(throwError(() => errorResponse));
 
     await service.actualizarRecomendacion(updatedRecommendation);
+
+    expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
+  });
+
+  it('debería agregar una valoración', async () => {
+    const idRecommendation = 1;
+    const valoration = new Valoration(
+      mockValoration.author,
+      mockValoration.fotoPath,
+      mockValoration.score,
+      new Date(mockValoration.fecha),
+      mockValoration.comentario
+    );
+
+    httpClientSpy.put.and.returnValue(of(mockValoration));
+
+    const result = await service.agregarValoracion(valoration, idRecommendation);
+    
+    expect(result).toEqual(mockValoration);
+    expect(httpClientSpy.put).toHaveBeenCalledWith(
+      `${REST_SERVER_URL}/recommendations/${idRecommendation}`,
+      valoration.toJSON()
+    );
+    expect(toastSpy.success).toHaveBeenCalledWith("Se agregó correctamente la valoración");
+  });
+
+  it('debería manejar errores al agregar una valoración', async () => {
+    const errorResponse = new HttpErrorResponse({
+      error: { message: 'Error de prueba' },
+      status: 400,
+    });
+
+    const idRecommendation = 1;
+    const valoration = new Valoration(
+      mockValoration.author,
+      mockValoration.fotoPath,
+      mockValoration.score,
+      new Date(mockValoration.fecha),
+      mockValoration.comentario
+    );
+
+    httpClientSpy.put.and.returnValue(throwError(() => errorResponse));
+
+    await service.agregarValoracion(valoration, idRecommendation);
 
     expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
   });
