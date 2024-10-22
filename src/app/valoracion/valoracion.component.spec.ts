@@ -1,20 +1,20 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ValoracionComponent } from './valoracion.component';
-import { RecommendationService } from '../../service/recommendation.service';
-import { ToastrService } from 'ngx-toastr';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { ValoracionComponent } from './valoracion.component'
+import { RecommendationService } from '../../service/recommendation.service'
+import { ToastrService } from 'ngx-toastr'
+import { NO_ERRORS_SCHEMA } from '@angular/core'
+import { CommonModule } from '@angular/common'
+import { HttpClientModule } from '@angular/common/http' // Importa HttpClientModule
 
 describe('ValoracionComponent', () => {
-  let component: ValoracionComponent;
-  let fixture: ComponentFixture<ValoracionComponent>;
+  let component: ValoracionComponent
+  let fixture: ComponentFixture<ValoracionComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
         CommonModule, 
-        HttpClientModule, // Agrega HttpClientModule aquí
+        HttpClientModule, 
         ValoracionComponent
       ],
       providers: [
@@ -22,32 +22,34 @@ describe('ValoracionComponent', () => {
         { provide: ToastrService, useValue: {} } // Mock del toastr
       ],
       schemas: [NO_ERRORS_SCHEMA] // Ignorar errores de componentes no declarados
-    }).compileComponents();
+    }).compileComponents()
 
-    fixture = TestBed.createComponent(ValoracionComponent);
-    component = fixture.componentInstance;
-  });
+    fixture = TestBed.createComponent(ValoracionComponent)
+    component = fixture.componentInstance
+  })
 
   it('debería crear el componente', () => {
-    expect(component).toBeTruthy();
-  });
+    expect(component).toBeTruthy()
+  })
+
   it('debería establecer la calificación correctamente al llamar a setRating', () => {
-    component.setRating(4);
-    expect(component.rating).toBe(4);
-  });
+    component.setRating(4)
+    expect(component.rating).toBe(4)
+  })
+
   it('debería agregar la valoración correctamente y reiniciar el estado', async () => {
     // Simula la entrada del usuario
-    component.nuevaValoracion.comentario = 'Buen libro';
-    component.rating = 5;
+    component.nuevaValoracion.comentario = 'Buen libro'
+    component.rating = 5
   
     // Simula que el servicio devuelve una promesa resuelta
-    const recommendationService = TestBed.inject(RecommendationService);
-    recommendationService.agregarValoracion = jasmine.createSpy('agregarValoracion').and.returnValue(Promise.resolve());
+    const recommendationService = TestBed.inject(RecommendationService)
+    recommendationService.agregarValoracion = jasmine.createSpy('agregarValoracion').and.returnValue(Promise.resolve())
   
-    await component.agregarLaValoracion();
+    await component.agregarLaValoracion()
   
-    expect(recommendationService.agregarValoracion).toHaveBeenCalledWith(component.nuevaValoracion, component.id);
-    expect(component.nuevaValoracion.comentario).toBe('');
-    expect(component.rating).toBe(0);
-  });
-});
+    expect(recommendationService.agregarValoracion).toHaveBeenCalledWith(component.nuevaValoracion, component.id)
+    expect(component.nuevaValoracion.comentario).toBe('')
+    expect(component.rating).toBe(0)
+  })
+})
