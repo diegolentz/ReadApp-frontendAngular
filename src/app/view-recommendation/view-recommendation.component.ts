@@ -25,7 +25,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 })
 export class ViewRecommendationComponent implements OnInit {
   constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
-
+  puedeAgregar=true
   recomendacion: Recommendation = new Recommendation()
   puedeEditar !: boolean
   librosQuePuedoAgregar: Book[] = []
