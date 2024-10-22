@@ -1,13 +1,14 @@
-<article class="recomendacion">
+<article class="recomendacion" >
 
     <h2 class="recomendacion__titulo">
         {{recomendacion.title}}
     </h2>
 
     <div class="actions">
-        @if (recomendacion._public) {
-            <a>
-                <img src="svg/agregarAValorar.svg" alt="">
+
+        @if (!recomendacion.pending) {
+            <a (click)="addToValueLater()"> 
+                <img src="svg/corazon.svg" alt="">
             </a>
         }
         @if (recomendacion.editable) {
