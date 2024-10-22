@@ -10,7 +10,6 @@ import { ProfileBooksReadedComponent } from './profile-books-readed/profile-book
 import { LoginComponent } from './login/login.component';
 import { ViewRecommendationComponent } from './view-recommendation/view-recommendation.component';
 import { LibrosAgregarComponent } from './libros-agregar/libros-agregar.component';
-import { AmigosAgregarComponent } from './amigos-agregar/amigos-agregar.component';
 
 export const routes: Routes = [
     {
