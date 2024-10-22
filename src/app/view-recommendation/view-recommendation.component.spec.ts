@@ -3,12 +3,12 @@ import { ViewRecommendationComponent } from './view-recommendation.component';
 import { RecommendationService } from '../../service/recommendation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
+import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { BookService } from '../../service/book.service';
 import { Recommendation } from '../../domain/recommendation';
 import { Book, BookJSON } from '../../domain/book';
-import { HttpClientModule } from '@angular/common/http'; // Asegúrate de importar los módulos necesarios
+import { HttpClientModule } from '@angular/common/http'; // Importa HttpClientModule
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
@@ -49,8 +49,11 @@ describe('ViewRecommendationComponent', () => {
     const routerSpyMock = jasmine.createSpyObj('Router', ['navigate']);
 
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule], // Importa módulos necesarios
-      declarations: [ViewRecommendationComponent],
+      imports: [
+        HttpClientModule, // Agrega HttpClientModule
+        ToastrModule.forRoot(),
+        ViewRecommendationComponent // Importa el componente standalone aquí
+      ],
       providers: [
         { provide: RecommendationService, useValue: recommendationSpy },
         { provide: BookService, useValue: bookSpy },
@@ -81,8 +84,16 @@ describe('ViewRecommendationComponent', () => {
     bookServiceSpy.obtenerLibrosPorEstado.and.returnValue(Promise.resolve([mockBook]));
   });
 
-  // it('debería crear el componente', () => {
-  //   expect(component).toBeTruthy();
+  it('debería crear el componente', () => {
+    expect(component).toBeTruthy();
+  });
+
+  // it('debería mostrar la reseña correctamente', async () => {
+  //   await component.ngOnInit();
+  //   expect(component.recomendacion.description).toBe('This is a test description.');
+  //   fixture.detectChanges();
+  //   const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
+  //   expect(descriptionElement.textContent).toContain('This is a test description.');
   // });
 
   
