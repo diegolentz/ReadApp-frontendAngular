@@ -6,6 +6,7 @@ import { lastValueFrom } from 'rxjs';
 import { Valoration, ValorationJSON } from '../domain/valoration';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { MessageResponse } from './service-user.service';
 
 
 @Injectable({
@@ -93,6 +94,44 @@ export class RecommendationService {
     }
   }
 
-  
+  async deleteRecommendation(idRecommendation: number) {
+    try {
+      const response = await lastValueFrom(this.httpClient.delete<MessageResponse>(REST_SERVER_URL + `/delete/recommendation/${idRecommendation}`))
+      this.toast.success(response.message);
+    } catch (error: any) {
+        this.errorHandler(error)
+    }
+  }
+
+  async getRecommendationsToValue():Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + `/recommendationsToValue`)
+    const recommendationJSON_LIST = await lastValueFrom(recommendations$);
+    return recommendationJSON_LIST.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+
+  }
+  async errorHandler(error: any) {
+    if (error instanceof HttpErrorResponse) {
+      if (error.error['status'] == null) {
+        this.toast.error('Servidor caido :,(. Intente mas tarde')
+      }
+      if (error.error['status'] == 400) {
+        this.toast.warning(error.error['message'])
+      }
+
+      if (error.error['status'] == 404) {
+        this.toast.error(error.error['message'])
+      }
+    }
+    else{
+      this.toast.error('Error externo:,(. Intente mas tarde')
+    }
+  }
+
+  async getRecommendationsByProfile():Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + `/recommendationsByProfile`)
+    const recommendationJSON_LIST = await lastValueFrom(recommendations$);
+    return recommendationJSON_LIST.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+
+  }
 }
 

@@ -3,6 +3,8 @@ import { RecomendacionComponent } from '../shared/recomendacion/recomendacion.co
 import { Recommendation, RecommendationCard } from '../../domain/recommendation';
 import { RecommendationService } from '../../service/recommendation.service';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-recommendations',
@@ -15,9 +17,20 @@ export class ProfileRecommendationsComponent {
   @HostBinding('style.width') width: string = '100%';
   recommendations?: RecommendationCard[];
 
-  constructor(private recommendationService: RecommendationService) { }
+  constructor(
+    private recommendationService: RecommendationService,
+    private toast: ToastrService
+  ) { }
 
   async ngOnInit() {
-    this.recommendations = await this.recommendationService.getAllRecommendations()
+    try {
+      this.recommendations = await this.recommendationService.getRecommendationsToValue()
+    } catch (error: any) {
+      if(error instanceof HttpErrorResponse){
+        if(error.error['status']==null){
+          this.toast.error('Servidor caido')
+        }
+      }
+    }
   }
 }

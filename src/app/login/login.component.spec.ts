@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpContext } from '@angular/common/http';
 import { getHttpClientSpyLogin } from '../../tests/stubs/httpClientSpyUser';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -45,7 +45,8 @@ describe('LoginComponent', () => {
       [component.formLabels.username]: "123456789", //lenght 8 max
       [component.formLabels.password]: "12345678912345678", //lenght 16 max
     });
-
+    const randomNumber = httpClientSpy.get.apply
+    console.log(`RANDOM:${randomNumber}`)
     expect(component.form.valid).toEqual(false);
   });
 
