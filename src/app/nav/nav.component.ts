@@ -22,7 +22,7 @@ export class NavComponent {
   constructor(private router: Router) { }
 
   checkHabilitado(): boolean {
-    return (this.router.url == '/search-books' || this.router.url == '/home/myRecommendations/true' || this.router.url == '/home/myRecommendations/false');
+    return (this.router.url == '/home/myRecommendations/true' || this.router.url == '/home/myRecommendations/false');
   }
 
   togglePrivateOnly(): void {

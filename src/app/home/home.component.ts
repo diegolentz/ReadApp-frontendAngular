@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   }
 
   async showAllRecommendations() {
-    this.recommendations = await this.recommendationService.getAllRecommendations()
+    this.recommendations = await this.recommendationService.getRecommendationsByProfile()
   }
 
   async showUserRecommendations(privates: boolean) {

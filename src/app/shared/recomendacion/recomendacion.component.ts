@@ -32,4 +32,8 @@ export class RecomendacionComponent {
     console.log("AGREGADA")
     // await this.service.
   }
+
+  round(numberFloat:number){
+    return Math.round(numberFloat)
+  }
 }

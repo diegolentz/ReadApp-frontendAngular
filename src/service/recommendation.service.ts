@@ -126,5 +126,12 @@ export class RecommendationService {
       this.toast.error('Error externo:,(. Intente mas tarde')
     }
   }
+
+  async getRecommendationsByProfile():Promise<RecommendationCard[]> {
+    const recommendations$ = this.httpClient.get<RecommendationCardJSON[]>(REST_SERVER_URL + `/recommendationsByProfile`)
+    const recommendationJSON_LIST = await lastValueFrom(recommendations$);
+    return recommendationJSON_LIST.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
+
+  }
 }
 

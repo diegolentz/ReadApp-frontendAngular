@@ -2,10 +2,10 @@ import { of } from "rxjs/internal/observable/of"
 import { Recommendation, RecommendationCard, RecommendationCardJSON } from "../../domain/recommendation"
 import { REST_SERVER_URL } from "../../service/configuration"
 
-const recommendationsStub:Array<RecommendationCard> = [
+export const recommendationCardStubJSON:Array<RecommendationCardJSON> = [
     new RecommendationCard(1,"",true, true, true, "", ["",""], 5, 5),
     new RecommendationCard(2,"",true, true, true, "", ["",""], 5, 5),
-]
+].map((recommendacionCard)=> recommendacionCard.toJSON())
 
 export const getHttpClientSpyHome = () => {
   const httpClientSpy = jasmine.createSpyObj('HttpClient', [
@@ -23,7 +23,7 @@ export const getHttpClientSpyHome = () => {
 
   httpClientSpy.get
     .withArgs(`${REST_SERVER_URL}/recommendations`)
-    .and.returnValue(of(recommendationsStub))
+    .and.returnValue(of(recommendationCardStubJSON))
 
   return httpClientSpy
 }
