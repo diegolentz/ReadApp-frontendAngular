@@ -54,13 +54,26 @@ describe('BookService', () => {
   const expectedBooks: Book[] = mockBooks.map(Book.fromJson);
 
   it('search books : me traigo los libros de la app', async () => {
-    //  Este método devuelve una promesa que cuando se resuelve contiene una lista de libros. 
     service.obtenerLibros().then(books => {
       expect(books).toEqual(expectedBooks);
     });
 
     const req = httpTestingController.expectOne(`${REST_SERVER_URL}/librosSearch`);
     expect(req.request.method).toEqual('GET');
+    req.flush(mockBooks);  // Simula la respuesta con los libros mock
+  });
+
+  it('debería manejar errores al obtener libros', async () => {
+    const errorResponse = { message: 'Error de prueba' };
+
+    // Aquí simula un error del backend
+    service.obtenerLibros().catch(error => {
+      expect(error).toEqual(errorResponse);
+    });
+
+    const req = httpTestingController.expectOne(`${REST_SERVER_URL}/librosSearch`);
+    expect(req.request.method).toEqual('GET');
+    req.flush(errorResponse, { status: 404, statusText: 'Not Found' });
   });
 
   it('filtrar libros: debería traer los libros que filtra el search', async () => {
@@ -75,15 +88,15 @@ describe('BookService', () => {
   });
 
   it('filtrar libros: lista vacia', async () => {
-    const filtro = 'no-existe';  // Un filtro que no coincida con ningún libro
+    const filtro = 'no-existe';  // filtro que no coincida con ningún libro
 
     service.obtenerLibrosFiltrados(filtro).then(books => {
-      expect(books).toEqual([]);  // Esperamos que devuelva una lista vacía
+      expect(books).toEqual([]);  // devuelve una lista vacía
     });
 
     const req = httpTestingController.expectOne(`${REST_SERVER_URL}/librosSearch/filter?filtro=no-existe`);
     expect(req.request.method).toEqual('GET');
-    req.flush([]);  // Simula una respuesta vacía desde el backend
+    req.flush([]);  // respuesta vacía desde el backend
   });
 
 
