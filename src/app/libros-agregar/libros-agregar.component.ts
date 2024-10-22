@@ -13,17 +13,20 @@ import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-
   standalone: true,
   imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent, BtnGuardarCancelarComponent],
   templateUrl: './libros-agregar.component.html',
-  styleUrl: './libros-agregar.component.css'
+  styleUrls: ['./libros-agregar.component.css']
 })
 export class LibrosAgregarComponent implements OnInit {
-  constructor(private route: ActivatedRoute, public bookService: BookService, public router: Router) { }
-
   tipoContenido!: string;
   estado!: boolean;
-
-  books!: Book[];
+  books: Book[] = []; // Inicializa como un arreglo vacío
   librosAgregados: number[] = [];
-  id !: number;
+  id!: number;
+
+  constructor(
+    private route: ActivatedRoute,
+    public bookService: BookService,
+    public router: Router
+  ) { }
 
   async ngOnInit(): Promise<void> {
     this.queRenderizo();
@@ -33,31 +36,34 @@ export class LibrosAgregarComponent implements OnInit {
   queRenderizo() {
     this.route.params.subscribe(params => {
       this.tipoContenido = params['tipo'];
-      this.estado = (this.tipoContenido === 'readed'); //para manejar a quien se lo agrego
+      this.estado = (this.tipoContenido === 'readed');
     });
   }
 
   async mostrarLibros() {
     try {
       this.id = Number(localStorage.getItem('id'));
-      this.books = (this.tipoContenido == 'to-read')
+      this.books = (this.tipoContenido === 'to-read')
         ? await this.bookService.obtenerParaLeer(this.id)
         : await this.bookService.obtenerLibrosPorEstado(this.id, !this.estado);
     } catch (error: any) {
-      console.log(error);
+      console.error(error);
+      alert('Error al cargar los libros. Intente nuevamente más tarde.'); // Notificar al usuario
     }
   }
 
   sacalodelaVista(libro: string) {
-    var id = Number(libro)
-    this.librosAgregados.push(id)
-    console.log(this.librosAgregados)
+    const id = Number(libro);
+    this.librosAgregados.push(id);
     this.books = this.books.filter(book => book.id !== id);
   }
+
   async agregarLibros() {
     await this.bookService.agregarLibro(this.id, this.librosAgregados, this.estado);
-    window.history.back();
+    await this.mostrarLibros(); // Espera a que se complete
+    this.router.navigate(['/my-profile/books/', this.tipoContenido]);
   }
+
   volverHome() {
     this.router.navigate(['home']);
   }

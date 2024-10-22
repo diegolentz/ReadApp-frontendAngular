@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class RecommendationService {
   @Input() filtro: string = "";
   filtroCambiado = new EventEmitter<string>(); // necesito emitir el cambio de criterio de busqueda
-  constructor(private httpClient: HttpClient, private toast:ToastrService,private router: Router) { }
+  constructor(private httpClient: HttpClient, private toast: ToastrService, private router: Router) { }
 
   async getRecommendations(): Promise<Recommendation[]> {
     const recommendations$ = this.httpClient.get<RecommendationJSON[]>(REST_SERVER_URL + '/recommendations')
@@ -35,21 +35,21 @@ export class RecommendationService {
       const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
       const recommendationJSON = await lastValueFrom(recommendation$)
       return Recommendation.fromJson(recommendationJSON)
-    } catch(error:any){
-      if(error instanceof HttpErrorResponse){
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
         this.toast.warning(`${error.error['message']}`)
         this.router.navigate(['/home/home'])
       }
       return error
     }
-    
+
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {
     const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
       REST_SERVER_URL + `/recommendations`,
       recomendacion.toEditarJSON()
-    ))
+    ));
     return recomendacionNueva
   }
 
@@ -66,16 +66,16 @@ export class RecommendationService {
     const recommendationsJSON = await lastValueFrom(recommendations$);
     return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
   }
-  async agregarValoracion(valoracion: Valoration,idRecommendation:number) {
-    try{
+  async agregarValoracion(valoracion: Valoration, idRecommendation: number) {
+    try {
       const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
         REST_SERVER_URL + `/recommendations/${idRecommendation}`,
         valoracion.toJSON()
       ))
       this.toast.success("Se agregó correctamente la valoración");
       return valoracionNueva
-    } catch(error:any){
-      if(error instanceof HttpErrorResponse){
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
         this.toast.warning(`${error.error['message']}`)
         return error
       }
