@@ -13,8 +13,5 @@ import { HeaderComponent } from "../shared/header/header.component";
   templateUrl: './contenedor-section.component.html',
   styleUrl: './contenedor-section.component.css'
 })
-export class ContenedorSectionComponent {
-  @HostBinding('style.width') width: string = '100%';
-
- }
+export class ContenedorSectionComponent {}
 

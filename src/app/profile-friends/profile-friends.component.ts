@@ -31,8 +31,6 @@ export class ProfileFriendsComponent implements OnInit {
     await this.getFriend()
   }
 
-  @HostBinding('style.width') width: string = '100%';
-
   async getFriend() {
     try {
       this.friends = !this.agregarAmigosNuevos()

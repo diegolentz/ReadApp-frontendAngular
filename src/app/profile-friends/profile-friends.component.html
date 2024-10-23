@@ -1,9 +1,13 @@
-<h2>Friends</h2>
+<section class = "opcionSeleccionada__amigos">
+    <h2>Friends</h2>
 
-<app-container-friends>
-    @for (friend of friends; track friend){
-        <app-amigos [userFriend]="friend" (enviarAmigo)="ocultar($event)"></app-amigos>
-    }
-    <app-boton-agregar *ngIf="agregarAmigosNuevos()" [view]="'my-profile'" [tipo]="'new-friends'" data-testid="button-agregar"></app-boton-agregar>
-</app-container-friends>
-<app-btn-guardar-cancelar (guardar)="actualizarAmigos()" (cancelar)="volverHome()"></app-btn-guardar-cancelar >
+    <app-container-friends>
+        @for (friend of friends; track friend){
+            <app-amigos [userFriend]="friend" (enviarAmigo)="ocultar($event)"></app-amigos>
+        }  
+    </app-container-friends>
+    <section class = "buttonsFooter">
+            <app-boton-agregar *ngIf="agregarAmigosNuevos()" [view]="'my-profile'" [tipo]="'new-friends'" data-testid="button-agregar"></app-boton-agregar>
+            <app-btn-guardar-cancelar (guardar)="actualizarAmigos()" (cancelar)="volverHome()"></app-btn-guardar-cancelar >
+    </section>
+</section>

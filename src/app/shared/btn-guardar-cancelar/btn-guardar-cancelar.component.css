@@ -7,13 +7,11 @@
     width: 100%;
     height: auto;
     background-color: var(--color-fondo);
-    margin-top: 2rem;
 }
 
 .btn-cancelar {
     height: 5rem;
     width: 7rem;
-    padding: 0 1.5rem;
     border-radius: 10rem;
     cursor: pointer;
     border: 1px solid var(--color-fondo);
@@ -32,7 +30,6 @@
 .btn-guardar {
     height: 5rem;
     width: 7rem;
-    padding: 0 1.5rem;
     border-radius: 10rem;
     cursor: pointer;
     border: none;
