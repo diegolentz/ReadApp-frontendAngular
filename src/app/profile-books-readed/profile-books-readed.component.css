@@ -1,15 +1,16 @@
+.opcionSeleccionada__libros{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 6fr 3fr;
+}
 
 .librosContainer{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 0.4fr));
-    
-    gap:1.5rem;
-    padding-top: 1rem;
-    overflow-y:auto;  
-    height: 51vh;  
-    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 0.4fr)); 
+    gap: 2rem;
+    overflow-y: scroll;
     justify-content: space-around;
-    padding-right: 1rem;
 }
 
 .librosContainer::-webkit-scrollbar {
@@ -24,4 +25,11 @@
 .librosContainer::-webkit-scrollbar-thumb {
     background-color: var(--color-header);
     border-radius: 2rem;
+}
+
+.buttonsFooter {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
 }
