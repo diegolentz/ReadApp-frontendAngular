@@ -1,6 +1,0 @@
-.friendsList{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(30rem,100% ), 1fr));
-    gap:2rem;
-    margin: 1rem;
-}
