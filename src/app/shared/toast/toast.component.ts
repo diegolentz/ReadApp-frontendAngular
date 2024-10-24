@@ -12,7 +12,7 @@ export class ToastComponent implements OnInit {
   @Input() message: string = '';
   @Input() type: ToastType = 'info';
   @Input() autoClose: boolean = true;
-  @Input() duration: number = 3000;
+  @Input() duration: number = 2800;
 
   isVisible: boolean = false;
 
