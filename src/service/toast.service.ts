@@ -1,4 +1,4 @@
-import { Injectable, ApplicationRef, Injector, Renderer2, RendererFactory2, ComponentRef } from '@angular/core';
+import { Injectable, ApplicationRef, Renderer2, RendererFactory2, ComponentRef } from '@angular/core';
 import { ToastComponent, ToastType } from '../app/shared/toast/toast.component';
 
 @Injectable({
@@ -9,28 +9,22 @@ export class ToastService {
 
   constructor(
     private appRef: ApplicationRef,
-    private injector: Injector,
     private rendererFactory: RendererFactory2
   ) {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
   showToast(message: string, customClass: ToastType) {
-    // Crear instancia de ToastComponent
     const toastComponentRef = this.createToastComponent(message, customClass);
-
-    // Añadirlo al DOM
     const toastElement = (toastComponentRef.hostView as any).rootNodes[0] as HTMLElement;
     this.renderer.appendChild(document.body, toastElement);
 
-    // Remover el toast después del tiempo de duración
     setTimeout(() => {
       this.destroyToast(toastComponentRef);
     }, 5000);
   }
 
   private createToastComponent(message: string, type: ToastType): ComponentRef<ToastComponent> {
-    // Crear una instancia de ToastComponent sin ViewContainerRef
     const componentRef = this.appRef.bootstrap(ToastComponent, document.createElement('div'));
     componentRef.instance.message = message;
     componentRef.instance.type = type;
