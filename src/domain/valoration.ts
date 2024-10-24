@@ -17,6 +17,7 @@ export class Valoration {
         public valor: number = 0,   
         public fecha: Date = new Date(1914, 14, 14),
         public comentario: string 
+        
     ) { }
 
         static fromJson(valorationJSON: ValorationJSON): Valoration {

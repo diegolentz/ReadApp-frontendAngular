@@ -12,6 +12,8 @@ export type RecommendationJSON = {
     valoraciones: Array<ValorationJSON>,
     valoracionTotal: number
     id: number
+    puedeValorar: boolean
+
 }
 
 export type RecommendationEditJSON = {
@@ -43,7 +45,8 @@ export class Recommendation {
         public _public: boolean = true,
         public valorations: Array<Valoration> = [],
         public valoracionTotal: number = 0,
-        public id: number = 0
+        public id: number = 0,
+        public puedeValorar: boolean = false
     ) { }
 
     get cantidadLibros() {
@@ -60,7 +63,8 @@ export class Recommendation {
             recommendationJSON.publica,
             recommendationJSON.valoraciones.map(it => Valoration.fromJson(it) ),
             recommendationJSON.valoracionTotal,
-            recommendationJSON.id
+            recommendationJSON.id,
+            recommendationJSON.puedeValorar
             )
     }
 
@@ -74,6 +78,7 @@ export class Recommendation {
             valoraciones: this.valorations.map(it=> it.toJSON()),
             valoracionTotal: this.valoracionTotal,
             id:this.id,
+            puedeValorar: this.puedeValorar
         }
     }
 
