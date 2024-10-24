@@ -38,25 +38,25 @@ export class ViewRecommendationComponent implements OnInit {
   }
   async librosLeidos() {
     try {
-      const idUser = Number(localStorage.getItem('id'));
-      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(idUser, true);
+      const idUser = Number(localStorage.getItem('id'))
+      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(idUser, true)
       this.librosQuePuedoAgregar = librosLeidos.filter(libro =>
         !this.recomendacion.recommendedBooks.some(recommendedBook => recommendedBook.id === libro.id)
       );
     } catch (error) {
-      console.error('Error al obtener los libros:', error);
+      console.error('Error al obtener los libros:', error)
     }
   }
 
   esEditable() {
-    const isEdit = this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit';
-    this.puedeEditar = isEdit;
+    const isEdit = this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
+    this.puedeEditar = isEdit
   }
 
   traerRecomendacion() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
-      const recomendacionId = viewRecommendationParams['id'];
-      this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+      const recomendacionId = viewRecommendationParams['id']
+      this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId)
     });
   }
 
@@ -73,9 +73,9 @@ export class ViewRecommendationComponent implements OnInit {
     var libroAgregado = this.librosQuePuedoAgregar.find((libro: Book) => libro.id == id);
     this.librosQuePuedoAgregar = this.librosQuePuedoAgregar.filter((libro: Book) => libro.id !== id);
     if (libroAgregado) {
-      this.recomendacion.recommendedBooks.push(libroAgregado);
+      this.recomendacion.recommendedBooks.push(libroAgregado)
     } else {
-      console.error('Libro no encontrado para agregar:', id);
+      console.error('Libro no encontrado para agregar:', id)
     }
   }
 
