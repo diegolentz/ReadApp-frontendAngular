@@ -1,33 +1,10 @@
 .toast {
-    padding: 15px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    color: #fff;
-    font-size: 14px;
-  }
-  
-  .success {
-    background-color: #4caf50;
-  }
-  
-  .error {
-    background-color: #f44336;
-  }
-  
-  .info {
-    background-color: #2196f3;
-  }
-  
-  .warning {
-    background-color: #ff9800;
-  }
-  
-  button {
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-  }
+  padding: 16px;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
