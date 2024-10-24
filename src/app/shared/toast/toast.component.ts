@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ToastComponent implements OnInit {
   @Input() message: string = '';
-  @Input() type: 'success' | 'error' | 'info' | 'warning' = 'info';
+  @Input() type: ToastType = 'info';
   @Input() autoClose: boolean = true;
   @Input() duration: number = 3000;
 
@@ -31,3 +31,5 @@ export class ToastComponent implements OnInit {
     this.isVisible = false;
   }
 }
+
+export type ToastType = 'success' | 'error' | 'info' | 'warning'
