@@ -1,4 +1,4 @@
-import { Component, HostBinding } from '@angular/core';
+import { Component, HostBinding, ViewContainerRef } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
@@ -9,8 +9,8 @@ import { FormErrorComponent } from "../../perfil-info/form-error/form-error.comp
 import { UserInformacion, PerfilDeLectura } from '../../../domain/tmpUser';
 import { DateValidator, MinMaxValidator } from './validators';
 
-import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ToastService } from '../../../service/toast.service';
 
 
 
@@ -44,7 +44,7 @@ export class PerfilInfoComponent {
   userBusqueda: Array<string> = []
   tiempoDeLectura: number = 0
 
-  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastrService, private router: Router) {
+  constructor(private fb: FormBuilder, private UserService: ServiceUser, private toastr: ToastService, private router: Router) {
 
     /* Armado de los formgroups con sus validators */
     this.perfilForm = this.fb.group({
@@ -170,10 +170,10 @@ export class PerfilInfoComponent {
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
-      )).then(() => this.toastr.success("Información actualizada correctamente"))
+      )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
     }
     else {
-      this.toastr.error('Algunos campos del formulario son inválidos', 'ERROR')
+      this.toastr.showToast('Algunos campos del formulario son inválidos', "error")
     }
 
   }
