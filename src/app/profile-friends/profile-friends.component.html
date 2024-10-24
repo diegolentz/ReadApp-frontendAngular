@@ -1,5 +1,8 @@
 <section class = "opcionSeleccionada__amigos">
-    <h2>Friends</h2>
+    <h2 *ngIf="agregarAmigosNuevos(); else nuevos">Friends</h2>
+    <ng-template #nuevos><h2>Add new friends</h2></ng-template>
+    
+    <!-- <h2>Friends</h2> -->
 
     <section class = "friendsList">
         @for (friend of friends; track friend){

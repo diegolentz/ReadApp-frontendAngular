@@ -32,7 +32,7 @@ describe('ProfileFriendsComponent', () => {
     component.friends = [{
       id: 1, nombreCompleto: 'Amigo 1',
       fotoPath: '',
-      alias: '',
+      username: '',
       fromJSON: function (userFriendJSON: UserFriendJSON): UserFriend {
         throw new Error('Function not implemented.');
       },
@@ -42,7 +42,7 @@ describe('ProfileFriendsComponent', () => {
     }, {
       id: 2, nombreCompleto: 'Amigo 2',
       fotoPath: '',
-      alias: '',
+      username: '',
       fromJSON: function (userFriendJSON: UserFriendJSON): UserFriend {
         throw new Error('Function not implemented.');
       },
