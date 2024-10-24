@@ -8,3 +8,26 @@
   right: 20px;
   z-index: 9999;
 }
+
+.success {
+  background-color: #4caf50;
+}
+
+.error {
+  background-color: #f44336;
+}
+
+.info {
+  background-color: #2196f3;
+}
+
+.warning {
+  background-color: #ff9800;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}

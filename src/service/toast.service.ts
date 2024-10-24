@@ -15,7 +15,7 @@ export class ToastService {
     this.renderer = this.rendererFactory.createRenderer(null, null);
   }
 
-  showToast(message: string, duration: number = 3000, customClass: string = '') {
+  showToast(message: string, customClass: 'success' | 'error' | 'info' | 'warning') {
     // Crear instancia de ToastComponent
     const toastComponentRef = this.createToastComponent(message, customClass);
 
@@ -26,14 +26,14 @@ export class ToastService {
     // Remover el toast después del tiempo de duración
     setTimeout(() => {
       this.destroyToast(toastComponentRef);
-    }, duration);
+    }, 5000);
   }
 
-  private createToastComponent(message: string, customClass: string): ComponentRef<ToastComponent> {
+  private createToastComponent(message: string, type: 'success' | 'error' | 'info' | 'warning'): ComponentRef<ToastComponent> {
     // Crear una instancia de ToastComponent sin ViewContainerRef
     const componentRef = this.appRef.bootstrap(ToastComponent, document.createElement('div'));
     componentRef.instance.message = message;
-    componentRef.instance.toastClass = customClass;
+    componentRef.instance.type = type;
     return componentRef;
   }
 

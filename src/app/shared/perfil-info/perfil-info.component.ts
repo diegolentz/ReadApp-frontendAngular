@@ -170,10 +170,10 @@ export class PerfilInfoComponent {
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
         this.userLectura[0]
-      )).then(() => this.toastr.showToast("Información actualizada correctamente"))
+      )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
     }
     else {
-      this.toastr.showToast('Algunos campos del formulario son inválidos')
+      this.toastr.showToast('Algunos campos del formulario son inválidos', "error")
     }
 
   }

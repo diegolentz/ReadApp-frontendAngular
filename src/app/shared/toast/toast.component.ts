@@ -1,13 +1,33 @@
-import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, Input } from '@angular/core';
+
 @Component({
   selector: 'app-toast',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './toast.component.html',
-  styleUrl: './toast.component.css'
+  styleUrls: ['./toast.component.css'],
+  standalone : true,
+  imports: [CommonModule]
 })
-export class ToastComponent {
+export class ToastComponent implements OnInit {
   @Input() message: string = '';
-  @Input() toastClass: string = '';
+  @Input() type: 'success' | 'error' | 'info' | 'warning' = 'info';
+  @Input() autoClose: boolean = true;
+  @Input() duration: number = 3000;
+
+  isVisible: boolean = false;
+
+  ngOnInit(): void {
+    this.showToast();
+  }
+
+  showToast(): void {
+    this.isVisible = true;
+      setTimeout(() => {
+        this.closeToast();
+      }, this.duration);
+  }
+
+  closeToast(): void {
+    this.isVisible = false;
+  }
 }
