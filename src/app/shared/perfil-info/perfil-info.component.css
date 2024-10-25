@@ -1,8 +1,11 @@
 .opcionSeleccionada {
-    height: 100%;
+    height: 75vh;
     width: 100%;
     display: grid;
     grid-template-rows: 1fr 8fr 1fr;
+    padding: 2rem;
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 2rem;  
 }
 
 .opcionSeleccionada__info {
@@ -10,7 +13,7 @@
     gap: var(--space-lg);
     padding: var(--space-md);
     overflow-y: auto;  /* permite scroll */
-    max-height: 60vh;  /* establece  naximo de altura */
+    max-height: 70vh;  /* establece  naximo de altura */
 }
 .info{
     display: flex;
@@ -131,4 +134,11 @@ div input:user-valid ~ label {
 .campo input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0; 
+}
+
+.buttonsFooter {
+    margin-top: 1rem;
+    gap: 1rem;
+    align-items: center;
+    align-self: end;
 }

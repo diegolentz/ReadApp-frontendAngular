@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileRecommendationsComponent {
   @HostBinding('style.width') width: string = '100%';
+  
   recommendations?: RecommendationCard[];
 
   constructor(

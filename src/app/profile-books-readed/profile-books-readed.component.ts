@@ -1,9 +1,8 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { LibroComponent } from '../libro/libro.component';
-import { ContainerBooksComponent } from "../shared/layouts/books/books.component";
 import { BookService } from '../../service/book.service';
 import { Book } from '../../domain/book';
-import { NgFor } from '@angular/common';
+import { NgFor} from '@angular/common';
 import { BotonAgregarComponent } from '../shared/boton-agregar/boton-agregar.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { UserBasic } from '../../domain/tmpUser';
@@ -13,7 +12,7 @@ import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-profile-books-readed',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, NgFor, BotonAgregarComponent, BtnGuardarCancelarComponent],
+  imports: [LibroComponent, NgFor, BotonAgregarComponent, BtnGuardarCancelarComponent],
   templateUrl: './profile-books-readed.component.html',
   styleUrl: './profile-books-readed.component.css'
 })

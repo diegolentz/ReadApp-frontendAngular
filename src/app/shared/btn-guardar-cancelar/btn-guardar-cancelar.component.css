@@ -5,7 +5,7 @@
     align-content: center;
     gap: var(--space-lg);
     width: 100%;
-    height: auto;
+    height: fit-content;
     background-color: var(--color-fondo);
 }
 
@@ -43,9 +43,9 @@
     }
 }
 
-@media screen and (max-width: 400px) {
+/* @media screen and (max-width: 400px) {
     .botones-container {
         margin-bottom: var(--height-header);
         justify-content: center;
     }
-}
+} */

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { LibroComponent } from '../libro/libro.component';
-import { ContainerBooksComponent } from '../shared/layouts/books/books.component';
 import { CommonModule } from '@angular/common';
 import { Book } from '../../domain/book';
 import { BookService } from '../../service/book.service';
@@ -12,14 +11,16 @@ import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-libros-agregar',
   standalone: true,
-  imports: [LibroComponent, ContainerBooksComponent, CommonModule, VolverAtrasComponent, BtnGuardarCancelarComponent],
+  imports: [LibroComponent, CommonModule, VolverAtrasComponent, BtnGuardarCancelarComponent],
   templateUrl: './libros-agregar.component.html',
   styleUrls: ['./libros-agregar.component.css']
 })
 export class LibrosAgregarComponent implements OnInit {
 
-  tipoContenido: string = '';
-  estado: boolean = false;
+  @HostBinding('style.width') width: string = '100%';
+  tipoContenido!: string;
+  estado!: boolean;
+
   books: Book[] = []; // Inicializa como un arreglo vacío
   librosAgregados: number[] = [];
   id: number = 0;
