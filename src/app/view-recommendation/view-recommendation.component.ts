@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 import { BookService } from '../../service/book.service';
 import { Toast, ToastrService } from 'ngx-toastr';
+import { create } from 'node:domain';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
@@ -27,15 +28,15 @@ export class ViewRecommendationComponent implements OnInit {
   constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
   puedeAgregar = true
   recomendacion: Recommendation = new Recommendation()
-  puedeEditar !: boolean
+  puedeEditar: boolean = false
+  puedeCrear: boolean = false
   librosQuePuedoAgregar: Book[] = []
 
-
   async ngOnInit() {
-    this.esEditable()
-    this.traerRecomendacion()
+    this.tipoDePagina()
     this.librosLeidos()
   }
+
   async librosLeidos() {
     try {
       const idUser = Number(localStorage.getItem('id'))
@@ -48,9 +49,24 @@ export class ViewRecommendationComponent implements OnInit {
     }
   }
 
+  tipoDePagina() {
+    if(this.esEditable()){
+      this.puedeEditar = true
+    }
+    if(this.esCrear()){
+      this.recomendacion = new Recommendation()
+      this.puedeCrear = true
+      return
+    }
+    this.traerRecomendacion()
+  }
+
   esEditable() {
-    const isEdit = this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
-    this.puedeEditar = isEdit
+    return this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
+  }
+  
+  esCrear() {
+    return this.route.snapshot.url[1].path === 'crear'
   }
 
   traerRecomendacion() {
@@ -62,7 +78,6 @@ export class ViewRecommendationComponent implements OnInit {
 
   sacarLibro(libro: string) {
     var id = Number(libro);
-
     // Encuentra el índice del libro a eliminar en el array
     const index = this.recomendacion.recommendedBooks.findIndex((libro: Book) => libro.id == id);
     this.recomendacion.recommendedBooks.splice(index, 1);
@@ -88,6 +103,25 @@ export class ViewRecommendationComponent implements OnInit {
     this.traerRecomendacion()
     this.librosLeidos()
   }
+
+  async crearRecomendacion() {
+    // if (this.validacion()) {
+    //   this.toast.warning('complete los campos vacios')
+    //   return
+    // }
+    console.log(this.recomendacion)
+    await this.recommendationService.createRecommendations(this.recomendacion)
+    
+  }
+
+  createOrEdit() {
+    if(this.esCrear()){
+      this.crearRecomendacion()
+      return
+    }
+    this.editarRecomendacion()
+  }
+
   validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
 
   cancelar() {

@@ -16,6 +16,13 @@ export type RecommendationJSON = {
 
 }
 
+export type RecommendationCreateJSON = {
+    titulo:string,
+    librosRecomendados: Array<BookJSON>,
+    contenido:string,
+    publica:boolean,
+}
+
 export type RecommendationEditJSON = {
     titulo:string,
     librosRecomendados: Array<BookJSON>,
@@ -25,7 +32,7 @@ export type RecommendationEditJSON = {
 }
 
 export type RecommendationCardJSON = {
-    id:number,
+    id:number ,
     title: string,
     editable: boolean,
     deletable: boolean,
@@ -41,7 +48,7 @@ export class Recommendation {
         public author: string = "",
         public recommendedBooks: Array<Book> = [],
         public title: string = '',
-        public description: string = '',
+        public description: string = ' ',
         public _public: boolean = true,
         public valorations: Array<Valoration> = [],
         public valoracionTotal: number = 0,
@@ -91,6 +98,15 @@ export class Recommendation {
             id:this.id,
         }
     }
+
+    toCreateJSON(): RecommendationCreateJSON{
+        return {
+            titulo: this.title,
+            librosRecomendados: this.recommendedBooks.map(it => it.toJSON()),
+            contenido: this.description,
+            publica: this._public,
+        }
+    } 
 }
 
 export type RecommendationDetalleJSON = {
