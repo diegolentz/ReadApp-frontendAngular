@@ -43,7 +43,8 @@ export class LibrosAgregarComponent implements OnInit {
         : await this.bookService.obtenerLibrosPorEstado(!this.estado);
     } catch (error: any) {
       this.books = [];
-      this.toastr.showToast(`No tienes libros para agregar a libros ${this.tipoContenido}`, "error");
+
+      this.toastr.showToast(error.error.message + `para agregar a libros ${this.tipoContenido}`, "error");
     }
   }
 
@@ -57,7 +58,7 @@ export class LibrosAgregarComponent implements OnInit {
       this.router.navigate(['/my-profile/books/', this.tipoContenido]);
     } catch (error: any) {
       this.books = [];
-      this.toastr.showToast('No se pudieron agregar los libros', "error");
+      this.toastr.showToast(error.error.message, "error");
     }
   }
 

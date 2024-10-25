@@ -46,7 +46,7 @@ export class ProfileBooksReadedComponent implements OnInit {
         : await this.bookService.obtenerLibrosPorEstado(false);
     } catch (error: any) {
       this.books = [];
-      this.toastr.showToast(`La lista de libros ${this.tipoContenido} se encuentra vacia`, "error");
+      this.toastr.showToast(error.error.message + `en boks ${this.tipoContenido}`, "error");
     }
   }
 

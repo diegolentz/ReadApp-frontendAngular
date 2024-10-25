@@ -27,8 +27,8 @@ export class BusquedaLibrosComponent {
   async ngOnInit() {
     try {
       this.books = await this.bookService.obtenerLibros();
-    } catch (error) {
-      this.toastr.showToast('No se pudo obtener la lista de libros', "error");
+    } catch (error: any) {
+      this.toastr.showToast(error.error.message, "error");
     }
   }
 
@@ -36,8 +36,9 @@ export class BusquedaLibrosComponent {
     try {
       this.filtro = newFilter;
       this.books = await this.bookService.obtenerLibrosFiltrados(this.filtro);
-    } catch (error) {
-      this.toastr.showToast('No se encontraron libros con ese filtro', 'info');
+    } catch (error: any) {
+      this.toastr.showToast(error.error.message, "error");
+
     }
   }
 
