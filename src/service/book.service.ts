@@ -35,18 +35,18 @@ export class BookService {
     return libros;
   }
 
-  async obtenerLibrosPorEstado(userId: number, booleano: boolean): Promise<Book[]> {
+  async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
-      params: { idUser: userId, estado: booleano }
+      params: { estado: booleano }
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
 
   }
 
-  async agregarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
+  async agregarLibro(idLibro: number[], estado: boolean): Promise<void> {
     await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
-      { idUser, estado, idLibro }
+      { estado, idLibro }
     ));
     if (idLibro.length > 0) {
       this.toastr.success('Libro agregado con exito');
@@ -61,31 +61,12 @@ export class BookService {
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
 
-  async eliminarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
+  async eliminarLibro(idLibro: number[], estado: boolean): Promise<void> {
     await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
-      body: { idUser, estado, idLibro }
+      body: { estado, idLibro }
     }));
     if (idLibro.length > 0) {
       this.toastr.success('Libro agregado con exito');
-    }
-  }
-
-  httpErrorHandler(error: HttpErrorResponse) {
-    if (error.error['status'] == null) {
-      this.toastr.error('Serivor caido :,(. Intente mas tarde')
-    }
-
-    if (error.error['status'] == 200) {
-      this.toastr.success(error.error['message'])
-
-    }
-
-    if (error.error['status'] == 400) {
-      this.toastr.warning(error.error['message'])
-    }
-
-    if (error.error['status'] == 404) {
-      this.toastr.error(error.error['message'])
     }
   }
 }

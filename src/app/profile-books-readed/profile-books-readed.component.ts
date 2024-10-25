@@ -39,12 +39,11 @@ export class ProfileBooksReadedComponent implements OnInit {
 
   async mostrarLibros() {
     try {
-      this.id = Number(localStorage.getItem('id'));
 
       this.estado = this.tipoContenido === 'readed';
       this.books = this.estado
-        ? await this.bookService.obtenerLibrosPorEstado(this.id, true)
-        : await this.bookService.obtenerLibrosPorEstado(this.id, false);
+        ? await this.bookService.obtenerLibrosPorEstado(true)
+        : await this.bookService.obtenerLibrosPorEstado(false);
     } catch (error: any) {
       this.toastr.showToast('No se pudo obtener la lista de libros', "error");
     }
@@ -52,7 +51,7 @@ export class ProfileBooksReadedComponent implements OnInit {
 
   async eliminarLibros() {
     try {
-      await this.bookService.eliminarLibro(this.id, this.librosAgregados, this.estado);
+      await this.bookService.eliminarLibro(this.librosAgregados, this.estado);
       this.mostrarLibros();
     } catch (error: any) {
       this.toastr.showToast('No se pudo eliminar los libros', "error");

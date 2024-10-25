@@ -38,10 +38,9 @@ export class LibrosAgregarComponent implements OnInit {
 
   async mostrarLibros() {
     try {
-      this.id = Number(localStorage.getItem('id'));
       this.books = (this.tipoContenido === 'to-read')
         ? await this.bookService.obtenerParaLeer(this.id)
-        : await this.bookService.obtenerLibrosPorEstado(this.id, !this.estado);
+        : await this.bookService.obtenerLibrosPorEstado(!this.estado);
     } catch (error: any) {
       this.toastr.showToast('No se pudo obtener la lista de libros', "error");
     }
@@ -49,7 +48,7 @@ export class LibrosAgregarComponent implements OnInit {
 
   async agregarLibros() {
     try {
-      await this.bookService.agregarLibro(this.id, this.librosAgregados, this.estado);
+      await this.bookService.agregarLibro(this.librosAgregados, this.estado);
       await this.mostrarLibros(); // Espera a que se complete
       this.router.navigate(['/my-profile/books/', this.tipoContenido]);
     } catch (error: any) {
