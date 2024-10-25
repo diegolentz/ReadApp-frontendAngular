@@ -104,6 +104,21 @@ export class ViewRecommendationComponent implements OnInit {
     this.librosLeidos()
   }
 
+  async crearRecomendacion() {
+    if (this.validacion()) {
+      this.toast.warning('complete los campos vacios')
+      return
+    }
+    await this.recommendationService.createRecommendations(this.recomendacion)
+  }
+
+  createOrEdit() {
+    if(this.esCrear()){
+      this.crearRecomendacion()
+    }
+    this.editarRecomendacion()
+  }
+
   validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
 
   cancelar() {
@@ -113,15 +128,4 @@ export class ViewRecommendationComponent implements OnInit {
   goTo(option: string) {
     this.router.navigate([option])
   }
-}
-
-abstract class tipoDePagina{
-  public url:string =""
-  public puedeEditar:boolean = false
-  public puedeCrear:boolean = false
-  traerRecomendacion(){
-
-  }
-
-
 }

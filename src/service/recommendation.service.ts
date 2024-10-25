@@ -65,7 +65,7 @@ export class RecommendationService {
   async createRecommendations(recomendacion: Recommendation): Promise<Recommendation> {
     const recomendacionNueva = await lastValueFrom(this.httpClient.post<RecommendationJSON>(
         REST_SERVER_URL + `/recommendations`,
-        recomendacion.toJSON()
+        recomendacion.toCreateJSON()
     ));
     this.toast.success('Recomendacion creada con exito')
     return Recommendation.fromJson(recomendacionNueva) 
