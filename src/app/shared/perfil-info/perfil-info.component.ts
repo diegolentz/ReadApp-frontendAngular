@@ -38,6 +38,7 @@ export class PerfilInfoComponent {
 
   /* Variables del Usuario */
   private userId!: number
+  private userData!: UserInformacion
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
@@ -106,24 +107,27 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    this.userId = await this.UserService.getLoggedUser()
-    console.log(this.userId)
-    let userData = await this.UserService.getUserProfileByID(this.userId)
+    try {
+      this.userId = await this.UserService.getLoggedUser()
+      this.userData = await this.UserService.getUserProfileByID(this.userId)
+    } catch {
+      this.toastr.showToast("Error al traer la info del usuario", "error")
+    }
 
-    this.userBusqueda = this.obtenerPerfiles(userData.perfil!)
-    this.userLectura.push(userData.tipoDeLector!)
-    this.tiempoDeLectura = userData.tiempoLecturaPromedio!
+    this.userBusqueda = this.obtenerPerfiles(this.userData.perfil!)
+    this.userLectura.push(this.userData.tipoDeLector!)
+    this.tiempoDeLectura = this.userData.tiempoLecturaPromedio!
     this.perfilForm.patchValue({
-      'nombre': userData.nombre,
-      'apellido': userData.apellido,
-      'username': userData.username,
-      'fecha de nacimiento': userData.fechaNacimiento,
-      'email': userData.email
+      'nombre': this.userData.nombre,
+      'apellido': this.userData.apellido,
+      'username': this.userData.username,
+      'fecha de nacimiento': this.userData.fechaNacimiento,
+      'email': this.userData.email
     })
 
     this.calculadorForm.patchValue({
-      'numero min': this.obtenerRangoMin(userData.perfil!),
-      'numero max': this.obtenerRangoMax(userData.perfil!)
+      'numero min': this.obtenerRangoMin(this.userData.perfil!),
+      'numero max': this.obtenerRangoMax(this.userData.perfil!)
     })
 
   }
@@ -157,22 +161,26 @@ export class PerfilInfoComponent {
     return undefined
   }
 
-  hayCriterioBusqueda() : boolean {
+  hayCriterioBusqueda(): boolean {
     return this.userBusqueda.length > 0
   }
 
   async guardar() {
     if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton) && this.hayCriterioBusqueda()) {
-      await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        this.userId,
-        this.getValueForm("nombre", this.perfilForm),
-        this.getValueForm("apellido", this.perfilForm),
-        this.getValueForm("username", this.perfilForm),
-        this.getValueForm("fecha de nacimiento", this.perfilForm),
-        this.getValueForm("email", this.perfilForm),
-        this.toPerfilDeLectura(this.userBusqueda),
-        this.userLectura[0]
-      )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
+      try {
+        await this.UserService.actualizarInfoUsuario(new UserInformacion(
+          this.userId,
+          this.getValueForm("nombre", this.perfilForm),
+          this.getValueForm("apellido", this.perfilForm),
+          this.getValueForm("username", this.perfilForm),
+          this.getValueForm("fecha de nacimiento", this.perfilForm),
+          this.getValueForm("email", this.perfilForm),
+          this.toPerfilDeLectura(this.userBusqueda),
+          this.userLectura[0]
+        )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
+      } catch (error) {
+        this.toastr.showToast('Reintente más tarde', 'error')
+      }
     }
     else {
       this.toastr.showToast('Algunos campos del formulario son inválidos', "error")

@@ -15,7 +15,7 @@ export class ServiceUser {
   nombreUsuario!: string
   username!: string
   apellidoUsuario!: string
-  loggedUserId!:number
+  loggedUserId!: number
   constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   async getUsers(): Promise<User[]> {
@@ -45,7 +45,6 @@ export class ServiceUser {
   async getUserProfileByID(id: number): Promise<UserInformacion> {
     const user$ = this.httpClient.get<UserInformacion>(REST_SERVER_URL + '/user/profile/' + id.toString())
     const user = await (lastValueFrom(user$))
-    
     return user
   }
 
@@ -59,16 +58,11 @@ export class ServiceUser {
 
 
   async actualizarInfoUsuario(infoNueva: UserInformacion) {
-    try {
-      await lastValueFrom(this.httpClient.put<UserInformacion>(
-        REST_SERVER_URL + '/updateInfoUsuario',
-        infoNueva
-      ))
-      this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
-    } catch (error) {
-      this.toastr.error('Reintente más tarde', 'ERROR')
-    }
-
+    await lastValueFrom(this.httpClient.put<UserInformacion>(
+      REST_SERVER_URL + '/updateInfoUsuario',
+      infoNueva
+    ))
+    this.actualizarNombreYAlias(infoNueva.nombre, infoNueva.username, infoNueva.apellido)
   }
 
 
