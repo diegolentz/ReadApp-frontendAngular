@@ -105,16 +105,19 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   async crearRecomendacion() {
-    if (this.validacion()) {
-      this.toast.warning('complete los campos vacios')
-      return
-    }
+    // if (this.validacion()) {
+    //   this.toast.warning('complete los campos vacios')
+    //   return
+    // }
+    console.log(this.recomendacion)
     await this.recommendationService.createRecommendations(this.recomendacion)
+    
   }
 
   createOrEdit() {
     if(this.esCrear()){
       this.crearRecomendacion()
+      return
     }
     this.editarRecomendacion()
   }

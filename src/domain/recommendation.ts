@@ -48,7 +48,7 @@ export class Recommendation {
         public author: string = "",
         public recommendedBooks: Array<Book> = [],
         public title: string = '',
-        public description: string = '',
+        public description: string = ' ',
         public _public: boolean = true,
         public valorations: Array<Valoration> = [],
         public valoracionTotal: number = 0,

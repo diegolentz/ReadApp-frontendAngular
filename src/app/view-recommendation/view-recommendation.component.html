@@ -41,7 +41,7 @@
     
     <div *ngIf="puedeEditar || puedeCrear" class="resenia">
         <h2>Reseña</h2>
-        <textarea class="descripcion" type="text"
+        <textarea class="descripcion" 
             [(ngModel)]="recomendacion.description"  
             value={{recomendacion.description}}>
         </textarea>
