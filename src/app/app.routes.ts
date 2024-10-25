@@ -44,8 +44,6 @@ export const routes: Routes = [
             { path: 'friends', component: ProfileFriendsComponent },
             { path: 'new-friends', component: ProfileFriendsComponent },
             { path: 'books/:tipo', component: ProfileBooksReadedComponent },
-
-            // { path: 'books-to-read', component: ProfileBooksToReadComponent },
             { path: 'add-books/:tipo', component: LibrosAgregarComponent },
             { path: 'recommendations-to-value', component: ProfileRecommendationsComponent },
             { path: '', redirectTo: 'information', pathMatch: 'full' },

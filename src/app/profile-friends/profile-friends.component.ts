@@ -24,6 +24,8 @@ export class ProfileFriendsComponent implements OnInit {
   
   constructor(private userService: ServiceUser, public route: Router, private router: ActivatedRoute) { }
 
+  @HostBinding('style.width') width: string = '100%';
+  
   async ngOnInit() {
     this.id = await this.userService.getLoggedUser()
     this.mensaje = new UpdateFriendsMessage(this.id.toString())

@@ -1,22 +1,24 @@
-
+.opcionSeleccionada__librosAgregar {
+    height: 75vh;
+    width: 100%;
+    display: grid;
+    gap: 1rem;
+    padding: 2rem;
+    border: 1px solid rgb(168, 167, 167);
+    border-radius: 2rem;
+}
 
 .librosContainer{
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 0.4fr));
-    
-    gap:1.5rem;
-    padding-top: 1rem;
-    overflow-y:auto;  
-    height: 51vh;  
-    text-align: center;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 34rem), 0.4fr)); 
+    gap: 2rem;
+    overflow-y: scroll;
     justify-content: space-around;
-    padding-right: 1rem;
 }
-
 
 .librosContainer::-webkit-scrollbar {
     width: 0.8rem;
-    /* margin-left: 0.5rem; */
+    margin-left: 0.5rem; 
 }
 
 .librosContainer::-webkit-scrollbar-track {
@@ -26,4 +28,8 @@
 .librosContainer::-webkit-scrollbar-thumb {
     background-color: var(--color-header);
     border-radius: 2rem;
+}
+
+.buttonsFooter {
+    align-self: end;
 }

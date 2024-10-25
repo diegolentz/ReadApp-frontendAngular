@@ -9,28 +9,23 @@
     width: 100vw;
     height: 80vh;
     display: flex;
-    padding-bottom: 0;
     overflow-y: auto;
     gap: var(--space-xl);
-    padding: var(--space-xl);
-
-        :is(app-contenedor-section){
-                width: 100%;
-                height: 100%;
-                padding: 1rem;
-                padding-top: 2rem;
-                border: 1px solid rgb(168, 167, 167);
-                gap:2rem;
-                border-radius: 2rem;        
-        }
+    padding: var(--space-lg);
 }
 
 @media screen and (max-width: 768px) {
     .perfil-usuario{
         height: auto;
-        display: flex;
-        
-       
+        display: flex;   
         flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .perfil-usuario {
+        height: 90vh;
+        margin-bottom: var(--height-header);
+        gap: var(--space-md);
     }
 }

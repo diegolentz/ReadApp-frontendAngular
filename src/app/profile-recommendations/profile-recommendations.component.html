@@ -1,8 +1,12 @@
-<h2>Recommendations to value</h2>
+<section class = "opcionSeleccionada__recomendacion">
+        <h2>Recommendations to value</h2>
 
-<div class="recommendations__container">
-    @for (recomendation of recommendations; track recomendation){
-        <app-recomendacion [recomendacion]="recomendation"></app-recomendacion>
-    }
-</div>
-<app-btn-guardar-cancelar></app-btn-guardar-cancelar >
+        <div class="recommendations__container">
+            @for (recomendation of recommendations; track recomendation){
+                <app-recomendacion [recomendacion]="recomendation"></app-recomendacion>
+            }
+        </div>
+        <section class = "buttonsFooter">
+        <app-btn-guardar-cancelar></app-btn-guardar-cancelar >
+        </section>
+</section>

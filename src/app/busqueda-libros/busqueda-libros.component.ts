@@ -4,7 +4,6 @@ import { Book } from '../../domain/book';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../nav/nav.component';
-import { ContenedorSectionComponent } from '../contenedor-section/contenedor-section.component';
 import { LibroComponent } from '../libro/libro.component';
 import { ContainerBooksComponent } from '../shared/layouts/books/books.component';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
@@ -12,7 +11,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-busqueda-libros',
   standalone: true,
-  imports: [HeaderComponent, LibroComponent, NavComponent, ContenedorSectionComponent, CommonModule, ContainerBooksComponent],
+  imports: [HeaderComponent, LibroComponent, NavComponent, CommonModule, ContainerBooksComponent],
   templateUrl: './busqueda-libros.component.html',
   styleUrls: ['./busqueda-libros.component.css']
 })
