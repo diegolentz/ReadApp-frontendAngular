@@ -25,12 +25,16 @@ export class RecomendacionComponent {
 
   async deleteRecommendation() {
     await this.service.deleteRecommendation(this.recomendacion.id)
-    window.location.reload()
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); 
   }
 
   async addToValueLater() {
     await this.service.addToValueLater(this.recomendacion.id)
-    window.location.reload()
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); 
   }
 
   round(numberFloat:number){

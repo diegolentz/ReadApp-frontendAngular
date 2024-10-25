@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, FormsModule, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NewAccountRequest } from '../../../domain/types';
 import { Router } from '@angular/router';
 import { ServiceUser } from '../../../service/service-user.service';
 import { CommonForm } from '../../../domain/forms';
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
 import { BgColorDirective } from '../../shared/directives/bg-color.directive';
+import { ToastService } from '../../../service/toast.service';
 
 @Component({
   selector: 'app-new-account-form',
@@ -28,7 +28,7 @@ export class NewAccountFormComponent extends CommonForm{
     private rt:Router,
     private service:ServiceUser,
     private fb:FormBuilder,
-    private toast:ToastrService
+    private toast:ToastService
   ){
     super(rt,service,fb, toast);
     this.form = this.fb.group({
@@ -42,7 +42,7 @@ export class NewAccountFormComponent extends CommonForm{
     try {
       const request = this.buildNewAccountRequest()
       const response = await this.service.newAccount(request)
-      this.toast.success(response.message)
+      this.toast.showToast(`${response}`, 'success')
     }
     catch (error: any) {
       this.httpErrorHandler(error)

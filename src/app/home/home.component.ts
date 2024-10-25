@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { RecomendacionComponent } from '../shared/recomendacion/recomendacion.component';
 
 import { RecommendationService } from '../../service/recommendation.service';
-import { Recommendation, RecommendationCard } from '../../domain/recommendation';
+import { RecommendationCard } from '../../domain/recommendation';
 import { NavComponent } from '../nav/nav.component';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 import { NgIf } from '@angular/common';
+import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   recommendations: RecommendationCard[] = [];
   filtro: string = ""
 
-  constructor(private recommendationService: RecommendationService, private activatedRt: ActivatedRoute, private rt: Router, private toast: ToastrService) { }
+  constructor(private recommendationService: RecommendationService, private activatedRt: ActivatedRoute, private rt: Router, private toast: ToastService) { }
 
   async ngOnInit() {
     this.activatedRt.params.subscribe(async params => {
@@ -44,10 +44,13 @@ export class HomeComponent implements OnInit {
       this.filtro = newFilter;
       this.recommendations = await this.recommendationService.getRecommendationsFilter(this.filtro)
       if(this.recommendations.length == 0){
-        this.toast.info('No se encontraron recomendaciones', 'Error');
+        this.toast.showToast('No se encontraron recomendaciones', 'info');
       }
     } catch (error) {
-      this.toast.info('No se encontraron recomendaciones', 'Error');
+      if(error instanceof HttpErrorResponse){
+        this.toast.showToast(`${error.error['message']}`, 'error');  
+      }
+      
     }
   }
 
@@ -58,8 +61,5 @@ export class HomeComponent implements OnInit {
 
   async showUserRecommendations(privates: boolean) {
     this.recommendations = await this.recommendationService.getUserRecommendations(privates)
-
   }
-  
-
 }
