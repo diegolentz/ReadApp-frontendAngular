@@ -6,7 +6,7 @@ import { HeaderComponent } from '../shared/header/header.component';
 import { NavComponent } from '../nav/nav.component';
 import { LibroComponent } from '../libro/libro.component';
 import { ContainerBooksComponent } from '../shared/layouts/books/books.component';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../service/toast.service';
 
 @Component({
   selector: 'app-busqueda-libros',
@@ -19,14 +19,15 @@ export class BusquedaLibrosComponent {
   books: Book[] = [];
   filtro: string = ""
 
-  constructor(public bookService: BookService, public toastr: ToastrService) { }
+  constructor(
+    public bookService: BookService,
+    public toastr: ToastService) { }
 
   async ngOnInit() {
     try {
       this.books = await this.bookService.obtenerLibros();
-    } catch (error) {
-      console.error('Error al obtener los libros:', error);
-      this.toastr.error('No se pudo obtener la lista de libros', 'Error');
+    } catch (error: any) {
+      this.toastr.showToast(error.error.message, "error");
     }
   }
 
@@ -34,9 +35,9 @@ export class BusquedaLibrosComponent {
     try {
       this.filtro = newFilter;
       this.books = await this.bookService.obtenerLibrosFiltrados(this.filtro);
-    } catch (error) {
-      console.error('Error al aplicar el filtro:', error);
-      this.toastr.error('No se pudo aplicar el filtro', 'Error');
+    } catch (error: any) {
+      this.toastr.showToast(error.error.message, "error");
+
     }
   }
 

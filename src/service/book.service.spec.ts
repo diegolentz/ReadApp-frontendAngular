@@ -105,7 +105,7 @@ describe('BookService', () => {
     const idUser = 1;
     const estado = true;
 
-    service.obtenerLibrosPorEstado(idUser, estado).then(books => {
+    service.obtenerLibrosPorEstado(estado).then(books => {
       expect(books).toEqual(expectedBooks);
     });
 
@@ -121,7 +121,7 @@ describe('BookService', () => {
     const idLibro = [1];
     const estado = true;
 
-    service.agregarLibro(idUser, idLibro, estado).then(() => {
+    service.agregarLibro(idLibro, estado).then(() => {
       expect().nothing();
     });
 
@@ -135,7 +135,7 @@ describe('BookService', () => {
     const idLibro = [1, 2];
     const estado = true;
 
-    service.eliminarLibro(idUser, idLibro, estado).then(() => {
+    service.eliminarLibro(idLibro, estado).then(() => {
       expect().nothing();
     });
 

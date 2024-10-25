@@ -5,14 +5,14 @@ import { Component, OnInit, Input } from '@angular/core';
   selector: 'app-toast',
   templateUrl: './toast.component.html',
   styleUrls: ['./toast.component.css'],
-  standalone : true,
+  standalone: true,
   imports: [CommonModule]
 })
 export class ToastComponent implements OnInit {
   @Input() message: string = '';
   @Input() type: ToastType = 'info';
   @Input() autoClose: boolean = true;
-  @Input() duration: number = 2800;
+  @Input() duration: number = 1800;
 
   isVisible: boolean = false;
 
@@ -22,9 +22,9 @@ export class ToastComponent implements OnInit {
 
   showToast(): void {
     this.isVisible = true;
-      setTimeout(() => {
-        this.closeToast();
-      }, this.duration);
+    setTimeout(() => {
+      this.closeToast();
+    }, this.duration);
   }
 
   closeToast(): void {
