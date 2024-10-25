@@ -84,7 +84,7 @@ export class LoginComponent extends CommonForm{
   }
   private logUser(userID:number){
     localStorage.setItem('id', userID.toString());
-    this.toast.showToast('Bienvenido', 'error'); 
+    this.toast.showToast('Bienvenido', 'success'); 
     this.goTo('home')
   }
 

@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
       this.filtro = newFilter;
       this.recommendations = await this.recommendationService.getRecommendationsFilter(this.filtro)
       if(this.recommendations.length == 0){
-        this.toast.showToast('No se encontraron recomendaciones', 'error');
+        this.toast.showToast('No se encontraron recomendaciones', 'info');
       }
     } catch (error) {
       if(error instanceof HttpErrorResponse){
