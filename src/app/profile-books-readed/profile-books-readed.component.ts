@@ -45,7 +45,8 @@ export class ProfileBooksReadedComponent implements OnInit {
         ? await this.bookService.obtenerLibrosPorEstado(true)
         : await this.bookService.obtenerLibrosPorEstado(false);
     } catch (error: any) {
-      this.toastr.showToast('No se pudo obtener la lista de libros', "error");
+      this.books = [];
+      this.toastr.showToast(`La lista de libros ${this.tipoContenido} se encuentra vacia`, "error");
     }
   }
 
@@ -53,7 +54,11 @@ export class ProfileBooksReadedComponent implements OnInit {
     try {
       await this.bookService.eliminarLibro(this.librosAgregados, this.estado);
       this.mostrarLibros();
+      if (this.books.length > 0) {
+        this.toastr.showToast('Modificacion exitosa', "success");
+      }
     } catch (error: any) {
+      this.books = [];
       this.toastr.showToast('No se pudo eliminar los libros', "error");
     }
   }
@@ -70,6 +75,9 @@ export class ProfileBooksReadedComponent implements OnInit {
     this.librosAgregados.push(id)
     console.log(this.librosAgregados)
     this.books = this.books.filter(book => book.id !== id);
+    if (this.books.length === 0) {
+      this.toastr.showToast('No hay mas libros para mostrar', "info");
+    }
   }
 
   volverHome() {

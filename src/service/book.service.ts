@@ -48,9 +48,7 @@ export class BookService {
     await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
       { estado, idLibro }
     ));
-    if (idLibro.length > 0) {
-      this.toastr.success('Libro agregado con exito');
-    }
+
   }
 
   async obtenerParaLeer(): Promise<Book[]> {
@@ -64,8 +62,6 @@ export class BookService {
     await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
       body: { estado, idLibro }
     }));
-    if (idLibro.length > 0) {
-      this.toastr.success('Libro agregado con exito');
-    }
+
   }
 }

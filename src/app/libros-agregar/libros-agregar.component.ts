@@ -42,7 +42,8 @@ export class LibrosAgregarComponent implements OnInit {
         ? await this.bookService.obtenerParaLeer()
         : await this.bookService.obtenerLibrosPorEstado(!this.estado);
     } catch (error: any) {
-      this.toastr.showToast('No se pudo obtener la lista de libros', "error");
+      this.books = [];
+      this.toastr.showToast(`No tienes libros para agregar a libros ${this.tipoContenido}`, "error");
     }
   }
 
@@ -50,8 +51,12 @@ export class LibrosAgregarComponent implements OnInit {
     try {
       await this.bookService.agregarLibro(this.librosAgregados, this.estado);
       await this.mostrarLibros(); // Espera a que se complete
+      if (this.books.length > 0) {
+        this.toastr.showToast('Modificacion exitosa', "success");
+      }
       this.router.navigate(['/my-profile/books/', this.tipoContenido]);
     } catch (error: any) {
+      this.books = [];
       this.toastr.showToast('No se pudieron agregar los libros', "error");
     }
   }
@@ -67,6 +72,9 @@ export class LibrosAgregarComponent implements OnInit {
     const id = Number(libro);
     this.librosAgregados.push(id);
     this.books = this.books.filter(book => book.id !== id);
+    if (this.books.length === 0) {
+      this.toastr.showToast('No hay mas libros para mostrar', "info");
+    }
   }
 
   volverHome() {
