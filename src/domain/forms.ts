@@ -1,15 +1,15 @@
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ServiceUser } from "../service/service-user.service";
-import { ToastrService } from "ngx-toastr";
 import { HttpErrorResponse } from "@angular/common/http";
+import { ToastService } from "../service/toast.service";
 
 export abstract class CommonForm {
     constructor(
         private router: Router,
         private serviceUser: ServiceUser,
         private formBuilder: FormBuilder,
-        private toastAlert: ToastrService
+        private toastAlert: ToastService
     ) {
 
     }
@@ -32,20 +32,20 @@ export abstract class CommonForm {
 
     httpErrorHandler(error:HttpErrorResponse){
         if(error.error['status']==null){
-            this.toastAlert.error('Serivor caido :,(. Intente mas tarde')
+            this.toastAlert.showToast('Serivor caido :,(. Intente mas tarde', 'error')
         }
-
+        
         if(error.error['status']==200){
-            this.toastAlert.success(error.error['message'])
+            this.toastAlert.showToast(`${error.error['message']}`, 'success')
             
         }
 
         if(error.error['status']==400){
-            this.toastAlert.warning(error.error['message'])
+            this.toastAlert.showToast(`${error.error['message']}`, 'warning')
         }
 
         if(error.error['status']==404){
-            this.toastAlert.error(error.error['message'])
+            this.toastAlert.showToast(`${error.error['message']}`, 'warning')
         }
     }
 }

@@ -8,10 +8,10 @@ import { NgClass, NgIf } from '@angular/common';
 import { NewAccountFormComponent } from "../forms/new-account-form/new-account-form.component";
 import { LoginRequest } from '../../domain/types';
 import { CommonForm } from '../../domain/forms';
-import { ToastrService } from 'ngx-toastr';
 import { PasswordRecoveryFormComponent } from '../forms/password-recovery-form/password-recovery-form.component';
 
 import { BgColorDirective } from '../shared/directives/bg-color.directive';
+import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -30,7 +30,7 @@ export class LoginComponent extends CommonForm{
     private rt:Router,
     private service:ServiceUser,
     private fb:FormBuilder,
-    private toast:ToastrService
+    private toast:ToastService
   ){
     
     super(rt,service,fb, toast);
@@ -84,7 +84,7 @@ export class LoginComponent extends CommonForm{
   }
   private logUser(userID:number){
     localStorage.setItem('id', userID.toString());
-    this.toast.success('Bienvenido')
+    this.toast.showToast('Bienvenido', 'error'); 
     this.goTo('home')
   }
 

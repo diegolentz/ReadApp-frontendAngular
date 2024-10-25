@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { CommonForm } from '../../../domain/forms';
 import { Router } from '@angular/router';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { PasswordRecoveryRequest } from '../../../domain/types';
 import { ServiceUser } from '../../../service/service-user.service';
 import { NgIf, NgFor, NgClass } from '@angular/common';
 import { BgColorDirective } from '../../shared/directives/bg-color.directive';
+import { ToastService } from '../../../service/toast.service';
 
 @Component({
   selector: 'app-password-recovery-form',
@@ -27,7 +27,7 @@ export class PasswordRecoveryFormComponent extends CommonForm{
     private rt:Router,
     private service:ServiceUser,
     private fb:FormBuilder,
-    private toast:ToastrService
+    private toast:ToastService
   ){
     super(rt,service,fb, toast);
     this.form = this.fb.group({
@@ -40,7 +40,7 @@ export class PasswordRecoveryFormComponent extends CommonForm{
     try {
       const request = this.buildPasswordRecoveryRequest()
       const response = await this.service.passwordRecovery(request)
-      this.toast.success(response.message)
+      this.toast.showToast(`${response.message}`, 'success'); 
     }
     catch (error: any) {
       this.httpErrorHandler(error)

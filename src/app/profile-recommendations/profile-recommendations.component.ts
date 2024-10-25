@@ -4,7 +4,7 @@ import { Recommendation, RecommendationCard } from '../../domain/recommendation'
 import { RecommendationService } from '../../service/recommendation.service';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../service/toast.service';
 
 @Component({
   selector: 'app-profile-recommendations',
@@ -19,7 +19,7 @@ export class ProfileRecommendationsComponent {
 
   constructor(
     private recommendationService: RecommendationService,
-    private toast: ToastrService
+    private toast: ToastService
   ) { }
 
   async ngOnInit() {
@@ -28,7 +28,7 @@ export class ProfileRecommendationsComponent {
     } catch (error: any) {
       if(error instanceof HttpErrorResponse){
         if(error.error['status']==null){
-          this.toast.error('Servidor caido')
+          this.toast.showToast('Servidor caido', 'error'); 
         }
       }
     }

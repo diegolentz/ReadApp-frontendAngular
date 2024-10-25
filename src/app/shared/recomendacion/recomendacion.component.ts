@@ -25,7 +25,9 @@ export class RecomendacionComponent {
 
   async deleteRecommendation() {
     await this.service.deleteRecommendation(this.recomendacion.id)
-    window.location.reload()
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); // Activate after 5 minutes.
   }
 
   async addToValueLater() {
