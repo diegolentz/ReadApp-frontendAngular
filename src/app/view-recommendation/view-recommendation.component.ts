@@ -37,18 +37,6 @@ export class ViewRecommendationComponent implements OnInit {
     this.librosLeidos()
   }
 
-  async librosLeidos() {
-    try {
-      const idUser = Number(localStorage.getItem('id'))
-      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(true)
-      this.librosQuePuedoAgregar = librosLeidos.filter(libro =>
-        !this.recomendacion.recommendedBooks.some(recommendedBook => recommendedBook.id === libro.id)
-      );
-    } catch (error) {
-      console.error('Error al obtener los libros:', error)
-    }
-  }
-
   tipoDePagina() {
     if(this.esEditable()){
       this.puedeEditar = true
@@ -61,19 +49,27 @@ export class ViewRecommendationComponent implements OnInit {
     this.traerRecomendacion()
   }
 
-  esEditable() {
-    return this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
-  }
-  
-  esCrear() {
-    return this.route.snapshot.url[1].path === 'crear'
-  }
+  esEditable = (): boolean => this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
 
+  esCrear = (): boolean => this.route.snapshot.url[1].path === 'crear'  
+  
   traerRecomendacion() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
       const recomendacionId = viewRecommendationParams['id']
       this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId)
     });
+  }
+
+  async librosLeidos() {
+    try {
+      const idUser = Number(localStorage.getItem('id'))
+      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(true)
+      this.librosQuePuedoAgregar = librosLeidos.filter(libro =>
+        !this.recomendacion.recommendedBooks.some(recommendedBook => recommendedBook.id === libro.id)
+      );
+    } catch (error) {
+      console.error('Error al obtener los libros:', error)
+    }
   }
 
   sacarLibro(libro: string) {
@@ -105,13 +101,11 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   async crearRecomendacion() {
-    // if (this.validacion()) {
-    //   this.toast.warning('complete los campos vacios')
-    //   return
-    // }
-    console.log(this.recomendacion)
+    if (this.validacion()) {
+      this.toast.warning('complete los campos vacios')
+      return
+    }
     await this.recommendationService.createRecommendations(this.recomendacion)
-    
   }
 
   createOrEdit() {
@@ -132,3 +126,13 @@ export class ViewRecommendationComponent implements OnInit {
     this.router.navigate([option])
   }
 }
+
+// class TipoDePagina {
+//   tipoDepagina(){}
+// }
+
+// class Crear implements TipoDePagina{
+//   override tipoDePagina{
+
+//   }
+// }
