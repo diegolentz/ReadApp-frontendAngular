@@ -1,4 +1,4 @@
-import { Component, HostBinding, ViewContainerRef } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
@@ -110,10 +110,9 @@ export class PerfilInfoComponent {
     console.log(this.userId)
     let userData = await this.UserService.getUserProfileByID(this.userId)
 
-    /* let userData = await this.UserService.getUserProfileByID(2) */
-    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
-    this.userLectura.push(userData.tipoDeLector)
-    this.tiempoDeLectura = userData.tiempoLecturaPromedio
+    this.userBusqueda = this.obtenerPerfiles(userData.perfil!)
+    this.userLectura.push(userData.tipoDeLector!)
+    this.tiempoDeLectura = userData.tiempoLecturaPromedio!
     this.perfilForm.patchValue({
       'nombre': userData.nombre,
       'apellido': userData.apellido,
@@ -123,8 +122,8 @@ export class PerfilInfoComponent {
     })
 
     this.calculadorForm.patchValue({
-      'numero min': this.obtenerRangoMin(userData.perfil),
-      'numero max': this.obtenerRangoMax(userData.perfil)
+      'numero min': this.obtenerRangoMin(userData.perfil!),
+      'numero max': this.obtenerRangoMax(userData.perfil!)
     })
 
   }
@@ -158,14 +157,17 @@ export class PerfilInfoComponent {
     return undefined
   }
 
+  hayCriterioBusqueda() : boolean {
+    return this.userBusqueda.length > 0
+  }
+
   async guardar() {
-    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
+    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton) && this.hayCriterioBusqueda()) {
       await this.UserService.actualizarInfoUsuario(new UserInformacion(
         this.userId,
         this.getValueForm("nombre", this.perfilForm),
         this.getValueForm("apellido", this.perfilForm),
         this.getValueForm("username", this.perfilForm),
-        1,
         this.getValueForm("fecha de nacimiento", this.perfilForm),
         this.getValueForm("email", this.perfilForm),
         this.toPerfilDeLectura(this.userBusqueda),
@@ -185,5 +187,7 @@ export class PerfilInfoComponent {
 
 
 }
+
+
 
 

@@ -42,11 +42,11 @@ export class ServiceUser {
 
   }
 
-  async getUserProfileByID(id: number): Promise<UserProfile> {
-    const user$ = this.httpClient.get<UserProfileJSON>(REST_SERVER_URL + '/user/profile/' + id.toString())
+  async getUserProfileByID(id: number): Promise<UserInformacion> {
+    const user$ = this.httpClient.get<UserInformacion>(REST_SERVER_URL + '/user/profile/' + id.toString())
     const user = await (lastValueFrom(user$))
-    const userProfile = UserProfile.prototype.fromJSON(user)
-    return userProfile
+    
+    return user
   }
 
   async login(loginRequest: LoginRequest): Promise<LoginResponse> {

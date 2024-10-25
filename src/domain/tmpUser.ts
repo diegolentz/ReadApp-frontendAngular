@@ -134,11 +134,11 @@ export class UserInformacion {
         public nombre?: string,
         public apellido?: string,
         public username?: string,
-        public palabrasPorMinutos?: number,
         public fechaNacimiento?: Date,
         public email?: string,
         public perfil?: Array<PerfilDeLectura>,
-        public tipoDeLector?: string) {
+        public tipoDeLector?: string,
+        public tiempoLecturaPromedio?: number) {
 
     }
 }
