@@ -39,7 +39,7 @@ export class LibrosAgregarComponent implements OnInit {
   async mostrarLibros() {
     try {
       this.books = (this.tipoContenido === 'to-read')
-        ? await this.bookService.obtenerParaLeer(this.id)
+        ? await this.bookService.obtenerParaLeer()
         : await this.bookService.obtenerLibrosPorEstado(!this.estado);
     } catch (error: any) {
       this.toastr.showToast('No se pudo obtener la lista de libros', "error");

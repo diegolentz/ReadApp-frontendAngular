@@ -53,9 +53,8 @@ export class BookService {
     }
   }
 
-  async obtenerParaLeer(idUser: number): Promise<Book[]> {
+  async obtenerParaLeer(): Promise<Book[]> {
     const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
-      params: { idUser: idUser }
     });
     const bookJSON = await lastValueFrom(libros$);
     return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
