@@ -52,7 +52,7 @@ describe('LibrosAgregarComponent', () => {
 
     await component.agregarLibros();
 
-    expect(agregarLibroSpy).toHaveBeenCalledWith(1, [1, 2, 3], true);
+    expect(agregarLibroSpy).toHaveBeenCalledWith([1, 2, 3], true);
     expect(mostrarLibrosSpy).toHaveBeenCalled();
     expect(navigateSpy).toHaveBeenCalledWith(['/my-profile/books/', 'readed']);
   });

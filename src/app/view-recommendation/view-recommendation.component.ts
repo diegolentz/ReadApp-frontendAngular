@@ -25,7 +25,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 })
 export class ViewRecommendationComponent implements OnInit {
   constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
-  puedeAgregar=true
+  puedeAgregar = true
   recomendacion: Recommendation = new Recommendation()
   puedeEditar !: boolean
   librosQuePuedoAgregar: Book[] = []
@@ -39,7 +39,7 @@ export class ViewRecommendationComponent implements OnInit {
   async librosLeidos() {
     try {
       const idUser = Number(localStorage.getItem('id'))
-      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(idUser, true)
+      const librosLeidos = await this.libroService.obtenerLibrosPorEstado(true)
       this.librosQuePuedoAgregar = librosLeidos.filter(libro =>
         !this.recomendacion.recommendedBooks.some(recommendedBook => recommendedBook.id === libro.id)
       );

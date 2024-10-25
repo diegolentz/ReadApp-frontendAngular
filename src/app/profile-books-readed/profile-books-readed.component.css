@@ -2,7 +2,6 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: 1fr 6fr 3fr;
     gap: 1rem;
 }
 

@@ -7,6 +7,7 @@ import { BookService } from '../../service/book.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VolverAtrasComponent } from '../volver-atras/volver-atras.component';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
+import { ToastService } from '../../service/toast.service';
 
 @Component({
   selector: 'app-libros-agregar',
@@ -16,21 +17,49 @@ import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-
   styleUrls: ['./libros-agregar.component.css']
 })
 export class LibrosAgregarComponent implements OnInit {
-  tipoContenido!: string;
-  estado!: boolean;
+
+  tipoContenido: string = '';
+  estado: boolean = false;
   books: Book[] = []; // Inicializa como un arreglo vacío
   librosAgregados: number[] = [];
-  id!: number;
+  id: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     public bookService: BookService,
-    public router: Router
+    public router: Router,
+    public toastr: ToastService
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.queRenderizo();
     await this.mostrarLibros();
+  }
+
+  async mostrarLibros() {
+    try {
+      this.books = (this.tipoContenido === 'to-read')
+        ? await this.bookService.obtenerParaLeer()
+        : await this.bookService.obtenerLibrosPorEstado(!this.estado);
+    } catch (error: any) {
+      this.books = [];
+
+      this.toastr.showToast(error.error.message + `para agregar a libros ${this.tipoContenido}`, "error");
+    }
+  }
+
+  async agregarLibros() {
+    try {
+      await this.bookService.agregarLibro(this.librosAgregados, this.estado);
+      await this.mostrarLibros(); // Espera a que se complete
+      if (this.books.length > 0) {
+        this.toastr.showToast('Modificacion exitosa', "success");
+      }
+      this.router.navigate(['/my-profile/books/', this.tipoContenido]);
+    } catch (error: any) {
+      this.books = [];
+      this.toastr.showToast(error.error.message, "error");
+    }
   }
 
   queRenderizo() {
@@ -40,29 +69,13 @@ export class LibrosAgregarComponent implements OnInit {
     });
   }
 
-
-  async mostrarLibros() {
-    try {
-      this.id = Number(localStorage.getItem('id'));
-      this.books = (this.tipoContenido === 'to-read')
-        ? await this.bookService.obtenerParaLeer(this.id)
-        : await this.bookService.obtenerLibrosPorEstado(this.id, !this.estado);
-    } catch (error: any) {
-      console.error(error);
-      alert('Error al cargar los libros. Intente nuevamente más tarde.'); // Notificar al usuario
-    }
-  }
-
   sacalodelaVista(libro: string) {
     const id = Number(libro);
     this.librosAgregados.push(id);
     this.books = this.books.filter(book => book.id !== id);
-  }
-
-  async agregarLibros() {
-    await this.bookService.agregarLibro(this.id, this.librosAgregados, this.estado);
-    await this.mostrarLibros(); // Espera a que se complete
-    this.router.navigate(['/my-profile/books/', this.tipoContenido]);
+    if (this.books.length === 0) {
+      this.toastr.showToast('No hay mas libros para mostrar', "info");
+    }
   }
 
   volverHome() {

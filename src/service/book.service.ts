@@ -20,103 +20,48 @@ export class BookService {
   constructor(private httpClient: HttpClient, private toastr: ToastrService) { }
 
   async obtenerLibros(): Promise<Book[]> {
-    try {
-      const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosSearch');
-      const bookJSON = await lastValueFrom(libros$);
-      return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-    } catch (error) {
-      if (error instanceof HttpErrorResponse) {
-        this.toastr.error('Error intente nuevamente mas tarde');
-      }
-      return [];
-    }
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosSearch');
+    const bookJSON = await lastValueFrom(libros$);
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+
   }
 
   async obtenerLibrosFiltrados(filtro: string): Promise<Book[]> {
-    try {
-      const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosSearch/filter', {
-        params: { filtro: filtro }
-      });
-      const bookJSON = await lastValueFrom(libros$);
-      const libros = bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-      if (libros.length === 0) {
-        this.toastr.info('No se encontraron coincidencias realice una nueva busqueda');
-      }
-      return libros;
-    } catch (error: any) {
-      this.httpErrorHandler(error);
-      return [];
-    }
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/librosSearch/filter', {
+      params: { filtro: filtro }
+    });
+    const bookJSON = await lastValueFrom(libros$);
+    const libros = bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+    return libros;
   }
 
-  async obtenerLibrosPorEstado(userId: number, booleano: boolean): Promise<Book[]> {
-    try {
-      const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
-        params: { idUser: userId, estado: booleano }
-      });
-      const bookJSON = await lastValueFrom(libros$);
-      return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-    } catch (error: any) {
-      this.httpErrorHandler(error);
-      return [];
-    }
+  async obtenerLibrosPorEstado(booleano: boolean): Promise<Book[]> {
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/obtenerlibroEstado', {
+      params: { estado: booleano }
+    });
+    const bookJSON = await lastValueFrom(libros$);
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
+
   }
 
-  async agregarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
-    try {
-      await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
-        { idUser, estado, idLibro }
-      ));
-      if (idLibro.length > 0) {
-        this.toastr.success('Libro agregado con exito');
-      }
-    } catch (error: any) {
-      this.httpErrorHandler(error);
-    }
+  async agregarLibro(idLibro: number[], estado: boolean): Promise<void> {
+    await lastValueFrom(this.httpClient.put(REST_SERVER_URL + '/agregarLibroEstado',
+      { estado, idLibro }
+    ));
+
   }
 
-  async obtenerParaLeer(idUser: number): Promise<Book[]> {
-    try {
-      const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
-        params: { idUser: idUser }
-      });
-      const bookJSON = await lastValueFrom(libros$);
-      return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
-    } catch (error: any) {
-      this.httpErrorHandler(error);
-      return [];
-    }
+  async obtenerParaLeer(): Promise<Book[]> {
+    const libros$ = this.httpClient.get<BookJSON[]>(REST_SERVER_URL + '/add-Books', {
+    });
+    const bookJSON = await lastValueFrom(libros$);
+    return bookJSON.map((libroJSON) => Book.fromJson(libroJSON));
   }
 
-  async eliminarLibro(idUser: number, idLibro: number[], estado: boolean): Promise<void> {
-    try {
-      await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
-        body: { idUser, estado, idLibro }
-      }));
-      if (idLibro.length > 0) {
-        this.toastr.success('Libro agregado con exito');
-      }
-    } catch (error: any) {
-      this.httpErrorHandler(error);
-    }
-  }
+  async eliminarLibro(idLibro: number[], estado: boolean): Promise<void> {
+    await lastValueFrom(this.httpClient.delete(REST_SERVER_URL + '/eliminarLibroEstado', {
+      body: { estado, idLibro }
+    }));
 
-  httpErrorHandler(error: HttpErrorResponse) {
-    if (error.error['status'] == null) {
-      this.toastr.error('Serivor caido :,(. Intente mas tarde')
-    }
-
-    if (error.error['status'] == 200) {
-      this.toastr.success(error.error['message'])
-
-    }
-
-    if (error.error['status'] == 400) {
-      this.toastr.warning(error.error['message'])
-    }
-
-    if (error.error['status'] == 404) {
-      this.toastr.error(error.error['message'])
-    }
   }
 }
