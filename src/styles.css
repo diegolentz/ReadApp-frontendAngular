@@ -78,10 +78,9 @@
     --height-header: 7rem;
     --color-save: rgb(120, 178, 104);
     --color-save-gradient: rgb(97, 134, 87);
-    --color-cancel: rgb(190, 70, 70);
+    --color-cancel-gradient: rgb(248, 138, 138);
+    --color-cancel: rgb(165, 41, 41);
     --borde-default: 1rem;
-
-    --color-cancel: rgb(190, 70, 70);
 
     /* //////////////////////////////////////////////////// */
     /* COLORES ADRIAN */
