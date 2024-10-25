@@ -67,7 +67,7 @@ export class RecommendationService {
         REST_SERVER_URL + `/recommendations`,
         recomendacion.toCreateJSON()
     ));
-    this.toast.success('Recomendacion creada con exito')
+    //this.toast.success('Recomendacion creada con exito')
     return Recommendation.fromJson(recomendacionNueva) 
 }
 

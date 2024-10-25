@@ -24,6 +24,7 @@ describe('RecommendationService', () => {
     publica: true,
     valoraciones: [], // Puedes agregar valoraciones si es necesario
     valoracionTotal: 0,
+    puedeValorar:false,
     id: 1,
   };
   const mockValoration: ValorationJSON = {
