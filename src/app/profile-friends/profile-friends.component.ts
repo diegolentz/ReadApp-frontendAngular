@@ -21,11 +21,10 @@ export class ProfileFriendsComponent implements OnInit {
   agregoAmigos!: boolean;
   id!: number;
   mensaje!: UpdateFriendsMessage;
-  
-  constructor(private userService: ServiceUser, public route: Router, private router: ActivatedRoute) { }
 
+  constructor(private userService: ServiceUser, public route: Router, private router: ActivatedRoute) { }
   @HostBinding('style.width') width: string = '100%';
-  
+
   async ngOnInit() {
     this.id = await this.userService.getLoggedUser()
     this.mensaje = new UpdateFriendsMessage(this.id.toString())
@@ -34,9 +33,8 @@ export class ProfileFriendsComponent implements OnInit {
 
   async getFriend() {
     try {
-      this.friends = !this.agregarAmigosNuevos()
-        ? await this.userService.getUserNotFriendsByID(this.id)
-        : await this.userService.getUserFriendsByID(this.id);
+      //Cuando agregarAmigosNuevos es true debe devolverme a mis amigos
+      this.friends = await this.userService.getUserFriendsByID(this.id, this.agregarAmigosNuevos());
     }
     catch (error: any) {
       if (error instanceof HttpErrorResponse) {
@@ -67,6 +65,10 @@ export class ProfileFriendsComponent implements OnInit {
   agregarAmigosNuevos(): boolean {
     const includedRoutes = ['/my-profile/friends'];
     return includedRoutes.includes(this.route.url);
+  }
+
+  listIsEmpty(): boolean {
+    return this.friends.length === 0
   }
 
 }

@@ -71,20 +71,9 @@ export class ServiceUser {
 
   }
 
-
-  async getUserFriendsByID(id: number): Promise<UserFriend[]> {
-    const user$ = this.httpClient.get<UserFriendJSON[]>(REST_SERVER_URL + '/user/friends/' + id.toString())
-    const user = await (lastValueFrom(user$))
-    const userFriend: UserFriend[] = user.map((it: UserFriendJSON) => UserFriend.prototype.fromJSON(it))
-    return userFriend
-    // const user$ = this.httpClient.get<UserProfileFriendJSON>(REST_SERVER_URL + '/user/friends/' + id.toString())
-    // const user = await (lastValueFrom(user$))
-    // const userProfileFriend = UserProfileFriend.prototype.fromJSON(user)
-    // return userProfileFriend
-  }
-
-  async getUserNotFriendsByID(id: number): Promise<UserFriend[]> {
-    const user$ = this.httpClient.get<UserFriendJSON[]>(REST_SERVER_URL + '/user/new-friends/' + id.toString())
+  async getUserFriendsByID(id: number, muestroAmigos: boolean): Promise<UserFriend[]> {
+    const user$ = this.httpClient.get<UserFriendJSON[]>(REST_SERVER_URL + '/user/friends', {
+      params: {id:id, muestroAmigos: muestroAmigos}})
     const user = await (lastValueFrom(user$))
     const userFriend: UserFriend[] = user.map((it: UserFriendJSON) => UserFriend.prototype.fromJSON(it))
     return userFriend
