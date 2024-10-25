@@ -1,12 +1,14 @@
 <main class="contenedor_edicion_recomendacion">
     
-    <div *ngIf="!puedeEditar" class="contenedorTitulo">
+    <h2 *ngIf="puedeCrear">Create Recommendation!</h2>
+
+    <div *ngIf="!puedeEditar && !puedeCrear" class="contenedorTitulo">
         <h1>{{recomendacion.title}}</h1>
         <img *ngIf="recomendacion._public" src="svg/privada.svg" alt="" >
         <img *ngIf="!recomendacion._public" src="svg/publica.svg" alt="" >
     </div>
     
-    <div *ngIf="puedeEditar" class="contenedorTitulo">
+    <div *ngIf="puedeEditar || puedeCrear" class="contenedorTitulo">
         <input class="input-titulo" type="text" value={{recomendacion.title}} [(ngModel)]="recomendacion.title" placeholder="  Titulo de la recomendacion"/>
         <label class ="contenedorTitulo__label">
           <input type="checkbox" [(ngModel)]="recomendacion._public">
@@ -14,22 +16,22 @@
         </label>
     </div>
  
-    <h2 *ngIf="puedeEditar">Puedes quitar libros de la recomendacion!</h2>
+    <h2 *ngIf="puedeEditar || puedeCrear">Puedes quitar libros de la recomendacion!</h2>
     <app-container-books>
         @for (book of recomendacion.recommendedBooks; track book){
             <app-libro [book]="book" (enviarLibro)="sacarLibro($event)"></app-libro>
         }
     </app-container-books>
     
-    <h2 *ngIf="puedeEditar">Puedes agregar libros de la recomendacion!</h2>
-    <app-container-books *ngIf="puedeEditar">
+    <h2 *ngIf="puedeEditar || puedeCrear">Puedes agregar libros de la recomendacion!</h2>
+    <app-container-books *ngIf="puedeEditar || puedeCrear">
         @for (book of librosQuePuedoAgregar; track book){
             <app-libro [book]="book" [puedeAgregar]="puedeAgregar" (enviarLibro)="agregarLibro($event)"></app-libro>
             }
     </app-container-books>
 
 
-    <div  *ngIf="!puedeEditar" class="resenia">
+    <div *ngIf="!puedeEditar && !puedeCrear" class="resenia">
         <h2>Reseña</h2>
         <p class="descripcion">
             {{recomendacion.description}}
@@ -37,7 +39,7 @@
         <hr>
     </div>
     
-    <div *ngIf="puedeEditar" class="resenia">
+    <div *ngIf="puedeEditar || puedeCrear" class="resenia">
         <h2>Reseña</h2>
         <textarea class="descripcion" type="text"
             [(ngModel)]="recomendacion.description"  
@@ -47,6 +49,7 @@
     </div>
 
     <app-valoracion 
+        *ngIf="!puedeEditar && !puedeCrear"
         [valoraciones]="recomendacion.valorations"
         [score]="recomendacion.valoracionTotal"
         [puedeValorar]="!puedeEditar && !recomendacion.puedeValorar"

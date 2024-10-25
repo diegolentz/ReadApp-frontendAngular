@@ -33,6 +33,10 @@ export const routes: Routes = [
         component: ViewRecommendationComponent,
     },
     {
+        path: 'view-recommendation/crear', // Ruta para crear
+        component: ViewRecommendationComponent,
+    },
+    {
         path: 'search-books',
         component: BusquedaLibrosComponent
     },

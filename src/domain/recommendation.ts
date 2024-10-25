@@ -25,7 +25,7 @@ export type RecommendationEditJSON = {
 }
 
 export type RecommendationCardJSON = {
-    id:number,
+    id:number ,
     title: string,
     editable: boolean,
     deletable: boolean,

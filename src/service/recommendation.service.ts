@@ -62,6 +62,14 @@ export class RecommendationService {
       return error
     }
   }
+  async createRecommendations(recomendacion: Recommendation): Promise<Recommendation> {
+    const recomendacionNueva = await lastValueFrom(this.httpClient.post<RecommendationJSON>(
+        REST_SERVER_URL + `/recommendations`,
+        recomendacion.toJSON()
+    ));
+    this.toast.success('Recomendacion creada con exito')
+    return Recommendation.fromJson(recomendacionNueva) 
+}
 
   // si es true = home, si es false = private
   async getUserRecommendations(estado: boolean): Promise<RecommendationCard[]> {
