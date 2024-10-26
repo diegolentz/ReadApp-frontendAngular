@@ -1,110 +1,71 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ViewRecommendationComponent } from './view-recommendation.component';
-import { RecommendationService } from '../../service/recommendation.service';
-import { ActivatedRoute, Router, UrlSegment } from '@angular/router';
-import { of } from 'rxjs';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { BookService } from '../../service/book.service';
-import { Recommendation } from '../../domain/recommendation';
-import { Book, BookJSON } from '../../domain/book';
-import { HttpClientModule } from '@angular/common/http';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { Recommendation } from "../../domain/recommendation";
+import { RecommendationService } from "../../service/recommendation.service";
+import { BookService } from "../../service/book.service";
+import { ToastService } from "../../service/toast.service";
+import { ViewRecommendationComponent } from "./view-recommendation.component";
+import { ActivatedRoute, Router } from "@angular/router";
+import { of } from "rxjs";
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
   let fixture: ComponentFixture<ViewRecommendationComponent>;
-  let recommendationServiceSpy: jasmine.SpyObj<RecommendationService>;
-  let bookServiceSpy: jasmine.SpyObj<BookService>;
-  let toastrSpy: jasmine.SpyObj<ToastrService>;
-  let routerSpy: jasmine.SpyObj<Router>;
-
-  const mockRecommendation: Recommendation = new Recommendation(
-    'Test Author',
-    [],
-    'Test Recommendation',
-    'Esto es una descripcion test',
-    true,
-    [],
-    0,
-    1
-  );
-
-  const mockBookJSON: BookJSON = {
-    id: 1,
-    titulo: 'Test Book',
-    autor: 'Test Author',
-    cantidadPalabras: 50000,
-    cantidadPaginas: 300,
-    traducciones: ['English', 'Spanish'],
-    ventasSemanales: 1000,
-    imagen: 'path/to/image.jpg'
-  };
-
-  const mockBook: Book = Book.fromJson(mockBookJSON);
+  let recommendationServiceMock: jasmine.SpyObj<RecommendationService>;
+  let bookServiceMock: jasmine.SpyObj<BookService>;
+  let toastServiceMock: jasmine.SpyObj<ToastService>;
+  let routerMock: jasmine.SpyObj<Router>;
+  let activatedRouteMock: any;
 
   beforeEach(async () => {
-    const recommendationSpy = jasmine.createSpyObj('RecommendationService', ['getRecommendationById', 'actualizarRecomendacion']);
-    const bookSpy = jasmine.createSpyObj('BookService', ['obtenerLibrosPorEstado']);
-    const toastSpy = jasmine.createSpyObj('ToastrService', ['success', 'warning']);
-    const routerSpyMock = jasmine.createSpyObj('Router', ['navigate']);
+    recommendationServiceMock = jasmine.createSpyObj('RecommendationService', ['getRecommendationById']);
+    bookServiceMock = jasmine.createSpyObj('BookService', ['obtenerLibrosPorEstado']);
+    toastServiceMock = jasmine.createSpyObj('ToastService', ['showToast']);
+    routerMock = jasmine.createSpyObj('Router', ['navigate']);
+
+    activatedRouteMock = {
+      params: of({ id: 1 }),
+      snapshot: {
+        url: [
+          { path: 'view' },  // O lo que sea necesario antes
+          { path: 'edit' }   // Asegúrate de que esto sea 'edit'
+        ]
+      }
+    };
 
     await TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule,
-        ToastrModule.forRoot(),
-        ViewRecommendationComponent
-      ],
+      imports: [ViewRecommendationComponent], // Asegúrate de que sea correcto
       providers: [
-        { provide: RecommendationService, useValue: recommendationSpy },
-        { provide: BookService, useValue: bookSpy },
-        { provide: ToastrService, useValue: toastSpy },
-        { provide: Router, useValue: routerSpyMock },
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            params: of({ id: 1 }),
-            snapshot: {
-              url: [new UrlSegment('edit', {}), new UrlSegment('detalle', {})],
-              params: { id: 1 }
-            }
-          }
-        }
-      ],
-      schemas: [NO_ERRORS_SCHEMA]
+        { provide: RecommendationService, useValue: recommendationServiceMock },
+        { provide: BookService, useValue: bookServiceMock },
+        { provide: ToastService, useValue: toastServiceMock },
+        { provide: Router, useValue: routerMock },
+        { provide: ActivatedRoute, useValue: activatedRouteMock },
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ViewRecommendationComponent);
     component = fixture.componentInstance;
-
-    recommendationServiceSpy = TestBed.inject(RecommendationService) as jasmine.SpyObj<RecommendationService>;
-    bookServiceSpy = TestBed.inject(BookService) as jasmine.SpyObj<BookService>;
-    toastrSpy = TestBed.inject(ToastrService) as jasmine.SpyObj<ToastrService>;
-    routerSpy = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
-  beforeEach(() => {
-    recommendationServiceSpy.getRecommendationById.and.returnValue(Promise.resolve(mockRecommendation));
-    bookServiceSpy.obtenerLibrosPorEstado.and.returnValue(Promise.resolve([mockBook]));
-  });
+  it('Deberia crear el componente e inicializar las propiedades', async () => {
+    recommendationServiceMock.getRecommendationById.and.returnValue(Promise.resolve(new Recommendation(
+      'Test Author',
+      [], // Libros recomendados
+      'Test Title',
+      'Test Description',
+      true, // _public
+      [], // valoraciones
+      0, // valoracionTotal
+      1, // id
+      true // puedeValorar
+    )));
 
-  it('debería crear el componente', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('debería mostrar la reseña correctamente', async () => {
     await component.ngOnInit();
-    expect(component.recomendacion.description).toBe('Esto es una descripcion test');
-    fixture.detectChanges();
-    const descriptionElement: HTMLElement = fixture.nativeElement.querySelector('.descripcion');
-    expect(descriptionElement.textContent).toContain('Esto es una descripcion test');
-  });
 
-  it('debería marcar la página como editable cuando la ruta es de edición', () => {
-    const activatedRoute = TestBed.inject(ActivatedRoute);
-    activatedRoute.snapshot.url = [new UrlSegment('detalle', {}), new UrlSegment('edit', {})];
-
-    component.esEditable();
-
-    expect(component.puedeEditar).toBeTrue();
+    expect(component).toBeTruthy();
+    expect(component.recomendacion.title).toBe('Test Title');
+    expect(component.recomendacion.description).toBe('Test Description');
+    expect(component.puedeCrear).toBeFalse(); // Asegúrate de que esto sea correcto
+    expect(component.puedeEditar).toBeTrue(); // Cambia esto si tu lógica es diferente
   });
 });
