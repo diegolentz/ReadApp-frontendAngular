@@ -7,6 +7,9 @@ import { ViewRecommendationComponent } from "./view-recommendation.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { of } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
+import { Book } from "../../domain/book";
+
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
@@ -100,4 +103,27 @@ describe('ViewRecommendationComponent', () => {
     expect(toastServiceMock.showToast).toHaveBeenCalledWith('Recomendación no encontrada', 'warning');
     expect(routerMock.navigate).toHaveBeenCalledWith(['/home']);
   });
+
+  it('Debería agregar un libro a la recomendación', async () => {
+    await setupTestBed(true); // Modo crear
+  
+    fixture = TestBed.createComponent(ViewRecommendationComponent);
+    component = fixture.componentInstance;
+  
+    // Simulamos la inicialización de libros que se pueden agregar
+    const libro1 = new Book(1, 'Libro 1', 'Autor 1');
+    const libro2 = new Book(2, 'Libro 2', 'Autor 2');
+    component.librosQuePuedoAgregar = [libro1, libro2];
+    component.recomendacion = new Recommendation();
+  
+    // Agregamos un libro
+    component.agregarLibro('1'); // Intentamos agregar el libro con ID 1
+  
+    expect(component.recomendacion.recommendedBooks).toContain(libro1);
+    expect(component.librosQuePuedoAgregar).not.toContain(libro1);
+    expect(component.librosQuePuedoAgregar).toContain(libro2);
+  });
+
+
+  
 });
