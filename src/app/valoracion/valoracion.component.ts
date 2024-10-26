@@ -9,7 +9,9 @@ import { RecommendationService } from '../../service/recommendation.service';
 import { ServiceUser } from '../../service/service-user.service';
 import { UserBasic } from '../../domain/tmpUser';
 import { CommonModule } from '@angular/common';
-import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../../service/toast.service';
+
 
 @Component({
   selector: 'app-valoracion',
@@ -29,7 +31,7 @@ export class ValoracionComponent implements OnInit {
   rating = 0
   nuevaValoracion: Valoration = new Valoration(this.user.fotoPath, this.user.username, 0, new Date(1914, 14, 14), "") 
 
-  constructor(private recommendationService: RecommendationService, private userService: ServiceUser, private toast: ToastrService) {}
+  constructor(private recommendationService: RecommendationService, private userService: ServiceUser, private toast: ToastService) {}
 
   async ngOnInit() {}
 
@@ -38,14 +40,23 @@ export class ValoracionComponent implements OnInit {
   }
   async agregarLaValoracion() {
     if (this.validacion()) {
-      this.toast.warning("Por favor complete los campos vacios");
+      this.toast.showToast("Por favor complete los campos vacios","warning");
       return;
     }
   
     this.nuevaValoracion.valor = this.rating;
-  
-    await this.recommendationService.agregarValoracion(this.nuevaValoracion, this.id);
-    await this.cancelar();
+    try{
+      await this.recommendationService.agregarValoracion(this.nuevaValoracion, this.id);
+      await this.cancelar();
+      await this.toast.showToast("Se agregó correctamente la valoración", 'success');
+    } catch (error: any) {
+      if (error instanceof HttpErrorResponse) {
+        this.toast.showToast(`${error.error['message']}`, 'warning');
+        return error
+      }
+      this.toast.showToast("error externo", 'error');
+      return error
+    }
   
     setTimeout(() => {
       window.location.reload();

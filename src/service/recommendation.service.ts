@@ -32,36 +32,20 @@ export class RecommendationService {
   }
 
   async getRecommendationById(id: number): Promise<Recommendation> {
-    try {
-      const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
-      const recommendationJSON = await lastValueFrom(recommendation$)
-      return Recommendation.fromJson(recommendationJSON)
-    } catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        this.toast.showToast(`${error.error['message']}`, 'warning');
-        this.router.navigate(['/home'])
-      }
-      return error
-    }
-
+    const recommendation$ = this.httpClient.get<RecommendationJSON>(REST_SERVER_URL + '/recommendations/' + id)
+    const recommendationJSON = await lastValueFrom(recommendation$)
+    return Recommendation.fromJson(recommendationJSON)
   }
 
   async actualizarRecomendacion(recomendacion: Recommendation) {
-    try {
       const recomendacionNueva = await lastValueFrom(this.httpClient.put<RecommendationJSON>(
         REST_SERVER_URL + `/recommendations`,
         recomendacion.toEditarJSON()
       ))
-      this.toast.showToast('Recomendacion editada con exito', 'success');
       return recomendacionNueva   
-    } catch(error:any){
-      if(error instanceof HttpErrorResponse){
-        this.toast.showToast(`${error.error['message']}`, 'warning');
-        return error
-      }
-      return error
-    }
+ 
   }
+
   async createRecommendations(recomendacion: Recommendation): Promise<Recommendation> {
     const recomendacionNueva = await lastValueFrom(this.httpClient.post<RecommendationJSON>(
         REST_SERVER_URL + `/recommendations`,
@@ -85,21 +69,11 @@ export class RecommendationService {
     return recommendationsJSON.map((recommendationJSON) => RecommendationCard.fromJson(recommendationJSON));
   }
   async agregarValoracion(valoracion: Valoration, idRecommendation: number) {
-    try {
       const valoracionNueva = await lastValueFrom(this.httpClient.put<ValorationJSON>(
         REST_SERVER_URL + `/recommendations/${idRecommendation}`,
         valoracion.toJSON()
       ))
-      this.toast.showToast("Se agregó correctamente la valoración", 'success');
-      return valoracionNueva
-    } catch (error: any) {
-      if (error instanceof HttpErrorResponse) {
-        this.toast.showToast(`${error.error['message']}`, 'warning');
-        return error
-      }
-      this.toast.showToast("error externo", 'error');
-      return error
-    }
+      return valoracionNueva 
   }
 
   async deleteRecommendation(idRecommendation: number) {

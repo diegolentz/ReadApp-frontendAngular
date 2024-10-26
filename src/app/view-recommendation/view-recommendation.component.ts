@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { ProfileBooksReadedComponent } from "../profile-books-readed/profile-books-readed.component";
 import { HeaderComponent } from "../shared/header/header.component";
 import { ResenaComponent } from "../resena/resena.component";
@@ -15,8 +15,9 @@ import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
 import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 import { BookService } from '../../service/book.service';
-import { Toast, ToastrService } from 'ngx-toastr';
-import { create } from 'node:domain';
+import { tr } from 'date-fns/locale';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
@@ -25,7 +26,7 @@ import { create } from 'node:domain';
   styleUrls: ['./view-recommendation.component.css']
 })
 export class ViewRecommendationComponent implements OnInit {
-  constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
+  constructor(private toast: ToastService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
   puedeAgregar = true
   recomendacion: Recommendation = new Recommendation()
   puedeEditar: boolean = false
@@ -37,15 +38,13 @@ export class ViewRecommendationComponent implements OnInit {
     this.librosLeidos()
   }
 
-  tipoDePagina() {
-    if(this.esEditable()){
-      this.puedeEditar = true
-    }
+  tipoDePagina() { 
     if(this.esCrear()){
-      this.recomendacion = new Recommendation()
       this.puedeCrear = true
+      this.recomendacion = new Recommendation()
       return
     }
+    this.puedeEditar = this.esEditable()
     this.traerRecomendacion()
   }
 
@@ -53,10 +52,18 @@ export class ViewRecommendationComponent implements OnInit {
 
   esCrear = (): boolean => this.route.snapshot.url[1].path === 'crear'  
   
-  traerRecomendacion() {
+  async traerRecomendacion() {
     this.route.params.subscribe(async (viewRecommendationParams) => {
-      const recomendacionId = viewRecommendationParams['id']
-      this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId)
+      const recomendacionId = viewRecommendationParams['id'];
+      try {
+        this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+      } catch (error: any) {
+        if (error instanceof HttpErrorResponse) {
+          this.toast.showToast(`${error.error['message']}`, 'warning');
+          this.router.navigate(['/home']);
+        }
+        return error;
+      }
     });
   }
 
@@ -91,20 +98,26 @@ export class ViewRecommendationComponent implements OnInit {
   }
 
   async editarRecomendacion() {
-    if (this.validacion()) {
-      this.toast.warning('complete los campos vacios')
-      return
+    if(this.validacion()){
+        this.toast.showToast('complete los campos vacios',"warning")
+        return
     }
-    await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    try{
+      await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+      await this.toast.showToast('Recomendacion editada con exito', 'success');
+    } catch(error:any){
+        if(error instanceof HttpErrorResponse){
+          this.toast.showToast(`${error.error['message']}`, 'warning');
+          return error
+        }
+        return error
+       }
     this.traerRecomendacion()
     this.librosLeidos()
   }
 
   async crearRecomendacion() {
-    if (this.validacion()) {
-      this.toast.warning('complete los campos vacios')
-      return
-    }
+    this.validacion()
     await this.recommendationService.createRecommendations(this.recomendacion)
   }
 
@@ -126,13 +139,3 @@ export class ViewRecommendationComponent implements OnInit {
     this.router.navigate([option])
   }
 }
-
-// class TipoDePagina {
-//   tipoDepagina(){}
-// }
-
-// class Crear implements TipoDePagina{
-//   override tipoDePagina{
-
-//   }
-// }
