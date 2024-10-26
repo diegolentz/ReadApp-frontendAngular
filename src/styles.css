@@ -78,8 +78,15 @@
     --height-header: 7rem;
     --color-save: rgb(120, 178, 104);
     --color-save-gradient: rgb(97, 134, 87);
+    --color-save-gradient-dark: rgb(45, 89, 33);
+    --color-value-gradient: rgb(171, 134, 212);
+    --color-value-gradient-dark: rgb(86, 35, 168);
+    --color-edit-gradient: rgb(64, 193, 212);
+    --color-edit-gradient-dark: rgb(25, 113, 236);
     --color-cancel-gradient: rgb(248, 138, 138);
     --color-cancel: rgb(165, 41, 41);
+    --color-reco-gradient: #dbd9cc;
+    --color-reco-gradient-dark: #b3b1a6;
     --borde-default: 1rem;
 
     /* //////////////////////////////////////////////////// */

@@ -7,19 +7,19 @@
     <div class="actions">
 
         @if (!recomendacion.pending) {
-            <a (click)="addToValueLater()"> 
+            <button class = "value" (click)="addToValueLater()"> 
                 <img src="svg/corazon.svg" alt="">
-            </a>
+            </button>
         }
         @if (recomendacion.editable) {
-            <a [routerLink]="['/view-recommendation/edit/',recomendacion.id]"> 
+            <button class = "edit" [routerLink]="['/view-recommendation/edit/',recomendacion.id]"> 
                 <img src="svg/edit.svg" alt="">
-            </a>
+            </button>
         }
         @if (recomendacion.deletable) {
-            <a (click)="deleteRecommendation()" [attr.data-testid]="'delete_' + recomendacion.id">
+            <button class = "delete" (click)="deleteRecommendation()" [attr.data-testid]="'delete_' + recomendacion.id">
                 <img src="svg/delete.svg" alt="">
-            </a>
+            </button>
         }
 
     </div>
