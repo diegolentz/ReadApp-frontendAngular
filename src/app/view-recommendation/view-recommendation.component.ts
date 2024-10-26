@@ -116,7 +116,7 @@ export class ViewRecommendationComponent implements OnInit {
     this.editarRecomendacion()
   }
 
-  validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
+  validacion = (): boolean => (!this.recomendacion.title.trim() || !this.recomendacion.description.trim()) || this.recomendacion.recommendedBooks.length === 0
 
   cancelar() {
     this.goTo('/home')
