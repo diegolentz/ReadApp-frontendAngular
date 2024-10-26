@@ -5,6 +5,7 @@ import { ToastService } from './toast.service';
 import { Router } from '@angular/router';
 import { Recommendation, RecommendationCard } from '../domain/recommendation';
 import { REST_SERVER_URL } from './configuration';
+import { Valoration } from '../domain/valoration';
 
 describe('RecommendationService', () => {
   let service: RecommendationService;
@@ -129,6 +130,38 @@ describe('RecommendationService', () => {
         await expectAsync(response).toBeResolvedTo(updatedMockRecommendation);
 
     });
+});
+describe('agregarValoracion', () => {
+  it('Debería agregar una valoración y devolver la valoración creada', async () => {
+    // Crea una valoración de prueba
+    const mockValoration = new Valoration(
+      'Author',
+      'path/to/photo.jpg',
+      5,
+      new Date(),
+      'Great recommendation!'
+    );
+
+    // Define la respuesta simulada de la API
+    const mockResponse = {
+      author: 'Author',
+      fotoPath: 'path/to/photo.jpg',
+      score: 5,
+      fecha: new Date().toISOString(),
+      comentario: 'Great recommendation!'
+    };
+
+    // Invoca el método a probar
+    const response = service.agregarValoracion(mockValoration, 1);
+
+    // Espera la llamada a la API
+    const req = httpMock.expectOne(`${REST_SERVER_URL}/recommendations/1`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockResponse); // Simula la respuesta de la API
+
+    // Verifica que la respuesta sea la valoración creada
+    await expectAsync(response).toBeResolvedTo(mockResponse);
+  });
 });
 
 });
