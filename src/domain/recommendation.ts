@@ -74,6 +74,19 @@ export class Recommendation {
             recommendationJSON.puedeValorar
             )
     }
+    static fromEditJson(recommendationEditJSON: RecommendationEditJSON): Recommendation {
+        return new Recommendation(
+            "",
+            [], 
+            recommendationEditJSON.titulo,
+            recommendationEditJSON.contenido,
+            recommendationEditJSON.publica,
+            [], 
+            0, 
+            recommendationEditJSON.id,
+            false 
+        );
+    }
 
     toJSON(): RecommendationJSON {
         return {

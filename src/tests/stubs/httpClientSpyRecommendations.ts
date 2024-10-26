@@ -3,8 +3,8 @@ import { Recommendation, RecommendationCard, RecommendationCardJSON } from "../.
 import { REST_SERVER_URL } from "../../service/configuration"
 
 export const recommendationCardStubJSON:Array<RecommendationCardJSON> = [
-    new RecommendationCard(1,"",true, true, true, "", ["",""], 5, 5),
-    new RecommendationCard(2,"",true, true, true, "", ["",""], 5, 5),
+    new RecommendationCard(1,"",true, true, true, true,"", ["",""], 5, 5),
+    new RecommendationCard(2,"",true, true, true, true,"" ,["",""], 5, 5),
 ].map((recommendacionCard)=> recommendacionCard.toJSON())
 
 export const getHttpClientSpyHome = () => {
