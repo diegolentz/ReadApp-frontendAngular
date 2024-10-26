@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, input, OnInit } from '@angular/core';
 import { ProfileBooksReadedComponent } from "../profile-books-readed/profile-books-readed.component";
 import { HeaderComponent } from "../shared/header/header.component";
 import { ResenaComponent } from "../resena/resena.component";
@@ -15,8 +15,9 @@ import { Book } from '../../domain/book';
 import { FormsModule } from '@angular/forms';
 import { VolverAtrasComponent } from "../volver-atras/volver-atras.component";
 import { BookService } from '../../service/book.service';
-import { Toast, ToastrService } from 'ngx-toastr';
-import { create } from 'node:domain';
+import { tr } from 'date-fns/locale';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../../service/toast.service';
 @Component({
   selector: 'app-view-recommendation',
   standalone: true,
@@ -25,7 +26,7 @@ import { create } from 'node:domain';
   styleUrls: ['./view-recommendation.component.css']
 })
 export class ViewRecommendationComponent implements OnInit {
-  constructor(private toast: ToastrService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
+  constructor(private toast: ToastService, private recommendationService: RecommendationService, private router: Router, private route: ActivatedRoute, public libroService: BookService) { }
   puedeAgregar = true
   recomendacion: Recommendation = new Recommendation()
   puedeEditar: boolean = false
@@ -35,6 +36,35 @@ export class ViewRecommendationComponent implements OnInit {
   async ngOnInit() {
     this.tipoDePagina()
     this.librosLeidos()
+  }
+
+  tipoDePagina() { 
+    if(this.esCrear()){
+      this.puedeCrear = true
+      this.recomendacion = new Recommendation()
+      return
+    }
+    this.puedeEditar = this.esEditable()
+    this.traerRecomendacion()
+  }
+
+  esEditable = (): boolean => this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
+
+  esCrear = (): boolean => this.route.snapshot.url[1].path === 'crear'  
+  
+  async traerRecomendacion() {
+    this.route.params.subscribe(async (viewRecommendationParams) => {
+      const recomendacionId = viewRecommendationParams['id'];
+      try {
+        this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId);
+      } catch (error: any) {
+        if (error instanceof HttpErrorResponse) {
+          this.toast.showToast(`${error.error['message']}`, 'warning');
+          this.router.navigate(['/home']);
+        }
+        return error;
+      }
+    });
   }
 
   async librosLeidos() {
@@ -47,33 +77,6 @@ export class ViewRecommendationComponent implements OnInit {
     } catch (error) {
       console.error('Error al obtener los libros:', error)
     }
-  }
-
-  tipoDePagina() {
-    if(this.esEditable()){
-      this.puedeEditar = true
-    }
-    if(this.esCrear()){
-      this.recomendacion = new Recommendation()
-      this.puedeCrear = true
-      return
-    }
-    this.traerRecomendacion()
-  }
-
-  esEditable() {
-    return this.route.snapshot.url.length > 1 && this.route.snapshot.url[1].path === 'edit'
-  }
-  
-  esCrear() {
-    return this.route.snapshot.url[1].path === 'crear'
-  }
-
-  traerRecomendacion() {
-    this.route.params.subscribe(async (viewRecommendationParams) => {
-      const recomendacionId = viewRecommendationParams['id']
-      this.recomendacion = await this.recommendationService.getRecommendationById(recomendacionId)
-    });
   }
 
   sacarLibro(libro: string) {
@@ -90,28 +93,35 @@ export class ViewRecommendationComponent implements OnInit {
     if (libroAgregado) {
       this.recomendacion.recommendedBooks.push(libroAgregado)
     } else {
-      console.error('Libro no encontrado para agregar:', id)
+      this.toast.showToast(`Libro no encontrado para agregar: ${id}`,"warning")
     }
   }
 
   async editarRecomendacion() {
-    if (this.validacion()) {
-      this.toast.warning('complete los campos vacios')
-      return
+    if(this.validacion()){
+        this.toast.showToast('complete los campos vacios',"warning")
+        return
     }
-    await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+    try{
+      await this.recommendationService.actualizarRecomendacion(this.recomendacion)
+      await this.toast.showToast('Recomendacion editada con exito', 'success');
+    } catch(error:any){
+        if(error instanceof HttpErrorResponse){
+          this.toast.showToast(`${error.error['message']}`, 'warning');
+          return error
+        }
+        return error
+       }
     this.traerRecomendacion()
     this.librosLeidos()
   }
 
   async crearRecomendacion() {
-    // if (this.validacion()) {
-    //   this.toast.warning('complete los campos vacios')
-    //   return
-    // }
-    console.log(this.recomendacion)
+    if(this.validacion()){
+      this.toast.showToast('complete los campos vacios',"warning")
+      return
+  }
     await this.recommendationService.createRecommendations(this.recomendacion)
-    
   }
 
   createOrEdit() {
@@ -122,7 +132,7 @@ export class ViewRecommendationComponent implements OnInit {
     this.editarRecomendacion()
   }
 
-  validacion = (): boolean => !this.recomendacion.title.trim() || !this.recomendacion.description.trim()
+  validacion = (): boolean => (!this.recomendacion.title.trim() || !this.recomendacion.description.trim()) || this.recomendacion.recommendedBooks.length === 0
 
   cancelar() {
     this.goTo('/home')
