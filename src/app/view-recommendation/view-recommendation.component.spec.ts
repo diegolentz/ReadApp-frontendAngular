@@ -6,6 +6,7 @@ import { ToastService } from "../../service/toast.service";
 import { ViewRecommendationComponent } from "./view-recommendation.component";
 import { ActivatedRoute, Router } from "@angular/router";
 import { of } from "rxjs";
+import { HttpErrorResponse } from "@angular/common/http";
 
 describe('ViewRecommendationComponent', () => {
   let component: ViewRecommendationComponent;
@@ -81,5 +82,22 @@ describe('ViewRecommendationComponent', () => {
     expect(component).toBeTruthy();
     expect(component.puedeCrear).toBeTrue(); // Debe ser true en modo crear
     expect(component.recomendacion).toBeTruthy(); // La recomendación debe estar inicializada
+  });
+
+  it('Deberia mostrar un toast y redirigir cuando no se encuentra la recomendación', async () => {
+    await setupTestBed(false); // Modo editar
+
+    fixture = TestBed.createComponent(ViewRecommendationComponent);
+    component = fixture.componentInstance;
+
+    // Simulamos un error en getRecommendationById
+    const errorResponse = new HttpErrorResponse({ error: { message: 'Recomendación no encontrada' }, status: 404 });
+    recommendationServiceMock.getRecommendationById.and.returnValue(Promise.reject(errorResponse));
+
+    await component.ngOnInit();
+
+    expect(component).toBeTruthy();
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith('Recomendación no encontrada', 'warning');
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/home']);
   });
 });
