@@ -20,7 +20,7 @@ describe('ViewRecommendationComponent', () => {
   let routerMock: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
-    recommendationServiceMock = jasmine.createSpyObj('RecommendationService', ['getRecommendationById']);
+    recommendationServiceMock = jasmine.createSpyObj('RecommendationService', ['getRecommendationById','actualizarRecomendacion']);
     bookServiceMock = jasmine.createSpyObj('BookService', ['obtenerLibrosPorEstado']);
     toastServiceMock = jasmine.createSpyObj('ToastService', ['showToast']);
     routerMock = jasmine.createSpyObj('Router', ['navigate']);
@@ -124,6 +124,36 @@ describe('ViewRecommendationComponent', () => {
     expect(component.librosQuePuedoAgregar).toContain(libro2);
   });
 
+  it('Debería editar la recomendación y mostrar un toast de éxito', async () => {
+    await setupTestBed(false); // Modo editar
+  
+    fixture = TestBed.createComponent(ViewRecommendationComponent);
+    component = fixture.componentInstance;
+  
+    // Simulamos la recomendación a editar
+    const libro1 = new Book(1, 'Libro 1', 'Autor 1');
 
+    const mockRecommendation = new Recommendation(
+      'Test Author',
+      [libro1],
+      'Test Title',
+      'Test Description',
+      true,
+      [],
+      0,
+      1,
+      true
+    );
+  
+    component.recomendacion = mockRecommendation;
+  
+    // Simulamos que la llamada para actualizar la recomendación es exitosa
+    recommendationServiceMock.actualizarRecomendacion.and.returnValue(Promise.resolve(mockRecommendation.toJSON()));
+  
+    await component.editarRecomendacion(); // Llamamos al método a probar
+  
+    expect(toastServiceMock.showToast).toHaveBeenCalledWith('Recomendacion editada con exito', 'success');
+    expect(recommendationServiceMock.actualizarRecomendacion).toHaveBeenCalledWith(mockRecommendation);
+  });
   
 });
