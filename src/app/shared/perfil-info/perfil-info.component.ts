@@ -1,4 +1,4 @@
-import { Component, HostBinding, ViewContainerRef } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { InputBoxComponent } from "../input-box/input-box.component";
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../input/input.component';
@@ -11,6 +11,7 @@ import { DateValidator, MinMaxValidator } from './validators';
 
 import { Router } from '@angular/router';
 import { ToastService } from '../../../service/toast.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -38,6 +39,7 @@ export class PerfilInfoComponent {
 
   /* Variables del Usuario */
   private userId!: number
+  private userData!: UserInformacion
   criteriosBusqueda = ['Precavido', 'Demandante', 'Cambiante', 'Leedor', 'Nativista', 'Poliglota', 'Experimentado']
   formasDeLectura = ['Promedio', 'Ansioso', 'Fanatico', 'Recurrente']
   userLectura: Array<string> = []
@@ -106,25 +108,31 @@ export class PerfilInfoComponent {
   }
 
   async ngOnInit() {
-    this.userId = await this.UserService.getLoggedUser()
-    console.log(this.userId)
-    let userData = await this.UserService.getUserProfileByID(this.userId)
+    try {
+      this.userId = await this.UserService.getLoggedUser()
+      this.userData = await this.UserService.getUserProfileByID(this.userId)
+    } catch (error) {
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.showToast("Error al recuperar la información del usuario", "error")
+      } else {
+        this.toastr.showToast("Reintente más tarde", "error")
+      }
+    }
 
-    /* let userData = await this.UserService.getUserProfileByID(2) */
-    this.userBusqueda = this.obtenerPerfiles(userData.perfil)
-    this.userLectura.push(userData.tipoDeLector)
-    this.tiempoDeLectura = userData.tiempoLecturaPromedio
+    this.userBusqueda = this.obtenerPerfiles(this.userData.perfil!)
+    this.userLectura.push(this.userData.tipoDeLector!)
+    this.tiempoDeLectura = this.userData.tiempoLecturaPromedio!
     this.perfilForm.patchValue({
-      'nombre': userData.nombre,
-      'apellido': userData.apellido,
-      'username': userData.username,
-      'fecha de nacimiento': userData.fechaNacimiento,
-      'email': userData.email
+      'nombre': this.userData.nombre,
+      'apellido': this.userData.apellido,
+      'username': this.userData.username,
+      'fecha de nacimiento': this.userData.fechaNacimiento,
+      'email': this.userData.email
     })
 
     this.calculadorForm.patchValue({
-      'numero min': this.obtenerRangoMin(userData.perfil),
-      'numero max': this.obtenerRangoMax(userData.perfil)
+      'numero min': this.obtenerRangoMin(this.userData.perfil!),
+      'numero max': this.obtenerRangoMax(this.userData.perfil!)
     })
 
   }
@@ -144,7 +152,7 @@ export class PerfilInfoComponent {
   toPerfilDeLectura(perfiles: Array<string>): Array<PerfilDeLectura> {
     return perfiles.map(perfil => {
       if (perfil == 'Calculador') {
-        return new PerfilDeLectura(perfil, this.getValueForm('numero min', this.calculadorForm), this.getValueForm('numero max', this.calculadorForm))
+        return new PerfilDeLectura(perfil, this.calculadorForm.get("numero min")?.value, this.calculadorForm.get("numero max")?.value)
       }
       return new PerfilDeLectura(perfil)
     })
@@ -158,19 +166,26 @@ export class PerfilInfoComponent {
     return undefined
   }
 
+  hayCriterioBusqueda(): boolean {
+    return this.userBusqueda.length > 0
+  }
+
   async guardar() {
-    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton)) {
-      await this.UserService.actualizarInfoUsuario(new UserInformacion(
-        this.userId,
-        this.getValueForm("nombre", this.perfilForm),
-        this.getValueForm("apellido", this.perfilForm),
-        this.getValueForm("username", this.perfilForm),
-        1,
-        this.getValueForm("fecha de nacimiento", this.perfilForm),
-        this.getValueForm("email", this.perfilForm),
-        this.toPerfilDeLectura(this.userBusqueda),
-        this.userLectura[0]
-      )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
+    if (this.perfilForm.valid && (this.calculadorForm.valid || !this.mostrarBoton) && this.hayCriterioBusqueda()) {
+      try {
+        await this.UserService.actualizarInfoUsuario(new UserInformacion(
+          this.userId,
+          this.getValueForm("nombre", this.perfilForm),
+          this.getValueForm("apellido", this.perfilForm),
+          this.getValueForm("username", this.perfilForm),
+          this.getValueForm("fecha de nacimiento", this.perfilForm),
+          this.getValueForm("email", this.perfilForm),
+          this.toPerfilDeLectura(this.userBusqueda),
+          this.userLectura[0]
+        )).then(() => this.toastr.showToast("Información actualizada correctamente", "success"))
+      } catch (error) {
+        this.toastr.showToast('Reintente más tarde', 'error')
+      }
     }
     else {
       this.toastr.showToast('Algunos campos del formulario son inválidos', "error")
@@ -185,5 +200,7 @@ export class PerfilInfoComponent {
 
 
 }
+
+
 
 

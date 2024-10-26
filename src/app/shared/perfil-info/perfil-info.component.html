@@ -82,7 +82,9 @@
                         </div>
                         <app-form-error *ngIf="(errorMessage(calculadorForm, 'numero max', 'minmax'))" [errorMessage]="(errorMessage(calculadorForm, 'numero max', 'minmax'))"></app-form-error>
                     </div>
+                    
                 </form>
+                <app-form-error *ngIf="!hayCriterioBusqueda()" [errorMessage]="'Debe seleccionar al menos un criterio'"></app-form-error>
             </div>
             
             
