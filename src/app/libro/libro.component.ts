@@ -1,12 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { BotoneraLibroComponent } from '../botonera-libro/botonera-libro.component';
 import { Book } from '../../domain/book';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-libro',
   standalone: true,
-  imports: [BotoneraLibroComponent, NgIf,],
+  imports: [NgIf],
   templateUrl: './libro.component.html',
   styleUrl: './libro.component.css'
 })
