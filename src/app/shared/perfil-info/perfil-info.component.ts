@@ -11,6 +11,7 @@ import { DateValidator, MinMaxValidator } from './validators';
 
 import { Router } from '@angular/router';
 import { ToastService } from '../../../service/toast.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -110,8 +111,12 @@ export class PerfilInfoComponent {
     try {
       this.userId = await this.UserService.getLoggedUser()
       this.userData = await this.UserService.getUserProfileByID(this.userId)
-    } catch {
-      this.toastr.showToast("Error al traer la info del usuario", "error")
+    } catch (error) {
+      if (error instanceof HttpErrorResponse) {
+        this.toastr.showToast("Error al recuperar la información del usuario", "error")
+      } else {
+        this.toastr.showToast("Reintente más tarde", "error")
+      }
     }
 
     this.userBusqueda = this.obtenerPerfiles(this.userData.perfil!)
@@ -147,7 +152,7 @@ export class PerfilInfoComponent {
   toPerfilDeLectura(perfiles: Array<string>): Array<PerfilDeLectura> {
     return perfiles.map(perfil => {
       if (perfil == 'Calculador') {
-        return new PerfilDeLectura(perfil, this.getValueForm('numero min', this.calculadorForm), this.getValueForm('numero max', this.calculadorForm))
+        return new PerfilDeLectura(perfil, this.calculadorForm.get("numero min")?.value, this.calculadorForm.get("numero max")?.value)
       }
       return new PerfilDeLectura(perfil)
     })
