@@ -93,7 +93,7 @@ export class ViewRecommendationComponent implements OnInit {
     if (libroAgregado) {
       this.recomendacion.recommendedBooks.push(libroAgregado)
     } else {
-      console.error('Libro no encontrado para agregar:', id)
+      this.toast.showToast(`Libro no encontrado para agregar: ${id}`,"warning")
     }
   }
 
