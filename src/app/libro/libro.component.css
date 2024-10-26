@@ -10,6 +10,7 @@ article{
         box-shadow: var(--shadow-elevation-high);
     }
 }
+
 .libro__acciones{
     grid-area: acciones;
     display: flex;
@@ -17,17 +18,30 @@ article{
     justify-content: space-around;
     gap: 2rem;
 
-    & .accion{
-        background: transparent;
+    & button{
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 50%;
         cursor: pointer;
+        align-self: center;
+        justify-self: center;
         border: none;
+        box-shadow: 2px 2px 2px rgb(110, 107, 107); 
+
+        & svg{
+                align-self: center;
+                justify-self: center;
+                height: 2.5rem;
+                width: 2.5rem;
+            }
+
         &:hover{
-            filter: drop-shadow(var(--color-hover-acciones));
-            /* quiero que aumente el tamano cuando hago el hover; */
+            filter: brightness(140%);
             transform: scale(1.1);
         }
     }
 }
+
 .libro {
     grid-template-areas:
     "portada descripcion acciones";
@@ -78,5 +92,13 @@ article{
             }
         }
     }
+}
+
+.delete {
+    background: linear-gradient(to bottom, var(--color-cancel-gradient), var(--color-cancel));
+}
+
+.agregar {
+    background: linear-gradient(to bottom, var(--color-save-gradient), var(--color-save-gradient-dark));
 }
 

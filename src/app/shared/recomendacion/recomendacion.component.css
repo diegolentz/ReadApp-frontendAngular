@@ -11,13 +11,18 @@
             "books      books   books"
             "info       info    info"
             "button     button  button";
-    grid-template-rows: 0.5fr 1fr 1fr 0.5fr 0.5fr;
-    row-gap: var(--space-md);
+    grid-template-rows: 0.5fr 1fr 0.8fr 0.5fr 0.5fr;
+    row-gap: var(--space-xs);
     padding: var(--space-md);
     
-    background-color: #ffffff;
+    background: linear-gradient(to bottom, var(--color-reco-gradient), var(--color-reco-gradient-dark));
     border-radius: 1rem;
     border: 1px solid grey;
+    
+    &:hover {
+        transform: scale(1.1);
+        box-shadow: 1px 1px 1px rgb(110, 107, 107);
+        transition: all 0.3s ease; }
 }
 
 .recomendacion__titulo {
@@ -25,21 +30,34 @@
     display: flex;
     align-items: center;
     font-size: large;
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .actions {
     grid-area: actions;
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: right;
     gap: var(--space-md);
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
 
-    & a {
+    & button {
         cursor: pointer;
+        height: 3.5rem;
+        width: 3.5rem;
+        border-radius: 50%;
+        border: none;
+        box-shadow: 2px 2px 2px rgb(110, 107, 107); 
+
+        & img{
+            height: 2.5rem;
+            width: 2.5rem;
+        }
+
+        &:hover{
+        filter: brightness(140%);}
     }
+        
 }
 
 .recomendacion__descripcion {
@@ -55,15 +73,19 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     overflow: hidden;
-    border-top: 2px solid grey;
-    border-bottom: 2px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
 }
 
 .libro-recomendado {
     align-items: center;
     display: flex;
     flex-direction: row;
-    gap: var(--space-xs);
+    gap: var(--space-xs)/2;
+        & img {
+            height: 2rem;
+            width: 2rem;
+        }
 }
 
 .recomendacion__datos {
@@ -98,4 +120,16 @@
     border-radius: 5px;
     font-size: var(--text-md);
     background: #80ed99;
+}
+
+.edit{
+    background: linear-gradient(to bottom, var(--color-edit-gradient), var(--color-edit-gradient-dark));
+}
+
+.value{
+    background: linear-gradient(to bottom, var(--color-value-gradient), var(--color-value-gradient-dark));
+}
+
+.delete{
+    background: linear-gradient(to bottom, var(--color-cancel-gradient), var(--color-cancel));
 }

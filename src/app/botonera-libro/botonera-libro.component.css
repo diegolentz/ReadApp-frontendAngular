@@ -6,14 +6,16 @@
     justify-content: space-around;
     gap: 2rem;
 
-    & .accion{
+
+
+    /* & .accion{
         background: transparent;
         cursor: pointer;
         border: none;
         &:hover{
             filter: drop-shadow(var(--color-hover-acciones));
-            /* quiero que aumente el tamano cuando hago el hover; */
+             quiero que aumente el tamano cuando hago el hover; 
             transform: scale(1.1);
         }
-    }
+    } */
 }

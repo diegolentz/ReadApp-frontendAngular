@@ -61,6 +61,6 @@
 }
 
 .custom-agregar{
-    background: linear-gradient(to bottom, var(--color-save), var(--color-save-gradient));
+    background: linear-gradient(to bottom, var(--color-save-gradient), var(--color-save-gradient-dark));
 }
 
