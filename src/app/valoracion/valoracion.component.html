@@ -1,6 +1,6 @@
 <div class="valoraciones">
   <div class="puntuacion">
-    <h2>Valoraciones</h2>
+    <h2>Valorations</h2>
       
     <img class="estrella-dorada" src="svg/recommendationScore.svg">
     <h3>{{score}}/5</h3>
@@ -20,7 +20,7 @@
     
   <div class="nuevaValoracion" *ngIf="agregarValoracion">
     <div class="contenedor">
-      <h2>Valorar Recomendacion</h2>
+      <h2>Rate the recommendation</h2>
         
       <div>
         <svg (click)="setRating(1)" [ngClass]="{'rated': rating >= 1}" class="estrellas" viewBox="0 0 256 256">
