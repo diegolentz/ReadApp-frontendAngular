@@ -71,7 +71,7 @@ export class ValoracionComponent implements OnInit {
   }
 
   cancelar() {
-    this.agregarValoracion = false
+    this.agregarValoracion = true
     this.nuevaValoracion.comentario = ""
     this.rating = 0
   }
