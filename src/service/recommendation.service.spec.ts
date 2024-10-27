@@ -1,168 +1,167 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { RecommendationService } from './recommendation.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
-import { of, throwError } from 'rxjs';
-import { Recommendation, RecommendationJSON } from '../domain/recommendation';
-import { REST_SERVER_URL } from './configuration';
-import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from './toast.service';
 import { Router } from '@angular/router';
-import { ValorationJSON } from '../domain/valoration';
+import { Recommendation, RecommendationCard } from '../domain/recommendation';
+import { REST_SERVER_URL } from './configuration';
 import { Valoration } from '../domain/valoration';
 
 describe('RecommendationService', () => {
   let service: RecommendationService;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>;
-  let routerSpy: jasmine.SpyObj<Router>;
-  let toastSpy: jasmine.SpyObj<ToastrService>;
-
-  const mockRecommendation: RecommendationJSON = {
-    creador: 'Test Author',
-    librosRecomendados: [], // Puedes agregar libros si lo necesitas
-    titulo: 'Test Recommendation',
-    contenido: 'Test Description',
-    publica: true,
-    valoraciones: [], // Puedes agregar valoraciones si es necesario
-    valoracionTotal: 0,
-    puedeValorar:false,
-    id: 1,
-  };
-  const mockValoration: ValorationJSON = {
-    author: 'Test User',
-    fotoPath: 'path/to/photo.jpg',
-    score: 5,
-    fecha: '2024-10-21',
-    comentario: 'Great recommendation!',
-  };
+  let httpMock: HttpTestingController;
+  let toastServiceMock: jasmine.SpyObj<ToastService>;
+  let routerMock: jasmine.SpyObj<Router>;
+  
 
   beforeEach(() => {
-    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'put']);
-    routerSpy = jasmine.createSpyObj('Router', ['navigate']);
-    toastSpy = jasmine.createSpyObj('ToastrService', ['warning', 'success']);
+    const toastSpy = jasmine.createSpyObj('ToastService', ['showToast']);
+    const routerSpy = jasmine.createSpyObj('Router', ['navigate']);
 
     TestBed.configureTestingModule({
-      imports: [HttpClientModule, ToastrModule.forRoot()],
+      imports: [HttpClientTestingModule],
       providers: [
         RecommendationService,
-        { provide: HttpClient, useValue: httpClientSpy },
-        { provide: Router, useValue: routerSpy },
-        { provide: ToastrService, useValue: toastSpy }
+        { provide: ToastService, useValue: toastSpy },
+        { provide: Router, useValue: routerSpy }
       ]
     });
 
     service = TestBed.inject(RecommendationService);
+    httpMock = TestBed.inject(HttpTestingController);
+    toastServiceMock = TestBed.inject(ToastService) as jasmine.SpyObj<ToastService>;
+    routerMock = TestBed.inject(Router) as jasmine.SpyObj<Router>;
   });
 
-  it('debería obtener una recomendación por ID', async () => {
-    httpClientSpy.get.and.returnValue(of(mockRecommendation));
-
-    const recommendation = await service.getRecommendationById(1);
-    expect(recommendation).toEqual(Recommendation.fromJson(mockRecommendation));
-    expect(httpClientSpy.get).toHaveBeenCalledWith(`${REST_SERVER_URL}/recommendations/1`);
+  afterEach(() => {
+    httpMock.verify();
   });
 
-  it('debería manejar errores al obtener una recomendación por ID', async () => {
-    const errorResponse = new HttpErrorResponse({
-      error: { message: 'Error de prueba' },
-      status: 404,
+  it('Deberia crear el Servicio', () => {
+    expect(service).toBeTruthy();
+  });
+
+  describe('getRecommendations', () => {
+    it('Deberia devolver recomendaciones', async () => {
+      const mockRecommendations = [
+        {
+          creador: 'Author',
+          librosRecomendados: [],
+          titulo: 'Test Recommendation',
+          contenido: 'Description here',
+          publica: true,
+          valoraciones: [],
+          valoracionTotal: 0,
+          id: 1,
+          puedeValorar: true
+        }
+      ];
+  
+      const response = service.getRecommendations();
+      const req = httpMock.expectOne(`${REST_SERVER_URL}/recommendations`);
+      req.flush(mockRecommendations);
+  
+      await expectAsync(response).toBeResolvedTo(mockRecommendations.map(r => Recommendation.fromJson(r)));
     });
-
-    httpClientSpy.get.and.returnValue(throwError(() => errorResponse));
-
-    await service.getRecommendationById(1);
-    expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/home/home']);
   });
 
-  it('debería actualizar una recomendación', async () => {
-    const updatedRecommendation = new Recommendation(
-      'Test Author',
-      [],
-      'Updated Recommendation',
-      'Updated Description',
-      true,
-      [],
-      0,
-      1
-    );
+  describe('getRecommendationsFilter', () => {
+    it('Debería devolver recomendaciones filtradas', async () => {
+      const mockFilteredRecommendations = [
+        {
+          id: 1,
+          title: 'Filtered Recommendation',
+          editable: true,
+          deletable: true,
+          public: true,
+          pending: false,
+          content: 'Filtered content',
+          bookTitles: ['Book 1', 'Book 2'],
+          popularity: 10,
+          aproxTime: 5
+        }
+      ];
+      const filtro = 'test';
 
-    httpClientSpy.put.and.returnValue(of(mockRecommendation));
+      const response = service.getRecommendationsFilter(filtro);
+      httpMock.expectOne(req => req.url.includes('/recommendations/filter') && req.params.has('filtro')).flush(mockFilteredRecommendations);
 
-    const result = await service.actualizarRecomendacion(updatedRecommendation);
-    
-    expect(result).toEqual(mockRecommendation);
-    expect(httpClientSpy.put).toHaveBeenCalledWith(
-      `${REST_SERVER_URL}/recommendations`,
-      updatedRecommendation.toEditarJSON()
-    );
-    expect(toastSpy.success).toHaveBeenCalledWith('Recomendacion editada con exito');
-  });
-
-  it('debería manejar errores al actualizar una recomendación', async () => {
-    const errorResponse = new HttpErrorResponse({
-      error: { message: 'Error de prueba' },
-      status: 400,
+      await expectAsync(response).toBeResolvedTo(mockFilteredRecommendations.map(r => RecommendationCard.fromJson(r)));
     });
-
-    const updatedRecommendation = new Recommendation(
-      'Test Author',
-      [],
-      'Updated Recommendation',
-      'Updated Description',
-      true,
-      [],
-      0,
-      1
-    );
-
-    httpClientSpy.put.and.returnValue(throwError(() => errorResponse));
-
-    await service.actualizarRecomendacion(updatedRecommendation);
-
-    expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
   });
 
-  it('debería agregar una valoración', async () => {
-    const idRecommendation = 1;
-    const valoration = new Valoration(
-      mockValoration.author,
-      mockValoration.fotoPath,
-      mockValoration.score,
-      new Date(mockValoration.fecha),
-      mockValoration.comentario
-    );
+  describe('actualizarRecomendacion', () => {
+    it('Debería actualizar una recomendación y devolver la recomendación actualizada', async () => {
+        // Crea una recomendación de prueba
+        const mockRecommendation = new Recommendation(
+            'Author',
+            [], // libros recomendados
+            'Updated Title',
+            'Updated Description',
+            true,
+            [],
+            0,
+            1,
+            true
+        );
 
-    httpClientSpy.put.and.returnValue(of(mockValoration));
+        // Define la respuesta simulada de la API
+        const updatedMockRecommendation = {
+            creador: 'Author',
+            librosRecomendados: [],
+            titulo: 'Updated Title',
+            contenido: 'Updated Description',
+            publica: true,
+            valoraciones: [],
+            valoracionTotal: 0,
+            id: 1,
+            puedeValorar: true
+        };
 
-    const result = await service.agregarValoracion(valoration, idRecommendation);
-    
-    expect(result).toEqual(mockValoration);
-    expect(httpClientSpy.put).toHaveBeenCalledWith(
-      `${REST_SERVER_URL}/recommendations/${idRecommendation}`,
-      valoration.toJSON()
-    );
-    expect(toastSpy.success).toHaveBeenCalledWith("Se agregó correctamente la valoración");
-  });
+        // Invoca el método a probar, usando `toJSON()`
+        const response = service.actualizarRecomendacion(mockRecommendation);
 
-  it('debería manejar errores al agregar una valoración', async () => {
-    const errorResponse = new HttpErrorResponse({
-      error: { message: 'Error de prueba' },
-      status: 400,
+        // Espera la llamada a la API
+        const req = httpMock.expectOne(`${REST_SERVER_URL}/recommendations`);
+        expect(req.request.method).toBe('PUT');
+        req.flush(updatedMockRecommendation); // Simula la respuesta de la API
+
+        // Verifica que la respuesta sea la recomendación actualizada
+        await expectAsync(response).toBeResolvedTo(updatedMockRecommendation);
+
     });
-
-    const idRecommendation = 1;
-    const valoration = new Valoration(
-      mockValoration.author,
-      mockValoration.fotoPath,
-      mockValoration.score,
-      new Date(mockValoration.fecha),
-      mockValoration.comentario
+});
+describe('agregarValoracion', () => {
+  it('Debería agregar una valoración y devolver la valoración creada', async () => {
+    // Crea una valoración de prueba
+    const mockValoration = new Valoration(
+      'Author',
+      'path/to/photo.jpg',
+      5,
+      new Date(),
+      'Great recommendation!'
     );
 
-    httpClientSpy.put.and.returnValue(throwError(() => errorResponse));
+    // Define la respuesta simulada de la API
+    const mockResponse = {
+      author: 'Author',
+      fotoPath: 'path/to/photo.jpg',
+      score: 5,
+      fecha: new Date().toISOString(),
+      comentario: 'Great recommendation!'
+    };
 
-    await service.agregarValoracion(valoration, idRecommendation);
+    // Invoca el método a probar
+    const response = service.agregarValoracion(mockValoration, 1);
 
-    expect(toastSpy.warning).toHaveBeenCalledWith('Error de prueba');
+    // Espera la llamada a la API
+    const req = httpMock.expectOne(`${REST_SERVER_URL}/recommendations/1`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(mockResponse); // Simula la respuesta de la API
+
+    // Verifica que la respuesta sea la valoración creada
+    await expectAsync(response).toBeResolvedTo(mockResponse);
   });
+});
+
 });

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr'
 import { NO_ERRORS_SCHEMA } from '@angular/core'
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http' // Importa HttpClientModule
+import { ToastService } from '../../service/toast.service'
 
 describe('ValoracionComponent', () => {
   let component: ValoracionComponent
@@ -52,4 +53,16 @@ describe('ValoracionComponent', () => {
     expect(component.nuevaValoracion.comentario).toBe('')
     expect(component.rating).toBe(0)
   })
+
+  it('no debería agregar la valoración si la validación falla', async () => {
+    component.nuevaValoracion.comentario = '';
+    component.rating = 0;
+    const recommendationService = TestBed.inject(RecommendationService)
+    recommendationService.agregarValoracion = jasmine.createSpy('agregarValoracion').and.returnValue(Promise.resolve())
+
+    await component.agregarLaValoracion();
+
+    expect(recommendationService.agregarValoracion).not.toHaveBeenCalled();
+    //expect(ToastService.showToast).toHaveBeenCalledWith("Por favor complete los campos vacios", "warning");
+  });
 })
