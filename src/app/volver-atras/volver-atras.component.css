@@ -16,5 +16,7 @@ button{
     text-align: center;
     text-decoration: none;
     transition-duration: 0.4s;
+    font-weight: bold;
+    color: #ffffff;
 }
 
