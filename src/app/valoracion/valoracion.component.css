@@ -32,7 +32,7 @@
     background-color: var(--color-header);
     color: white;
     border: none;
-    padding: 5px;
+    padding: 2rem;
     height: 5rem;
     box-shadow: 1px 2px 4px rgb(24, 23, 23);
     border-radius: 10%;
