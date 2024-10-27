@@ -1,26 +1,30 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { HeaderComponent } from './header.component';
-import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing'; // Cambia a HttpClientTestingModule
 import { ActivatedRoute } from '@angular/router';
-
+import { ToastrModule } from 'ngx-toastr'; // Importa ToastrModule
+import { ServiceUser } from '../../../service/service-user.service'; // Importa el servicio que causa el error
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
-  let httpClientSpy: jasmine.SpyObj<HttpClient>
-  let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>
+  let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>;
+
   beforeEach(async () => {
+    activatedRouteSpy = jasmine.createSpyObj('ActivatedRoute', ['snapshot']); // Crea un espía para ActivatedRoute
+
     await TestBed.configureTestingModule({
       imports: [
-        HeaderComponent
+        HeaderComponent,
+        HttpClientTestingModule, // Usa el módulo de pruebas para HttpClient
+        ToastrModule.forRoot() // Agrega ToastrModule
       ],
       providers: [
-        {provide: HttpClient, useValue: httpClientSpy},
-        {provide: ActivatedRoute, useValue: activatedRouteSpy}
+        { provide: ActivatedRoute, useValue: activatedRouteSpy },
+        { provide: ServiceUser, useValue: jasmine.createSpyObj('ServiceUser', ['someMethod']) } // Simula ServiceUser
       ]
     })
-      .compileComponents();
+    .compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
