@@ -19,10 +19,12 @@
     border-radius: 1rem;
     border: 1px solid grey;
     
+    transition: all 0.3s ease;
+    
     &:hover {
-        transform: scale(1.1);
-        box-shadow: 1px 1px 1px rgb(110, 107, 107);
-        transition: all 0.3s ease; }
+        box-shadow: var(--shadow-elevation-high);
+        transform: scale(1.03);
+         }
 }
 
 .recomendacion__titulo {
