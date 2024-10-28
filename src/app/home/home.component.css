@@ -9,3 +9,9 @@
     justify-items: center;
 }
 
+.absolutePosition {
+    position: fixed;
+    bottom: 8rem;
+    justify-items: center;
+}
+
