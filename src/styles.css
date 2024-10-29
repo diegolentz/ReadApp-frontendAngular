@@ -61,17 +61,17 @@
     --color-card-libro-gradiente: #5d8999;
     --color-hover-amigos: hsl(16, 85%, 80%);
     --color-hover-acciones: 0 0 0.75rem rgb(0, 0, 0);
-    --shadow-color: 14deg 42% 48%;
-    --shadow-elevation-high: 0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.45),
-        0.6px 0.6px 0.8px -0.4px hsl(var(--shadow-color) / 0.43),
-        1.2px 1.2px 1.7px -0.8px hsl(var(--shadow-color) / 0.41),
-        1.9px 1.9px 2.7px -1.1px hsl(var(--shadow-color) / 0.38),
-        3px 3px 4.2px -1.5px hsl(var(--shadow-color) / 0.36),
-        4.6px 4.6px 6.4px -1.9px hsl(var(--shadow-color) / 0.33),
-        6.9px 6.8px 9.6px -2.3px hsl(var(--shadow-color) / 0.31),
-        10px 9.9px 13.9px -2.6px hsl(var(--shadow-color) / 0.29),
-        14.1px 14px 19.7px -3px hsl(var(--shadow-color) / 0.26),
-        19.4px 19.2px 27px -3.4px hsl(var(--shadow-color) / 0.24);
+
+    --shadow-color: 0deg 0% 50%; /* Gris neutral */
+    --shadow-elevation-high: 
+    0.2px 0.2px 0.3px hsl(var(--shadow-color) / 0.45),
+    0.8px 0.8px 1.2px -0.2px hsl(var(--shadow-color) / 0.42),
+    1.6px 1.6px 2.4px -0.5px hsl(var(--shadow-color) / 0.39),
+    2.5px 2.5px 3.8px -0.8px hsl(var(--shadow-color) / 0.36),
+    4px 4px 6px -1.2px hsl(var(--shadow-color) / 0.33),
+    6px 6px 9px -1.6px hsl(var(--shadow-color) / 0.30),
+    9px 9px 13.5px -2px hsl(var(--shadow-color) / 0.28),
+    13px 13px 19.5px -2.5px hsl(var(--shadow-color) / 0.25);
 
     --perfilUsuario-default: 4rem;
     --books-default: 1.5rem;
@@ -86,7 +86,7 @@
     --color-cancel-gradient: rgb(248, 138, 138);
     --color-cancel: rgb(165, 41, 41);
     --color-reco-gradient: #dbd9cc;
-    --color-reco-gradient-dark: #b3b1a6;
+    --color-reco-gradient-dark: #e7e5e2da;
     --borde-default: 1rem;
 
     /* //////////////////////////////////////////////////// */

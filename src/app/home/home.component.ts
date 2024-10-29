@@ -8,10 +8,11 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { NgIf } from '@angular/common';
 import { ToastService } from '../../service/toast.service';
+import { BotonAgregarComponent } from "../shared/boton-agregar/boton-agregar.component";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RecomendacionComponent, NavComponent, NgIf],
+  imports: [RecomendacionComponent, NavComponent, NgIf, BotonAgregarComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

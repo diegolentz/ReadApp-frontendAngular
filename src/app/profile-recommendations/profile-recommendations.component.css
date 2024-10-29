@@ -14,7 +14,7 @@
     grid-auto-rows: 35rem;
     gap: 2rem;
     overflow-y: scroll;
-    justify-content: space-around;
+    justify-items: center;
 }
 
 .recommendations__container::-webkit-scrollbar {
