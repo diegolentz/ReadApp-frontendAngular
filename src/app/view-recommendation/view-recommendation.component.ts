@@ -122,6 +122,9 @@ export class ViewRecommendationComponent implements OnInit {
       return
   }
     await this.recommendationService.createRecommendations(this.recomendacion)
+    await this.toast.showToast('Recomendacion creada con exito',"success")
+    await this.goTo('/home/myRecommendations/false')
+
   }
 
   createOrEdit() {
