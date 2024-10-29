@@ -36,7 +36,7 @@
         </div>
     </div>
     <div class="actions">
-        <button (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'login'" [ngClass]="{'valid': form.valid, 'invalid': !form.valid}" [appBgColor]="'--color-complementary-3-bright'" [colorByVariableName]=true>
+        <button (click)="request()" [disabled]="!this.form.valid" [attr.data-testid]="'createAccount'" [ngClass]="{'valid': form.valid, 'invalid': !form.valid}" [appBgColor]="'--color-complementary-3-bright'" [colorByVariableName]=true>
             <img src="svg/sign-in.svg" alt="">
             <p>Create account</p>
         </button>

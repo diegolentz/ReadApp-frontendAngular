@@ -56,7 +56,6 @@ describe('HomeComponent', () => {
     fixture.detectChanges();
     
     expect(component.recommendations).toEqual(recommendationCardStubJSON.map(RecommendationCard.fromJson));
-    console.log(recommendationCardStubJSON)
     expect(component.recommendations.length).toBe(2)
   })
 

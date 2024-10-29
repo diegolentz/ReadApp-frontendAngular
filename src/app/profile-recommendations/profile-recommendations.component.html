@@ -9,7 +9,7 @@
         }
         <div class="recommendations__container">
             @for (recomendation of recommendations; track recomendation){
-                <app-recomendacion [recomendacion]="recomendation"></app-recomendacion>
+                <app-recomendacion [recomendacion]="recomendation" [attr.data-testid]="'id_'+recomendation.id" ></app-recomendacion>
             }
         </div>
         <section class = "buttonsFooter">
