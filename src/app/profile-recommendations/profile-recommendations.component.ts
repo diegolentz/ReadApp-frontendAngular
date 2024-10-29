@@ -5,6 +5,7 @@ import { RecommendationService } from '../../service/recommendation.service';
 import { BtnGuardarCancelarComponent } from '../shared/btn-guardar-cancelar/btn-guardar-cancelar.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { ToastService } from '../../service/toast.service';
+import { NavigationService } from '../../service/navigation.service';
 
 @Component({
   selector: 'app-profile-recommendations',
@@ -16,16 +17,20 @@ import { ToastService } from '../../service/toast.service';
 export class ProfileRecommendationsComponent {
   @HostBinding('style.width') width: string = '100%';
   
-  recommendations?: RecommendationCard[];
+  recommendations: RecommendationCard[] = []
+
+  flagsEmptyRecommendation!:boolean
 
   constructor(
     private recommendationService: RecommendationService,
-    private toast: ToastService
+    private toast: ToastService,
+    public nvgtService: NavigationService
   ) { }
 
   async ngOnInit() {
     try {
       this.recommendations = await this.recommendationService.getRecommendationsToValue()
+
     } catch (error: any) {
       if(error instanceof HttpErrorResponse){
         if(error.error['status']==null){
@@ -33,5 +38,9 @@ export class ProfileRecommendationsComponent {
         }
       }
     }
+  }
+
+  checkEmptyRecommendationsResponse(){
+    return this.recommendations.length === 0
   }
 }

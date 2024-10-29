@@ -15,3 +15,23 @@
     justify-items: center;
 }
 
+.message__container{
+    display: flex;
+    height: fit-content;
+    justify-content: center;
+}
+
+.message__phrase{
+    max-width: 75%;
+    min-width: 60%;
+    font-size: var(--space-lg);
+
+    background-color: #2196f3;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.message__link{
+    cursor: pointer;
+    font-weight: bold;
+}

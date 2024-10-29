@@ -12,6 +12,7 @@ import { PasswordRecoveryFormComponent } from '../forms/password-recovery-form/p
 
 import { BgColorDirective } from '../shared/directives/bg-color.directive';
 import { ToastService } from '../../service/toast.service';
+import { NavigationService } from '../../service/navigation.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -30,7 +31,8 @@ export class LoginComponent extends CommonForm{
     private rt:Router,
     private service:ServiceUser,
     private fb:FormBuilder,
-    private toast:ToastService
+    private toast:ToastService,
+    private nvService:NavigationService
   ){
     
     super(rt,service,fb, toast);
@@ -42,9 +44,7 @@ export class LoginComponent extends CommonForm{
 
   formType:FormType = FormType.LOG_IN
 
-  goTo(option: string) {
-    this.rt.navigate([option])
-  }
+
 
   override async request(){
     try {
@@ -85,7 +85,7 @@ export class LoginComponent extends CommonForm{
   private logUser(userID:number){
     localStorage.setItem('id', userID.toString());
     this.toast.showToast('Bienvenido', 'success'); 
-    this.goTo('home')
+    this.nvService.goTo('home')
   }
 
   buttonsColor(){

@@ -13,7 +13,6 @@ describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   let httpClientSpy: jasmine.SpyObj<HttpClient>
-  // let activatedRouteSpy: jasmine.SpyObj<ActivatedRoute>
   let routerSpy: jasmine.SpyObj<Router>
   let service: jasmine.SpyObj<RecommendationService>
   const activatedRouteMock = {
@@ -35,18 +34,14 @@ describe('HomeComponent', () => {
       providers: [
         { provide: HttpClient, useValue: httpClientSpy },
         { provide: ActivatedRoute, useValue: activatedRouteMock },
-        { provide: RecommendationService, useValue: jasmine.createSpyObj('RecommendationService', ['getAllRecommendations']) }
+        { provide: RecommendationService, useValue: jasmine.createSpyObj('RecommendationService', ['getRecommendationsByProfile', 'getUserRecommendations']) }
       ]
-    })
-      .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);
     component = fixture.componentInstance;
     service = TestBed.inject(RecommendationService) as jasmine.SpyObj<RecommendationService>;
     fixture.detectChanges();
-
-    service.getAllRecommendations.and.returnValue(Promise.resolve(recommendationCardStubJSON.map(RecommendationCard.fromJson)));
-    // expect(getByTestId('id_1')).toBeTruthy()
   });
 
   it('should create', async () => {
@@ -55,18 +50,29 @@ describe('HomeComponent', () => {
 
 
   it('EL componente inicia con 2 recomendaciones', async () => {
+    service.getRecommendationsByProfile.and.returnValue(Promise.resolve(recommendationCardStubJSON.map(RecommendationCard.fromJson)));
+    
     await component.ngOnInit();
+    fixture.detectChanges();
+    
     expect(component.recommendations).toEqual(recommendationCardStubJSON.map(RecommendationCard.fromJson));
-
     expect(component.recommendations.length).toBe(2)
   })
 
-  // it('La recomendacion 1 existe', async () => {
-  //   await component.ngOnInit();
-  //   expect(component.recommendations).toEqual(recommendationCardStubJSON.map(RecommendationCard.fromJson))
+  it('La recomendacion 1 y 2 existen', async () => {
+    service.getRecommendationsByProfile.and.returnValue(Promise.resolve(recommendationCardStubJSON.map(RecommendationCard.fromJson)));
+    await component.ngOnInit();
+    fixture.detectChanges();
+    expect(component.recommendations).toEqual(recommendationCardStubJSON.map(RecommendationCard.fromJson))
 
-  //   expect(fixture.debugElement.nativeElement.querySelector('[data-testid="id_1"]')).toBeTruthy()
-  // })
+    const recommendation_1 = getByTestId('id_1')
+    const recommendation_2 = getByTestId('id_2')
+
+    expect(recommendation_1).toBeTruthy()
+    expect(recommendation_2).toBeTruthy()
+
+  })
+
 
   function getByTestId(testId: string) {
     const resultHtml = fixture.debugElement.nativeElement
