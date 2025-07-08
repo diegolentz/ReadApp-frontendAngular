@@ -1,82 +1,50 @@
-# Readapp2024Grupo9
+# Readapp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.3.
+Trabajo practico de la Facultad para la materia de Algoritmos III , el cual consiste en una Aplicación web de libros Readapp. La misma esta desarrollada con Angular 18 y Typescript.
 
-## Development server
+## Casos de uso
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+La aplicación cuenta con una pantalla de autenticación de usuario. 
 
-## Code scaffolding
+![image](https://github.com/user-attachments/assets/54cbd3ab-b5e4-4584-a09e-c0f00df5b98d)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Una vez validado el mismo seingresa en la página de búsqueda de recomendaciones donde además de ver las mismas (acorde a su perfil), se puede realizar una búsqueda de las mismas.
 
-## Build
+![image](https://github.com/user-attachments/assets/2ef4db54-d5a1-4f8a-886d-21b2b7939738)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Al Hacer clic/tap en la card de la recomendación permite ir al detalle de la misma. En esta sección, además de ver un detalle más amplio, se puede agregar una valoración, si corresponde según validaciones del negocio. 
 
-## Running unit tests
+![image](https://github.com/user-attachments/assets/05c7f0eb-c368-4f2f-93c6-62e3650d985e)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+La aplicación cuenta con un menú desplegable superior en el ícono del usuario o hamburger según corresponda. El mismo tiene las opciones de “Búsqueda”, “mis recomendaciones”, “Perfil de usuario” y “logout”.
 
-## Running end-to-end tests
+![image](https://github.com/user-attachments/assets/4bb27a03-ff7e-4900-8bb1-b446cacadf8e)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Otra opción de búsqueda que se puede seleccionar es la vista de “Mis Recomendaciones”. En este caso podemos mostrar solo las recomendaciones creadas por el usuario logueado, permitiendo realizar la búsqueda y aplicar un filtro de solo privadas. 
 
-## Further help
+![image](https://github.com/user-attachments/assets/4c5a2844-a439-4a19-b35d-6f887825c66a)
+![image](https://github.com/user-attachments/assets/c7649218-fc2e-486d-9fb9-4f1bb87925c8)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+En la edición y creación de las recomendaciones al agregar un nuevo libro debe llevarnos a la Búsqueda de Libros, donde podremos seleccionar al deseado.
 
-LABURADO
-// si hay tiempo ingresar y crear cuenta y olvidaste contraseña
+![image](https://github.com/user-attachments/assets/71ac7bd5-1a86-4d3f-b464-5be351c13987)
+![image](https://github.com/user-attachments/assets/22d6f418-a627-44c7-a9ca-9798f63f2931)
+![image](https://github.com/user-attachments/assets/fa2697ea-1d0a-4b6e-ac40-853a18d48542)
+![image](https://github.com/user-attachments/assets/2483753d-c7de-4c50-9ef1-a8f025f3e5c8)
 
-login -> DELFI
-    login contenedor
-    inputs
+La página de perfil de usuario permite actualizar los datos correspondientes de la persona que se encuentra logueada en la aplicación, así como también agregar/quitar amigos, recomendaciones a valorar, libros a leer y/o leídos.
 
-header -> ADRIAN
-    dropdown
+![image](https://github.com/user-attachments/assets/3b5d11cb-42b5-4e1d-ac22-06e77161c0cb)
 
-nav -> DIEGO
-    input reutilizable
+## Service
 
+La aplicacion cuenta con services que nos permiten conectarnos a servidores externos.
+![image](https://github.com/user-attachments/assets/7e6b31bd-897f-4fb3-875d-a1587da5c335)
 
-home(recomendaciones) -> ADRIAN 
-    estrella libros reloj
-    dar like
-    eliminar
+## Manejo de Errores
 
+La aplicación tambien cuenta con manejo de errores, trayendo el mismo error desde el backend con su status correspondiente y atrapandolo en el componente con el try catch y mostrandolo en pantalla a traves de un toast.
 
-busqueda libro -> DIEGO
-(2 acciones)
+![image](https://github.com/user-attachments/assets/369da2bd-e877-4f96-80f9-4f1823f4f617)
+![image](https://github.com/user-attachments/assets/d551d116-0119-42e2-a5c5-598bd6c3dd1d)
 
-componentes de panel del perfil -> VALEN
-perfil -> VALEN
-perfil-amigos - > PICA
-perfil-libros - > DIEGO
-terminar layout 
-y renderizado derecha
-
-
-
-PENDIENTE 
-SELECT MIN(cant_paginas) FROM libros;
-
-
--recomendacion loca
-view layout libros ? detalle / edicion
-mundito
-layout libros
-valoracion
-boton agregar +
-
--edicion recomendacion
-sin mundito
-certificado -> leido
-fuegito -> libro a leer
-boton guardar
-boton cancelar
-
--detalle recomendacion
-boton volver 
-
-amigos ultra reutilizable
