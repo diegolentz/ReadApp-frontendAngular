@@ -1,50 +1,56 @@
-# Readapp
+# ReadApp-frontendAngular
 
-Trabajo practico de la Facultad para la materia de Algoritmos III , el cual consiste en una Aplicación web de libros Readapp. La misma esta desarrollada con Angular 18 y Typescript.
+¡Bienvenido al lado más dinámico de la lectura digital! Este repositorio es el frontend Angular de **ReadApp**, una plataforma creada para que explorar, organizar y compartir tu pasión por los libros sea una experiencia visualmente atractiva, rápida y divertida.
 
-## Casos de uso
+## 🌈 Propósito del Proyecto
 
-La aplicación cuenta con una pantalla de autenticación de usuario. 
+**ReadApp-frontendAngular** no solo es una aplicación: es tu compañero de aventuras literarias. Lleva tu biblioteca en el bolsillo, descubre recomendaciones personalizadas y conecta con otros lectores, todo desde una interfaz moderna y fluida construida con Angular.
 
-![image](https://github.com/user-attachments/assets/54cbd3ab-b5e4-4584-a09e-c0f00df5b98d)
+---
 
-Una vez validado el mismo seingresa en la página de búsqueda de recomendaciones donde además de ver las mismas (acorde a su perfil), se puede realizar una búsqueda de las mismas.
+## 🚀 Características Estelares
 
-![image](https://github.com/user-attachments/assets/2ef4db54-d5a1-4f8a-886d-21b2b7939738)
+1. **UI Súper Responsiva & Animada**
+   - Diseño adaptable con Angular Material y animaciones suaves.
+   - Experiencia de usuario intuitiva, ideal para cualquier dispositivo.
 
-Al Hacer clic/tap en la card de la recomendación permite ir al detalle de la misma. En esta sección, además de ver un detalle más amplio, se puede agregar una valoración, si corresponde según validaciones del negocio. 
+2. **Tu Biblioteca, Tu Mundo**
+   - Visualiza, agrega y organiza tus libros favoritos.
+   - Seguimiento de progreso de lectura, listas personalizadas y notas rápidas.
 
-![image](https://github.com/user-attachments/assets/05c7f0eb-c368-4f2f-93c6-62e3650d985e)
+3. **Descubrí Nuevos Títulos**
+   - Sección de recomendaciones inteligentes basada en tus gustos.
+   - Búsqueda avanzada y filtros para encontrar el libro perfecto.
 
-La aplicación cuenta con un menú desplegable superior en el ícono del usuario o hamburger según corresponda. El mismo tiene las opciones de “Búsqueda”, “mis recomendaciones”, “Perfil de usuario” y “logout”.
+4. **Red Social de Lectores**
+   - Reseñas, valoraciones y comentarios de la comunidad.
+   - Seguí a tus amigos lectores y compartí recomendaciones fácilmente.
 
-![image](https://github.com/user-attachments/assets/4bb27a03-ff7e-4900-8bb1-b446cacadf8e)
+5. **Panel de Usuario Personalizable**
+   - Gestioná tu perfil, preferencias, historial y estadísticas de lectura.
+   - Configuración avanzada para una experiencia a tu medida.
 
-Otra opción de búsqueda que se puede seleccionar es la vista de “Mis Recomendaciones”. En este caso podemos mostrar solo las recomendaciones creadas por el usuario logueado, permitiendo realizar la búsqueda y aplicar un filtro de solo privadas. 
+6. **Conexión Total con Backend**
+   - Consumo eficiente de la API REST de ReadApp-backend.
+   - Interacciones en tiempo real y sincronización instantánea de datos.
 
-![image](https://github.com/user-attachments/assets/4c5a2844-a439-4a19-b35d-6f887825c66a)
-![image](https://github.com/user-attachments/assets/c7649218-fc2e-486d-9fb9-4f1bb87925c8)
+---
 
-En la edición y creación de las recomendaciones al agregar un nuevo libro debe llevarnos a la Búsqueda de Libros, donde podremos seleccionar al deseado.
+## 🛠️ Stack Tecnológico
 
-![image](https://github.com/user-attachments/assets/71ac7bd5-1a86-4d3f-b464-5be351c13987)
-![image](https://github.com/user-attachments/assets/22d6f418-a627-44c7-a9ca-9798f63f2931)
-![image](https://github.com/user-attachments/assets/fa2697ea-1d0a-4b6e-ac40-853a18d48542)
-![image](https://github.com/user-attachments/assets/2483753d-c7de-4c50-9ef1-a8f025f3e5c8)
+- **Framework:** Angular (TypeScript)
+- **UI:** Angular Material, SCSS, animaciones personalizadas
+- **Ruteo:** Angular Router
+- **Gestión de Estado:** RxJS, servicios y/o NgRx (según la implementación)
+- **Consumo de API:** HttpClient de Angular
+- **Testing:** Jasmine & Karma (si aplica)
 
-La página de perfil de usuario permite actualizar los datos correspondientes de la persona que se encuentra logueada en la aplicación, así como también agregar/quitar amigos, recomendaciones a valorar, libros a leer y/o leídos.
+---
 
-![image](https://github.com/user-attachments/assets/3b5d11cb-42b5-4e1d-ac22-06e77161c0cb)
+## 🛡️ Licencia
 
-## Service
+Este repositorio está protegido bajo una licencia privada. Su uso está reservado exclusivamente a los miembros autorizados del equipo.
 
-La aplicacion cuenta con services que nos permiten conectarnos a servidores externos.
-![image](https://github.com/user-attachments/assets/7e6b31bd-897f-4fb3-875d-a1587da5c335)
+---
 
-## Manejo de Errores
-
-La aplicación tambien cuenta con manejo de errores, trayendo el mismo error desde el backend con su status correspondiente y atrapandolo en el componente con el try catch y mostrandolo en pantalla a traves de un toast.
-
-![image](https://github.com/user-attachments/assets/369da2bd-e877-4f96-80f9-4f1823f4f617)
-![image](https://github.com/user-attachments/assets/d551d116-0119-42e2-a5c5-598bd6c3dd1d)
-
+¡Vivi la lectura digital al máximo con **ReadApp** versión Angular! 🚀📖✨
